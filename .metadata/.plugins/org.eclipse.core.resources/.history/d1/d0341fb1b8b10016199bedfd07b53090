@@ -16,6 +16,7 @@ public class Carte {
 	private boolean estDistribuee;
 	
 	public Carte(String nom, String capacite, boolean estDistribuee) {
+		super();
 		this.nom = nom;
 		this.capacite = capacite;
 		this.estDistribuee = estDistribuee;
