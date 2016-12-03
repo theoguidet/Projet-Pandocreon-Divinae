@@ -1,11 +1,11 @@
-package Carte;
+package carte;
 
 public class Devin extends Carte{
 	
 	private int nbCroyants;
 	
-	public Devin(String nom, String capacite, boolean estDistribuee, int nbCroyants){
-		super(capacite, capacite, estDistribuee);
+	public Devin(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte){
+		super(capacite, capacite, estDistribuee, typeCarte);
 		this.nbCroyants= nbCroyants;
 	}
 	

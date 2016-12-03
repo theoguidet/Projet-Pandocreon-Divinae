@@ -1,11 +1,11 @@
-package Carte;
+package carte;
 
 public class Messie extends Carte{
 	
 	private int nbCroyants;
 	
-	public Messie(String nom, String capacite, boolean estDistribuee, int nbCroyants){
-		super(capacite, capacite, estDistribuee);
+	public Messie(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte){
+		super(capacite, capacite, estDistribuee, typeCarte);
 		this.nbCroyants= nbCroyants;
 	}
 	

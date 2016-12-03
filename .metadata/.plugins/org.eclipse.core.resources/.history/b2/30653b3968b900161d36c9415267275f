@@ -1,0 +1,21 @@
+package carte;
+
+public class PuiTara extends Carte{
+	
+	public static PuiTara instance;
+	
+	private PuiTara(){
+		this.nom = "Pui-Tara";
+		this.capacite = "Peut obliger un joueur à poser une carte Apocalypse s'il en possède une.";
+		this.estDistribuee = false;
+		this.typeCarte = TypeCarte.divinite;
+	}
+	
+	public PuiTara getInstance(){
+		if (instance == null) {
+			instance = new PuiTara();
+		}
+		return instance;
+	}
+
+}

@@ -1,27 +1,27 @@
-package Carte;
+package carte;
 
 public class Carte {
-	private String nom;
-	private enum typeCarte {
-		apocalyspe ("Apocaplyspe"),
-		croyant ("Croyant"),
-		guideSpirituel("Guide Spirituel"),
-		deusEx ("Deus Ex"),
-		divinite ("Divinite");
-		
-		typeCarte(String type){
-		};
-	}
-	private String capacite;
-	private boolean estDistribuee;
+	protected String nom;
+	protected TypeCarte typeCarte;
+	protected String capacite;
+	protected boolean estDistribuee;
 	
-	public Carte(String nom, String capacite, boolean estDistribuee) {
+	public Carte(String nom, String capacite, boolean estDistribuee, TypeCarte typeCarte) {
 		this.nom = nom;
 		this.capacite = capacite;
 		this.estDistribuee = estDistribuee;
+		this.typeCarte = typeCarte;
 	}
 	
+	public Carte(){}
+	
 	public void utiliserCapacite(){
+		
+	}
+	
+	public static void main(){
+		Carte c = new Carte("Clerc", "capac", false, TypeCarte.croyant);
+		
 		
 	}
 }

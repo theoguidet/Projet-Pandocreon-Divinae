@@ -1,0 +1,20 @@
+package carte;
+
+public class Gorpa extends Carte{
+public static Gorpa instance;
+	
+	private Gorpa(){
+		this.nom = "Gorpa";
+		this.capacite = "Peut obliger un joueur à poser une carte Apocalypse s'il en possède une.";
+		this.estDistribuee = false;
+		this.typeCarte = TypeCarte.divinite;
+	}
+	
+	public Gorpa getInstance(){
+		if (instance == null) {
+			instance = new Gorpa();
+		}
+		return instance;
+	}
+
+}

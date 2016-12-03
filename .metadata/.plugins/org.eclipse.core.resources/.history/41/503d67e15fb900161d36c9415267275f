@@ -1,0 +1,22 @@
+package Carte;
+
+import javax.jws.Oneway;
+
+public class Brewalen extends Carte{
+	
+	public static Brewalen instance;
+	
+	private Brewalen(String nom, String capacite, boolean estDistribuee){
+		super(nom, capacite, estDistribuee);
+		this.nom = "Brewalen";
+		
+	}
+	
+	public Brewalen getInstance(){
+		if (instance == null) {
+			instance = new Brewalen();
+		}
+		return instance;
+	}
+
+}

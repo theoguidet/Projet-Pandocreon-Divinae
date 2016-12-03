@@ -1,0 +1,20 @@
+package carte;
+
+public class Romtec extends Carte{
+public static Romtec instance;
+	
+	private Romtec(){
+		this.nom = "Romtec";
+		this.capacite = "Peut obliger un joueur à poser une carte Apocalypse s'il en possède une.";
+		this.estDistribuee = false;
+		this.typeCarte = TypeCarte.divinite;
+	}
+	
+	public Romtec getInstance(){
+		if (instance == null) {
+			instance = new Romtec();
+		}
+		return instance;
+	}
+
+}
