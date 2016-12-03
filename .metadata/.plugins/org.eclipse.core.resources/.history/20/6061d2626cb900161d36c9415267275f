@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+import Joueur.Joueur;
+
+public class Partie {
+
+	private int nbJoueur;
+	private Joueur gagnant;
+	private ArrayList<Joueur> joueurs;
+	
+	public Partie(int nbJoueur){
+		this.nbJoueur = nbJoueur;
+		
+		
+	}
+	
+}

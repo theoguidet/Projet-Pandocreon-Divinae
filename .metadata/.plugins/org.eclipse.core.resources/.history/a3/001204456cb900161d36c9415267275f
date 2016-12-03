@@ -1,0 +1,13 @@
+import Joueur.Joueur;
+
+public class Partie {
+
+	private int nbJoueur;
+	private Joueur gagnant;
+	
+	public Partie(int nbJoueur){
+		this.nbJoueur = nbJoueur;
+		
+	}
+	
+}
