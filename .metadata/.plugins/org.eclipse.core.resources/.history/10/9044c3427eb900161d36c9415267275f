@@ -1,0 +1,17 @@
+package carte.apocalypse;
+
+import propriete.Dogme;
+import propriete.Origine;
+import carte.Carte;
+import carte.TypeCarte;
+
+public class Apocalypse extends Carte{
+	
+	public Apocalypse(String nom, String capacite, boolean estDistribuee, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
+		super(nom,capacite,estDistribuee,typeCarte);
+	}
+
+	public void utiliserCapacite(){
+		
+	}
+}

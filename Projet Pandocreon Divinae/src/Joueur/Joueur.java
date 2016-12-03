@@ -1,6 +1,8 @@
 package Joueur;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Random;
 
 import carte.Carte;
 
@@ -37,8 +39,16 @@ public class Joueur {
 		
 	}
 	
-	public void lancerDe(){
-		
+	public String lancerDe(){
+		int tirageDe;
+		ArrayList<String> origine = new ArrayList();
+		tirageDe = (int) Math.random();
+		for (int i = 0; i < 2; i++) {
+					origine.add("Jour");
+					origine.add("Nuit");
+					origine.add("Neant");
+		}
+		return origine.get(tirageDe);
 	}
 	
 	public void enleverPointAction(){

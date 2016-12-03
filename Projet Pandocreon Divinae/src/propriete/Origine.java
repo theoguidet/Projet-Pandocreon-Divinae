@@ -1,12 +1,19 @@
 package propriete;
 
 public enum Origine {
-	NATURE ("Nature"),
-	HUMAIN ("Humain"),
-	SYMOBOLES ("Symboles"),
-	MYSTIQUE ("Mystique"),
-	CHAOS ("Chaos");
+	JOUR ("Jour"),
+	NUIT ("Nuit"),
+	CREPUSCULE ("Crepuscule"),
+	NEANT ("Neant"),
+	AUBE ("Aube");
 	
-	private Origine(String origine) {
+	private String name = "";
+	
+	Origine (String name){
+		this.name = name;
+	}
+	
+	public String toString(){
+		return name;
 	}
 }

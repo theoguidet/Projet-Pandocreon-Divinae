@@ -1,17 +1,23 @@
 package carte.divinite;
 
+import propriete.Dogme;
+import propriete.Origine;
+import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
 public class Drinded extends Carte{
 	
 	public static Drinded instance;
+	private Propriete propriete;
 	
 	private Drinded(){
 		this.nom = "Drinded";
 		this.capacite = "Peut empêcher le sacrifice d'un des Guides Spirituels de n'importe quel joueur.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
+		Propriete p = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.SYMBOLES, Origine.JOUR);
+		this.propriete = p; 
 	}
 	
 	public Drinded getInstance(){

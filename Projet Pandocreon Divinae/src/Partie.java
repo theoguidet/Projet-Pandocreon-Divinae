@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 import carte.Carte;
+import carte.TypeCarte;
+import carte.croyants.Moines;
 import Joueur.Joueur;
 
 public class Partie {
@@ -24,7 +26,8 @@ public class Partie {
 		
 	}
 	
-	public void creerJeu(){
+	public void commencerPartie(){
+		Moines moines1 = new Moines("Moines", "Donne un point d'origine Jour.", false, TypeCarte.croyant);
 		
 	}
 	

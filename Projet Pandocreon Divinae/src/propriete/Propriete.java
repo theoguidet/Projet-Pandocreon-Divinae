@@ -13,6 +13,16 @@ public class Propriete {
 		dogmes.add(d3);
 	}
 	
+	public Propriete(Origine o) {
+		origine = o;
+		dogmes = null;
+	}
+	
+	public Propriete() {
+		origine = null;
+		dogmes = null;
+	}
+	
 	public Origine getOrigine(){
 		return this.origine;
 	}	

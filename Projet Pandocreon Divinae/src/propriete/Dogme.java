@@ -1,11 +1,13 @@
 package propriete;
 
 public enum Dogme {
-	JOUR ("Jour"),
-	NUIT ("Nuit"),
-	CREPUSCULE ("Crepuscule"),
-	NEANT ("Neant"),
-	AUBE ("Aube");
+
+	NATURE ("Nature"),
+	HUMAIN ("Humain"),
+	SYMBOLES ("Symboles"),
+	MYSTIQUE ("Mystique"),
+	CHAOS ("Chaos");
+	
 	
 	private String name = "";
 	
