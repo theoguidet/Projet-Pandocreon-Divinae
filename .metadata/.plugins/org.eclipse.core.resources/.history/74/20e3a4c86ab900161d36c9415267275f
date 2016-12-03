@@ -1,0 +1,11 @@
+package carte.apocalypse;
+
+import carte.Carte;
+
+public class Apocalypse extends Carte{
+	
+	public Apocalypse(){
+		super();
+	}
+
+}
