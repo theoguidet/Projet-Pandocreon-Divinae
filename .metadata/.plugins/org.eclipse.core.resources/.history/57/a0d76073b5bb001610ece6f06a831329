@@ -10,16 +10,17 @@ public class Apocalypse extends Carte{
 	
 	private Propriete propriete;
 	
-	public Apocalypse(Origine o){
+	public Apocalypse(String nom, String capacite, boolean estDistribuee, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
 		super();
 		this.nom = "Apocalypse";
 		this.capacite = "";
 		this.typeCarte = TypeCarte.apocalyspe;
-		
 		if (o==null) {
 			propriete = null;
-		}else {
+		}else if(d1==null && d2==null && d3==null){
 			propriete = new Propriete(o);
+		}else{
+			propriete = new Propriete(d1, d2, d3, o);
 		}
 	}
 

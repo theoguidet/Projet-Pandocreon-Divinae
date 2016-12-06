@@ -4,18 +4,9 @@ import propriete.Dogme;
 import propriete.Origine;
 import carte.Carte;
 import carte.TypeCarte;
-import carte.apocalypse.Apocalypse;
 import carte.croyants.Moines;
 import carte.divinite.Brewalen;
 import carte.divinite.Drinded;
-import carte.divinite.Gorpa;
-import carte.divinite.Gwenghelen;
-import carte.divinite.Killinstred;
-import carte.divinite.Llewella;
-import carte.divinite.PuiTara;
-import carte.divinite.Romtec;
-import carte.divinite.Shingva;
-import carte.divinite.Yarstur;
 import carte.guideSpirituel.Anarchiste;
 import carte.guideSpirituel.Ascete;
 import carte.guideSpirituel.Clerc;
@@ -70,66 +61,13 @@ public class Partie {
 		Messie messie = new Messie();
 		Shaman shaman = new Shaman();
 
-		//Déclaration des divnités
 		Brewalen brewalen = null;
 		brewalen.getInstance();
-		Drinded drinded = null;
-		drinded.getInstance();
-		Gorpa gorpa = null;
-		gorpa.getInstance();
-		Gwenghelen gwenghelen = null;
-		gwenghelen.getInstance();
-		Killinstred killinstred = null;
-		killinstred.getInstance();
-		Llewella llewella = null;
-		llewella.getInstance();
-		PuiTara puiTara = null;
-		puiTara.getInstance();
-		Romtec romtec = null;
-		romtec.getInstance();
-		Shingva shingva = null;
-		shingva.getInstance();
-		Yarstur yarstur = null;
-		yarstur.getInstance();
+		Drinded drinded = drinded.getInstance();
 		
-		//Declaration des apocalypses
-		Apocalypse apocalypse1 = new Apocalypse(Origine.JOUR);
-		Apocalypse apocalypse2 = new Apocalypse(Origine.NUIT);
-		Apocalypse apocalypse3 = new Apocalypse(Origine.NEANT);
-		Apocalypse apocalypse4 = new Apocalypse(null);
-		Apocalypse apocalypse5 = new Apocalypse(null);
-		
-		
-		
-		cartes.add(apocalypse1);
-		cartes.add(apocalypse2);
-		cartes.add(apocalypse3);
-		cartes.add(apocalypse4);
-		cartes.add(apocalypse5);
-		cartes.add(martyr1);
-		cartes.add(martyr2);
-		cartes.add(martyr3);
-		cartes.add(clerc1);
-		cartes.add(clerc2);
-		cartes.add(clerc3);
-		cartes.add(clerc4);
-		cartes.add(clerc5);
-		cartes.add(clerc6);
-		cartes.add(clerc7);
-		cartes.add(clerc8);
-		cartes.add(anarchiste);
-		cartes.add(paladin);
-		cartes.add(ascete);
-		cartes.add(exorciste);
-		cartes.add(tyran);
-		cartes.add(messie);
-		cartes.add(shaman);
-		
-		
-		
-		
-		
-		
+
+
+
 	}
 	
 	public void supprimerJoueur(){

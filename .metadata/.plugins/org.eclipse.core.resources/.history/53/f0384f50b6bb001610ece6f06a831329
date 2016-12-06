@@ -98,38 +98,7 @@ public class Partie {
 		Apocalypse apocalypse3 = new Apocalypse(Origine.NEANT);
 		Apocalypse apocalypse4 = new Apocalypse(null);
 		Apocalypse apocalypse5 = new Apocalypse(null);
-		
-		
-		
-		cartes.add(apocalypse1);
-		cartes.add(apocalypse2);
-		cartes.add(apocalypse3);
-		cartes.add(apocalypse4);
-		cartes.add(apocalypse5);
-		cartes.add(martyr1);
-		cartes.add(martyr2);
-		cartes.add(martyr3);
-		cartes.add(clerc1);
-		cartes.add(clerc2);
-		cartes.add(clerc3);
-		cartes.add(clerc4);
-		cartes.add(clerc5);
-		cartes.add(clerc6);
-		cartes.add(clerc7);
-		cartes.add(clerc8);
-		cartes.add(anarchiste);
-		cartes.add(paladin);
-		cartes.add(ascete);
-		cartes.add(exorciste);
-		cartes.add(tyran);
-		cartes.add(messie);
-		cartes.add(shaman);
-		
-		
-		
-		
-		
-		
+
 	}
 	
 	public void supprimerJoueur(){
