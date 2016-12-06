@@ -13,6 +13,12 @@ public class Propriete {
 		dogmes.add(d3);
 	}
 	
+	public Propriete(Dogme d1, Dogme d2, Origine o) {
+		origine = o;
+		dogmes.add(d1);
+		dogmes.add(d2);
+	}
+	
 	public Propriete(Origine o) {
 		origine = o;
 		dogmes = null;

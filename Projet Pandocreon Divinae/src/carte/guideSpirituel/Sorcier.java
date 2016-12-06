@@ -11,11 +11,13 @@ public class Sorcier extends Carte{
 	private int nbCroyants;
 	private Propriete propriete;
 	
-	public Sorcier(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
-		super(capacite, capacite, estDistribuee, typeCarte);
+	public Sorcier(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Origine o){
+		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(d1, d2, d3, o);
-
+		this.propriete = new Propriete(d1, d2, o);
+		this.nom = "Sorcier";
+		this.capacite = "Echangez l'un de vos Guides Spirituels avec un d'une autre Divinité. Vous choisissez les deux guides Spirituels en question. Les Croyants restent attachés aux mêmes cartes.";
+		this.nbCroyants = 3;
 	}
 	
 	public void attacherCroyant(){

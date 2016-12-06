@@ -1,0 +1,31 @@
+package carte.guideSpirituel;
+
+import propriete.Dogme;
+import propriete.Origine;
+import propriete.Propriete;
+import carte.Carte;
+import carte.TypeCarte;
+
+public class Anarchiste extends Carte{
+	
+	private int nbCroyants;
+	private Propriete propriete;
+	
+	public Anarchiste(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Origine o){
+		super(estDistribuee, typeCarte);
+		this.nom = "Anarchiste";
+		this.capacite = "Sacrifie un Guide Spirituel, si lui ou a Divinité ne croit pas au Dogme Chaos. Les capacités spéciales sont jouées normalement.";
+		this.nbCroyants= 3;
+		this.propriete = new Propriete(d1, d2, o);
+	}
+	
+	public void attacherCroyant(){
+		
+	}
+
+	public void utiliserCapacite(){
+		
+	}
+
+
+}

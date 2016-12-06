@@ -11,11 +11,13 @@ public class Clerc extends Carte{
 	private int nbCroyants;
 	private Propriete propriete;
 	
-	public Clerc(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
-		super(capacite, capacite, estDistribuee, typeCarte);
+	public Clerc(Dogme d1, Dogme d2, Origine o){
+		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(d1, d2, d3, o);
-
+		this.propriete = new Propriete(d1, d2, o);
+		this.nom = "Ascete";
+		this.capacite = "Fait gagner un nombre de points d'Action égal au nombre de cartes de Croyants rattachées. L'Origine des points d'Action est au choix du joueur.";
+		this.nbCroyants= 2;
 	}
 	
 	public void attacherCroyant(){

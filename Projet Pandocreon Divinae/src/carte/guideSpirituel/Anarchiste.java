@@ -11,10 +11,13 @@ public class Anarchiste extends Carte{
 	private int nbCroyants;
 	private Propriete propriete;
 	
-	public Anarchiste(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
-		super(capacite, capacite, estDistribuee, typeCarte);
-		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(d1, d2, d3, o);
+	public Anarchiste(){
+		super();
+		this.nom = "Anarchiste";
+		this.capacite = "Sacrifie un Guide Spirituel, si lui ou a Divinité ne croit pas au Dogme Chaos. Les capacités spéciales sont jouées normalement.";
+		this.nbCroyants= 3;
+		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.CHAOS, Origine.NEANT);
+		this.typeCarte = typeCarte.guideSpirituel;
 	}
 	
 	public void attacherCroyant(){

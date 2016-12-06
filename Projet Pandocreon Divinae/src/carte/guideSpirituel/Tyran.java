@@ -11,11 +11,13 @@ public class Tyran extends Carte{
 	private int nbCroyants;
 	private Propriete propriete;
 	
-	public Tyran(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
-		super(capacite, capacite, estDistribuee, typeCarte);
+	public Tyran(){
+		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(d1, d2, d3, o);
-
+		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
+		this.nom = "Tyran";
+		this.capacite = "Défausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.";
+		this.nbCroyants = 3;
 	}
 	
 	public void attacherCroyant(){

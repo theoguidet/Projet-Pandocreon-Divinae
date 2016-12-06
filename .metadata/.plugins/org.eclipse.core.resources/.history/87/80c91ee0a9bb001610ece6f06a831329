@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+
+import propriete.Dogme;
+import propriete.Origine;
+import carte.Carte;
+import carte.TypeCarte;
+import carte.croyants.Moines;
+import carte.guideSpirituel.Martyr;
+import Joueur.Joueur;
+
+public class Partie {
+
+	private int nbJoueur;
+	private Joueur gagnant;
+	private ArrayList<Joueur> joueurs;
+	private ArrayList<Carte> cartes;
+	
+	public Partie(int nbJoueur){
+		this.nbJoueur = nbJoueur;
+		this.joueurs = new ArrayList<Joueur>();
+		this.cartes = new ArrayList<Carte>();
+	}
+	
+	public void calculerScore(){
+		
+	}
+	
+	public void distribuerCarte(){
+		
+	}
+	
+	public void commencerPartie(){
+		Martyr martyr1 = new Martyr("Martyr", "Equivalent à la pose d'une carte Apocalypse.", false, 2, TypeCarte.guideSpirituel, Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR)
+	}
+	
+	public void supprimerJoueur(){
+		
+	}
+	
+	public void determinerGagnant(){
+		
+	}
+	
+	public void calculerPointAction(){
+		
+	}
+	
+	public void finirPartie(){
+		
+	}
+}

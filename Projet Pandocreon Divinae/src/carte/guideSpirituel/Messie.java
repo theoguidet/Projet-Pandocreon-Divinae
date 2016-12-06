@@ -11,11 +11,13 @@ public class Messie extends Carte{
 	private int nbCroyants;
 	private Propriete propriete;
 	
-	public Messie(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
-		super(capacite, capacite, estDistribuee, typeCarte);
+	public Messie(){
+		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(d1, d2, d3, o);
-
+		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
+		this.nom = "Messie";
+		this.capacite = "Le joueur pose le dé de Cosmogonie sur la face qu'il désire et commence un nouveau tour de jeu.";
+		this.nbCroyants = 3;
 	}
 	
 	public void attacherCroyant(){

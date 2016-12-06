@@ -11,11 +11,13 @@ public class Paladin extends Carte{
 	private int nbCroyants;
 	private Propriete propriete;
 	
-	public Paladin(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Dogme d3, Origine o){
-		super(capacite, capacite, estDistribuee, typeCarte);
+	public Paladin(){
+		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(d1, d2, d3, o);
-
+		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
+		this.nom = "Paladin";
+		this.capacite = "Tous les Croyants, d'Origine Nuit ou Néant et ayant le Dogme Nature, actuellement sur la table sont défaussés.Les capacités spéciales ne sont pas jouées.";
+		this.nbCroyants = 3;
 	}
 	
 	public void attacherCroyant(){
