@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Martyr"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Clerc"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Anarchiste"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Paladin"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Ascete"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Exorciste"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Tyran"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Messie"/>
+<fullyQualifiedTypeName name="carte.guideSpirituel.Shaman"/>
+<fullyQualifiedTypeName name="propriete.Dogme"/>
+<fullyQualifiedTypeName name="carte.divinite.Brewalen"/>
+<fullyQualifiedTypeName name="carte.divinite.Drinded"/>
+<fullyQualifiedTypeName name="carte.divinite.Gorpa"/>
+<fullyQualifiedTypeName name="carte.divinite.Gwenghelen"/>
+<fullyQualifiedTypeName name="carte.divinite.Killinstred"/>
+<fullyQualifiedTypeName name="carte.divinite.Llewella"/>
+<fullyQualifiedTypeName name="carte.divinite.PuiTara"/>
+<fullyQualifiedTypeName name="carte.divinite.Romtec"/>
+<fullyQualifiedTypeName name="carte.divinite.Shingva"/>
+<fullyQualifiedTypeName name="carte.divinite.Yarstur"/>
+<fullyQualifiedTypeName name="carte.TypeCarte"/>
+<fullyQualifiedTypeName name="carte.apocalypse.Apocalypse"/>
+<fullyQualifiedTypeName name="propriete.Origine"/>
+</qualifiedTypeNameHistroy>

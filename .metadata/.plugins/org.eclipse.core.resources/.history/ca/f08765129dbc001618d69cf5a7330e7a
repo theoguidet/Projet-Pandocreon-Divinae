@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Scanner;
 
 import propriete.Dogme;
 import propriete.Origine;
@@ -29,7 +26,6 @@ import carte.guideSpirituel.Paladin;
 import carte.guideSpirituel.Shaman;
 import carte.guideSpirituel.Tyran;
 import Joueur.Joueur;
-import Joueur.JoueurVirtuel;
 
 public class Partie {
 
@@ -42,13 +38,10 @@ public class Partie {
 		this.nbJoueur = nbJoueur;
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = new ArrayList<Carte>();
-		joueurs.add(new Joueur("moi"));
-		for (int i = 0; i < nbJoueur; i++) {
-			joueurs.add(new JoueurVirtuel("joueurVirtuel"+ nbJoueur));
-		}
 	}
 	
 	public void calculerScore(){
+		
 	}
 	
 	public void distribuerCarte(){
@@ -133,6 +126,10 @@ public class Partie {
 		cartes.add(shaman);
 		
 		
+		
+		
+		
+		
 	}
 	
 	public void supprimerJoueur(){
@@ -148,12 +145,6 @@ public class Partie {
 	}
 	
 	public void finirPartie(){
-		
-	}
-	
-	public static void main(){
-		Scanner clavier = new Scanner(System.in);
-		int nb = clavier.nextInt();
 		
 	}
 }
