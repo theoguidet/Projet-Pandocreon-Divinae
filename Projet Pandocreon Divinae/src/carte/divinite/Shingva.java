@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Shingva extends Carte{
+public class Shingva extends Divinite{
 	public static Shingva instance;
 	private Propriete propriete;
 	
@@ -19,7 +19,7 @@ public class Shingva extends Carte{
 		this.propriete = p; 
 	}
 	
-	public Shingva getInstance(){
+	public static Shingva getInstance(){
 		if (instance == null) {
 			instance = new Shingva();
 		}

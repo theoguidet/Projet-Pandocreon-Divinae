@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Romtec extends Carte{
+public class Romtec extends Divinite{
 	public static Romtec instance;
 	private Propriete propriete;
 
@@ -19,7 +19,7 @@ public class Romtec extends Carte{
 		this.propriete = p; 
 	}
 	
-	public Romtec getInstance(){
+	public static Romtec getInstance(){
 		if (instance == null) {
 			instance = new Romtec();
 		}

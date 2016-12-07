@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Llewella extends Carte{
+public class Llewella extends Divinite{
 	
 	public static Llewella instance;
 	private Propriete propriete;
@@ -20,7 +20,7 @@ public class Llewella extends Carte{
 		this.propriete = p; 
 	}
 	
-	public Llewella getInstance(){
+	public static Llewella getInstance(){
 		if (instance == null) {
 			instance = new Llewella();
 		}

@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Gorpa extends Carte{
+public class Gorpa extends Divinite{
 public static Gorpa instance;
 private Propriete propriete;
 	
@@ -19,7 +19,7 @@ private Propriete propriete;
 		this.propriete = p; 
 	}
 	
-	public Gorpa getInstance(){
+	public static Gorpa getInstance(){
 		if (instance == null) {
 			instance = new Gorpa();
 		}

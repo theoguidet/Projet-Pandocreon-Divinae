@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Gwenghelen extends Carte{
+public class Gwenghelen extends Divinite{
 	
 	public static Gwenghelen instance;
 	private Propriete propriete;
@@ -20,7 +20,7 @@ public class Gwenghelen extends Carte{
 		this.propriete = p; 
 	}
 	
-	public Gwenghelen getInstance(){
+	public static Gwenghelen getInstance(){
 		if (instance == null) {
 			instance = new Gwenghelen();
 		}

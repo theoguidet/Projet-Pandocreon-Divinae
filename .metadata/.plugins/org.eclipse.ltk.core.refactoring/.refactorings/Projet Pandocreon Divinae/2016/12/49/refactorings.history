@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Partie.java&apos; to &apos;Projet Pandocreon Divinae/src/partie&apos;&#x0D;&#x0A;- Original project: &apos;Projet Pandocreon Divinae&apos;&#x0D;&#x0A;- Destination element: &apos;Projet Pandocreon Divinae/src/partie&apos;&#x0D;&#x0A;- Original element: &apos;Partie.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;partie" element1="/src&lt;{Partie.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1481138704415" units="1" version="1.0"/>
+</session>

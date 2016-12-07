@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Yarstur extends Carte{
+public class Yarstur extends Divinite{
 	
 	public static Yarstur instance;
 	private Propriete propriete;
@@ -20,7 +20,7 @@ public class Yarstur extends Carte{
 		this.propriete = p; 
 	}
 	
-	public Yarstur getInstance(){
+	public static Yarstur getInstance(){
 		if (instance == null) {
 			instance = new Yarstur();
 		}

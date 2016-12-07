@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class PuiTara extends Carte{
+public class PuiTara extends Divinite{
 	
 	public static PuiTara instance;
 	private Propriete propriete;
@@ -20,7 +20,7 @@ public class PuiTara extends Carte{
 		this.propriete = p; 
 	}
 	
-	public PuiTara getInstance(){
+	public static PuiTara getInstance(){
 		if (instance == null) {
 			instance = new PuiTara();
 		}

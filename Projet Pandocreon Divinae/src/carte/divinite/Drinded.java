@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Drinded extends Carte{
+public class Drinded extends Divinite{
 	
 	public static Drinded instance;
 	private Propriete propriete;
@@ -19,7 +19,7 @@ public class Drinded extends Carte{
 		this.propriete = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.SYMBOLES, Origine.JOUR); 
 	}
 	
-	public Drinded getInstance(){
+	public static Drinded getInstance(){
 		if (instance == null) {
 			instance = new Drinded();
 		}

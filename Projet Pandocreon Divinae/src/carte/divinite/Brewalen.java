@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Brewalen extends Carte{
+public class Brewalen extends Divinite{
 	
 	public static Brewalen instance;
 	private Propriete propriete;
@@ -19,11 +19,10 @@ public class Brewalen extends Carte{
 		this.propriete = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
 	}
 	
-	public Brewalen getInstance(){
+	public static Brewalen getInstance(){
 		if (instance == null) {
 			instance = new Brewalen();
 		}
 		return instance;
 	}
-
 }

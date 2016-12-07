@@ -1,16 +1,46 @@
 package Joueur;
 
 import java.util.ArrayList;
+
+import partie.Partie;
 import carte.Carte;
+import carte.divinite.Divinite;
 
 public class Joueur {
 	private String nom;
 	private int nbPrieres;
 	private int pointActionJour;
+	private int pointActionCrepuscule;
+	private int pointActionAube;
 	private int pointActionNuit;
 	private int pointActionNeant;
 	private ArrayList<Carte> main;
+	private Divinite divinite;
 	
+	public int getPointActionCrepuscule() {
+		return pointActionCrepuscule;
+	}
+
+	public void setPointActionCrepuscule(int pointActionCrepuscule) {
+		this.pointActionCrepuscule = pointActionCrepuscule;
+	}
+
+	public int getPointActionAube() {
+		return pointActionAube;
+	}
+
+	public void setPointActionAube(int pointActionAube) {
+		this.pointActionAube = pointActionAube;
+	}
+
+	public Divinite getDivinite() {
+		return divinite;
+	}
+
+	public void setDivinite(Divinite divinite) {
+		this.divinite = divinite;
+	}
+
 	public Joueur(String nom) {
 		this.nom = nom;
 		this.nbPrieres = 0;
@@ -20,12 +50,20 @@ public class Joueur {
 		this.main = new ArrayList<Carte>();
 	}
 	
-	public void defausserCarte(){
-		
+	public Carte defausserCarte(int i){
+		Carte c = main.get(i);
+		main.remove(i);
+		return c;
 	}
 	
-	public void completerMain(){
-		
+	public void piocherCarte(ArrayList<Carte> c){
+		main.add(c.get(1));
+	}
+	
+	public void completerMain(ArrayList<Carte> c){
+		while (main.size()<7) {
+			piocherCarte(c);
+		}
 	}
 	
 	public void utiliserCarte(){

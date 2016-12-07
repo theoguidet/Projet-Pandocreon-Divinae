@@ -24,6 +24,18 @@ public class Propriete {
 		dogmes = null;
 	}
 	
+	public ArrayList<Dogme> getDogmes() {
+		return dogmes;
+	}
+
+	public void setDogmes(ArrayList<Dogme> dogmes) {
+		this.dogmes = dogmes;
+	}
+
+	public void setOrigine(Origine origine) {
+		this.origine = origine;
+	}
+
 	public Propriete() {
 		origine = null;
 		dogmes = null;

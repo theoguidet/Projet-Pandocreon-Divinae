@@ -6,7 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Killinstred extends Carte{
+public class Killinstred extends Divinite{
 	
 	public static Killinstred instance;
 	private Propriete propriete;
@@ -20,7 +20,7 @@ public class Killinstred extends Carte{
 		this.propriete = p; 
 	}
 	
-	public Killinstred getInstance(){
+	public static Killinstred getInstance(){
 		if (instance == null) {
 			instance = new Killinstred();
 		}
