@@ -1,0 +1,15 @@
+package partie;
+
+
+import java.util.ArrayList;
+
+import carte.Carte;
+
+public class Plateau {
+	private ArrayList<Carte> croyantLibre;
+	private ArrayList<ArrayList<Carte>> croyantGuideRattaches;
+	
+	private Plateau(){
+		this.croyantLibre = new ArrayList<Carte>();
+	}
+}

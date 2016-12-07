@@ -1,0 +1,32 @@
+package partie;
+
+
+import java.util.ArrayList;
+
+import Joueur.Joueur;
+import carte.Carte;
+
+public class Plateau {
+	
+	private ArrayList<Carte> croyantLibre;
+	public static Plateau instance;
+	
+	private Plateau(){
+		this.croyantLibre = new ArrayList<Carte>();
+	}
+	
+	public Plateau getInstance(){
+		if (instance == null) {
+			instance = new Plateau();
+		}
+		return instance;
+	}
+	
+	public ArrayList<Carte> getCroyantLibre() {
+		return croyantLibre;
+	}
+
+	public void setCroyantLibre(ArrayList<Carte> croyantLibre) {
+		this.croyantLibre = croyantLibre;
+	}
+}

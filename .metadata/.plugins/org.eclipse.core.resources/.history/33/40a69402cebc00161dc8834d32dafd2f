@@ -1,7 +1,9 @@
 package Joueur;
 
+import java.io.CharArrayReader;
 import java.util.ArrayList;
 
+import partie.Partie;
 import partie.Plateau;
 import carte.Carte;
 import carte.divinite.Divinite;
@@ -70,7 +72,6 @@ public class Joueur {
 		Carte c = main.get(i);
 		Plateau p = Plateau.getInstance();
 		p.poserCroyantLibre(c);
-		main.remove(c);
 	}
 	
 	public void sacrifierCarte(Carte c){

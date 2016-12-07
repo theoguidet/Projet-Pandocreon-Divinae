@@ -75,7 +75,7 @@ public class Partie {
 		}
 	}
 	
-	public void creationJeuDeCarte(){
+	public void commencerPartie(){
 		
 		//déclaration des guides spirituels
 		Martyr martyr1 = new Martyr(Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
@@ -189,7 +189,6 @@ public class Partie {
 	}
 
 	public static void main(){
-		System.out.println("entrez le nom");
 		Scanner clavier = new Scanner(System.in);
 		int nb = clavier.nextInt();
 		

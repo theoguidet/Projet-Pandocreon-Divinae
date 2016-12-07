@@ -47,9 +47,8 @@ public class Partie {
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = new ArrayList<Carte>();
 		this.divinites = new ArrayList<Divinite>();
-		this.gagnant = null;
 		joueurs.add(new Joueur("moi"));
-		for (int i = 0; i < nbJoueur-1; i++) {
+		for (int i = 0; i < nbJoueur; i++) {
 			joueurs.add(new JoueurVirtuel("joueurVirtuel"+ nbJoueur));
 		}
 	}
@@ -68,14 +67,10 @@ public class Partie {
 	
 	public void distribuerCarte(){
 		Collections.shuffle(cartes);
-		for (int i = 0; i < 7; i++) {
-			for (Joueur joueur : joueurs) {
-				joueur.completerMain(cartes.get(0));
-			}
-		}
+		
 	}
 	
-	public void creationJeuDeCarte(){
+	public void commencerPartie(){
 		
 		//déclaration des guides spirituels
 		Martyr martyr1 = new Martyr(Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
@@ -189,7 +184,6 @@ public class Partie {
 	}
 
 	public static void main(){
-		System.out.println("entrez le nom");
 		Scanner clavier = new Scanner(System.in);
 		int nb = clavier.nextInt();
 		

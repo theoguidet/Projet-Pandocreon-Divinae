@@ -2,7 +2,7 @@ package Joueur;
 
 import java.util.ArrayList;
 
-import partie.Plateau;
+import partie.Partie;
 import carte.Carte;
 import carte.divinite.Divinite;
 
@@ -15,7 +15,6 @@ public class Joueur {
 	private int pointActionNuit;
 	private int pointActionNeant;
 	private ArrayList<Carte> main;
-	private ArrayList<Carte> croyantGuideRattaches;
 	private Divinite divinite;
 	
 	public int getPointActionCrepuscule() {
@@ -49,7 +48,6 @@ public class Joueur {
 		this.pointActionNuit = 0;
 		this.pointActionNeant = 0;
 		this.main = new ArrayList<Carte>();
-		this.croyantGuideRattaches = new ArrayList<Carte>();
 	}
 	
 	public Carte defausserCarte(int i){
@@ -66,15 +64,12 @@ public class Joueur {
 		main.add(c);
 	}
 	
-	public void poserCarte(int i){
-		Carte c = main.get(i);
-		Plateau p = Plateau.getInstance();
-		p.poserCroyantLibre(c);
-		main.remove(c);
+	public void utiliserCarte(){
+		
 	}
 	
-	public void sacrifierCarte(Carte c){
-		c.utiliserCapacite();
+	public void sacrifierCarte(){
+		
 	}
 	
 	public String lancerDe(){

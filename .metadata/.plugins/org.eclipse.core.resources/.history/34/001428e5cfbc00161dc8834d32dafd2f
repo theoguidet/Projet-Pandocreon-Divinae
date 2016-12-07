@@ -1,7 +1,9 @@
 package Joueur;
 
+import java.io.CharArrayReader;
 import java.util.ArrayList;
 
+import partie.Partie;
 import partie.Plateau;
 import carte.Carte;
 import carte.divinite.Divinite;

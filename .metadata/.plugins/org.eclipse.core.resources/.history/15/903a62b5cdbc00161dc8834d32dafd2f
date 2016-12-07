@@ -1,0 +1,27 @@
+package partie;
+
+
+import java.util.ArrayList;
+
+import Joueur.Joueur;
+import carte.Carte;
+
+public class Plateau {
+	private ArrayList<Carte> croyantLibre;
+	
+	private Plateau(int nbJoueur){
+		this.croyantLibre = new ArrayList<Carte>();
+	}
+	
+	public ArrayList<Carte> getCroyantLibre() {
+		return croyantLibre;
+	}
+
+	public void setCroyantLibre(ArrayList<Carte> croyantLibre) {
+		this.croyantLibre = croyantLibre;
+	}
+
+	public void poserCarte(Joueur j, Carte c){
+		
+	}
+}

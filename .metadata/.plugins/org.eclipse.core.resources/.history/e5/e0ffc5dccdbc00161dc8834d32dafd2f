@@ -2,7 +2,7 @@ package Joueur;
 
 import java.util.ArrayList;
 
-import partie.Plateau;
+import partie.Partie;
 import carte.Carte;
 import carte.divinite.Divinite;
 
@@ -66,11 +66,8 @@ public class Joueur {
 		main.add(c);
 	}
 	
-	public void poserCarte(int i){
-		Carte c = main.get(i);
-		Plateau p = Plateau.getInstance();
-		p.poserCroyantLibre(c);
-		main.remove(c);
+	public void utiliserCarte(){
+		
 	}
 	
 	public void sacrifierCarte(Carte c){
