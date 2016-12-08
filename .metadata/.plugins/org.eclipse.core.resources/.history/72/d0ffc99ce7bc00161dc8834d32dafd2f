@@ -20,7 +20,4 @@ public class Alchimistes extends Croyant{
 	public void sacrifice(){
 		
 	}
-	
-	
-	
 }

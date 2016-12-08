@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import partie.Plateau;
 import carte.Carte;
-import carte.croyants.Croyant;
 import carte.divinite.Divinite;
 
 public class Joueur {
@@ -68,7 +67,7 @@ public class Joueur {
 	}
 	
 	public void poserCarte(int i){
-		Croyant c = (Croyant) main.get(i);
+		Carte c = main.get(i);
 		Plateau p = Plateau.getInstance();
 		p.poserCroyantLibre(c);
 		main.remove(c);
@@ -132,10 +131,6 @@ public class Joueur {
 
 	public int getPointActionNeant() {
 		return pointActionNeant;
-	}
-
-	public void setCroyantGuideRattaches(ArrayList<Carte> croyantGuideRattaches) {
-		this.croyantGuideRattaches = croyantGuideRattaches;
 	}
 
 	public void setPointActionNeant(int pointActionNeant) {

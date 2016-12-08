@@ -2,7 +2,6 @@ package carte.guideSpirituel;
 
 import java.util.Scanner;
 
-import Joueur.Joueur;
 import partie.Plateau;
 import propriete.Propriete;
 import carte.Carte;
@@ -16,7 +15,7 @@ public class GuideSpirituel extends Carte{
 		super();
 	}
 	
-	public void attacherCroyant(Joueur j){
+	public void attacherCroyant(){
 		System.out.println("Veuillez choisir la/les cartes à attacher au Guide Spirituel :");
 		for (Carte c : Plateau.getInstance().getCroyantLibre()) {
 			//ne peut pas rattacher une carte croyant que le joueur viens de creer
@@ -27,14 +26,8 @@ public class GuideSpirituel extends Carte{
 		}
 		Scanner clavier = new Scanner(System.in);
 		int choix = clavier.nextInt();
-		
 		if (Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(0)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(1)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(2))) {
-			if (nbCroyants >=  Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants()) {
-				j.ajouterCroyantGuideRattaches(Plateau.getInstance().getCroyantLibre().get(choix));
-				nbCroyants = nbCroyants-Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants();
-				Plateau.getInstance().getCroyantLibre().remove(choix);
-				
-			}
+			
 		}
 	}
 

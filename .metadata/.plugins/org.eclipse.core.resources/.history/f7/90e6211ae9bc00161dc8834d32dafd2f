@@ -19,9 +19,6 @@ public class Croyant extends Carte{
 	public void setPropriete(Propriete propriete) {
 		this.propriete = propriete;
 	}
-
-	public int getNbCroyants() {
-		return nbCroyants;
-	}
+	
 	
 }

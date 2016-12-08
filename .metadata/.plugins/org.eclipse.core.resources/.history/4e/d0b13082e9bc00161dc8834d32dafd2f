@@ -134,10 +134,6 @@ public class Joueur {
 		return pointActionNeant;
 	}
 
-	public void setCroyantGuideRattaches(ArrayList<Carte> croyantGuideRattaches) {
-		this.croyantGuideRattaches = croyantGuideRattaches;
-	}
-
 	public void setPointActionNeant(int pointActionNeant) {
 		this.pointActionNeant = pointActionNeant;
 	}

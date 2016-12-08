@@ -12,7 +12,6 @@ import carte.TypeCarte;
 import carte.apocalypse.Apocalypse;
 import carte.croyants.Alchimistes;
 import carte.croyants.Alienes;
-import carte.croyants.Croyant;
 import carte.croyants.Demons;
 import carte.croyants.Diplomates;
 import carte.croyants.Ermite;
@@ -76,11 +75,8 @@ public class Partie {
 	
 	public void calculerScore(){
 		for (Joueur j : joueurs) {
-			for (Carte c : j.getCroyantGuideRattaches()) {
-				if (c.getTypeCarte() == TypeCarte.croyant) {
-					//recuperer le nb de priere de la carte croyant ....
-					j.setNbPrieres(j.getNbPrieres()  );
-				}
+			for (ArrayList<Carte> carte : j.getCroyantGuideRattaches()) {
+				
 			}
 		}
 	}

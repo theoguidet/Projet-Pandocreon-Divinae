@@ -4,15 +4,14 @@ package partie;
 import java.util.ArrayList;
 
 import carte.Carte;
-import carte.croyants.Croyant;
 
 public class Plateau {
 	
-	private ArrayList<Croyant> croyantLibre;
+	private ArrayList<Carte> croyantLibre;
 	public static Plateau instance;
 	
 	private Plateau(){
-		this.croyantLibre = new ArrayList<Croyant>();
+		this.croyantLibre = new ArrayList<Carte>();
 	}
 	
 	public static Plateau getInstance(){
@@ -22,11 +21,11 @@ public class Plateau {
 		return instance;
 	}
 	
-	public ArrayList<Croyant> getCroyantLibre() {
+	public ArrayList<Carte> getCroyantLibre() {
 		return croyantLibre;
 	}
 
-	public void poserCroyantLibre(Croyant c) {
+	public void poserCroyantLibre(Carte c) {
 		this.croyantLibre.add(c);
 	}
 }
