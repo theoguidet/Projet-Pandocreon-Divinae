@@ -6,10 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Tyran extends Carte{
-	
-	private int nbCroyants;
-	private Propriete propriete;
+public class Tyran extends GuideSpirituel{
 	
 	public Tyran(){
 		super();

@@ -1,0 +1,23 @@
+package carte.croyants;
+
+import propriete.Dogme;
+import propriete.Origine;
+import propriete.Propriete;
+
+public class Alchimistes extends Croyant{
+	
+
+	
+	public Alchimistes (Dogme d1, Dogme d2, Dogme d3){
+		super();
+		this.nom = "Alchimistes";
+		this.capacite = "Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.";
+		this.nbCroyants= 2;
+		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
+		this.typeCarte = typeCarte.croyant;
+	}
+	
+	public void sacrifice(){
+		
+	}
+}

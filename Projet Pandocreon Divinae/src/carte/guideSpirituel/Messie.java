@@ -6,10 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Messie extends Carte{
-	
-	private int nbCroyants;
-	private Propriete propriete;
+public class Messie extends GuideSpirituel{
 	
 	public Messie(){
 		super();

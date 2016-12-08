@@ -6,10 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Anarchiste extends Carte{
-	
-	private int nbCroyants;
-	private Propriete propriete;
+public class Anarchiste extends GuideSpirituel{
 	
 	public Anarchiste(){
 		super();
@@ -20,10 +17,6 @@ public class Anarchiste extends Carte{
 		this.typeCarte = typeCarte.guideSpirituel;
 	}
 	
-	public void attacherCroyant(){
-		
-	}
-
 	public void utiliserCapacite(){
 		
 	}

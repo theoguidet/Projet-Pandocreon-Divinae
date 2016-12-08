@@ -6,10 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Martyr extends Carte{
-	
-	private int nbCroyants;
-	private Propriete propriete;
+public class Martyr extends GuideSpirituel{
 	
 	public Martyr(Dogme d1, Dogme d2, Origine o){
 		super();

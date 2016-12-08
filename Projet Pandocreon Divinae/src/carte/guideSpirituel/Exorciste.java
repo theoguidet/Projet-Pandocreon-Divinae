@@ -6,10 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Exorciste extends Carte{
-	
-	private int nbCroyants;
-	private Propriete propriete;
+public class Exorciste extends GuideSpirituel{
 	
 	public Exorciste(){
 		super();

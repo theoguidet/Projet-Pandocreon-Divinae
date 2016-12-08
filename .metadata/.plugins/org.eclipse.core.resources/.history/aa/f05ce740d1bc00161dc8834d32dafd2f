@@ -1,0 +1,14 @@
+package carte.guideSpirituel;
+
+import propriete.Propriete;
+import carte.Carte;
+
+public class Croyant extends Carte{
+	
+	private int nbCroyants;
+	private Propriete propriete;
+	
+	public Croyant (){
+		super();
+	}
+}

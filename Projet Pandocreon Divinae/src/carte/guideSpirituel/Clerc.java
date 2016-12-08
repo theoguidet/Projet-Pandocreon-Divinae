@@ -6,10 +6,7 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Clerc extends Carte{
-	
-	private int nbCroyants;
-	private Propriete propriete;
+public class Clerc extends GuideSpirituel{
 	
 	public Clerc(Dogme d1, Dogme d2, Origine o){
 		super();

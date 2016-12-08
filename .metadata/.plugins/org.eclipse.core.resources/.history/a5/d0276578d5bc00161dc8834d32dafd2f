@@ -1,0 +1,14 @@
+package carte.croyants;
+
+import carte.Carte;
+import propriete.Propriete;
+
+public class Croyant extends Carte{
+	
+	private Propriete propriete;
+	private int nbCroyants;
+	
+	public Croyant(){
+		super();
+	}
+}

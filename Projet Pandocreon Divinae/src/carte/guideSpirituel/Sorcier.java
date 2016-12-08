@@ -6,12 +6,9 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Sorcier extends Carte{
+public class Sorcier extends GuideSpirituel{
 	
-	private int nbCroyants;
-	private Propriete propriete;
-	
-	public Sorcier(String nom, String capacite, boolean estDistribuee, int nbCroyants, TypeCarte typeCarte, Dogme d1, Dogme d2, Origine o){
+	public Sorcier(Dogme d1, Dogme d2, Origine o){
 		super();
 		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(d1, d2, o);
