@@ -1,0 +1,12 @@
+package Joueur;
+
+import javax.naming.Context;
+
+public class JoueurVirtuel extends Joueur{
+
+	private Context context;
+	
+	public JoueurVirtuel(String nom){
+		super(nom);
+	}
+}

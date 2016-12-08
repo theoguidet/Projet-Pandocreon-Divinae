@@ -1,0 +1,6 @@
+
+public class Strategie implements Strategy{
+	public void choixCarteAJouer(){
+		
+	}
+}

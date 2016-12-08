@@ -11,16 +11,16 @@ import carte.croyants.Croyant;
 import carte.divinite.Divinite;
 import carte.guideSpirituel.GuideSpirituel;
 
-public class Joueur {
-	private String nom;
-	private int nbPrieres;
-	private int pointActionJour;
-	private int pointActionNuit;
-	private int pointActionNeant;
-	private ArrayList<Carte> main;
-	private ArrayList<Croyant> croyantRattaches;
-	private ArrayList<GuideSpirituel> guideRattaches;
-	private Divinite divinite;
+public class Joueur{
+	protected String nom;
+	protected int nbPrieres;
+	protected int pointActionJour;
+	protected int pointActionNuit;
+	protected int pointActionNeant;
+	protected ArrayList<Carte> main;
+	protected ArrayList<Croyant> croyantRattaches;
+	protected ArrayList<GuideSpirituel> guideRattaches;
+	protected Divinite divinite;
 
 	public Joueur(String nom) {
 		this.nom = nom;
@@ -61,7 +61,8 @@ public class Joueur {
 			c.utiliserCapacite();
 			partie.ajouterADefausse(c);
 		}else if (c.getTypeCarte() == TypeCarte.deusEx) {
-			//A faire
+			c.utiliserCapacite();
+			partie.ajouterADefausse(c);
 		}
 		main.remove(c);
 	}
@@ -87,13 +88,14 @@ public class Joueur {
 		calculerPointAction(origine.get(tirageDe));
 	}
 
-	public void calculerScore(){
+	public int calculerScore(){
 		nbPrieres = 0;
 		for (Croyant c : croyantRattaches) {
 			if (c.getTypeCarte() == TypeCarte.croyant) {
 				nbPrieres = nbPrieres + c.getNbCroyants();
 			}
 		}
+		return nbPrieres;
 	}
 	
 	public void calculerPointAction(Origine resultatDe){
@@ -202,4 +204,5 @@ public class Joueur {
 	public ArrayList<Croyant> getCroyantGuideRattaches() {
 		return croyantRattaches;
 	}
+
 }

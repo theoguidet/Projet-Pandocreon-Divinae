@@ -1,6 +1,8 @@
 package partie;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 import propriete.Dogme;
@@ -26,6 +28,22 @@ import carte.croyants.Revenant;
 import carte.croyants.Revolutionnaires;
 import carte.croyants.Travailleurs;
 import carte.croyants.Vampires;
+import carte.deusex.Bouleversement;
+import carte.deusex.ColereDivine;
+import carte.deusex.Concentration;
+import carte.deusex.Diversion;
+import carte.deusex.Fourberie;
+import carte.deusex.InfluenceJour;
+import carte.deusex.InfluenceNeant;
+import carte.deusex.InfluenceNuit;
+import carte.deusex.InfluenceNulle;
+import carte.deusex.Inquisition;
+import carte.deusex.Miroir;
+import carte.deusex.OrdreCeleste;
+import carte.deusex.Phoenix;
+import carte.deusex.Stase;
+import carte.deusex.Transe;
+import carte.deusex.TrouNoir;
 import carte.divinite.Brewalen;
 import carte.divinite.Divinite;
 import carte.divinite.Drinded;
@@ -159,7 +177,46 @@ public class Partie {
 		Apocalypse apocalypse4 = new Apocalypse(null);
 		Apocalypse apocalypse5 = new Apocalypse(null);
 		
+		//Declaration des DeusEx
+		Bouleversement bouleversement = new Bouleversement();
+		ColereDivine colereDivine1 = new ColereDivine(Origine.JOUR);
+		ColereDivine colereDivine2 = new ColereDivine(Origine.NUIT);
+		Concentration concentration = new Concentration();
+		Diversion diversion = new Diversion();
+		Fourberie fourberie = new Fourberie();
+		InfluenceJour influenceJour = new InfluenceJour();
+		InfluenceNuit influenceNuit = new InfluenceNuit();
+		InfluenceNeant influenceNeant = new InfluenceNeant();
+		InfluenceNulle influenceNulle1 = new InfluenceNulle();
+		InfluenceNulle influenceNulle2 = new InfluenceNulle();
+		Inquisition inquisition = new Inquisition();
+		Miroir miroir = new Miroir();
+		OrdreCeleste ordreCeleste = new OrdreCeleste();
+		Phoenix phoenix = new Phoenix();
+		Stase stase = new Stase();
+		Transe transe = new Transe();
+		TrouNoir trouNoir = new TrouNoir();
+		
 		//creation de la pioche 
+		cartes.add(bouleversement);
+		cartes.add(colereDivine1);
+		cartes.add(colereDivine2);
+		cartes.add(concentration);
+		cartes.add(diversion);
+		cartes.add(fourberie);
+		cartes.add(influenceJour);
+		cartes.add(influenceNuit);
+		cartes.add(influenceNeant);
+		cartes.add(influenceNulle1);
+		cartes.add(influenceNulle2);
+		cartes.add(inquisition);
+		cartes.add(miroir);
+		cartes.add(ordreCeleste);
+		cartes.add(phoenix);
+		cartes.add(stase);
+		cartes.add(transe);
+		cartes.add(trouNoir);
+		
 		cartes.add(moines1);
 		cartes.add(moines2);
 		cartes.add(moines3);
@@ -196,6 +253,8 @@ public class Partie {
 		cartes.add(revenant);
 		cartes.add(revolutionnaires);
 		cartes.add(nihillistes);
+		cartes.add(devin);
+		cartes.add(sorcier);
 		
 		cartes.add(apocalypse1);
 		cartes.add(apocalypse2);
@@ -236,15 +295,37 @@ public class Partie {
 		divinites.add(Yarstur.getInstance());
 		
 	}
+		
+	public ArrayList<Joueur> classementJoueurs(){
+		ArrayList<Joueur> joueursTries = new ArrayList<Joueur>();
+		int i;
+		joueursTries.add(0, joueurs.get(0));
+		for (Joueur j : joueurs) {
+			i=0;
+			while (j.calculerScore() > joueursTries.get(i).calculerScore()) {
+				i++;
+			}
+			joueursTries.add(i, j);
+		}
+		return joueursTries;
+	}
 	
-	public void supprimerJoueur(Joueur j){
-		joueurs.remove(j);
+	public void supprimerJoueur(){
+		ArrayList<Joueur> classement = classementJoueurs();
+		joueurs.remove(classement.get(0));
+		nbJoueur--;
 	}
 	
 	public void determinerGagnant(){
-		
+		ArrayList<Joueur> classement = classementJoueurs();
+		gagnant = classement.get(classement.size()-1);
+		finirPartie();
 	}
 	
+	public int getNbJoueur() {
+		return nbJoueur;
+	}
+
 	public void finirPartie(){
 		
 	}

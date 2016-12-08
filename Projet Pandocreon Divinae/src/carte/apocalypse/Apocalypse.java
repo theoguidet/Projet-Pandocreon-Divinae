@@ -1,5 +1,6 @@
 package carte.apocalypse;
 
+import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
@@ -23,7 +24,11 @@ public class Apocalypse extends Carte{
 		}
 	}
 
-	public void utiliserCapacite(){
-		
+	public void utiliserCapacite(Partie p){
+		if (p.getNbJoueur() >= 4) {
+			p.supprimerJoueur();
+		}else{
+			p.determinerGagnant();
+		}
 	}
 }

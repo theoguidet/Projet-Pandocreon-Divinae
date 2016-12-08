@@ -1,0 +1,16 @@
+import carte.Carte;
+
+
+public class Strategie1 implements Strategy{
+	
+	public Strategie1() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public Carte choixCarteAJouer() {
+		
+		return null;
+	}
+	
+}

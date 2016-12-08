@@ -1,0 +1,5 @@
+package dpStrategy;
+
+public interface Strategy {
+	public void choixCarteAJouer();
+}

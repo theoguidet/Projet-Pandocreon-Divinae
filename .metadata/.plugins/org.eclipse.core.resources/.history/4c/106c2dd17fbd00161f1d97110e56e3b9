@@ -1,0 +1,6 @@
+import carte.Carte;
+
+
+public interface Strategy {
+	public Carte choixCarteAJouer();
+}

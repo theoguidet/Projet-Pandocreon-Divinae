@@ -1,0 +1,14 @@
+package Joueur;
+
+import javax.naming.Context;
+
+public class JoueurVirtuel extends Joueur{
+	
+	public JoueurVirtuel(String nom){
+		super(nom);
+	}
+	
+	public void jouerUneCarte(){
+		Context context = new Context(new Strategie1());
+	}
+}
