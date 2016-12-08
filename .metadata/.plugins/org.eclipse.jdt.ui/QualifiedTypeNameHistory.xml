@@ -23,4 +23,5 @@
 <fullyQualifiedTypeName name="carte.TypeCarte"/>
 <fullyQualifiedTypeName name="carte.apocalypse.Apocalypse"/>
 <fullyQualifiedTypeName name="propriete.Origine"/>
+<fullyQualifiedTypeName name="java.security.AllPermission"/>
 </qualifiedTypeNameHistroy>

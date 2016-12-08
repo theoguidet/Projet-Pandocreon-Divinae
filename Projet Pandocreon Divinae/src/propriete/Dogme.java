@@ -18,9 +18,4 @@ public enum Dogme {
 	public String toString(){
 		return name;
 	}
-	
-//	public static void main(String args[]){
-//		Dogme d = Dogme.AUBE;
-//		System.out.println(d.toString());
-//	}
 }

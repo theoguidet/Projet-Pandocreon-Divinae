@@ -21,16 +21,20 @@ public class GuideSpirituel extends Carte{
 		for (Carte c : Plateau.getInstance().getCroyantLibre()) {
 			//ne peut pas rattacher une carte croyant que le joueur viens de creer
 			int i = 0;
-			System.out.println("[" + i + "] " + Plateau.getInstance().getCroyantLibre().get(i).getNom() + "\n Capacité : " + Plateau.getInstance().getCroyantLibre().get(i).getCapacite());
+			System.out.println("[" + i + "] " + c.getNom() + "\n Capacité : " + c.getCapacite());
 			i++;
 			
 		}
 		Scanner clavier = new Scanner(System.in);
 		int choix = clavier.nextInt();
+		clavier.close();
 		
+		//Verification si au moins un dogme en commun
 		if (Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(0)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(1)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(2))) {
+			//Verification du nombre de croyant rattachable au guide
 			if (nbCroyants >=  Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants()) {
-				j.ajouterCroyantGuideRattaches(Plateau.getInstance().getCroyantLibre().get(choix));
+				
+				j.ajouterCroyantRattaches(Plateau.getInstance().getCroyantLibre().get(choix));
 				nbCroyants = nbCroyants-Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants();
 				Plateau.getInstance().getCroyantLibre().remove(choix);
 				

@@ -8,6 +8,7 @@ public class Propriete {
 	
 	public Propriete(Dogme d1, Dogme d2, Dogme d3, Origine o) {
 		origine = o;
+		this.dogmes = new ArrayList<Dogme>();
 		dogmes.add(d1);
 		dogmes.add(d2);
 		dogmes.add(d3);
@@ -15,12 +16,18 @@ public class Propriete {
 	
 	public Propriete(Dogme d1, Dogme d2, Origine o) {
 		origine = o;
+		this.dogmes = new ArrayList<Dogme>();
 		dogmes.add(d1);
 		dogmes.add(d2);
 	}
 	
 	public Propriete(Origine o) {
 		origine = o;
+		dogmes = null;
+	}
+
+	public Propriete() {
+		origine = null;
 		dogmes = null;
 	}
 	
@@ -34,12 +41,7 @@ public class Propriete {
 
 	public void setOrigine(Origine origine) {
 		this.origine = origine;
-	}
-
-	public Propriete() {
-		origine = null;
-		dogmes = null;
-	}
+	}	
 	
 	public Origine getOrigine(){
 		return this.origine;

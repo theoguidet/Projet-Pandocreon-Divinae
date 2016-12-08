@@ -1,8 +1,6 @@
 package partie;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import propriete.Dogme;
@@ -61,27 +59,18 @@ public class Partie {
 	private ArrayList<Joueur> joueurs;
 	private ArrayList<Carte> cartes;
 	private ArrayList<Divinite> divinites;
+	private ArrayList<Carte> defausse;
 	
 	public Partie(int nbJoueur){
 		this.nbJoueur = nbJoueur;
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = new ArrayList<Carte>();
 		this.divinites = new ArrayList<Divinite>();
+		this.defausse = new ArrayList<Carte>();
 		this.gagnant = null;
 		joueurs.add(new Joueur("moi"));
 		for (int i = 0; i < nbJoueur-1; i++) {
 			joueurs.add(new JoueurVirtuel("joueurVirtuel"+ nbJoueur));
-		}
-	}
-	
-	public void calculerScore(){
-		for (Joueur j : joueurs) {
-			for (Carte c : j.getCroyantGuideRattaches()) {
-				if (c.getTypeCarte() == TypeCarte.croyant) {
-					//recuperer le nb de priere de la carte croyant ....
-					j.setNbPrieres(j.getNbPrieres()  );
-				}
-			}
 		}
 	}
 	
@@ -95,13 +84,11 @@ public class Partie {
 	
 	public void distribuerCarte(){
 		Collections.shuffle(cartes);
-		for (int i = 0; i < 7; i++) {
-			for (Joueur joueur : joueurs) {
-				joueur.completerMain(cartes.get(0));
-			}
+		for (Joueur joueur : joueurs) {
+			joueur.completerMain(cartes);
 		}
 	}
-	
+
 	public void creationJeuDeCarte(){
 		
 		//déclaration des guides spirituels
@@ -172,13 +159,50 @@ public class Partie {
 		Apocalypse apocalypse4 = new Apocalypse(null);
 		Apocalypse apocalypse5 = new Apocalypse(null);
 		
-		
+		//creation de la pioche 
+		cartes.add(moines1);
+		cartes.add(moines2);
+		cartes.add(moines3);
+		cartes.add(moines4);
+		cartes.add(moines5);
+		cartes.add(travailleurs1);
+		cartes.add(travailleurs2);
+		cartes.add(travailleurs3);
+		cartes.add(ermite1);
+		cartes.add(ermite2);
+		cartes.add(integristes);
+		cartes.add(guerriersSaints);
+		cartes.add(diplomates);
+		cartes.add(demon1);
+		cartes.add(demon2);
+		cartes.add(demon3);
+		cartes.add(demon4);
+		cartes.add(alchimistes1);
+		cartes.add(alchimistes2);
+		cartes.add(alchimistes3);
+		cartes.add(vampires1);
+		cartes.add(vampires2);
+		cartes.add(lycanthropes);
+		cartes.add(pillards);
+		cartes.add(illusionnistes);
+		cartes.add(esprits1);
+		cartes.add(esprits2);
+		cartes.add(esprits3);
+		cartes.add(esprits4);
+		cartes.add(esprits5);
+		cartes.add(alienes1);
+		cartes.add(alienes2);
+		cartes.add(alienes3);
+		cartes.add(revenant);
+		cartes.add(revolutionnaires);
+		cartes.add(nihillistes);
 		
 		cartes.add(apocalypse1);
 		cartes.add(apocalypse2);
 		cartes.add(apocalypse3);
 		cartes.add(apocalypse4);
 		cartes.add(apocalypse5);
+		
 		cartes.add(martyr1);
 		cartes.add(martyr2);
 		cartes.add(martyr3);
@@ -221,29 +245,6 @@ public class Partie {
 		
 	}
 	
-	public void calculerPointAction(Origine resultatDe, Joueur j){
-		Origine o = j.getDivinite().getPropriete().getOrigine();
-		if (resultatDe == Origine.JOUR) {
-			if (o == Origine.JOUR) {
-				j.setPointActionJour(j.getPointActionJour() +2);
-			}else if (o == Origine.AUBE) {
-				j.setPointActionAube(j.getPointActionAube() +1);
-			}
-		}else if (resultatDe == Origine.NUIT) {
-			if (o == Origine.NUIT) {
-				j.setPointActionNuit(j.getPointActionNuit() +2);
-			}else if (o== Origine.CREPUSCULE) {
-				j.setPointActionCrepuscule(j.getPointActionCrepuscule() +1);
-			}
-		}else if (resultatDe == Origine.NEANT) {
-			if (o == Origine.CREPUSCULE) {
-				j.setPointActionCrepuscule(j.getPointActionCrepuscule() +1);
-			}else if (o == Origine.AUBE) {
-				j.setPointActionAube(j.getPointActionAube() +1);
-			}
-		}
-	}
-	
 	public void finirPartie(){
 		
 	}
@@ -255,11 +256,26 @@ public class Partie {
 	public void setCartes(ArrayList<Carte> cartes) {
 		this.cartes = cartes;
 	}
+	
+	public ArrayList<Carte> getDefausse() {
+		return defausse;
+	}
 
-	public static void main(){
-		System.out.println("entrez le nom");
+	public void ajouterADefausse(Carte c) {
+		this.defausse.add(c);
+	}
+
+	public static void main(String[] args){
+		System.out.println("Combien de joueurs voulez-vous affronter ?");
 		Scanner clavier = new Scanner(System.in);
-		int nb = clavier.nextInt();
+		int nbJoueur = clavier.nextInt();
+		Partie partie = new Partie(nbJoueur);
+		partie.creationJeuDeCarte();
+		partie.distribuerDivinites();
+		partie.distribuerCarte();
+		
 		
 	}
+
+
 }

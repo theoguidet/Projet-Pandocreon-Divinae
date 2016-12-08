@@ -1,0 +1,7 @@
+package carte.deusex;
+
+import carte.Carte;
+
+public class Bouleversement extends Carte{
+
+}

@@ -2,46 +2,25 @@ package Joueur;
 
 import java.util.ArrayList;
 
+import partie.Partie;
 import partie.Plateau;
+import propriete.Origine;
 import carte.Carte;
+import carte.TypeCarte;
 import carte.croyants.Croyant;
 import carte.divinite.Divinite;
+import carte.guideSpirituel.GuideSpirituel;
 
 public class Joueur {
 	private String nom;
 	private int nbPrieres;
 	private int pointActionJour;
-	private int pointActionCrepuscule;
-	private int pointActionAube;
 	private int pointActionNuit;
 	private int pointActionNeant;
 	private ArrayList<Carte> main;
-	private ArrayList<Carte> croyantGuideRattaches;
+	private ArrayList<Croyant> croyantRattaches;
+	private ArrayList<GuideSpirituel> guideRattaches;
 	private Divinite divinite;
-	
-	public int getPointActionCrepuscule() {
-		return pointActionCrepuscule;
-	}
-
-	public void setPointActionCrepuscule(int pointActionCrepuscule) {
-		this.pointActionCrepuscule = pointActionCrepuscule;
-	}
-
-	public int getPointActionAube() {
-		return pointActionAube;
-	}
-
-	public void setPointActionAube(int pointActionAube) {
-		this.pointActionAube = pointActionAube;
-	}
-
-	public Divinite getDivinite() {
-		return divinite;
-	}
-
-	public void setDivinite(Divinite divinite) {
-		this.divinite = divinite;
-	}
 
 	public Joueur(String nom) {
 		this.nom = nom;
@@ -50,7 +29,8 @@ public class Joueur {
 		this.pointActionNuit = 0;
 		this.pointActionNeant = 0;
 		this.main = new ArrayList<Carte>();
-		this.croyantGuideRattaches = new ArrayList<Carte>();
+		this.croyantRattaches = new ArrayList<Croyant>();
+		this.guideRattaches = new ArrayList<GuideSpirituel>();
 	}
 	
 	public Carte defausserCarte(int i){
@@ -60,44 +40,105 @@ public class Joueur {
 	}
 	
 	public void piocherCarte(ArrayList<Carte> c){
-		main.add(c.get(1));
+		main.add(c.get(0));
 	}
 	
-	public void completerMain(Carte c){
-		main.add(c);
+	public void completerMain(ArrayList<Carte> c){
+		while(main.size()<7){
+			piocherCarte(c);
+		}
 	}
 	
-	public void poserCarte(int i){
-		Croyant c = (Croyant) main.get(i);
+	public void poserCarte(int i, Partie partie){
+		Carte c = main.get(i);
 		Plateau p = Plateau.getInstance();
-		p.poserCroyantLibre(c);
+
+		if (c.getTypeCarte() == TypeCarte.croyant) {
+			p.poserCroyantLibre((Croyant)c);
+		}else if (c.getTypeCarte() == TypeCarte.guideSpirituel) {
+			guideRattaches.add((GuideSpirituel)c);
+		}else if (c.getTypeCarte() == TypeCarte.apocalyspe) {
+			c.utiliserCapacite();
+			partie.ajouterADefausse(c);
+		}else if (c.getTypeCarte() == TypeCarte.deusEx) {
+			//A faire
+		}
 		main.remove(c);
 	}
-	
-	public ArrayList<Carte> getCroyantGuideRattaches() {
-		return croyantGuideRattaches;
-	}
 
-	public void ajouterCroyantGuideRattaches(Carte c) {
-		this.croyantGuideRattaches.add(c);
+	public void ajouterCroyantRattaches(Croyant c) {
+		this.croyantRattaches.add(c);
 	}
 
 	public void sacrifierCarte(Carte c){
 		c.utiliserCapacite();
 	}
 	
-	public String lancerDe(){
-		int tirageDe;
-		ArrayList<String> origine = new ArrayList();
-		tirageDe = (int) Math.random();
+	public void lancerDe(){
+		int tirageDe, max=6, min=1;
+		ArrayList<Origine> origine = new ArrayList<Origine>();		 
+
+		tirageDe = (int)(Math.random()*(max-min))+min;
 		for (int i = 0; i < 2; i++) {
-					origine.add("Jour");
-					origine.add("Nuit");
-					origine.add("Neant");
+					origine.add(Origine.JOUR);
+					origine.add(Origine.NUIT);
+					origine.add(Origine.NEANT);
 		}
-		return origine.get(tirageDe);
+		calculerPointAction(origine.get(tirageDe));
+	}
+
+	public void calculerScore(){
+		nbPrieres = 0;
+		for (Croyant c : croyantRattaches) {
+			if (c.getTypeCarte() == TypeCarte.croyant) {
+				nbPrieres = nbPrieres + c.getNbCroyants();
+			}
+		}
 	}
 	
+	public void calculerPointAction(Origine resultatDe){
+		switch (resultatDe) {
+		case JOUR:
+			if (divinite.getPropriete().getOrigine() == Origine.JOUR) {
+				pointActionJour = pointActionJour +2;
+			}else if (divinite.getPropriete().getOrigine() == Origine.AUBE) {
+				pointActionJour++;
+			}
+			break;
+		case NUIT:
+			if (divinite.getPropriete().getOrigine() == Origine.NUIT) {
+				pointActionNuit = pointActionNuit +2;
+			}else if (divinite.getPropriete().getOrigine() == Origine.CREPUSCULE) {
+				pointActionNuit++;
+			}
+			break;
+		case NEANT:
+			if (divinite.getPropriete().getOrigine() == Origine.AUBE || divinite.getPropriete().getOrigine() == Origine.CREPUSCULE) {
+				pointActionNeant++;
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	public void enleverPointAction(Origine o){
+		switch (o) {
+		case JOUR:
+			pointActionJour--;
+			break;
+		case NEANT:
+			pointActionNeant--;
+			break;
+		case NUIT:
+			pointActionNuit--;
+			break;
+		default:
+			break;
+		}
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -134,8 +175,8 @@ public class Joueur {
 		return pointActionNeant;
 	}
 
-	public void setCroyantGuideRattaches(ArrayList<Carte> croyantGuideRattaches) {
-		this.croyantGuideRattaches = croyantGuideRattaches;
+	public void setCroyantGuideRattaches(ArrayList<Croyant> croyantRattaches) {
+		this.croyantRattaches = croyantRattaches;
 	}
 
 	public void setPointActionNeant(int pointActionNeant) {
@@ -150,8 +191,15 @@ public class Joueur {
 		this.main = main;
 	}
 
-	public void enleverPointAction(){
-		
+	public Divinite getDivinite() {
+		return divinite;
 	}
+
+	public void setDivinite(Divinite divinite) {
+		this.divinite = divinite;
+	}	
 	
+	public ArrayList<Croyant> getCroyantGuideRattaches() {
+		return croyantRattaches;
+	}
 }
