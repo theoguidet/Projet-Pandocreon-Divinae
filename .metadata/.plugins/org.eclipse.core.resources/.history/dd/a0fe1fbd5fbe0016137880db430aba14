@@ -13,7 +13,7 @@ public class Travailleurs extends Croyant{
 		this.nom = "Travaileurs";
 		this.capacite = capacite;
 		this.nbCroyants= 2;
-		this.propriete = new Propriete(d1, d2, d3, "JOUR");
+		this.propriete = new Propriete(d1, d2, d3, Origine.JOUR);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

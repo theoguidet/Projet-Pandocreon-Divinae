@@ -13,7 +13,7 @@ public class Pillards extends Croyant{
 		this.nom = "Pillards";
 		this.capacite = "Récupérez les points d'Action d'une Divinité n'ayant pas encore joué durant ce tour. Les points d'Action gardent leur Origine. La Divinité perd ses points.";
 		this.nbCroyants= 4;
-		this.propriete = new Propriete("MYSTIQUE", "NATURE", "SYMBOLES", "NUIT");
+		this.propriete = new Propriete(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.SYMBOLES, Origine.NUIT);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

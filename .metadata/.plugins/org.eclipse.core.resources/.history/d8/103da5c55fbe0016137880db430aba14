@@ -8,12 +8,12 @@ public class Vampires extends Croyant{
 	
 
 	
-	public Vampires (String d1, String d2, String d3){
+	public Vampires (Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Vampires";
 		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifié. La capacité spéciale du sacrifice est jouée.";
 		this.nbCroyants= 1;
-		this.propriete = new Propriete(d1, d2, d3, "NUIT");
+		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

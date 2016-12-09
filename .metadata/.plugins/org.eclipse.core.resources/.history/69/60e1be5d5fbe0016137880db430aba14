@@ -13,7 +13,7 @@ public class Nihillistes extends Croyant{
 		this.nom = "Nihillistes";
 		this.capacite = "Jusqu'à la fin du tour, plus aucune Divinité ne reçoit de points d'Action."; 
 		this.nbCroyants= 4;
-		this.propriete = new Propriete("SYMBOLES", "MYSTIQUE", "CHAOS", "NEANT");
+		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.MYSTIQUE, Dogme.CHAOS, Origine.NEANT);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

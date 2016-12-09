@@ -160,30 +160,30 @@ public class Partie {
 		Lycanthropes lycanthropes = new Lycanthropes();
 		Pillards pillards = new Pillards();
 		Illusionnistes illusionnistes = new Illusionnistes();
-		Esprits esprits1 = new Esprits("HUMAIN", "NATURE", "MYSTIQUE");
-		Esprits esprits2 = new Esprits("MYSTIQUE", "HUMAIN", "CHAOS");
-		Esprits esprits3 = new Esprits("SYMBOLES", "CHAOS", "MYSTIQUE");
-		Esprits esprits4 = new Esprits("SYMBOLES", "NATURE", "MYSTIQUE");
-		Esprits esprits5 = new Esprits("NATURE", "CHAOS", "MYSTIQUE");
-		Alienes alienes1 = new Alienes("HUMAIN", "SYMBOLES", "CHAOS", "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alienes alienes2 = new Alienes("HUMAIN", "NATURE", "SYMBOLES", "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alienes alienes3 = new Alienes("HUMAIN", "MYSTIQUE", "CHAOS", "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Esprits esprits1 = new Esprits("HUMAIN, "NATURE, "MYSTIQUE);
+		Esprits esprits2 = new Esprits("MYSTIQUE, "HUMAIN, "CHAOS);
+		Esprits esprits3 = new Esprits("SYMBOLES, "CHAOS, "MYSTIQUE);
+		Esprits esprits4 = new Esprits("SYMBOLES, "NATURE, "MYSTIQUE);
+		Esprits esprits5 = new Esprits("NATURE, "CHAOS, "MYSTIQUE);
+		Alienes alienes1 = new Alienes("HUMAIN, "SYMBOLES, "CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alienes alienes2 = new Alienes("HUMAIN, "NATURE, "SYMBOLES, "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alienes alienes3 = new Alienes("HUMAIN, "MYSTIQUE, "CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
 		Revenant revenant = new Revenant();
 		Revolutionnaires revolutionnaires = new Revolutionnaires();
 		Nihillistes nihillistes = new Nihillistes();
 		
 		
 		//Declaration des apocalypses
-		Apocalypse apocalypse1 = new Apocalypse("JOUR");
-		Apocalypse apocalypse2 = new Apocalypse("NUIT");
-		Apocalypse apocalypse3 = new Apocalypse("NEANT");
+		Apocalypse apocalypse1 = new Apocalypse("JOUR);
+		Apocalypse apocalypse2 = new Apocalypse("NUIT);
+		Apocalypse apocalypse3 = new Apocalypse("NEANT);
 		Apocalypse apocalypse4 = new Apocalypse(null);
 		Apocalypse apocalypse5 = new Apocalypse(null);
 		
 		//Declaration des DeusEx
 		Bouleversement bouleversement = new Bouleversement();
-		ColereDivine colereDivine1 = new ColereDivine("JOUR");
-		ColereDivine colereDivine2 = new ColereDivine("NUIT");
+		ColereDivine colereDivine1 = new ColereDivine("JOUR);
+		ColereDivine colereDivine2 = new ColereDivine("NUIT);
 		Concentration concentration = new Concentration();
 		Diversion diversion = new Diversion();
 		Fourberie fourberie = new Fourberie();

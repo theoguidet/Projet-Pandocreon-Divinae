@@ -9,7 +9,7 @@ import carte.TypeCarte;
 
 public class Apocalypse extends Carte{
 	
-	public Apocalypse(String o){
+	public Apocalypse(Origine o){
 		super();
 		this.nom = "Apocalypse";
 		this.capacite = "";

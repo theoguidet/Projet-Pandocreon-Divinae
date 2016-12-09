@@ -174,16 +174,16 @@ public class Partie {
 		
 		
 		//Declaration des apocalypses
-		Apocalypse apocalypse1 = new Apocalypse("JOUR");
-		Apocalypse apocalypse2 = new Apocalypse("NUIT");
-		Apocalypse apocalypse3 = new Apocalypse("NEANT");
+		Apocalypse apocalypse1 = new Apocalypse("JOUR);
+		Apocalypse apocalypse2 = new Apocalypse("NUIT);
+		Apocalypse apocalypse3 = new Apocalypse("NEANT);
 		Apocalypse apocalypse4 = new Apocalypse(null);
 		Apocalypse apocalypse5 = new Apocalypse(null);
 		
 		//Declaration des DeusEx
 		Bouleversement bouleversement = new Bouleversement();
-		ColereDivine colereDivine1 = new ColereDivine("JOUR");
-		ColereDivine colereDivine2 = new ColereDivine("NUIT");
+		ColereDivine colereDivine1 = new ColereDivine("JOUR);
+		ColereDivine colereDivine2 = new ColereDivine("NUIT);
 		Concentration concentration = new Concentration();
 		Diversion diversion = new Diversion();
 		Fourberie fourberie = new Fourberie();

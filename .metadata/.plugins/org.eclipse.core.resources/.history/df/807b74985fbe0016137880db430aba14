@@ -13,7 +13,7 @@ public class Revenant extends Croyant{
 		this.nom = "Revenant";
 		this.capacite = "Lancez le dé de Cosmogonie. Le tour se fini normalement, mais sous cette nouvelle influence.";
 		this.nbCroyants= 1;
-		this.propriete = new Propriete("HUMAIN", "NATURE", "MYSTIQUE", "NEANT");
+		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
 		this.typeCarte = typeCarte.croyant;
 	}
 	
