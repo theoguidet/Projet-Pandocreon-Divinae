@@ -15,7 +15,7 @@ private Propriete propriete;
 		this.capacite = "Peut récupérer les points d'Action d'une autre Divinité en plus des siens. L'autre Divinité ne reçoit aucun point d'Action ce tour-ci.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, Origine.CREPUSCULE);
+		Propriete p = new Propriete("HUMAIN", "SYMBOLES", "CHAOS", "CREPUSCULE");
 		this.propriete = p; 
 	}
 	

@@ -16,7 +16,7 @@ public class Yarstur extends Divinite{
 		this.capacite = "Peut détruire toutes les cartes de Croyants au centre de la table d'Origine Néant.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.CHAOS, Dogme.SYMBOLES, Dogme.MYSTIQUE, Origine.JOUR);
+		Propriete p = new Propriete("CHAOS", "SYMBOLES", "MYSTIQUE", "JOUR");
 		this.propriete = p; 
 	}
 	

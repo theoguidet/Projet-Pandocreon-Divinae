@@ -8,12 +8,12 @@ public class Alienes extends Croyant{
 	
 
 	
-	public Alienes (Dogme d1, Dogme d2, Dogme d3, String capacite){
+	public Alienes (String d1, String d2, String d3, String capacite){
 		super();
 		this.nom = "Aliénés";
 		this.capacite = capacite;
 		this.nbCroyants= 2;
-		this.propriete = new Propriete(d1, d2, d3, Origine.NEANT);
+		this.propriete = new Propriete(d1, d2, d3, "NEANT");
 		this.typeCarte = typeCarte.croyant;
 	}
 	

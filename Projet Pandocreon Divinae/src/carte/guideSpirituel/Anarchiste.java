@@ -13,7 +13,7 @@ public class Anarchiste extends GuideSpirituel{
 		this.nom = "Anarchiste";
 		this.capacite = "Sacrifie un Guide Spirituel, si lui ou a Divinité ne croit pas au Dogme Chaos. Les capacités spéciales sont jouées normalement.";
 		this.nbCroyants= 3;
-		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.CHAOS, Origine.NEANT);
+		this.propriete = new Propriete("HUMAIN", "CHAOS", "NEANT");
 		this.typeCarte = typeCarte.guideSpirituel;
 	}
 	

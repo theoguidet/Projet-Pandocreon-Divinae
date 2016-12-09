@@ -11,7 +11,7 @@ public class Tyran extends GuideSpirituel{
 	public Tyran(){
 		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
+		this.propriete = new Propriete("SYMBOLES", "CHAOS", "NEANT");
 		this.nom = "Tyran";
 		this.capacite = "Défausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.";
 		this.nbCroyants = 3;

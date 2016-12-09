@@ -1,21 +1,35 @@
 package propriete;
 
-public enum Dogme {
+import java.util.ArrayList;
 
-	NATURE ("Nature"),
-	HUMAIN ("Humain"),
-	SYMBOLES ("Symboles"),
-	MYSTIQUE ("Mystique"),
-	CHAOS ("Chaos");
+public class Dogme {
+
+	public static Dogme instance;
+	private ArrayList<String> dogmes;
+	private String nature = "Nature";
+	private String humain = "Humain";
+	private String symboles = "Symboles";
+	private String mystique = "Mystique";
+	private String chaos = "Chaos";	
+	private String nom;
 	
+	private Dogme (){
+		this.dogmes = new ArrayList<String>();
+		dogmes.add("Nature");
+		dogmes.add("Humain");
+		dogmes.add("Symboles");
+		dogmes.add("Mystique");
+		dogmes.add("Chaos");
+	}
 	
-	private String name = "";
-	
-	Dogme (String name){
-		this.name = name;
+	public static Dogme getInstance(){
+		if (instance == null) {
+			instance = new Dogme();
+		}
+		return instance;
 	}
 	
 	public String toString(){
-		return name;
+		return nom;
 	}
 }

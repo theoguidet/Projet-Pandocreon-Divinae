@@ -16,7 +16,7 @@ public class Gwenghelen extends Divinite{
 		this.capacite = "Récupère autant de points d'Action supplémentaires d'Origine Néant que le nombre de Guides Spirituels que la Divinité possède.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.MYSTIQUE, Origine.AUBE);
+		Propriete p = new Propriete("HUMAIN", "SYMBOLES","MYSTIQUE", "AUBE");
 		this.propriete = p; 
 	}
 	

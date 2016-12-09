@@ -11,7 +11,7 @@ public class Ascete extends GuideSpirituel{
 	public Ascete(){
 		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.SYMBOLES, Origine.NUIT);
+		this.propriete = new Propriete("HUMAIN", "SYMBOLES", "NUIT");
 		this.nom = "Ascete";
 		this.capacite = "Sacrifie 2 cartes Croyants d'une Divinité ayant le Dogme Humain ou Symboles.Les capacités spéciales sont jouées normalement";
 		this.nbCroyants= 1;

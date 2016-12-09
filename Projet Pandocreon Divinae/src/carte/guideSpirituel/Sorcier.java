@@ -8,7 +8,7 @@ import carte.TypeCarte;
 
 public class Sorcier extends GuideSpirituel{
 	
-	public Sorcier(Dogme d1, Dogme d2, Origine o){
+	public Sorcier(String d1, String d2, String o){
 		super();
 		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(d1, d2, o);

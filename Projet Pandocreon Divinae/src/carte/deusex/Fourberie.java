@@ -8,7 +8,7 @@ public class Fourberie extends DeusEx{
 	public Fourberie(){
 		this.nom = "Fourberie";
 		this.capacite = "Sacrifiez 2 cartes Croyants d'une autre Divinité. Les capacités spéciales ne sont pas jouées.";
-		this.propriete = new Propriete(Origine.NUIT);
+		this.propriete = new Propriete("NUIT");
 	}
 	
 	public void utiliserCapacite(){

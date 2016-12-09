@@ -16,7 +16,7 @@ public class Killinstred extends Divinite{
 		this.capacite = "Peut obliger un joueur à poser une carte Apocalypse s'il en possède une.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.NATURE, Dogme.MYSTIQUE, Dogme.CHAOS, Origine.NUIT);
+		Propriete p = new Propriete("NATURE","MYSTIQUE", "CHAOS", "NUIT");
 		this.propriete = p; 
 	}
 	

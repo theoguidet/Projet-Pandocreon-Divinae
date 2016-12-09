@@ -15,7 +15,7 @@ public class Romtec extends Divinite{
 		this.capacite = "Peut empêcher un jour de créer un Guide Spirituel. La carte est défaussée.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.CHAOS, Origine.CREPUSCULE);
+		Propriete p = new Propriete("NATURE", "HUMAIN", "CHAOS", "CREPUSCULE");
 		this.propriete = p; 
 	}
 	

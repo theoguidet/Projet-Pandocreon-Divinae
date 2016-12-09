@@ -11,7 +11,7 @@ public class Paladin extends GuideSpirituel{
 	public Paladin(){
 		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
+		this.propriete = new Propriete("HUMAIN", "MYSTIQUE", "JOUR");
 		this.nom = "Paladin";
 		this.capacite = "Tous les Croyants, d'Origine Nuit ou Néant et ayant le Dogme Nature, actuellement sur la table sont défaussés.Les capacités spéciales ne sont pas jouées.";
 		this.nbCroyants = 3;

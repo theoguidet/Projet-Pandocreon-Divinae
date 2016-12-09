@@ -16,7 +16,7 @@ public class Brewalen extends Divinite{
 		this.capacite = "Peut empêcher l'utilisation d'une carte Apocalypse. La carte est défaussée.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		this.propriete = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
+		this.propriete = new Propriete("NATURE", "HUMAIN", "MYSTIQUE", "JOUR");
 	}
 	
 	public static Brewalen getInstance(){

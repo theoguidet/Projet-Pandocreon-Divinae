@@ -16,7 +16,7 @@ public class PuiTara extends Divinite{
 		this.capacite = "Peut détruire toutes les cartes de Croyants au centre de la table d'Origine Jour.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.NATURE, Dogme.SYMBOLES, Dogme.MYSTIQUE, Origine.NUIT);
+		Propriete p = new Propriete("NATURE","SYMBOLES", "MYSTIQUE","NUIT");
 		this.propriete = p; 
 	}
 	

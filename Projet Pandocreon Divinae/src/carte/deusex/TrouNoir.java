@@ -8,7 +8,7 @@ public class TrouNoir extends DeusEx{
 	public TrouNoir(){
 		this.nom = "Trou Noir";
 		this.capacite = "Aucun autre joueur ne gagne de points d'Action durant ce tour.";
-		this.propriete = new Propriete(Origine.NEANT);
+		this.propriete = new Propriete("NEANT");
 	}
 
 	public void utiliserCapacite(){

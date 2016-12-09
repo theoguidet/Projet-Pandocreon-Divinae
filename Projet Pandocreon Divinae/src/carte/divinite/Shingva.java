@@ -15,7 +15,7 @@ public class Shingva extends Divinite{
 		this.capacite = "Peut imposer le sacrifice d'un Guide Spirituel ayant le Dogme Symboles ou Nature.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS, Origine.AUBE);
+		Propriete p = new Propriete("HUMAIN", "MYSTIQUE", "CHAOS", "AUBE");
 		this.propriete = p; 
 	}
 	

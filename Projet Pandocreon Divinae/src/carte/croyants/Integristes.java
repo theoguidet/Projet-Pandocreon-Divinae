@@ -13,7 +13,7 @@ public class Integristes extends Croyant{
 		this.nom = "Integristes";
 		this.capacite = "Impose le sacrifice d'un Guide Spirituel d'un autre joueur, qui choisit la carte. La capacité spéciale du sacrifice est jouée.";
 		this.nbCroyants= 1;
-		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.NATURE, Dogme.CHAOS, Origine.JOUR);
+		this.propriete = new Propriete("HUMAIN", "NATURE", "CHAOS", "JOUR");
 		this.typeCarte = typeCarte.croyant;
 	}
 	

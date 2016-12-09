@@ -8,12 +8,12 @@ public class Demons extends Croyant{
 	
 
 	
-	public Demons (Dogme d1, Dogme d2, Dogme d3){
+	public Demons (String d1, String d2, String d3){
 		super();
 		this.nom = "Demons";
 		this.capacite = "Donne un point d'Action d'Origine Nuit.";
 		this.nbCroyants= 2;
-		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
+		this.propriete = new Propriete(d1, d2, d3, "NUIT");
 		this.typeCarte = typeCarte.croyant;
 	}
 	

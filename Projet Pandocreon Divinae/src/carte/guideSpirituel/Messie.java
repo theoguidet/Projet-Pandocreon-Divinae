@@ -11,7 +11,7 @@ public class Messie extends GuideSpirituel{
 	public Messie(){
 		super();
 		this.nbCroyants= nbCroyants;
-		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
+		this.propriete = new Propriete("HUMAIN", "MYSTIQUE", "JOUR");
 		this.nom = "Messie";
 		this.capacite = "Le joueur pose le dé de Cosmogonie sur la face qu'il désire et commence un nouveau tour de jeu.";
 		this.nbCroyants = 3;
