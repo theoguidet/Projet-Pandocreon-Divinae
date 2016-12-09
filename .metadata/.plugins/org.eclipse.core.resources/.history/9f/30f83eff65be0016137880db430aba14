@@ -6,22 +6,23 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
-public class Llewella extends Divinite{
+public class Killinstred extends Divinite{
 	
-	public static Llewella instance;
+	public static Killinstred instance;
+	private Propriete propriete;
 	
-	private Llewella(){
-		this.nom = "Llewella";
+	private Killinstred(){
+		this.nom = "Killinstred";
 		this.capacite = "Peut obliger un joueur à poser une carte Apocalypse s'il en possède une.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		Propriete p = new Propriete("NATURE", "MYSTIQUE", "CHAOS", "NUIT");
+		Propriete p = new Propriete("NATURE","MYSTIQUE", "CHAOS", "NUIT");
 		this.propriete = p; 
 	}
 	
-	public static Llewella getInstance(){
+	public static Killinstred getInstance(){
 		if (instance == null) {
-			instance = new Llewella();
+			instance = new Killinstred();
 		}
 		return instance;
 	}

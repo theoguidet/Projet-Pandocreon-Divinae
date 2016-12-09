@@ -9,6 +9,7 @@ import carte.TypeCarte;
 public class Yarstur extends Divinite{
 	
 	public static Yarstur instance;
+	private Propriete propriete;
 	
 	private Yarstur(){
 		this.nom = "Yarstur";

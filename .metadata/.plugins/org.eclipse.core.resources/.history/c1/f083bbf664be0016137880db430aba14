@@ -7,7 +7,7 @@ public class Propriete {
 	private String origine;
 	
 	public Propriete(String d1, String d2, String d3, String o) {
-		origine = o;
+		origine = new String(o);
 		this.dogmes = new ArrayList<String>();
 		dogmes.add(d1);
 		dogmes.add(d2);

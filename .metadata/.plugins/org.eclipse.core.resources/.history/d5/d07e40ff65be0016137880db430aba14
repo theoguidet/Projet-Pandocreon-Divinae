@@ -8,6 +8,7 @@ import carte.TypeCarte;
 
 public class Gorpa extends Divinite{
 public static Gorpa instance;
+private Propriete propriete;
 	
 	private Gorpa(){
 		this.nom = "Gorpa";

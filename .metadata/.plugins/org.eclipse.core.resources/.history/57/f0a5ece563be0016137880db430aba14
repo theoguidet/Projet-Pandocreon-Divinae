@@ -356,7 +356,6 @@ public class Partie {
 		partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
-		System.out.println(partie.joueurs.get(0).getDivinite().getPropriete().getOrigine());
 		
 		for (Joueur j : partie.joueurs) {
 			j.lancerDe();
@@ -365,7 +364,7 @@ public class Partie {
 			j.jouerCarte(c, partie);
 		}
 		
-		clavier.close();
+		
 	}
 
 

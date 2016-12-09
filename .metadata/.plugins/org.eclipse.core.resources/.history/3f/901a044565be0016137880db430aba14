@@ -42,7 +42,6 @@ public class Joueur{
 	
 	public void piocherCarte(ArrayList<Carte> c){
 		main.add(c.get(0));
-		c.remove(0);
 	}
 	
 	public void completerMain(ArrayList<Carte> c){

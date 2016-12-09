@@ -8,6 +8,7 @@ import carte.TypeCarte;
 
 public class Shingva extends Divinite{
 	public static Shingva instance;
+	private Propriete propriete;
 	
 	private Shingva(){
 		this.nom = "Shingva";

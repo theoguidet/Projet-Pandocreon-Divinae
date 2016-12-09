@@ -8,6 +8,7 @@ import carte.TypeCarte;
 
 public class Romtec extends Divinite{
 	public static Romtec instance;
+	private Propriete propriete;
 
 	private Romtec(){
 		this.nom = "Romtec";

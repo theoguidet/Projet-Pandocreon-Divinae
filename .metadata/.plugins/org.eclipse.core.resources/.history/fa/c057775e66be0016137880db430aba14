@@ -353,18 +353,21 @@ public class Partie {
 		Scanner clavier = new Scanner(System.in);
 		int nbJoueur = clavier.nextInt();
 		Partie partie = new Partie(nbJoueur);
+		System.out.println("test1");
 		partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
+		System.out.println("test2");
 		System.out.println(partie.joueurs.get(0).getDivinite().getPropriete().getOrigine());
+		System.out.println("test3");
 		
-		for (Joueur j : partie.joueurs) {
-			j.lancerDe();
-			j.completerMain(partie.cartes);
-			ArrayList<Carte> c = j.choisirCarte();
-			j.jouerCarte(c, partie);
-		}
-		
+//		for (Joueur j : partie.joueurs) {
+//			j.lancerDe();
+//			j.completerMain(partie.cartes);
+//			ArrayList<Carte> c = j.choisirCarte();
+//			j.jouerCarte(c, partie);
+//		}
+//		
 		clavier.close();
 	}
 

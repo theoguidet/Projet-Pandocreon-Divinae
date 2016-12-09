@@ -9,6 +9,7 @@ import carte.TypeCarte;
 public class Brewalen extends Divinite{
 	
 	public static Brewalen instance;
+	private Propriete propriete;
 	
 	private Brewalen(){
 		this.nom = "Brewalen";

@@ -358,13 +358,13 @@ public class Partie {
 		partie.distribuerCarte();
 		System.out.println(partie.joueurs.get(0).getDivinite().getPropriete().getOrigine());
 		
-		for (Joueur j : partie.joueurs) {
-			j.lancerDe();
-			j.completerMain(partie.cartes);
-			ArrayList<Carte> c = j.choisirCarte();
-			j.jouerCarte(c, partie);
-		}
-		
+//		for (Joueur j : partie.joueurs) {
+//			j.lancerDe();
+//			j.completerMain(partie.cartes);
+//			ArrayList<Carte> c = j.choisirCarte();
+//			j.jouerCarte(c, partie);
+//		}
+//		
 		clavier.close();
 	}
 
