@@ -149,15 +149,15 @@ public class Joueur{
 		}
 	}
 	
-	public void enleverPointAction(String o){
+	public void enleverPointAction(Origine o){
 		switch (o) {
-		case "JOUR":
+		case JOUR:
 			pointActionJour--;
 			break;
-		case "NEANT":
+		case NEANT:
 			pointActionNeant--;
 			break;
-		case "NUIT":
+		case NUIT:
 			pointActionNuit--;
 			break;
 		default:

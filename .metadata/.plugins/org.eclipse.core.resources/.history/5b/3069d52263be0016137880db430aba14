@@ -27,7 +27,7 @@ public class Propriete {
 	}
 
 	public Propriete() {
-		origine = "";
+		origine = null;
 		dogmes = null;
 	}
 	

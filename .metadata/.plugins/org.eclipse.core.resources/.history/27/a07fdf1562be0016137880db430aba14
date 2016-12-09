@@ -99,6 +99,7 @@ public class Partie {
 			j.setDivinite(divinites.get(i));
 			//divinites.remove(0);
 			i++;
+			System.out.println(j.getDivinite().getPropriete().getOrigine());
 		}
 	}
 	
@@ -358,6 +359,7 @@ public class Partie {
 		partie.distribuerCarte();
 		
 		for (Joueur j : partie.joueurs) {
+			System.out.println(j.getDivinite().getPropriete().getOrigine().toString());
 			j.lancerDe();
 			j.completerMain(partie.cartes);
 			ArrayList<Carte> c = j.choisirCarte();
