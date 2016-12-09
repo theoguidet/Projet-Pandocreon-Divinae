@@ -9,8 +9,6 @@ import carte.TypeCarte;
 
 public class Apocalypse extends Carte{
 	
-	private Propriete propriete;
-	
 	public Apocalypse(Origine o){
 		super();
 		this.nom = "Apocalypse";

@@ -1,17 +1,29 @@
 package carte;
 
+import propriete.Propriete;
+
 public class Carte {
 	protected String nom;
 	protected TypeCarte typeCarte;
 	protected String capacite;
 	protected boolean estDistribuee;
-		
+	protected Propriete propriete;
+
 	public Carte(){
 		this.estDistribuee = false;
 	}
 	
 	public void utiliserCapacite(){
 		
+	}
+	
+	public String toString(){
+		String def = "Nom : " + nom + "\nCapacité : " + capacite;
+		return def;
+	}
+	
+	public Propriete getPropriete() {
+		return propriete;
 	}
 
 	public String getNom() {

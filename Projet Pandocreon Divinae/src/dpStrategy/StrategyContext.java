@@ -2,6 +2,7 @@ package dpStrategy;
 
 import java.util.ArrayList;
 
+import propriete.Origine;
 import carte.Carte;
 
 public class StrategyContext {
@@ -15,7 +16,8 @@ public class StrategyContext {
 		return strategy;
 	}
 	
-	public void choixCarte(ArrayList<Carte> main){
-		strategy.choixCarteAJouer(main);
+	public ArrayList<Carte> choixCarte(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
+		ArrayList<Carte> c = strategy.choixCarteAJouer(main, PAJour, PANuit, PANeant);
+		return c;
 	}
 }

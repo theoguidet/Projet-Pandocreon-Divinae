@@ -1,0 +1,16 @@
+package dpStrategy;
+
+import java.util.ArrayList;
+
+import propriete.Origine;
+import carte.Carte;
+
+public class Strategie implements Strategy{
+
+	@Override
+	public Carte choixCarteAJouer(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant) {
+		
+		
+		return c;
+	}
+}

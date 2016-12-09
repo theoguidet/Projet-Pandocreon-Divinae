@@ -10,7 +10,6 @@ import carte.Carte;
 public class GuideSpirituel extends Carte{
 	
 	protected int nbCroyants;
-	protected Propriete propriete;
 	
 	public GuideSpirituel (){
 		super();

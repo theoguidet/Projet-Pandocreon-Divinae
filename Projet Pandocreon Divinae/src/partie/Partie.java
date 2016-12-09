@@ -94,9 +94,12 @@ public class Partie {
 	
 	public void distribuerDivinites(){
 		Collections.shuffle(divinites);
+		int i = 0;
 		for (Joueur j : joueurs) {
-			j.setDivinite(divinites.get(0));
-			divinites.remove(0);
+			j.setDivinite(divinites.get(i));
+			//divinites.remove(0);
+			i++;
+			System.out.println(j.getDivinite().getPropriete().getOrigine().toString());
 		}
 	}
 	
@@ -354,6 +357,14 @@ public class Partie {
 		partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
+		
+		for (Joueur j : partie.joueurs) {
+			System.out.println(j.getDivinite().getPropriete().getOrigine().toString());
+			j.lancerDe();
+			j.completerMain(partie.cartes);
+			ArrayList<Carte> c = j.choisirCarte();
+			j.jouerCarte(c, partie);
+		}
 		
 		
 	}
