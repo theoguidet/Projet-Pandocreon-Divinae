@@ -19,7 +19,6 @@ public class Propriete {
 		this.dogmes = new ArrayList<String>();
 		dogmes.add(d1);
 		dogmes.add(d2);
-		
 	}
 	
 	public Propriete(String o) {
