@@ -13,7 +13,7 @@ public class GuerriersSaints extends Croyant{
 		this.nom = "Guerriers Saints";
 		this.capacite = "Un Guide Spirituel revient dans la main de sa Divinité. Ses Croyants reviennent au centre de la table.";
 		this.nbCroyants= 4;
-		this.propriete = new Propriete("MYSTIQUE", "NATURE", "SYMBOLES", "JOUR");
+		this.propriete = new Propriete(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.SYMBOLES, Origine.JOUR);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

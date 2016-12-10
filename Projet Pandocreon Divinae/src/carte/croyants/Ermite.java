@@ -8,12 +8,12 @@ public class Ermite extends Croyant{
 	
 
 	
-	public Ermite (String d1, String d2, String d3){
+	public Ermite (Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Ermite";
 		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur, qui choisit la carte. La capacité spéciale du sacrifice est jouée.";
 		this.nbCroyants= 1;
-		this.propriete = new Propriete(d1, d2, d3, "JOUR");
+		this.propriete = new Propriete(d1, d2, d3, Origine.JOUR);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

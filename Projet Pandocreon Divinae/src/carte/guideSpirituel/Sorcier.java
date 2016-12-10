@@ -1,5 +1,7 @@
 package carte.guideSpirituel;
 
+import org.omg.CORBA.ORB;
+
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
@@ -8,7 +10,7 @@ import carte.TypeCarte;
 
 public class Sorcier extends GuideSpirituel{
 	
-	public Sorcier(String d1, String d2, String o){
+	public Sorcier(Dogme d1, Dogme d2, Origine o){
 		super();
 		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(d1, d2, o);

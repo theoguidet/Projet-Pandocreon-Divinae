@@ -3,48 +3,48 @@ package propriete;
 import java.util.ArrayList;
 
 public class Propriete {
-	private ArrayList<String> dogmes;
-	private String origine;
+	private ArrayList<Dogme> dogmes;
+	private Origine origine;
 	
-	public Propriete(String d1, String d2, String d3, String o) {
+	public Propriete(Dogme d1, Dogme d2, Dogme d3, Origine o) {
 		origine = o;
-		this.dogmes = new ArrayList<String>();
+		this.dogmes = new ArrayList<Dogme>();
 		dogmes.add(d1);
 		dogmes.add(d2);
 		dogmes.add(d3);
 	}
 	
-	public Propriete(String d1, String d2, String o) {
+	public Propriete(Dogme d1, Dogme d2, Origine o) {
 		origine = o;
-		this.dogmes = new ArrayList<String>();
+		this.dogmes = new ArrayList<Dogme>();
 		dogmes.add(d1);
 		dogmes.add(d2);
 		
 	}
 	
-	public Propriete(String o) {
+	public Propriete(Origine o) {
 		origine = o;
 		dogmes = null;
 	}
 
 	public Propriete() {
-		origine = "";
+		origine = null;
 		dogmes = null;
 	}
 	
-	public ArrayList<String> getDogmes() {
+	public ArrayList<Dogme> getDogmes() {
 		return dogmes;
 	}
 
-	public void setDogmes(ArrayList<String> dogmes) {
+	public void setDogmes(ArrayList<Dogme> dogmes) {
 		this.dogmes = dogmes;
 	}
 
-	public void setOrigine(String origine) {
+	public void setOrigine(Origine origine) {
 		this.origine = origine;
 	}	
 	
-	public String getOrigine(){
+	public Origine getOrigine(){
 		return this.origine;
 	}	
 }

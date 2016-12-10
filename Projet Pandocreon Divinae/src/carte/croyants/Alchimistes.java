@@ -8,12 +8,12 @@ public class Alchimistes extends Croyant{
 	
 
 	
-	public Alchimistes (String d1, String d2, String d3, String capacite){
+	public Alchimistes (Dogme d1, Dogme d2, Dogme d3, String capacite){
 		super();
 		this.nom = "Alchimistes";
 		this.capacite = capacite;
 		this.nbCroyants= 2;
-		this.propriete = new Propriete(d1, d2, d3, "NUIT");
+		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

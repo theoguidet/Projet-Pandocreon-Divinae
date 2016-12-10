@@ -124,23 +124,23 @@ public class Joueur{
 		switch (resultatDe) {
 		case JOUR:
 			System.out.println("1");
-			if (this.divinite.getPropriete().getOrigine() == "JOUR") {
+			if (this.divinite.getPropriete().getOrigine() == Origine.JOUR) {
 				pointActionJour = pointActionJour +2;
-			}else if (this.divinite.getPropriete().getOrigine() == "AUBE") {
+			}else if (this.divinite.getPropriete().getOrigine() == Origine.AUBE) {
 				pointActionJour++;
 			}
 			break;
 		case NUIT:
 			System.out.println("2");
-			if (this.divinite.getPropriete().getOrigine() == "AUBE") {
+			if (this.divinite.getPropriete().getOrigine() == Origine.AUBE) {
 				pointActionNuit = pointActionNuit +2;
-			}else if (this.divinite.getPropriete().getOrigine()== "CREPUSCULE") {
+			}else if (this.divinite.getPropriete().getOrigine()== Origine.CREPUSCULE) {
 				pointActionNuit++;
 			}
 			break;
 		case NEANT:
 			System.out.println("3");
-			if (this.divinite.getPropriete().getOrigine() == "AUBE" || this.divinite.getPropriete().getOrigine() == "CREPUSCULE") {
+			if (this.divinite.getPropriete().getOrigine() == Origine.AUBE || this.divinite.getPropriete().getOrigine() == Origine.CREPUSCULE) {
 				pointActionNeant++;
 			}
 			break;

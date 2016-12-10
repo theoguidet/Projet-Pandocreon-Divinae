@@ -8,7 +8,7 @@ public class Phoenix extends DeusEx{
 	public Phoenix(){
 		this.nom = "Phoenix";
 		this.capacite = "Permet de bénéficier de la capacité spéciale de l'un de vos Croyants ou Guides Spirituels sans sacrifier la carte.";
-		this.propriete = new Propriete("JOUR");
+		this.propriete = new Propriete(Origine.JOUR);
 	}
 
 	public void utiliserCapacite(){

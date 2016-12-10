@@ -13,7 +13,7 @@ public class Revolutionnaires extends Croyant{
 		this.nom = "Révolutionnaires";
 		this.capacite = "Imposez le sacrifice d'une carte de Croyants à autant de Divinités que vous le voulez. Chaque Divinité choisit la carte à sacrifier. Les capacités spéciales sont jouées";
 		this.nbCroyants= 2;
-		this.propriete = new Propriete("SYMBOLES", "HUMAIN", "CHAOS", "NEANT");
+		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, Origine.NEANT);
 		this.typeCarte = typeCarte.croyant;
 	}
 	

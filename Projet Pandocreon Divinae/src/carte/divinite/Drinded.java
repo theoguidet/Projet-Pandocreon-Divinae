@@ -15,7 +15,7 @@ public class Drinded extends Divinite{
 		this.capacite = "Peut empêcher le sacrifice d'un des Guides Spirituels de n'importe quel joueur.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
-		this.propriete = new Propriete("NATURE", "HUMAIN","SYMBOLES", "JOUR"); 
+		this.propriete = new Propriete(Dogme.NATURE, Dogme.HUMAIN,Dogme.SYMBOLES, Origine.JOUR); 
 	}
 	
 	public static Drinded getInstance(){

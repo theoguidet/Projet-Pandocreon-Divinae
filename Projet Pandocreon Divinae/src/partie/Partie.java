@@ -112,19 +112,19 @@ public class Partie {
 	public void creationJeuDeCarte(){
 		
 		//déclaration des guides spirituels
-		Martyr martyr1 = new Martyr("NATURE", "HUMAIN", "JOUR");
-		Martyr martyr2 = new Martyr("SYMBOLES", "HUMAIN", "NUIT");
-		Martyr martyr3 = new Martyr("NATURE", "CHAOS", "NEANT");
-		Clerc clerc1 = new Clerc("HUMAIN", "CHAOS", "JOUR");
-		Clerc clerc2 = new Clerc("NATURE", "SYMBOLES", "NUIT");
-		Clerc clerc3 = new Clerc("NATURE", "MYSTIQUE", "NEANT");
-		Clerc clerc4 = new Clerc("NATURE", "CHAOS", "JOUR");
-		Clerc clerc5 = new Clerc("MYSTIQUE", "SYMBOLES", "NUIT");
-		Clerc clerc6 = new Clerc("SYMBOLES", "CHAOS", "NEANT");
-		Clerc clerc7 = new Clerc("MYSTIQUE", "CHAOS", "JOUR");
-		Clerc clerc8 = new Clerc("HUMAIN", "NATURE", "NUIT");
-		Devin devin = new Devin("NATURE", "MYSTIQUE", "NEANT");
-		Sorcier sorcier = new Sorcier("MYSTIQUE", "SYMBOLES", "NUIT");
+		Martyr martyr1 = new Martyr(Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
+		Martyr martyr2 = new Martyr(Dogme.SYMBOLES, Dogme.HUMAIN, Origine.NUIT);
+		Martyr martyr3 = new Martyr(Dogme.NATURE, Dogme.CHAOS, Origine.NEANT);
+		Clerc clerc1 = new Clerc(Dogme.HUMAIN, Dogme.CHAOS, Origine.JOUR);
+		Clerc clerc2 = new Clerc(Dogme.NATURE, Dogme.SYMBOLES, Origine.NUIT);
+		Clerc clerc3 = new Clerc(Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
+		Clerc clerc4 = new Clerc(Dogme.NATURE, Dogme.CHAOS, Origine.JOUR);
+		Clerc clerc5 = new Clerc(Dogme.MYSTIQUE, Dogme.SYMBOLES, Origine.NUIT);
+		Clerc clerc6 = new Clerc(Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
+		Clerc clerc7 = new Clerc(Dogme.MYSTIQUE, Dogme.CHAOS, Origine.JOUR);
+		Clerc clerc8 = new Clerc(Dogme.HUMAIN, Dogme.NATURE, Origine.NUIT);
+		Devin devin = new Devin(Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
+		Sorcier sorcier = new Sorcier(Dogme.MYSTIQUE, Dogme.SYMBOLES, Origine.NUIT);
 		Anarchiste anarchiste = new Anarchiste();
 		Paladin paladin = new Paladin();
 		Ascete ascete = new Ascete();
@@ -134,55 +134,55 @@ public class Partie {
 		Shaman shaman = new Shaman();
 		
 		//Declaration des Croyants
-		Moines moines1 = new Moines("HUMAIN", "NATURE", "MYSTIQUE");
-		Moines moines2 = new Moines("HUMAIN", "CHAOS", "MYSTIQUE");
-		Moines moines3 = new Moines("CHAOS", "SYMBOLES", "MYSTIQUE");
-		Moines moines4 = new Moines("HUMAIN", "SYMBOLES", ".MYSTIQUE");
-		Moines moines5 = new Moines("CHAOS", "NATURE", "MYSTIQUE");
-		Travailleurs travailleurs1 = new Travailleurs("SYMBOLES", "HUMAIN", "CHAOS", "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour");
-		Travailleurs travailleurs2 = new Travailleurs("SYMBOLES", "HUMAIN", "CHAOS", "Empêche une Divinité possédant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels durant ce tour.");
-		Travailleurs travailleurs3 = new Travailleurs("MYSTIQUE", "HUMAIN", "CHAOS", "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
-		Ermite ermite1 = new Ermite("MYSTIQUE", "NATURE", "CHAOS");
-		Ermite ermite2 = new Ermite("MYSTIQUE", "NATURE", "SYMBOLES");
+		Moines moines1 = new Moines(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
+		Moines moines2 = new Moines(Dogme.HUMAIN, Dogme.CHAOS, Dogme.MYSTIQUE);
+		Moines moines3 = new Moines(Dogme.CHAOS, Dogme.SYMBOLES, Dogme.MYSTIQUE);
+		Moines moines4 = new Moines(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.MYSTIQUE);
+		Moines moines5 = new Moines(Dogme.CHAOS, Dogme.NATURE, Dogme.MYSTIQUE);
+		Travailleurs travailleurs1 = new Travailleurs(Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour");
+		Travailleurs travailleurs2 = new Travailleurs(Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels durant ce tour.");
+		Travailleurs travailleurs3 = new Travailleurs(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Ermite ermite1 = new Ermite(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
+		Ermite ermite2 = new Ermite(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.SYMBOLES);
 		Integristes integristes = new Integristes();
 		GuerriersSaints guerriersSaints = new GuerriersSaints();
 		Diplomates diplomates = new Diplomates();
-		Demons demon1 = new Demons("HUMAIN", "NATURE", "MYSTIQUE");
-		Demons demon2 = new Demons("MYSTIQUE", "HUMAIN", "CHAOS");
-		Demons demon3 = new Demons("MYSTIQUE", "SYMBOLES", "CHAOS");
-		Demons demon4 = new Demons("MYSTIQUE", "NATURE", "CHAOS");
-		Alchimistes alchimistes1 = new Alchimistes("SYMBOLES", "NATURE", "CHAOS", "Empêche une Divinité possédant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alchimistes alchimistes2 = new Alchimistes("MYSTIQUE", "NATURE", "CHAOS", "Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alchimistes alchimistes3 = new Alchimistes("SYMBOLES", "NATURE", "CHAOS", "Vous piochez deux cartes au hasard dans la main d'une autre Divinité."); 		
-		Vampires vampires1 = new Vampires("HUMAIN", "NATURE", "SYMBOLES");
-		Vampires vampires2 = new Vampires("HUMAIN", "MYSTIQUE", "CHAOS");
+		Demons demon1 = new Demons(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
+		Demons demon2 = new Demons(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
+		Demons demon3 = new Demons(Dogme.MYSTIQUE, Dogme.SYMBOLES, Dogme.CHAOS);
+		Demons demon4 = new Demons(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
+		Alchimistes alchimistes1 = new Alchimistes(Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alchimistes alchimistes2 = new Alchimistes(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alchimistes alchimistes3 = new Alchimistes(Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité."); 		
+		Vampires vampires1 = new Vampires(Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES);
+		Vampires vampires2 = new Vampires(Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS);
 		Lycanthropes lycanthropes = new Lycanthropes();
 		Pillards pillards = new Pillards();
 		Illusionnistes illusionnistes = new Illusionnistes();
-		Esprits esprits1 = new Esprits("HUMAIN", "NATURE", "MYSTIQUE");
-		Esprits esprits2 = new Esprits("MYSTIQUE", "HUMAIN", "CHAOS");
-		Esprits esprits3 = new Esprits("SYMBOLES", "CHAOS", "MYSTIQUE");
-		Esprits esprits4 = new Esprits("SYMBOLES", "NATURE", "MYSTIQUE");
-		Esprits esprits5 = new Esprits("NATURE", "CHAOS", "MYSTIQUE");
-		Alienes alienes1 = new Alienes("HUMAIN", "SYMBOLES", "CHAOS", "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alienes alienes2 = new Alienes("HUMAIN", "NATURE", "SYMBOLES", "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alienes alienes3 = new Alienes("HUMAIN", "MYSTIQUE", "CHAOS", "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Esprits esprits1 = new Esprits(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
+		Esprits esprits2 = new Esprits(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
+		Esprits esprits3 = new Esprits(Dogme.SYMBOLES, Dogme.CHAOS, Dogme.MYSTIQUE);
+		Esprits esprits4 = new Esprits(Dogme.SYMBOLES, Dogme.NATURE, Dogme.MYSTIQUE);
+		Esprits esprits5 = new Esprits(Dogme.NATURE, Dogme.CHAOS, Dogme.MYSTIQUE);
+		Alienes alienes1 = new Alienes(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alienes alienes2 = new Alienes(Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES, "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alienes alienes3 = new Alienes(Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
 		Revenant revenant = new Revenant();
 		Revolutionnaires revolutionnaires = new Revolutionnaires();
 		Nihillistes nihillistes = new Nihillistes();
 		
 		
 		//Declaration des apocalypses
-		Apocalypse apocalypse1 = new Apocalypse("JOUR");
-		Apocalypse apocalypse2 = new Apocalypse("NUIT");
-		Apocalypse apocalypse3 = new Apocalypse("NEANT");
+		Apocalypse apocalypse1 = new Apocalypse(Origine.JOUR);
+		Apocalypse apocalypse2 = new Apocalypse(Origine.NUIT);
+		Apocalypse apocalypse3 = new Apocalypse(Origine.NEANT);
 		Apocalypse apocalypse4 = new Apocalypse(null);
 		Apocalypse apocalypse5 = new Apocalypse(null);
 		
 		//Declaration des DeusEx
 		Bouleversement bouleversement = new Bouleversement();
-		ColereDivine colereDivine1 = new ColereDivine("JOUR");
-		ColereDivine colereDivine2 = new ColereDivine("NUIT");
+		ColereDivine colereDivine1 = new ColereDivine(Origine.JOUR);
+		ColereDivine colereDivine2 = new ColereDivine(Origine.NUIT);
 		Concentration concentration = new Concentration();
 		Diversion diversion = new Diversion();
 		Fourberie fourberie = new Fourberie();
@@ -356,17 +356,16 @@ public class Partie {
 		partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
-		System.out.println(partie.joueurs.get(0).getDivinite().getPropriete().getOrigine());
 		
-		for (Joueur j : partie.joueurs) {
-			j.lancerDe();
-			j.completerMain(partie.cartes);
-			ArrayList<Carte> c = j.choisirCarte();
-			j.jouerCarte(c, partie);
+		while (partie.gagnant != null) {
+			for (Joueur j : partie.joueurs) {
+				j.lancerDe();
+				j.completerMain(partie.cartes);
+				ArrayList<Carte> c = j.choisirCarte();
+				j.jouerCarte(c, partie);
+			}	
 		}
 		
 		clavier.close();
 	}
-
-
 }

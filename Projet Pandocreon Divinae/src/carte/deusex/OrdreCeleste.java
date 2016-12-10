@@ -8,7 +8,7 @@ public class OrdreCeleste extends DeusEx{
 	public OrdreCeleste(){
 		this.nom = "Ordre Celeste";
 		this.capacite = "Vous récupérez un des Guides Spirituels posés devant une autre Divinité et le placez devant vous avec les Croyants qui y sont attachés.";
-		this.propriete = new Propriete("JOUR");
+		this.propriete = new Propriete(Origine.JOUR);
 	}
 	
 	public void utiliserCapacite(){

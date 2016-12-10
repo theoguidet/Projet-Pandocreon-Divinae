@@ -8,7 +8,7 @@ import carte.TypeCarte;
 
 public class Martyr extends GuideSpirituel{
 	
-	public Martyr(String d1, String d2, String o){
+	public Martyr(Dogme d1, Dogme d2, Origine o){
 		super();
 		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(d1, d2, o);
