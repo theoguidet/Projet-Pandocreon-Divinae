@@ -1,18 +1,14 @@
 package partie;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 
 import propriete.Dogme;
 import propriete.Origine;
 import carte.Carte;
-import carte.TypeCarte;
 import carte.apocalypse.Apocalypse;
 import carte.croyants.Alchimistes;
 import carte.croyants.Alienes;
-import carte.croyants.Croyant;
 import carte.croyants.Demons;
 import carte.croyants.Diplomates;
 import carte.croyants.Ermite;
@@ -60,7 +56,6 @@ import carte.guideSpirituel.Ascete;
 import carte.guideSpirituel.Clerc;
 import carte.guideSpirituel.Devin;
 import carte.guideSpirituel.Exorciste;
-import carte.guideSpirituel.GuideSpirituel;
 import carte.guideSpirituel.Martyr;
 import carte.guideSpirituel.Messie;
 import carte.guideSpirituel.Paladin;
@@ -301,6 +296,7 @@ public class Partie {
 	public ArrayList<Joueur> classementJoueurs(){
 		ArrayList<Joueur> joueursTries = new ArrayList<Joueur>();
 		int i;
+		
 		joueursTries.add(0, joueurs.get(0));
 		for (Joueur j : joueurs) {
 			i=0;
@@ -309,11 +305,20 @@ public class Partie {
 			}
 			joueursTries.add(i, j);
 		}
+		
+		System.out.println("Le classement des joueurs est actuellement :");
+		i=nbJoueur;
+		for (Joueur joueur : joueursTries) {
+			System.out.println("[" + i + "] " + joueur.getNom());
+			i--;
+		}
+		
 		return joueursTries;
 	}
 	
 	public void supprimerJoueur(){
 		ArrayList<Joueur> classement = classementJoueurs();
+		System.out.println("Le joueur " + classement.get(0).getNom() + " est éliminé.");
 		joueurs.remove(classement.get(0));
 		nbJoueur--;
 	}
@@ -357,14 +362,16 @@ public class Partie {
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
 		
-		while (partie.gagnant != null) {
+		//while (partie.gagnant == null) {
 			for (Joueur j : partie.joueurs) {
+				j.getDivinite().afficherDivinite();
+				j.afficherMain();
 				j.lancerDe();
 				j.completerMain(partie.cartes);
 				ArrayList<Carte> c = j.choisirCarte();
 				j.jouerCarte(c, partie);
 			}	
-		}
+		//}
 		
 		clavier.close();
 	}

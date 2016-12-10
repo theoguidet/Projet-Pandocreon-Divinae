@@ -18,7 +18,7 @@ public class Carte {
 	}
 	
 	public String toString(){
-		String def = "Nom : " + nom + "\nCapacité : " + capacite;
+		String def = "Type : " + typeCarte + "\n    Nom : " + nom + "\n    Capacité : " + capacite;
 		return def;
 	}
 	

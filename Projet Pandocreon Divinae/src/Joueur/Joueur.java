@@ -1,5 +1,6 @@
 package Joueur;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -52,39 +53,66 @@ public class Joueur{
 	}
 	
 	public void afficherMain(){
+		int i = 1;
 		for (Carte carte : main) {
-			System.out.println(carte.toString());
+			System.out.println("Voici votre main : ");
+			System.out.println("[" + i + "] " +carte.toString());
+			i++;
+		}
+	}
+	
+	public void afficherCartePossible(ArrayList<Carte> c){
+		int i = 1;
+		if (c == null) {
+			System.out.println("Vous ne pouvez jouer aucune cartes !");
+		}else{
+			for (Carte carte : c) {
+				System.out.println("[" + i + "] " +carte.toString());
+				i++;
+			}
 		}
 	}
 	
 	public ArrayList<Carte> choisirCarte(){
-			afficherMain();
-			int i=0;
-			ArrayList<Carte> c = new ArrayList<Carte>();
-			while (i < 7) {
-				Scanner clavier = new Scanner(System.in);
+		int i=0;
+		boolean fin = false;
+		ArrayList<Carte> c = new ArrayList<Carte>();
+		Scanner clavier = new Scanner(System.in);
+		while (fin == false) {
+			if (pointActionJour == 0 && pointActionNuit == 0 && pointActionNeant == 0) {
+				fin = true;
+			}else{
 				i = clavier.nextInt();
-				c.add(main.get(i));
+				if (i>7) {
+					fin = true;
+				}else{
+					c.add(main.get(i));
+					enleverPointAction(main.get(i).getPropriete().getOrigine());
+				}
 			}
 			
+		}
+		clavier.close();
 		return c;
 	}
-	
+
 	public void jouerCarte(ArrayList<Carte> c, Partie partie){
-		Plateau p = Plateau.getInstance();
-		for (Carte carte : c) {
-			if (carte.getTypeCarte() == TypeCarte.croyant) {
-				p.poserCroyantLibre((Croyant)carte);
-			}else if (carte.getTypeCarte() == TypeCarte.guideSpirituel) {
-				guideRattaches.add((GuideSpirituel)carte);
-			}else if (carte.getTypeCarte() == TypeCarte.apocalyspe) {
-				carte.utiliserCapacite();
-				partie.ajouterADefausse(carte);
-			}else if (carte.getTypeCarte() == TypeCarte.deusEx) {
-				carte.utiliserCapacite();
-				partie.ajouterADefausse(carte);
+		if (c != null) {
+			Plateau p = Plateau.getInstance();
+			for (Carte carte : c) {
+				if (carte.getTypeCarte() == TypeCarte.croyant) {
+					p.poserCroyantLibre((Croyant)carte);
+				}else if (carte.getTypeCarte() == TypeCarte.guideSpirituel) {
+					guideRattaches.add((GuideSpirituel)carte);
+				}else if (carte.getTypeCarte() == TypeCarte.apocalyspe) {
+					carte.utiliserCapacite();
+					partie.ajouterADefausse(carte);
+				}else if (carte.getTypeCarte() == TypeCarte.deusEx) {
+					carte.utiliserCapacite();
+					partie.ajouterADefausse(carte);
+				}
+				main.remove(c);
 			}
-			main.remove(c);
 		}
 	}
 
@@ -123,7 +151,6 @@ public class Joueur{
 	public void calculerPointAction(Origine resultatDe){
 		switch (resultatDe) {
 		case JOUR:
-			System.out.println("1");
 			if (this.divinite.getPropriete().getOrigine() == Origine.JOUR) {
 				pointActionJour = pointActionJour +2;
 			}else if (this.divinite.getPropriete().getOrigine() == Origine.AUBE) {
@@ -131,7 +158,6 @@ public class Joueur{
 			}
 			break;
 		case NUIT:
-			System.out.println("2");
 			if (this.divinite.getPropriete().getOrigine() == Origine.AUBE) {
 				pointActionNuit = pointActionNuit +2;
 			}else if (this.divinite.getPropriete().getOrigine()== Origine.CREPUSCULE) {
@@ -139,7 +165,6 @@ public class Joueur{
 			}
 			break;
 		case NEANT:
-			System.out.println("3");
 			if (this.divinite.getPropriete().getOrigine() == Origine.AUBE || this.divinite.getPropriete().getOrigine() == Origine.CREPUSCULE) {
 				pointActionNeant++;
 			}
@@ -148,17 +173,60 @@ public class Joueur{
 		default:
 			break;
 		}
+		ArrayList<Carte> cartePossible = new ArrayList<Carte>();
+		if (pointActionJour > 0) {
+			for (Carte c : main) {
+				if (c.getPropriete().getOrigine() != null) {
+					if (c.getPropriete().getOrigine() == Origine.JOUR) {
+						cartePossible.add(c);
+					}
+				}
+				
+			}
+		}
+		if (pointActionNuit > 0) {
+			for (Carte c : main) {
+				if (c.getPropriete().getOrigine() != null) {
+					if (c.getPropriete().getOrigine() == Origine.NUIT) {
+						cartePossible.add(c);
+					}
+				}
+				
+			}
+		}
+		if (pointActionNeant > 0) {
+			for (Carte c : main) {
+				if (c.getPropriete().getOrigine() != null) {
+					if (c.getPropriete().getOrigine() == Origine.NEANT) {
+						cartePossible.add(c);
+					}
+				}
+				
+			}
+		}
+		for (Carte c : main) {
+			if (c.getPropriete() == null) {
+				cartePossible.add(c);
+			}
+		}
+
+		System.out.println("Vous avez : ");
+		System.out.println(pointActionJour + "point(s) d'action jour");
+		System.out.println(pointActionNuit + "point(s) d'action nuit");
+		System.out.println(pointActionNeant + "point(s) d'action neant");
+		System.out.println("Vous ne pouvez jouer que ces cartes : ");
+		afficherCartePossible(cartePossible);
 	}
 	
-	public void enleverPointAction(String o){
+	public void enleverPointAction(Origine o){
 		switch (o) {
-		case "JOUR":
+		case JOUR:
 			pointActionJour--;
 			break;
-		case "NEANT":
+		case NEANT:
 			pointActionNeant--;
 			break;
-		case "NUIT":
+		case NUIT:
 			pointActionNuit--;
 			break;
 		default:
