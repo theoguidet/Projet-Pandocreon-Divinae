@@ -6,6 +6,7 @@ import Joueur.Joueur;
 import partie.Plateau;
 import propriete.Propriete;
 import carte.Carte;
+import carte.TypeCarte;
 
 public class GuideSpirituel extends Carte{
 	
@@ -13,6 +14,7 @@ public class GuideSpirituel extends Carte{
 	
 	public GuideSpirituel (){
 		super();
+		typeCarte = TypeCarte.guideSpirituel;
 	}
 	
 	public void attacherCroyant(Joueur j){

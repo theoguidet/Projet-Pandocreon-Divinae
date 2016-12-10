@@ -104,7 +104,7 @@ public class Partie {
 		}
 	}
 
-	public void creationJeuDeCarte(){
+	public ArrayList<Carte> creationJeuDeCarte(){
 		
 		//déclaration des guides spirituels
 		Martyr martyr1 = new Martyr(Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
@@ -291,6 +291,7 @@ public class Partie {
 		divinites.add(Shingva.getInstance());
 		divinites.add(Yarstur.getInstance());
 		
+		return cartes;
 	}
 		
 	public ArrayList<Joueur> classementJoueurs(){
@@ -354,24 +355,31 @@ public class Partie {
 	}
 
 	public static void main(String[] args){
-		System.out.println("Combien de joueurs voulez-vous affronter ?");
+		System.out.println("Combien de joueurs voulez-vous dans la partie ?");
 		Scanner clavier = new Scanner(System.in);
 		int nbJoueur = clavier.nextInt();
 		Partie partie = new Partie(nbJoueur);
-		partie.creationJeuDeCarte();
+		ArrayList<Carte> jeuDeCartes = partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
 		
-		//while (partie.gagnant == null) {
-			for (Joueur j : partie.joueurs) {
-				j.getDivinite().afficherDivinite();
-				j.afficherMain();
-				j.lancerDe();
-				j.completerMain(partie.cartes);
-				ArrayList<Carte> c = j.choisirCarte();
-				j.jouerCarte(c, partie);
-			}	
-		//}
+		partie.joueurs.get(0).afficherMain();
+		partie.joueurs.get(0).choisirCarteADefausser(partie);
+		partie.joueurs.get(0).afficherMain();
+		
+//		while (partie.gagnant == null) {
+//			for (Joueur j : partie.joueurs) {
+//				j.getDivinite().afficherDivinite();
+//				j.afficherMain();
+//				j.choisirCarteADefausser(partie);
+//				j.completerMain(jeuDeCartes);
+//				j.afficherMain();
+//				j.lancerDe();
+//				j.completerMain(partie.cartes);
+//				ArrayList<Carte> c = j.choisirCarte();
+//				j.jouerCarte(c, partie);
+//			}	
+//		}
 		
 		clavier.close();
 	}

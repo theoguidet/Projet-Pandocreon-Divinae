@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="carte.guideSpirituel.Tyran"/>
 <fullyQualifiedTypeName name="carte.guideSpirituel.Messie"/>
 <fullyQualifiedTypeName name="carte.guideSpirituel.Shaman"/>
-<fullyQualifiedTypeName name="propriete.Dogme"/>
 <fullyQualifiedTypeName name="carte.divinite.Brewalen"/>
 <fullyQualifiedTypeName name="carte.divinite.Drinded"/>
 <fullyQualifiedTypeName name="carte.divinite.Gorpa"/>
@@ -22,6 +21,13 @@
 <fullyQualifiedTypeName name="carte.divinite.Yarstur"/>
 <fullyQualifiedTypeName name="carte.TypeCarte"/>
 <fullyQualifiedTypeName name="carte.apocalypse.Apocalypse"/>
-<fullyQualifiedTypeName name="propriete.Origine"/>
 <fullyQualifiedTypeName name="java.security.AllPermission"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.ORB"/>
+<fullyQualifiedTypeName name="propriete.Dogme"/>
+<fullyQualifiedTypeName name="propriete.Origine"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="carte.Carte"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
 </qualifiedTypeNameHistroy>

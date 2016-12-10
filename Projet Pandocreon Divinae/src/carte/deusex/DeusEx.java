@@ -1,10 +1,11 @@
 package carte.deusex;
-import propriete.Propriete;
 import carte.Carte;
+import carte.TypeCarte;
 
 public class DeusEx extends Carte{
 	
 	public DeusEx(){
 		super();
+		typeCarte = TypeCarte.deusEx;
 	}
 }
