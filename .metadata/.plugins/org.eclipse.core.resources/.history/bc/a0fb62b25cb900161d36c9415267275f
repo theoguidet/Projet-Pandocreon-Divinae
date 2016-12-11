@@ -1,9 +1,0 @@
-package Carte;
-
-public class Martyr extends Carte{
-	
-	public Martyr(String nom, String capacite, boolean estDistribuee){
-		super(capacite, capacite, estDistribuee);
-	}
-
-}

@@ -1,6 +1,7 @@
 package Joueur;
 
 import java.util.ArrayList;
+
 import carte.Carte;
 import carte.TypeCarte;
 import carte.croyants.Croyant;
@@ -11,46 +12,111 @@ import dpStrategy.Strategie;
 import dpStrategy.StrategyContext;
 
 public class JoueurVirtuel extends Joueur{
-	
+
 	public JoueurVirtuel(String nom){
 		super(nom);
 		this.estVirtuel = true;
 	}
-	
-	public void jouerUneCarte(Carte c, Partie partie){
-		Plateau p = Plateau.getInstance();
 
-		if (c.getTypeCarte() == TypeCarte.croyant) {
-			p.poserCroyantLibre((Croyant)c);
-		}else if (c.getTypeCarte() == TypeCarte.guideSpirituel) {
-			guideRattaches.add((GuideSpirituel)c);
-		}else if (c.getTypeCarte() == TypeCarte.apocalyspe) {
-			c.utiliserCapacite();
-			partie.ajouterADefausse(c);
-		}else if (c.getTypeCarte() == TypeCarte.deusEx) {
-			c.utiliserCapacite();
-			partie.ajouterADefausse(c);
-		}
-		main.remove(c);
-	}
-	
-	public ArrayList<Carte> choisirCarte(){
+	public void choisirCarteAJouer(Partie p){
 		StrategyContext context = new StrategyContext();
 		context.setStrategie(new Strategie());
 		ArrayList<Carte> cartesAJouer = context.choixCarte(main, pointActionJour, pointActionNuit, pointActionNeant);
-		return cartesAJouer;
-	}
-
-	public void jouerCarte(Partie partie){
-		StrategyContext context = new StrategyContext();
-		context.setStrategie(new Strategie());
-		ArrayList<Carte> cartesAJouer = context.choixCarte(main, pointActionJour, pointActionNuit, pointActionNeant);
+		jouerCarte(cartesAJouer, p);
+		
+		afficherCarteJouer(cartesAJouer);
 		for (Carte carte : cartesAJouer) {
-			jouerUneCarte(carte, partie);
+			main.remove(carte);
+		}
+		
+	}
+
+	public void choisirCarteADefausser(Partie p){
+		StrategyContext context = new StrategyContext();
+		context.setStrategie(new Strategie());
+		ArrayList<Carte> cartesADefausser = context.choixCarteDefausse(main, pointActionJour, pointActionNuit, pointActionNeant);
+		afficherCarteDefausser(cartesADefausser);
+		for (Carte carte : cartesADefausser) {
+			p.ajouterADefausse(carte);
+			main.remove(carte);
+		}
+	}
+
+	public void choisirCarteASacrifier(Partie p){
+		StrategyContext context = new StrategyContext();
+		context.setStrategie(new Strategie());
+		ArrayList<Carte> cartesASacrifier = context.choixCarteDefausse(main, pointActionJour, pointActionNuit, pointActionNeant);
+		afficherCarteSacrifier(cartesASacrifier);
+		for (Carte carte : cartesASacrifier) {
+			carte.utiliserCapacite();
+			if (carte.getTypeCarte()==TypeCarte.guideSpirituel) {
+				guideRattaches.remove(carte);
+			}else if (carte.getTypeCarte()== TypeCarte.croyant) {
+				for (GuideSpirituel guide : guideRattaches) {
+					for (Carte croyant : guide.getCroyantRattaches()) {
+						if (croyant == carte) {
+							guide.getCroyantRattaches().remove(croyant);
+						}
+					}
+				}
+			}
+			p.ajouterADefausse(carte);
+		}
+	}
+
+	public void afficherCarteJouer(ArrayList<Carte> c){
+		if (c == null) {
+			System.out.println(nom + " n'a pas joué de cartes : ");
+		}else{
+			int i = 0;
+			System.out.println(nom + " a joué ces cartes : ");
+			for (Carte carte : c) {
+				System.out.println("[" + i + "] " + carte.toString());
+				i++;
+			}
 		}
 	}
 	
-	public void afficherMain(){}
+	public void afficherCarteSacrifier(ArrayList<Carte> c){
+		if (c == null) {
+			System.out.println(nom + " n'a pas sacrifié de cartes : ");
+		}else{
+			int i = 0;
+			System.out.println(nom + " a sacrifié ces cartes : ");
+			for (Carte carte : c) {
+				System.out.println("[" + i + "] " + carte.toString());
+				i++;
+			}
+		}
+	}
 	
-	public void choisirCarteADefausser(){}
+	public void afficherCarteDefausser(ArrayList<Carte> c){
+		if (c == null) {
+			System.out.println(nom + " n'a pas défaussé de cartes : ");
+		}else{
+			int i = 0;
+			System.out.println(nom + " a défaussé ces cartes : ");
+			for (Carte carte : c) {
+				System.out.println("[" + i + "] " + carte.toString());
+				i++;
+			}
+		}
+	}
+	
+	
+	
+	public void tourDeJeu(Partie p){
+		lancerDe();
+		choisirCarteADefausser(p);
+		completerMain(p.getCartes());
+		choisirCarteAJouer(p);
+		choisirCarteASacrifier(p);
+		afficherPointPriere();
+		
+	}
+	
+	public void afficherPointPriere(){
+		System.out.println(nom +" a " + calculerScore() + " point(s) de prière(s).");
+	}
+
 }

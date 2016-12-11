@@ -1,6 +1,7 @@
 package Joueur;
 
 import java.util.ArrayList;
+
 import partie.Partie;
 import partie.Plateau;
 import propriete.Origine;
@@ -36,7 +37,6 @@ public class Joueur{
 	
 	public void choisirCarteADefausser(Partie p){
 		String rep = "";
-		//Scanner sc = new Scanner(System.in);
 		boolean defausser = false;
 		boolean continuer = true;
 		System.out.println("Voulez-vous défausser une/des carte(s) ? o/n");
@@ -85,7 +85,6 @@ public class Joueur{
 			p.ajouterADefausse(carte);
 			main.remove(carte);
 		}
-		//sc.close();
 	}
 	
 	public Carte defausserCarte(int i){
@@ -127,7 +126,7 @@ public class Joueur{
 		return c;
 	}
 	
-	public ArrayList<Carte> choisirCarte(ArrayList<Carte> cartePossible){
+	public ArrayList<Carte> choisirCarteAJouer(ArrayList<Carte> cartePossible){
 		int i=0;
 		boolean fin = false;
 		ArrayList<Carte> carteAJOuer = new ArrayList<Carte>();
@@ -216,10 +215,6 @@ public class Joueur{
 	public void ajouterCroyantRattaches(Croyant c) {
 		this.croyantRattaches.add(c);
 	}
-
-	public void sacrifierCarte(Carte c){
-		c.utiliserCapacite();
-	}
 	
 	public ArrayList<Carte> lancerDe(){
 		int tirageDe, max=6, min=1;
@@ -237,9 +232,9 @@ public class Joueur{
 
 	public int calculerScore(){
 		nbPrieres = 0;
-		for (Croyant c : croyantRattaches) {
-			if (c.getTypeCarte() == TypeCarte.croyant) {
-				nbPrieres = nbPrieres + c.getNbCroyants();
+		for (GuideSpirituel guide : guideRattaches) {
+			for (Carte croyant : guide.getCroyantRattaches()) {
+				nbPrieres = nbPrieres + ((Croyant) croyant).getNbCroyants();
 			}
 		}
 		return nbPrieres;
@@ -303,7 +298,9 @@ public class Joueur{
 		System.out.println(pointActionNuit + "point(s) d'action nuit");
 		System.out.println(pointActionNeant + "point(s) d'action neant");
 		System.out.println("Vous ne pouvez jouer que ces cartes : ");
-		afficherCartePossible(cartePossible);
+		if (estVirtuel) {}else{
+			afficherCartePossible(cartePossible);
+		}
 		return cartePossible;
 	}
 	
@@ -338,7 +335,6 @@ public class Joueur{
 	
 	public void choisirCarteASacrifier(ArrayList<Croyant> croyants, ArrayList<GuideSpirituel> guides, Partie p){
 		String rep = "";
-		//Scanner sc = new Scanner(System.in);
 		boolean sacrifier = false;
 		boolean continuer = true;
 		System.out.println("Voulez-vous sacrifier une/des carte(s) ? o/n");
@@ -390,15 +386,43 @@ public class Joueur{
 				sacrifier = false;
 			}
 		}
-		
-		
 		for (Carte carte : carteASacrifier) {
+			carte.utiliserCapacite();
+			if (carte.getTypeCarte()==TypeCarte.guideSpirituel) {
+				guideRattaches.remove(carte);
+			}else if (carte.getTypeCarte()== TypeCarte.croyant) {
+				for (GuideSpirituel guide : guideRattaches) {
+					for (Carte croyant : guide.getCroyantRattaches()) {
+						if (croyant == carte) {
+							guide.getCroyantRattaches().remove(croyant);
+						}
+					}
+				}
+			}
 			p.ajouterADefausse(carte);
-			main.remove(carte);
+			
 		}
-		//sc.close();
 	}
 
+	public void tourDeJeu(Partie partie){
+		getDivinite().afficherDivinite();
+		afficherMain();
+		choisirCarteADefausser(partie);
+		completerMain(partie.getCartes());
+		afficherMain();
+		ArrayList<Carte> cartePossible = lancerDe();
+		ArrayList<Carte> carteAJouer = choisirCarteAJouer(cartePossible);
+		jouerCarte(carteAJouer, partie);
+		System.out.println("jeu a la fin du tour :");
+		afficherMain();
+		choisirCarteASacrifier(getCroyantRattaches(), getGuideRattaches(), partie);
+		afficherPointPriere();
+	}
+	
+	public void afficherPointPriere(){
+		System.out.println("Vous avez " + calculerScore() + " point(s) de prière(s).");
+	}
+	
 	public String getNom() {
 		return nom;
 	}

@@ -82,12 +82,17 @@ public class Partie {
 		this.divinites = new ArrayList<Divinite>();
 		this.defausse = new ArrayList<Carte>();
 		this.gagnant = null;
-		joueurs.add(new Joueur("moi"));
+		String nom = scanner.nextLine();
+		System.out.println("Entrez votre nom :");
+		nom = scanner.nextLine();
+		joueurs.add(new Joueur(nom));
 		for (int i = 0; i < nbJoueur-1; i++) {
-			joueurs.add(new JoueurVirtuel("joueurVirtuel "+ i));
+			System.out.println("Entrez le nom du joueur virtuel " + i);
+			nom = scanner.nextLine();
+			joueurs.add(new JoueurVirtuel(nom));
 		}
 	}
-	
+
 	public void distribuerDivinites(){
 		Collections.shuffle(divinites);
 		int i = 0;
@@ -360,25 +365,13 @@ public class Partie {
 		//Scanner clavier = new Scanner(System.in);
 		int nbJoueur = scanner.nextInt();
 		Partie partie = new Partie(nbJoueur);
-		ArrayList<Carte> jeuDeCartes = partie.creationJeuDeCarte();
+		partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
 		
-		
-		
 		while (partie.gagnant == null) {
 			for (Joueur j : partie.joueurs) {
-				j.getDivinite().afficherDivinite();
-				j.afficherMain();
-				j.choisirCarteADefausser(partie);
-				j.completerMain(jeuDeCartes);
-				j.afficherMain();
-				ArrayList<Carte> cartePossible = j.lancerDe();
-				ArrayList<Carte> carteAJouer = j.choisirCarte(cartePossible);
-				j.jouerCarte(carteAJouer, partie);
-				System.out.println("jeu a la fin du tour :");
-				j.afficherMain();
-				j.choisirCarteASacrifier(j.getCroyantRattaches(), j.getGuideRattaches(), partie);
+				j.tourDeJeu(partie);
 			}	
 		}
 		

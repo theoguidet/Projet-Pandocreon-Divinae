@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import propriete.Origine;
 import carte.Carte;
+import carte.guideSpirituel.GuideSpirituel;
 
 public class StrategyContext {
 	private Strategy strategy;
@@ -18,6 +19,16 @@ public class StrategyContext {
 	
 	public ArrayList<Carte> choixCarte(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
 		ArrayList<Carte> c = strategy.choixCarteAJouer(main, PAJour, PANuit, PANeant);
+		return c;
+	}
+	
+	public ArrayList<Carte> choixCarteSacrifice(ArrayList<GuideSpirituel> guide){
+		ArrayList<Carte> c = strategy.choixCarteASacrifier(guide);
+		return c;
+	}
+	
+	public ArrayList<Carte> choixCarteDefausse(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
+		ArrayList<Carte> c = strategy.choixCarteADefausser(main, PAJour, PANuit, PANeant);
 		return c;
 	}
 }

@@ -1,5 +1,6 @@
 package carte.guideSpirituel;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Joueur.Joueur;
@@ -11,10 +12,14 @@ import carte.TypeCarte;
 public class GuideSpirituel extends Carte{
 	
 	protected int nbCroyants;
+	protected int nbCarteCroyantRattaches;
+	protected ArrayList<Carte> croyantRattaches;
 	
 	public GuideSpirituel (){
 		super();
 		typeCarte = TypeCarte.guideSpirituel;
+		nbCarteCroyantRattaches = 0;
+		croyantRattaches = new ArrayList<Carte>();
 	}
 	
 	public void attacherCroyant(Joueur j){
@@ -41,6 +46,14 @@ public class GuideSpirituel extends Carte{
 				
 			}
 		}
+	}
+
+	public int getNbCarteCroyantRattaches() {
+		return nbCarteCroyantRattaches;
+	}
+
+	public ArrayList<Carte> getCroyantRattaches() {
+		return croyantRattaches;
 	}
 
 
