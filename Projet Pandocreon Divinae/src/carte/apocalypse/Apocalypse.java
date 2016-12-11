@@ -13,12 +13,7 @@ public class Apocalypse extends Carte{
 		this.nom = "Apocalypse";
 		this.capacite = "Vous faites perdre le joueur ayant le moins de prières (4 joueurs ou plus) ou vous faites gagner le joueur ayant le plus de prières (2 ou 3 joueurs).";
 		this.typeCarte = TypeCarte.apocalyspe;
-		
-		if (o==null) {
-			propriete = null;
-		}else {
-			propriete = new Propriete(o);
-		}
+		this.propriete = new Propriete(o);
 	}
 
 	public void utiliserCapacite(Partie p){

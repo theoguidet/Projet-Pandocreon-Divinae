@@ -1,9 +1,6 @@
 package Joueur;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import partie.Partie;
 import partie.Plateau;
 import propriete.Origine;
@@ -23,6 +20,7 @@ public class Joueur{
 	protected ArrayList<Croyant> croyantRattaches;
 	protected ArrayList<GuideSpirituel> guideRattaches;
 	protected Divinite divinite;
+	protected boolean estVirtuel;
 
 	public Joueur(String nom) {
 		this.nom = nom;
@@ -33,18 +31,26 @@ public class Joueur{
 		this.main = new ArrayList<Carte>();
 		this.croyantRattaches = new ArrayList<Croyant>();
 		this.guideRattaches = new ArrayList<GuideSpirituel>();
+		this.estVirtuel = false;
 	}
 	
 	public void choisirCarteADefausser(Partie p){
 		String rep = "";
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 		boolean defausser = false;
-		
-		while(defausser == false){
-			System.out.println("Voulez-vous défausser une/des carte(s) ? o/n");
-			rep = sc.next();
+		boolean continuer = true;
+		System.out.println("Voulez-vous défausser une/des carte(s) ? o/n");
+		while(continuer == true){
+			rep = Partie.scanner.nextLine();
+			
 			if (rep.equals("o")) {
 				defausser = true;
+				continuer = false;
+			}else if (rep.equals("n")) {
+				defausser = false;
+				continuer = false;
+			}else{
+				continuer = true;
 			}
 		}
 		
@@ -55,20 +61,20 @@ public class Joueur{
 			
 
 			System.out.println("Entrez le numéro de la carte à défausser : ");
-			i = sc.nextInt();
-			if ((i <= main.size() && i >= 1)) {
+			i = Partie.scanner.nextInt();
+			if ((i <= main.size() && i >= 0)) {
 				if(indiceCarteADefausser.contains(i)){
 					System.out.println("Ce numéro ne correspond pas.");
 				}else{
-					System.out.println("ajout");
-					carteADefausser.add(main.get(i-1));
+					indiceCarteADefausser.add(i);
+					carteADefausser.add(main.get(i));
 				}
 			}else{
 				System.out.println("Ce numéro ne correspond pas.");
 			}
 
 			System.out.println("Continuer ? o/n");
-			rep = sc.next();
+			rep = Partie.scanner.next();
 			if (rep.equals("n") ) {
 				defausser = false;
 			}
@@ -79,7 +85,7 @@ public class Joueur{
 			p.ajouterADefausse(carte);
 			main.remove(carte);
 		}
-		sc.close();
+		//sc.close();
 	}
 	
 	public Carte defausserCarte(int i){
@@ -100,7 +106,7 @@ public class Joueur{
 	}
 	
 	public void afficherMain(){
-		int i = 1;
+		int i = 0;
 		System.out.println("Voici votre main : ");
 		for (Carte carte : main) {
 			System.out.println("[" + i + "] " +carte.toString());
@@ -108,9 +114,9 @@ public class Joueur{
 		}
 	}
 	
-	public void afficherCartePossible(ArrayList<Carte> c){
-		int i = 1;
-		if (c == null) {
+	public ArrayList<Carte> afficherCartePossible(ArrayList<Carte> c){
+		int i = 0;
+		if (c.isEmpty()) {
 			System.out.println("Vous ne pouvez jouer aucune cartes !");
 		}else{
 			for (Carte carte : c) {
@@ -118,47 +124,91 @@ public class Joueur{
 				i++;
 			}
 		}
+		return c;
 	}
 	
-	public ArrayList<Carte> choisirCarte(){
+	public ArrayList<Carte> choisirCarte(ArrayList<Carte> cartePossible){
 		int i=0;
 		boolean fin = false;
-		ArrayList<Carte> c = new ArrayList<Carte>();
-		Scanner clavier = new Scanner(System.in);
+		ArrayList<Carte> carteAJOuer = new ArrayList<Carte>();
+		ArrayList<Integer> indiceCarte = new ArrayList<Integer>();
+		//Scanner clavier = new Scanner(System.in);
 		while (fin == false) {
 			if (pointActionJour == 0 && pointActionNuit == 0 && pointActionNeant == 0) {
 				fin = true;
 			}else{
-				i = clavier.nextInt();
-				if (i>7 || i <1) {
+				i = Partie.scanner.nextInt();
+				if (i>cartePossible.size()-1 || i <0) {
 					fin = true;
 				}else{
-					c.add(main.get(i-1));
-					enleverPointAction(main.get(i).getPropriete().getOrigine());
+					if (verifierPointAction(cartePossible.get(i))) {
+						if (indiceCarte.contains(i)) {
+							System.out.println("Ce numero a deja été choisi !");
+						}else{
+							indiceCarte.add(i);
+							carteAJOuer.add(cartePossible.get(i));
+							enleverPointAction(cartePossible.get(i).getPropriete().getOrigine());
+						}
+					}else{
+						System.out.println("Vous n'avez pas assez de points d'action !");
+					}
 				}
 			}
-			
 		}
-		clavier.close();
-		return c;
+		//clavier.close();
+		return carteAJOuer;
+	}
+	
+	public boolean verifierPointAction(Carte c){
+		boolean ok = false;
+		switch (c.getPropriete().getOrigine()) {
+		case JOUR:
+			if (pointActionJour > 0) {
+				ok = true;
+			}
+			break;
+		case NUIT:
+			if (pointActionNuit > 0) {
+				ok = true;
+			}
+			break;
+		case NEANT:
+			if (pointActionNeant > 0) {
+				ok = true;
+			}
+			break;
+		case NULL:
+			ok = true;
+
+		default:
+			break;
+		}
+		return ok;
 	}
 
 	public void jouerCarte(ArrayList<Carte> c, Partie partie){
 		if (c != null) {
 			Plateau p = Plateau.getInstance();
 			for (Carte carte : c) {
-				if (carte.getTypeCarte() == TypeCarte.croyant) {
+				switch (carte.getTypeCarte()) {
+				case croyant:
 					p.poserCroyantLibre((Croyant)carte);
-				}else if (carte.getTypeCarte() == TypeCarte.guideSpirituel) {
+					break;
+				case guideSpirituel:
 					guideRattaches.add((GuideSpirituel)carte);
-				}else if (carte.getTypeCarte() == TypeCarte.apocalyspe) {
+					break;
+				case deusEx:
 					carte.utiliserCapacite();
 					partie.ajouterADefausse(carte);
-				}else if (carte.getTypeCarte() == TypeCarte.deusEx) {
+					break;
+				case apocalyspe:
 					carte.utiliserCapacite();
 					partie.ajouterADefausse(carte);
+					break;
+				default:
+					break;
 				}
-				main.remove(c);
+				main.remove(carte);
 			}
 		}
 	}
@@ -171,7 +221,7 @@ public class Joueur{
 		c.utiliserCapacite();
 	}
 	
-	public void lancerDe(){
+	public ArrayList<Carte> lancerDe(){
 		int tirageDe, max=6, min=1;
 		ArrayList<Origine> origine = new ArrayList<Origine>();		 
 
@@ -182,7 +232,7 @@ public class Joueur{
 					origine.add(Origine.NEANT);
 		}
 		System.out.println("Le résultat du dé est : " + origine.get(tirageDe));
-		calculerPointAction(origine.get(tirageDe));
+		return calculerPointAction(origine.get(tirageDe));
 	}
 
 	public int calculerScore(){
@@ -195,7 +245,7 @@ public class Joueur{
 		return nbPrieres;
 	}
 	
-	public void calculerPointAction(Origine resultatDe){
+	public ArrayList<Carte> calculerPointAction(Origine resultatDe){
 		switch (resultatDe) {
 		case JOUR:
 			if (this.divinite.getPropriete().getOrigine() == Origine.JOUR) {
@@ -223,36 +273,27 @@ public class Joueur{
 		ArrayList<Carte> cartePossible = new ArrayList<Carte>();
 		if (pointActionJour > 0) {
 			for (Carte c : main) {
-				if (c.getPropriete().getOrigine() != null) {
-					if (c.getPropriete().getOrigine() == Origine.JOUR) {
-						cartePossible.add(c);
-					}
+				if (c.getPropriete().getOrigine() == Origine.JOUR) {
+					cartePossible.add(c);
 				}
-				
 			}
 		}
 		if (pointActionNuit > 0) {
 			for (Carte c : main) {
-				if (c.getPropriete().getOrigine() != null) {
-					if (c.getPropriete().getOrigine() == Origine.NUIT) {
-						cartePossible.add(c);
-					}
+				if (c.getPropriete().getOrigine() == Origine.NUIT) {
+					cartePossible.add(c);
 				}
-				
 			}
 		}
 		if (pointActionNeant > 0) {
 			for (Carte c : main) {
-				if (c.getPropriete().getOrigine() != null) {
-					if (c.getPropriete().getOrigine() == Origine.NEANT) {
-						cartePossible.add(c);
-					}
+				if (c.getPropriete().getOrigine() == Origine.NEANT) {
+					cartePossible.add(c);
 				}
-				
 			}
 		}
 		for (Carte c : main) {
-			if (c.getPropriete() == null) {
+			if (c.getPropriete().getOrigine() == Origine.NULL) {
 				cartePossible.add(c);
 			}
 		}
@@ -263,6 +304,7 @@ public class Joueur{
 		System.out.println(pointActionNeant + "point(s) d'action neant");
 		System.out.println("Vous ne pouvez jouer que ces cartes : ");
 		afficherCartePossible(cartePossible);
+		return cartePossible;
 	}
 	
 	public void enleverPointAction(Origine o){
@@ -279,6 +321,82 @@ public class Joueur{
 		default:
 			break;
 		}
+	}
+	
+	public void afficherCartes(ArrayList<Carte> c){
+		if (c.isEmpty()) {
+			System.out.println("Il n'y a pas de carte a sacrifier.");
+		}else{
+			int i = 0;
+			for (Carte carte : c) {
+				System.out.println("[" + i + "] " + carte.toString());
+				i++;
+			}
+		}
+		
+	}
+	
+	public void choisirCarteASacrifier(ArrayList<Croyant> croyants, ArrayList<GuideSpirituel> guides, Partie p){
+		String rep = "";
+		//Scanner sc = new Scanner(System.in);
+		boolean sacrifier = false;
+		boolean continuer = true;
+		System.out.println("Voulez-vous sacrifier une/des carte(s) ? o/n");
+
+		while(continuer == true){
+			rep = Partie.scanner.nextLine();
+			
+			if (rep.equals("o")) {
+				sacrifier = true;
+				continuer = false;
+			}else if (rep.equals("n")) {
+				sacrifier = false;
+				continuer = false;
+			}else{
+				continuer = true;
+			}
+		}
+		
+		int i = 2;
+		ArrayList<Integer> indiceCarteASacrifier = new ArrayList<Integer>();
+		ArrayList<Carte> carteASacrifier = new ArrayList<Carte>();
+		ArrayList<Carte> carteCroyantGuide = new ArrayList<Carte>();
+		carteCroyantGuide.addAll(croyants);
+		carteCroyantGuide.addAll(guides);
+		if (carteCroyantGuide.isEmpty()) {
+			sacrifier = false;
+			System.out.println("Il n'y a aucune carte a sacrifier.");
+		}else{
+			afficherCartes(carteCroyantGuide);
+		}
+		
+		while (sacrifier == true) {
+			System.out.println("Entrez le numéro de la carte à sacrifier : ");
+			i = Partie.scanner.nextInt();
+			if ((i <= main.size()-1 && i >= 0)) {
+				if(indiceCarteASacrifier.contains(i)){
+					System.out.println("Ce numéro ne correspond pas.");
+				}else{
+					indiceCarteASacrifier.add(i);
+					carteASacrifier.add(main.get(i));
+				}
+			}else{
+				System.out.println("Ce numéro ne correspond pas.");
+			}
+
+			System.out.println("Continuer ? o/n");
+			rep = Partie.scanner.next();
+			if (rep.equals("n") ) {
+				sacrifier = false;
+			}
+		}
+		
+		
+		for (Carte carte : carteASacrifier) {
+			p.ajouterADefausse(carte);
+			main.remove(carte);
+		}
+		//sc.close();
 	}
 
 	public String getNom() {
@@ -343,6 +461,14 @@ public class Joueur{
 	
 	public ArrayList<Croyant> getCroyantGuideRattaches() {
 		return croyantRattaches;
+	}
+
+	public ArrayList<Croyant> getCroyantRattaches() {
+		return croyantRattaches;
+	}
+
+	public ArrayList<GuideSpirituel> getGuideRattaches() {
+		return guideRattaches;
 	}
 
 }

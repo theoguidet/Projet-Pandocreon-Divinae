@@ -73,6 +73,7 @@ public class Partie {
 	private ArrayList<Carte> cartes;
 	private ArrayList<Divinite> divinites;
 	private ArrayList<Carte> defausse;
+	public static Scanner scanner = new Scanner(System.in);
 	
 	public Partie(int nbJoueur){
 		this.nbJoueur = nbJoueur;
@@ -83,7 +84,7 @@ public class Partie {
 		this.gagnant = null;
 		joueurs.add(new Joueur("moi"));
 		for (int i = 0; i < nbJoueur-1; i++) {
-			joueurs.add(new JoueurVirtuel("joueurVirtuel"+ nbJoueur));
+			joueurs.add(new JoueurVirtuel("joueurVirtuel "+ i));
 		}
 	}
 	
@@ -171,8 +172,8 @@ public class Partie {
 		Apocalypse apocalypse1 = new Apocalypse(Origine.JOUR);
 		Apocalypse apocalypse2 = new Apocalypse(Origine.NUIT);
 		Apocalypse apocalypse3 = new Apocalypse(Origine.NEANT);
-		Apocalypse apocalypse4 = new Apocalypse(null);
-		Apocalypse apocalypse5 = new Apocalypse(null);
+		Apocalypse apocalypse4 = new Apocalypse(Origine.NULL);
+		Apocalypse apocalypse5 = new Apocalypse(Origine.NULL);
 		
 		//Declaration des DeusEx
 		Bouleversement bouleversement = new Bouleversement();
@@ -356,31 +357,31 @@ public class Partie {
 
 	public static void main(String[] args){
 		System.out.println("Combien de joueurs voulez-vous dans la partie ?");
-		Scanner clavier = new Scanner(System.in);
-		int nbJoueur = clavier.nextInt();
+		//Scanner clavier = new Scanner(System.in);
+		int nbJoueur = scanner.nextInt();
 		Partie partie = new Partie(nbJoueur);
 		ArrayList<Carte> jeuDeCartes = partie.creationJeuDeCarte();
 		partie.distribuerDivinites();
 		partie.distribuerCarte();
 		
-		partie.joueurs.get(0).afficherMain();
-		partie.joueurs.get(0).choisirCarteADefausser(partie);
-		partie.joueurs.get(0).afficherMain();
 		
-//		while (partie.gagnant == null) {
-//			for (Joueur j : partie.joueurs) {
-//				j.getDivinite().afficherDivinite();
-//				j.afficherMain();
-//				j.choisirCarteADefausser(partie);
-//				j.completerMain(jeuDeCartes);
-//				j.afficherMain();
-//				j.lancerDe();
-//				j.completerMain(partie.cartes);
-//				ArrayList<Carte> c = j.choisirCarte();
-//				j.jouerCarte(c, partie);
-//			}	
-//		}
 		
-		clavier.close();
+		while (partie.gagnant == null) {
+			for (Joueur j : partie.joueurs) {
+				j.getDivinite().afficherDivinite();
+				j.afficherMain();
+				j.choisirCarteADefausser(partie);
+				j.completerMain(jeuDeCartes);
+				j.afficherMain();
+				ArrayList<Carte> cartePossible = j.lancerDe();
+				ArrayList<Carte> carteAJouer = j.choisirCarte(cartePossible);
+				j.jouerCarte(carteAJouer, partie);
+				System.out.println("jeu a la fin du tour :");
+				j.afficherMain();
+				j.choisirCarteASacrifier(j.getCroyantRattaches(), j.getGuideRattaches(), partie);
+			}	
+		}
+		
+		//clavier.close();
 	}
 }

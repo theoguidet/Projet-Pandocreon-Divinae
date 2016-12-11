@@ -1,15 +1,12 @@
 package Joueur;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import carte.Carte;
 import carte.TypeCarte;
 import carte.croyants.Croyant;
 import carte.guideSpirituel.GuideSpirituel;
 import partie.Partie;
 import partie.Plateau;
-import propriete.Origine;
 import dpStrategy.Strategie;
 import dpStrategy.StrategyContext;
 
@@ -17,6 +14,7 @@ public class JoueurVirtuel extends Joueur{
 	
 	public JoueurVirtuel(String nom){
 		super(nom);
+		this.estVirtuel = true;
 	}
 	
 	public void jouerUneCarte(Carte c, Partie partie){
@@ -51,4 +49,8 @@ public class JoueurVirtuel extends Joueur{
 			jouerUneCarte(carte, partie);
 		}
 	}
+	
+	public void afficherMain(){}
+	
+	public void choisirCarteADefausser(){}
 }

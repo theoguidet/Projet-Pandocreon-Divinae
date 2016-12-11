@@ -5,7 +5,8 @@ public enum Origine {
 	NUIT ("Nuit"),
 	CREPUSCULE ("Crepuscule"),
 	NEANT ("Neant"),
-	AUBE ("Aube");
+	AUBE ("Aube"),
+	NULL ("");
 	
 	private String name = "";
 	
