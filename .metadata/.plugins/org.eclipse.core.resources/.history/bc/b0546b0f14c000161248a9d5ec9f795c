@@ -253,8 +253,7 @@ public class Joueur{
 					break;
 				case guideSpirituel:
 					guideRattaches.add((GuideSpirituel)carte);
-					//non géré par le joueur virtuel
-					//((GuideSpirituel)carte).attacherCroyant(this);
+					((GuideSpirituel)carte).attacherCroyant(this);
 					break;
 				case deusEx:
 					carte.utiliserCapacite();

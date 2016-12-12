@@ -46,37 +46,23 @@ public class GuideSpirituel extends Carte{
 			i++;
 			
 		}
-		int choix = Partie.scanner.nextInt();
-		boolean continuer = true;
-		String rep = "";
-		while (continuer) {
-			//Verification si au moins un dogme en commun
-			if (Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(0)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(1)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(2))) {
-				//Verification du nombre de croyant rattachable au guide
-				if (nbCroyants >=  Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants()) {
-
-					j.ajouterCroyantRattaches(Plateau.getInstance().getCroyantLibre().get(choix));
-					nbCroyants = nbCroyants-Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants();
-					Plateau.getInstance().getCroyantLibre().remove(choix);
-
-				}else{
-					System.out.println("Ce croyant regroupe trop de points de prières pour ce guide spirituel.");
-				}
-			}else{
-				System.out.println("Cette carte n'a pas de dogme en commun avec le guide spirituel.");
-			}
+		while (choix < Plateau.getInstance().getCroyantLibre().size() && choix >= 0) {
+			type type = (type) .nextElement();
 			
-			System.out.println("Continuer ? o/n");
-			rep = Partie.scanner.nextLine();
-			if (rep.equals("n")) {
-				continuer = false;
-			}else{
-				continuer = true;
-			}
-				
 		}
+		int choix = Partie.scanner.nextInt();
 		
-		
+		//Verification si au moins un dogme en commun
+		if (Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(0)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(1)) || Plateau.getInstance().getCroyantLibre().get(choix).getPropriete().getDogmes().contains(this.propriete.getDogmes().get(2))) {
+			//Verification du nombre de croyant rattachable au guide
+			if (nbCroyants >=  Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants()) {
+				
+				j.ajouterCroyantRattaches(Plateau.getInstance().getCroyantLibre().get(choix));
+				nbCroyants = nbCroyants-Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants();
+				Plateau.getInstance().getCroyantLibre().remove(choix);
+				
+			}
+		}
 	}
 
 	public int getNbCarteCroyantRattaches() {

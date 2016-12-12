@@ -178,7 +178,7 @@ public class Joueur{
 		ArrayList<Integer> indiceCarte = new ArrayList<Integer>();
 		//Scanner clavier = new Scanner(System.in);
 		while (fin == false) {
-			if (pointActionJour == 0 && pointActionNuit == 0 && pointActionNeant == 0 && cartePossible.isEmpty()) {
+			if (pointActionJour == 0 && pointActionNuit == 0 && pointActionNeant == 0) {
 				fin = true;
 			}else{
 				i = Partie.scanner.nextInt();
@@ -253,8 +253,6 @@ public class Joueur{
 					break;
 				case guideSpirituel:
 					guideRattaches.add((GuideSpirituel)carte);
-					//non géré par le joueur virtuel
-					//((GuideSpirituel)carte).attacherCroyant(this);
 					break;
 				case deusEx:
 					carte.utiliserCapacite();

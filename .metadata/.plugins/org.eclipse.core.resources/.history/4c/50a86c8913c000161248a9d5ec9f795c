@@ -59,13 +59,8 @@ public class GuideSpirituel extends Carte{
 					nbCroyants = nbCroyants-Plateau.getInstance().getCroyantLibre().get(choix).getNbCroyants();
 					Plateau.getInstance().getCroyantLibre().remove(choix);
 
-				}else{
-					System.out.println("Ce croyant regroupe trop de points de prières pour ce guide spirituel.");
 				}
-			}else{
-				System.out.println("Cette carte n'a pas de dogme en commun avec le guide spirituel.");
 			}
-			
 			System.out.println("Continuer ? o/n");
 			rep = Partie.scanner.nextLine();
 			if (rep.equals("n")) {
