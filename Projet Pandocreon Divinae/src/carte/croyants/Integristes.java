@@ -4,10 +4,18 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * Integristes hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Integristes extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 */
 	public Integristes (){
 		super();
 		this.nom = "Integristes";
@@ -17,6 +25,9 @@ public class Integristes extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité de la carte
+	 */
 	public void sacrifice(){
 		
 	}

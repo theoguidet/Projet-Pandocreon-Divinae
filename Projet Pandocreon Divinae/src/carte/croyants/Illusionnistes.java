@@ -3,11 +3,18 @@ package carte.croyants;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-
+/**
+ * Illusionnistes hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Illusionnistes extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 */
 	public Illusionnistes (){
 		super();
 		this.nom = "Illusionnistes";
@@ -17,6 +24,9 @@ public class Illusionnistes extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité de la carte
+	 */
 	public void sacrifice(){
 		
 	}

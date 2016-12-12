@@ -1,0 +1,81 @@
+package carte;
+
+import propriete.Propriete;
+/**
+ * La classe abstraite Carte représente une carte au sens large du jeu.
+ * Elle est caractérisée par :
+ * - un nom
+ * - un type
+ * - une capacité
+ * - des propriétés
+ * @author Admin
+ *
+ */
+
+public abstract class Carte {
+	protected String nom;
+	protected TypeCarte typeCarte;
+	protected String capacite;
+	protected boolean estDistribuee;
+	protected Propriete propriete;
+	
+	/**
+	 * Constructeur de la classe
+	 */
+	public Carte(){
+		this.estDistribuee = false;
+	}
+	
+	/**
+	 * méthode qui sera surchargée dans les classes filles
+	 */
+	public void utiliserCapacite(){}
+	
+	/**
+	 * méthode qui permet un affichage formaté d'une carte
+	 * @return l'affichage formaté avec le type, le nom, et la capacité.
+	 */
+	public String toString(){
+		String def = "Type : " + typeCarte + "\n    Nom : " + nom + "\n    Capacité : " + capacite;
+		return def;
+	}
+	
+	/**
+	 * getter des propriétés de la carte
+	 * @return Les propriétés de la classe.
+	 */
+	public Propriete getPropriete() {
+		return propriete;
+	}
+
+	/**
+	 * getter du nom de la carte
+	 * @return le nom de la carte
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * getter du type de carte
+	 * @return le type de carte
+	 */
+	public TypeCarte getTypeCarte() {
+		return typeCarte;
+	}
+
+	public void setCapacite(String capacite) {
+		this.capacite = capacite;
+	}
+
+	public boolean isEstDistribuee() {
+		return estDistribuee;
+	}
+
+	public void setEstDistribuee(boolean estDistribuee) {
+		this.estDistribuee = estDistribuee;
+	}
+	
+	
+	
+}

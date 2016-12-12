@@ -1,5 +1,10 @@
 package propriete;
 
+/**
+ * énumération de dogme
+ * @author Admin
+ *
+ */
 public enum Dogme {
 
 	NATURE ("Nature"),
@@ -11,10 +16,18 @@ public enum Dogme {
 	
 	private String name = "";
 	
+	/**
+	 * constructeur privé de l'énumération
+	 * @param name
+	 */
 	Dogme (String name){
 		this.name = name;
 	}
 	
+	/**
+	 * affiche le nom
+	 * @return nom
+	 */
 	public String toString(){
 		return name;
 	}

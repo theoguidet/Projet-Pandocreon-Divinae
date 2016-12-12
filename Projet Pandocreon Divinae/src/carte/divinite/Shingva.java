@@ -6,9 +6,23 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+ * Shingva hérite de Divinite
+ * représente une carte divinité du jeu
+ * Cette classe est un singleton
+ * @author Admin
+ *
+ */
 public class Shingva extends Divinite{
+	
+	/**
+	 * instance statique de la classe
+	 */
 	public static Shingva instance;
 	
+	/**
+	 * constructeur privé de la classe 
+	 */
 	private Shingva(){
 		this.nom = "Shingva";
 		this.capacite = "Peut imposer le sacrifice d'un Guide Spirituel ayant le Dogme Symboles ou Nature.";
@@ -18,6 +32,10 @@ public class Shingva extends Divinite{
 		this.propriete = p; 
 	}
 	
+	/**
+	 * méthode statique d'instanciation de la classe
+	 * @return l'instance de la classe
+	 */
 	public static Shingva getInstance(){
 		if (instance == null) {
 			instance = new Shingva();

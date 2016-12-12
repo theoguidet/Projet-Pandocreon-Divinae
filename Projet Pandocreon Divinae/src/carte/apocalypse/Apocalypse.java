@@ -5,9 +5,18 @@ import propriete.Origine;
 import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
-
+/**
+ * Apocalypse hérite de la classe abstraite Carte 
+ * @author Admin
+ *
+ */
 public class Apocalypse extends Carte{
 	
+	/**
+	 * Constructeur de la classe
+	 * @param o
+	 * 		Origine de l'Apocalypse
+	 */
 	public Apocalypse(Origine o){
 		super();
 		this.nom = "Apocalypse";
@@ -16,6 +25,11 @@ public class Apocalypse extends Carte{
 		this.propriete = new Propriete(o);
 	}
 
+	/**
+	 * capacité associée a l'Apocalypse
+	 * @param p
+	 * 		partie en cours
+	 */
 	public void utiliserCapacite(Partie p){
 		if (p.getNbJoueur() >= 4) {
 			p.supprimerJoueur();

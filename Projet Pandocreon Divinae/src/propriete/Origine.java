@@ -1,5 +1,10 @@
 package propriete;
 
+/**
+ * énumération des origines
+ * @author Admin
+ *
+ */
 public enum Origine {
 	JOUR ("Jour"),
 	NUIT ("Nuit"),
@@ -10,10 +15,19 @@ public enum Origine {
 	
 	private String name = "";
 	
+	/**
+	 * constructeur privé de l'énumération
+	 * @param name
+	 * 		nom
+	 */
 	Origine (String name){
 		this.name = name;
 	}
 	
+	/**
+	 * affiche le nom
+	 * @return nom
+	 */
 	public String toString(){
 		return name;
 	}

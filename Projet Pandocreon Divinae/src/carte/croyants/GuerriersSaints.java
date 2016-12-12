@@ -4,10 +4,18 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * GuerriersSaints hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class GuerriersSaints extends Croyant{
 	
 
-	
+	/**
+	 * contructeur de la classe
+	 */
 	public GuerriersSaints (){
 		super();
 		this.nom = "Guerriers Saints";
@@ -17,6 +25,9 @@ public class GuerriersSaints extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité effectuée lors du sacrifice de la carte
+	 */
 	public void sacrifice(){
 		
 	}

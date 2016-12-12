@@ -7,8 +7,25 @@ import carte.Carte;
 import carte.croyants.Croyant;
 import carte.guideSpirituel.GuideSpirituel;
 
+/**
+ * Strategie implemente l'interface Strategy 
+ * représente une stratégie pour les joueurs virtuels
+ * @author Admin
+ *
+ */
 public class Strategie implements Strategy{
 
+	/**
+	 * méthode qui choisi quelles cartes jouer 
+	 * @param main
+	 * 		cartes détenues par le joueur
+	 * @param PAJour
+	 * 		points d'actions d'origine Jour du joueur 
+	 * @param PANuit
+	 * 		points d'actions d'origine Nuit du joueur 
+	 * @param PANeant
+	 * 		points d'actions d'origine Néant du joueur 
+	 */
 	@Override
 	public ArrayList<Carte> choixCarteAJouer(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant) {
 		ArrayList<Carte> carteAJouer = new ArrayList<Carte>();
@@ -32,6 +49,17 @@ public class Strategie implements Strategy{
 		return carteAJouer;
 	}
 
+	/**
+	 * méthode qui choisi quelles cartes défausser
+	 * @param main
+	 * 		cartes détenues par le joueur
+	 * @param PAJour
+	 * 		points d'actions d'origine Jour du joueur 
+	 * @param PANuit
+	 * 		points d'actions d'origine Nuit du joueur 
+	 * @param PANeant
+	 * 		points d'actions d'origine Néant du joueur 
+	 */
 	public ArrayList<Carte> choixCarteADefausser(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
 		ArrayList<Carte> carteADefausser = new ArrayList<Carte>();
 		for (Carte carte : main) {
@@ -48,6 +76,12 @@ public class Strategie implements Strategy{
 		return carteADefausser;
 	}
 
+	/**
+	 * méthode qui choisi quelles cartes sacrifier
+	 * ne sacrifie que des guides spirituels
+	 * @param guide
+	 * 		guides spirituels posés sur la table par le joueur
+	 */
 	public ArrayList<Carte> choixCarteASacrifier(ArrayList<GuideSpirituel> guide){
 		ArrayList<Carte> carteASacrifier = new ArrayList<Carte>();
 		for (GuideSpirituel g : guide) {

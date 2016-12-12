@@ -6,21 +6,28 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+	 * Paladin hérite de GuideSpirituel
+	 * représente une carte du jeu 
+	 * @author Admin
+	 *
+	 */
 public class Paladin extends GuideSpirituel{
 	
-	public Paladin(){
+	/**
+	 * constructeur de la classe 
+	 */
+	public Paladin (){
 		super();
-		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
 		this.nom = "Paladin";
 		this.capacite = "Tous les Croyants, d'Origine Nuit ou Néant et ayant le Dogme Nature, actuellement sur la table sont défaussés.Les capacités spéciales ne sont pas jouées.";
 		this.nbCroyants = 3;
 	}
-	
-	public void attacherCroyant(){
-		
-	}
 
+	/**
+	 * capacité de la carte
+	 */
 	public void utiliserCapacite(){
 		
 	}

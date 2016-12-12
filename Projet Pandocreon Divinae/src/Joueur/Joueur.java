@@ -11,6 +11,11 @@ import carte.croyants.Croyant;
 import carte.divinite.Divinite;
 import carte.guideSpirituel.GuideSpirituel;
 
+/**
+ * Représente un joueur réel 
+ * @author Admin
+ *
+ */
 public class Joueur{
 	protected String nom;
 	protected int nbPrieres;
@@ -23,6 +28,11 @@ public class Joueur{
 	protected Divinite divinite;
 	protected boolean estVirtuel;
 
+	/**
+	 * constructeur de la classe
+	 * @param nom
+	 * 		nom du joueur
+	 */
 	public Joueur(String nom) {
 		this.nom = nom;
 		this.nbPrieres = 0;
@@ -35,6 +45,11 @@ public class Joueur{
 		this.estVirtuel = false;
 	}
 	
+	/**
+	 * Fait choisir les cartes à défausser 
+	 * @param p
+	 * 		instance de la partie
+	 */
 	public void choisirCarteADefausser(Partie p){
 		String rep = "";
 		boolean defausser = false;
@@ -87,23 +102,43 @@ public class Joueur{
 		}
 	}
 	
+	
+	/**
+	 * Défausse une carte de la main du joueur
+	 * @param i
+	 * 		indice de la carte à défausser
+	 * @return	la carte défaussée
+	 */
 	public Carte defausserCarte(int i){
 		Carte c = main.get(i);
 		main.remove(i);
 		return c;
 	}
 	
+	/**
+	 * pioche une carte et l'ajoute dans la main du joueur 
+	 * @param c
+	 * 		pioche du jeu de carte
+	 */
 	public void piocherCarte(ArrayList<Carte> c){
 		main.add(c.get(0));
 		c.remove(0);
 	}
 	
+	/**
+	 * complète la main du joueur
+	 * @param c
+	 * 		pioche du jeu de carte
+	 */
 	public void completerMain(ArrayList<Carte> c){
 		while(main.size()<7){
 			piocherCarte(c);
 		}
 	}
 	
+	/**
+	 * affiche la main du joueur
+	 */
 	public void afficherMain(){
 		int i = 0;
 		System.out.println("Voici votre main : ");
@@ -113,7 +148,12 @@ public class Joueur{
 		}
 	}
 	
-	public ArrayList<Carte> afficherCartePossible(ArrayList<Carte> c){
+	/**
+	 * affiche les cartes que le joueur peut jouer
+	 * @param c
+	 * 		liste des cartes que le joueur peut jouer
+	 */
+	public void afficherCartePossible(ArrayList<Carte> c){
 		int i = 0;
 		if (c.isEmpty()) {
 			System.out.println("Vous ne pouvez jouer aucune cartes !");
@@ -123,9 +163,14 @@ public class Joueur{
 				i++;
 			}
 		}
-		return c;
 	}
 	
+	/**
+	 * Fait choisir les cartes à jouer 
+	 * @param cartePossible
+	 * 		liste des cartes pouvant être jouées
+	 * @return	liste des cartes à jouer
+	 */
 	public ArrayList<Carte> choisirCarteAJouer(ArrayList<Carte> cartePossible){
 		int i=0;
 		boolean fin = false;
@@ -158,6 +203,12 @@ public class Joueur{
 		return carteAJOuer;
 	}
 	
+	/**
+	 * verifie les points d'actions pour pouvoir jouer une carte
+	 * @param c
+	 * 		carte dont on va verifier si le joueur peut la jouer
+	 * @return vrai ou faux selon les points d'actions
+	 */
 	public boolean verifierPointAction(Carte c){
 		boolean ok = false;
 		switch (c.getPropriete().getOrigine()) {
@@ -185,6 +236,13 @@ public class Joueur{
 		return ok;
 	}
 
+	/**
+	 * joue les cartes que le joueur à choisi
+	 * @param c
+	 * 		liste des cartes que le joueur veut jouer
+	 * @param partie
+	 * 		instance de la partie
+	 */
 	public void jouerCarte(ArrayList<Carte> c, Partie partie){
 		if (c != null) {
 			Plateau p = Plateau.getInstance();
@@ -212,10 +270,19 @@ public class Joueur{
 		}
 	}
 
+	/**
+	 * ajoute un croyant rattaché à un guide spirituel
+	 * @param c
+	 * 		croyant devant être rattaché
+	 */
 	public void ajouterCroyantRattaches(Croyant c) {
 		this.croyantRattaches.add(c);
 	}
 	
+	/**
+	 * lance le dé
+	 * @return la liste des cartes pouvant être jouées par le joueur
+	 */
 	public ArrayList<Carte> lancerDe(){
 		int tirageDe, max=6, min=1;
 		ArrayList<Origine> origine = new ArrayList<Origine>();		 
@@ -230,6 +297,10 @@ public class Joueur{
 		return calculerPointAction(origine.get(tirageDe));
 	}
 
+	/**
+	 * calcule le nombre de points de prières du joueur
+	 * @return le nombre de points de prières
+	 */
 	public int calculerScore(){
 		nbPrieres = 0;
 		for (GuideSpirituel guide : guideRattaches) {
@@ -240,6 +311,12 @@ public class Joueur{
 		return nbPrieres;
 	}
 	
+	/**
+	 * calcule les points d'actions du joueur
+	 * @param resultatDe
+	 * 		résultat du dé
+	 * @return la liste des cartes pouvant être jouées
+	 */
 	public ArrayList<Carte> calculerPointAction(Origine resultatDe){
 		switch (resultatDe) {
 		case JOUR:
@@ -304,6 +381,11 @@ public class Joueur{
 		return cartePossible;
 	}
 	
+	/**
+	 * décrémente les points d'actions du joueur
+	 * @param o
+	 * 		Origine des points d'actions devant être décrémentés
+	 */
 	public void enleverPointAction(Origine o){
 		switch (o) {
 		case JOUR:
@@ -320,6 +402,11 @@ public class Joueur{
 		}
 	}
 	
+	/**
+	 * affiche la liste des cartes pouvant être sacrifiées
+	 * @param c
+	 * 		liste des cartes pouvant être sacrifiées 
+	 */
 	public void afficherCartes(ArrayList<Carte> c){
 		if (c.isEmpty()) {
 			System.out.println("Il n'y a pas de carte a sacrifier.");
@@ -333,6 +420,15 @@ public class Joueur{
 		
 	}
 	
+	/**
+	 * Fait choisir les cartes à sacrifier
+	 * @param croyants
+	 * 		liste des croyants pouvant être sacrifiés
+	 * @param guides
+	 * 		liste des guides spirituels pouvant être sacrifiés
+	 * @param p
+	 * 		instance de la partie
+	 */
 	public void choisirCarteASacrifier(ArrayList<Croyant> croyants, ArrayList<GuideSpirituel> guides, Partie p){
 		String rep = "";
 		boolean sacrifier = false;
@@ -404,6 +500,11 @@ public class Joueur{
 		}
 	}
 
+	/**
+	 * appelle les méthode pour un tour de jeu du joueur
+	 * @param partie
+	 * 		instance de la partie
+	 */
 	public void tourDeJeu(Partie partie){
 		getDivinite().afficherDivinite();
 		afficherMain();
@@ -419,6 +520,9 @@ public class Joueur{
 		afficherPointPriere();
 	}
 	
+	/**
+	 * affiche les points de prières du joueur
+	 */
 	public void afficherPointPriere(){
 		System.out.println("Vous avez " + calculerScore() + " point(s) de prière(s).");
 	}
@@ -427,52 +531,16 @@ public class Joueur{
 		return nom;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public int getNbPrieres() {
-		return nbPrieres;
-	}
-
-	public void setNbPrieres(int nbPrieres) {
-		this.nbPrieres = nbPrieres;
-	}
-
 	public int getPointActionJour() {
 		return pointActionJour;
-	}
-
-	public void setPointActionJour(int pointActionJour) {
-		this.pointActionJour = pointActionJour;
 	}
 
 	public int getPointActionNuit() {
 		return pointActionNuit;
 	}
 
-	public void setPointActionNuit(int pointActionNuit) {
-		this.pointActionNuit = pointActionNuit;
-	}
-
 	public int getPointActionNeant() {
 		return pointActionNeant;
-	}
-
-	public void setCroyantGuideRattaches(ArrayList<Croyant> croyantRattaches) {
-		this.croyantRattaches = croyantRattaches;
-	}
-
-	public void setPointActionNeant(int pointActionNeant) {
-		this.pointActionNeant = pointActionNeant;
-	}
-
-	public ArrayList<Carte> getMain() {
-		return main;
-	}
-
-	public void setMain(ArrayList<Carte> main) {
-		this.main = main;
 	}
 
 	public Divinite getDivinite() {

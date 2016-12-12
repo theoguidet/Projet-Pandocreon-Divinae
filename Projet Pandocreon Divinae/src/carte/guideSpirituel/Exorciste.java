@@ -6,21 +6,28 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+ * Exorciste hérite de GuideSpirituel
+ * représente une carte du jeu 
+ * @author Admin
+ *
+ */
 public class Exorciste extends GuideSpirituel{
 	
+	/**
+	 * constructeur de la classe 
+	 */
 	public Exorciste(){
 		super();
-		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(Dogme.MYSTIQUE, Dogme.NATURE, Origine.NEANT);
 		this.nom = "Exorciste";
 		this.capacite = "Une Divinité d'Origine Nuit ou ayant les Dogmes Mystique et Chaos reprend dans sa main l'un de ses Guides Spirituels. Les Croyants qui y étaient attachés sont défaussés.";
 		this.nbCroyants = 1;
 	}
-	
-	public void attacherCroyant(){
-		
-	}
 
+	/**
+	 * capacité de la carte
+	 */
 	public void utiliserCapacite(){
 		
 	}

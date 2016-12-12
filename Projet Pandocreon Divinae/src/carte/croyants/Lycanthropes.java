@@ -4,10 +4,18 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * Lycanthropes hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Lycanthropes extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 */
 	public Lycanthropes (){
 		super();
 		this.nom = "Lycanthropes";
@@ -17,6 +25,9 @@ public class Lycanthropes extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité de la classe
+	 */
 	public void sacrifice(){
 		
 	}

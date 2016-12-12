@@ -3,11 +3,18 @@ package carte.croyants;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-
+/**
+ * Diplomates hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Diplomates extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 */
 	public Diplomates (){
 		super();
 		this.nom = "Diplomates";
@@ -17,6 +24,9 @@ public class Diplomates extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité effectuée lors du sacrifice de la carte
+	 */
 	public void sacrifice(){
 		
 	}

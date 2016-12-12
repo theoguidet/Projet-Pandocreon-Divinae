@@ -4,10 +4,23 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * Vampires hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Vampires extends Croyant{
 	
-
-	
+	/**
+	 * constructeur de la classe
+	 * @param d1
+	 * 		premier dogme
+	 * @param d2
+	 * 		deuxieme dogme
+	 * @param d3
+	 * 		troisieme dogme
+	 */
 	public Vampires (Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Vampires";
@@ -17,6 +30,9 @@ public class Vampires extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité de la carte
+	 */
 	public void sacrifice(){
 		
 	}

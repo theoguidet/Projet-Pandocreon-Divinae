@@ -65,6 +65,11 @@ import carte.guideSpirituel.Tyran;
 import Joueur.Joueur;
 import Joueur.JoueurVirtuel;
 
+/**
+ * classe "mère" de l'application
+ * @author Admin
+ *
+ */
 public class Partie {
 
 	private int nbJoueur;
@@ -75,6 +80,11 @@ public class Partie {
 	private ArrayList<Carte> defausse;
 	public static Scanner scanner = new Scanner(System.in);
 	
+	/**
+	 * constructeur de la classe
+	 * @param nbJoueur
+	 * 		nombre de joueur à créer pour la partie
+	 */
 	public Partie(int nbJoueur){
 		this.nbJoueur = nbJoueur;
 		this.joueurs = new ArrayList<Joueur>();
@@ -93,6 +103,9 @@ public class Partie {
 		}
 	}
 
+	/**
+	 * distribue une divinité par joueur
+	 */
 	public void distribuerDivinites(){
 		Collections.shuffle(divinites);
 		int i = 0;
@@ -103,6 +116,9 @@ public class Partie {
 		}
 	}
 	
+	/**
+	 * distribue 7 cartes par joueur
+	 */
 	public void distribuerCarte(){
 		Collections.shuffle(cartes);
 		for (Joueur joueur : joueurs) {
@@ -110,6 +126,10 @@ public class Partie {
 		}
 	}
 
+	/**
+	 * instanciation des cartes et création de la pioche pour les cartes d'actions et pour les divinités
+	 * @return
+	 */
 	public ArrayList<Carte> creationJeuDeCarte(){
 		
 		//déclaration des guides spirituels
@@ -300,6 +320,10 @@ public class Partie {
 		return cartes;
 	}
 		
+	/**
+	 * établi le classement des joueurs
+	 * @return la liste classée des joueurs
+	 */
 	public ArrayList<Joueur> classementJoueurs(){
 		ArrayList<Joueur> joueursTries = new ArrayList<Joueur>();
 		int i;
@@ -323,6 +347,9 @@ public class Partie {
 		return joueursTries;
 	}
 	
+	/**
+	 * supprime un joueur de la partie
+	 */
 	public void supprimerJoueur(){
 		ArrayList<Joueur> classement = classementJoueurs();
 		System.out.println("Le joueur " + classement.get(0).getNom() + " est éliminé.");
@@ -330,6 +357,9 @@ public class Partie {
 		nbJoueur--;
 	}
 	
+	/**
+	 * determine le gagnant et termine la partie
+	 */
 	public void determinerGagnant(){
 		ArrayList<Joueur> classement = classementJoueurs();
 		gagnant = classement.get(classement.size()-1);
@@ -340,6 +370,9 @@ public class Partie {
 		return nbJoueur;
 	}
 
+	/**
+	 * fini la partie
+	 */
 	public void finirPartie(){
 		
 	}
@@ -348,14 +381,11 @@ public class Partie {
 		return cartes;
 	}
 
-	public void setCartes(ArrayList<Carte> cartes) {
-		this.cartes = cartes;
-	}
-	
-	public ArrayList<Carte> getDefausse() {
-		return defausse;
-	}
-
+	/**
+	 * ajoute une carte à la défausse
+	 * @param c
+	 * 		carte à défausser
+	 */
 	public void ajouterADefausse(Carte c) {
 		this.defausse.add(c);
 	}

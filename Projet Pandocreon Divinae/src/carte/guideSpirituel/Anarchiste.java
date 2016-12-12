@@ -6,8 +6,17 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+ * Anarchiste hérite de GuideSpirituel
+ * représente une carte du jeu 
+ * @author Admin
+ *
+ */
 public class Anarchiste extends GuideSpirituel{
 	
+	/**
+	 * constructeur de la classe 
+	 */
 	public Anarchiste(){
 		super();
 		this.nom = "Anarchiste";
@@ -17,6 +26,9 @@ public class Anarchiste extends GuideSpirituel{
 		this.typeCarte = typeCarte.guideSpirituel;
 	}
 	
+	/**
+	 * capacité de la carte
+	 */
 	public void utiliserCapacite(){
 		
 	}

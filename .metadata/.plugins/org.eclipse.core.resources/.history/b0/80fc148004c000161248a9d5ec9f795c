@@ -1,0 +1,93 @@
+package dpStrategy;
+
+import java.util.ArrayList;
+
+import propriete.Origine;
+import carte.Carte;
+import carte.croyants.Croyant;
+import carte.guideSpirituel.GuideSpirituel;
+
+/**
+ * Strategie implemente l'interface Strategy 
+ * représente une stratégie pour les joueurs virtuels
+ * @author Admin
+ *
+ */
+public class Strategie implements Strategy{
+
+	/**
+	 * méthode qui choisi quelles cartes jouer 
+	 * @param main
+	 * 		cartes détenues par le joueur
+	 * @param PAJour
+	 * 		points d'actions d'origine Jour du joueur 
+	 * @param PANuit
+	 * 		points d'actions d'origine Nuit du joueur 
+	 * @param PANeant
+	 * 		points d'actions d'origine Néant du joueur 
+	 */
+	@Override
+	public ArrayList<Carte> choixCarteAJouer(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant) {
+		ArrayList<Carte> carteAJouer = new ArrayList<Carte>();
+		for (Carte carte : main) {
+			if (PAJour > 0 && carte.getPropriete().getOrigine() == Origine.JOUR) {
+				carteAJouer.add(carte);
+				PAJour--;
+			}
+			if (PANuit > 0 && carte.getPropriete().getOrigine() == Origine.NUIT) {
+				carteAJouer.add(carte);
+				PANuit--;
+			}
+			if (PANeant > 0 && carte.getPropriete().getOrigine() == Origine.NEANT) {
+				carteAJouer.add(carte);
+				PANeant--;
+			}
+			if (carte.getPropriete().getOrigine() == null) {
+				carteAJouer.add(carte);
+			}
+		}
+		return carteAJouer;
+	}
+
+	/**
+	 * méthode qui choisi quelles cartes défausser
+	 * @param main
+	 * 		cartes détenues par le joueur
+	 * @param PAJour
+	 * 		points d'actions d'origine Jour du joueur 
+	 * @param PANuit
+	 * 		points d'actions d'origine Nuit du joueur 
+	 * @param PANeant
+	 * 		points d'actions d'origine Néant du joueur 
+	 */
+	public ArrayList<Carte> choixCarteADefausser(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
+		ArrayList<Carte> carteADefausser = new ArrayList<Carte>();
+		for (Carte carte : main) {
+			if (PAJour == 0 && carte.getPropriete().getOrigine() == Origine.JOUR) {
+				carteADefausser.add(carte);
+			}
+			if (PANuit == 0 && carte.getPropriete().getOrigine() == Origine.NUIT) {
+				carteADefausser.add(carte);
+			}
+			if (PANeant == 0 && carte.getPropriete().getOrigine() == Origine.NEANT) {
+				carteADefausser.add(carte);
+			}
+		}
+		return carteADefausser;
+	}
+
+	/**
+	 * méthode qui choisi quelles cartes sacrifier
+	 * @param guide
+	 * 		guides spirituels posés sur la table par le joueur
+	 */
+	public ArrayList<Carte> choixCarteASacrifier(ArrayList<GuideSpirituel> guide){
+		ArrayList<Carte> carteASacrifier = new ArrayList<Carte>();
+		for (GuideSpirituel g : guide) {
+			if(g.getNbCarteCroyantRattaches() == 0){
+				carteASacrifier.add(g);
+			}
+		}
+		return carteASacrifier;
+	}
+}

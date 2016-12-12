@@ -11,13 +11,29 @@ import partie.Plateau;
 import dpStrategy.Strategie;
 import dpStrategy.StrategyContext;
 
+/**
+ * JoueurVirtuel hérite de Joueur
+ * implémente les même actions que Joueur
+ * @author Admin
+ *
+ */
 public class JoueurVirtuel extends Joueur{
 
+	/**
+	 * constructeur de la classe
+	 * @param nom
+	 * 		nom du joueur virtuel
+	 */
 	public JoueurVirtuel(String nom){
 		super(nom);
 		this.estVirtuel = true;
 	}
 
+	/**
+	 * choisi les cartes à jouer 
+	 * @param p
+	 * 		instance de la partie
+	 */
 	public void choisirCarteAJouer(Partie p){
 		StrategyContext context = new StrategyContext();
 		context.setStrategie(new Strategie());
@@ -31,6 +47,11 @@ public class JoueurVirtuel extends Joueur{
 		
 	}
 
+	/**
+	 * choisi les cartes à défausser 
+	 * @param p
+	 * 		instance de la partie
+	 */
 	public void choisirCarteADefausser(Partie p){
 		StrategyContext context = new StrategyContext();
 		context.setStrategie(new Strategie());
@@ -42,6 +63,11 @@ public class JoueurVirtuel extends Joueur{
 		}
 	}
 
+	/**
+	 * choisi les cartes à sacrifier 
+	 * @param p
+	 * 		instance de la partie
+	 */
 	public void choisirCarteASacrifier(Partie p){
 		StrategyContext context = new StrategyContext();
 		context.setStrategie(new Strategie());
@@ -64,6 +90,11 @@ public class JoueurVirtuel extends Joueur{
 		}
 	}
 
+	/**
+	 * affiche les cartes jouées par le joueur virtuel
+	 * @param c
+	 * 		liste des cartes jouées
+	 */
 	public void afficherCarteJouer(ArrayList<Carte> c){
 		if (c == null) {
 			System.out.println(nom + " n'a pas joué de cartes : ");
@@ -77,6 +108,12 @@ public class JoueurVirtuel extends Joueur{
 		}
 	}
 	
+	
+	/**
+	 * affiche les cartes sacrifiées par le joueur virtuel
+	 * @param c
+	 * 		liste des cartes sacrifiées
+	 */
 	public void afficherCarteSacrifier(ArrayList<Carte> c){
 		if (c == null) {
 			System.out.println(nom + " n'a pas sacrifié de cartes : ");
@@ -90,6 +127,11 @@ public class JoueurVirtuel extends Joueur{
 		}
 	}
 	
+	/**
+	 * affiche les cartes défaussées par le joueur virtuel
+	 * @param c
+	 * 		liste des cartes défaussées
+	 */
 	public void afficherCarteDefausser(ArrayList<Carte> c){
 		if (c == null) {
 			System.out.println(nom + " n'a pas défaussé de cartes : ");
@@ -103,8 +145,9 @@ public class JoueurVirtuel extends Joueur{
 		}
 	}
 	
-	
-	
+	/**
+	 * appelle les méthodes pour un tour de jeu du joueur virtuel
+	 */
 	public void tourDeJeu(Partie p){
 		lancerDe();
 		choisirCarteADefausser(p);
@@ -115,6 +158,9 @@ public class JoueurVirtuel extends Joueur{
 		
 	}
 	
+	/**
+	 * affiche les points de prières du joueur virtuel
+	 */
 	public void afficherPointPriere(){
 		System.out.println(nom +" a " + calculerScore() + " point(s) de prière(s).");
 	}

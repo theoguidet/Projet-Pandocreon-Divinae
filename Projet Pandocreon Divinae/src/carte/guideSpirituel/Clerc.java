@@ -8,21 +8,34 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+ * Clerc hérite de GuideSpirituel
+ * représente une carte du jeu 
+ * @author Admin
+ *
+ */
 public class Clerc extends GuideSpirituel{
 	
+	/**
+	 * constructeur de la classe 
+	 * @param d1
+	 * 		premier dogme
+	 * @param d2
+	 * 		deuxieme dogme
+	 * @param o
+	 * 		Origine
+	 */
 	public Clerc(Dogme d1, Dogme d2, Origine o){
 		super();
-		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(d1, d2, o);
 		this.nom = "Ascete";
 		this.capacite = "Fait gagner un nombre de points d'Action égal au nombre de cartes de Croyants rattachées. L'Origine des points d'Action est au choix du joueur.";
 		this.nbCroyants= 2;
 	}
-	
-	public void attacherCroyant(){
-		
-	}
 
+	/**
+	 * capacité de la carte
+	 */
 	public void utiliserCapacite(){
 		
 	}

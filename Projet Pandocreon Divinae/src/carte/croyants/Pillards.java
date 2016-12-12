@@ -4,10 +4,18 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * Pillards hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Pillards extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 */
 	public Pillards (){
 		super();
 		this.nom = "Pillards";
@@ -17,6 +25,9 @@ public class Pillards extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité de la carte
+	 */
 	public void sacrifice(){
 		
 	}

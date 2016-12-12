@@ -4,10 +4,18 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * Moines hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Revolutionnaires extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 */
 	public Revolutionnaires (){
 		super();
 		this.nom = "Révolutionnaires";
@@ -17,6 +25,9 @@ public class Revolutionnaires extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité de la carte
+	 */
 	public void sacrifice(){
 		
 	}

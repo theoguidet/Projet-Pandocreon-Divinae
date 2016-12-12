@@ -6,10 +6,23 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+ * Killinstred hérite de Divinite
+ * représente une carte divinité du jeu
+ * Cette classe est un singleton
+ * @author Admin
+ *
+ */
 public class Killinstred extends Divinite{
 	
+	/**
+	 * instance statique de la classe
+	 */
 	public static Killinstred instance;
 	
+	/**
+	 * constructeur privé de la classe 
+	 */
 	private Killinstred(){
 		this.nom = "Killinstred";
 		this.capacite = "Peut obliger un joueur à poser une carte Apocalypse s'il en possède une.";
@@ -19,6 +32,10 @@ public class Killinstred extends Divinite{
 		this.propriete = p; 
 	}
 	
+	/**
+	 * méthode statique d'instanciation de la classe
+	 * @return l'instance de la classe
+	 */
 	public static Killinstred getInstance(){
 		if (instance == null) {
 			instance = new Killinstred();

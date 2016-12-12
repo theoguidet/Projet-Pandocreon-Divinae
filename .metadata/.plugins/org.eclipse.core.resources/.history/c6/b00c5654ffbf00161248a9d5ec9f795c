@@ -1,0 +1,23 @@
+package carte.croyants;
+
+import propriete.Dogme;
+import propriete.Origine;
+import propriete.Propriete;
+
+public class Vampires extends Croyant{
+	
+
+	
+	public Vampires (Dogme d1, Dogme d2, Dogme d3){
+		super();
+		this.nom = "Vampires";
+		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifié. La capacité spéciale du sacrifice est jouée.";
+		this.nbCroyants= 1;
+		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
+		this.typeCarte = typeCarte.croyant;
+	}
+	
+	public void sacrifice(){
+		
+	}
+}

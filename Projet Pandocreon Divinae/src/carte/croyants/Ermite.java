@@ -4,10 +4,24 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 
+/**
+ * Ermite hérite de Croyant
+ * représente une carte du jeu
+ * @author Admin
+ *
+ */
 public class Ermite extends Croyant{
 	
 
-	
+	/**
+	 * constructeur de la classe
+	 * @param d1
+	 * 		premier dogme
+	 * @param d2
+	 * 		deuxieme dogme
+	 * @param d3
+	 * 		troisieme dogme
+	 */
 	public Ermite (Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Ermite";
@@ -17,6 +31,9 @@ public class Ermite extends Croyant{
 		this.typeCarte = typeCarte.croyant;
 	}
 	
+	/**
+	 * capacité effectuée lors du sacrifice de la carte
+	 */
 	public void sacrifice(){
 		
 	}

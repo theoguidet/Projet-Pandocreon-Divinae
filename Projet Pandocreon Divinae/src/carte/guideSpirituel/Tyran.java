@@ -6,21 +6,28 @@ import propriete.Propriete;
 import carte.Carte;
 import carte.TypeCarte;
 
+/**
+ * Tyran hérite de GuideSpirituel
+ * représente une carte du jeu 
+ * @author Admin
+ *
+ */
 public class Tyran extends GuideSpirituel{
 	
+	/**
+	 * constructeur de la classe 
+	 */
 	public Tyran(){
 		super();
-		this.nbCroyants= nbCroyants;
 		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
 		this.nom = "Tyran";
 		this.capacite = "Défausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.";
 		this.nbCroyants = 3;
 	}
-	
-	public void attacherCroyant(){
-		
-	}
 
+	/**
+	 * capacité de la carte
+	 */
 	public void utiliserCapacite(){
 		
 	}
