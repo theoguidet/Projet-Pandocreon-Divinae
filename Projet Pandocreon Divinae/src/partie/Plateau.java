@@ -3,11 +3,11 @@ package partie;
 
 import java.util.ArrayList;
 
-import cartesCroyant.Croyant;
+import Carte.cartesCroyant.Croyant;
 
 
 /**
- * singleton qui représente le plateau de jeu 
+ * singleton qui reprï¿½sente le plateau de jeu 
  * @author Admin
  *
  */
@@ -17,14 +17,14 @@ public class Plateau {
 	public static Plateau instance;
 	
 	/**
-	 * constructeur privé de la classe
+	 * constructeur privï¿½ de la classe
 	 */
 	private Plateau(){
 		this.croyantLibre = new ArrayList<Croyant>();
 	}
 	
 	/**
-	 * méthode d'instanciation statique de la classe
+	 * mï¿½thode d'instanciation statique de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Plateau getInstance(){
@@ -44,7 +44,7 @@ public class Plateau {
 	/**
 	 * ajoute un croyant au milieu de la table, visible par tous les joueurs
 	 * @param c
-	 * 		croyant posé sur la table
+	 * 		croyant posï¿½ sur la table
 	 */
 	public void poserCroyantLibre(Croyant c) {
 		this.croyantLibre.add(c);

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import Carte.Carte;
 import Carte.TypeCarte;
+import Carte.cartesCroyant.Croyant;
 import Carte.divinite.Divinite;
 import Carte.guideSpirituel.GuideSpirituel;
-import cartesCroyant.Croyant;
 import partie.Partie;
 import partie.Plateau;
 import propriete.Origine;

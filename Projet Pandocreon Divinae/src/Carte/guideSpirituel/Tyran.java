@@ -3,7 +3,7 @@ package Carte.guideSpirituel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import cartesCroyant.Croyant;
+import Carte.cartesCroyant.Croyant;
 import partie.Partie;
 import partie.Plateau;
 import propriete.Dogme;

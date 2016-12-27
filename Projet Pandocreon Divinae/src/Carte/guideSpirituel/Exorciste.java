@@ -3,8 +3,8 @@ package Carte.guideSpirituel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Carte.cartesCroyant.Croyant;
 import Joueur.Joueur;
-import cartesCroyant.Croyant;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
