@@ -40,7 +40,7 @@ public class Moines extends Croyant{
 		
 			if(this.getProprietaire().isPouvoirRecevoirPointAction()==true){
 				this.getProprietaire().setPointActionJour(this.getProprietaire().getPointActionJour()+1);
-				System.out.println("Point action Nuit:"+ this.getProprietaire().getPointActionNuit());
+				System.out.println("Point action Jour:"+ this.getProprietaire().getPointActionJour());
 			}
 		
 	

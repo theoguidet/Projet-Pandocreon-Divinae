@@ -2,6 +2,7 @@ package joueurs;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.NoSuchElementException;
 
 import cartes.Aleatoire;
 import cartes.Carte;
@@ -134,10 +135,13 @@ public class JoueurVirtuel extends Joueur{
 	 */
 	public Carte choisirCarteVictime(TypeCarte type){
 		int indice=0;
-		
+		try{
 		while(this.getMain().get(indice).getTypeCarte()!= type&&indice<this.getMain().size()){
-			System.out.println("Tapez le numero de la carte"+type.toString()+"victime");
+		
 			indice++;
+		}
+		}catch(NoSuchElementException e){
+			e.printStackTrace();
 		}
 		return this.getMain().get(indice);
 		
