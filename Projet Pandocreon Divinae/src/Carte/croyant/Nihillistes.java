@@ -1,4 +1,4 @@
-package Carte.cartesCroyant;
+package Carte.croyant;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,23 +1,23 @@
-package Carte.cartesCroyant;
+package Carte.croyant;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import Carte.Carte;
 import Carte.TypeCarte;
+import Carte.guideSpirituel.GuideSpirituel;
 import Joueur.Joueur;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-
 /**
- * Travailleurs h�rite de Croyant
+ * Alienes h�rite de Croyant
  * repr�sente une carte du jeu
  * @author Admin
  *
  */
-public class Travailleurs extends Croyant{
+public class Alienes extends Croyant{
 	
 
 	/**
@@ -28,30 +28,31 @@ public class Travailleurs extends Croyant{
 	 * 		deuxieme dogme
 	 * @param d3
 	 * 		troisieme dogme
+	 * @param capacite
+	 * 		description de la capacit� de la carte
 	 */
-	public Travailleurs (int idTravailleurs,Dogme d1, Dogme d2, Dogme d3, String capacite){
+	public Alienes (int idAlienes,Dogme d1, Dogme d2, Dogme d3, String capacite){
 		super();
-		this.nom = "Travaileurs";
+		this.nom = "Ali�n�s";
 		this.capacite = capacite;
 		this.nbCroyants= 2;
-		this.propriete = new Propriete(d1, d2, d3, Origine.JOUR);
+		this.propriete = new Propriete(d1, d2, d3, Origine.NEANT);
 		this.typeCarte = TypeCarte.croyant;
-		this.setIdCarte(idTravailleurs);
+		this.setIdCarte(idAlienes);
 	}
 	
 	/**
-	 * capacit� de la carte
+	 * capacit� effectu�e lors du sacrifice de la carte
 	 */
 	public void sacrifice(){
 		switch (this.getIdCarte()) {
-		case 6:
+		case 31:
 			/*
 			 * Emp�che une Divinit�
-				poss�dant le Dogme Nature
-				ou Mystique de sacrifier une
-				de ses cartes de Croyants
-				durant ce tour.
-
+			poss�dant le Dogme Nature
+			ou Mystique de sacrifier une
+			de ses cartes de Croyants
+			durant ce tour de jeu.
 			 */
 			ArrayList<Joueur> j1=	Partie.getUniquePartie().getJoueurs();
 			Iterator<Joueur> it1 = j1.iterator(); 
@@ -67,15 +68,15 @@ public class Travailleurs extends Croyant{
 					}
 				}
 			}
+			
 			break;
-		case 7:
+		case 32:
 			/*
 			 * Emp�che une Divinit�
-				poss�dant le Dogme Chaos ou
-				Mystique de sacrifier un de
-				ses Guides Spirituels durant
-				ce tour.
-
+			poss�dant le Dogme Chaos
+			ou Mystique de sacrifier une
+			de ses cartes de Guide Spirituel
+			durant ce tour de jeu.
 			 */
 			ArrayList<Joueur> j2=	Partie.getUniquePartie().getJoueurs();
 			Iterator<Joueur> it2 = j2.iterator(); 
@@ -84,26 +85,26 @@ public class Travailleurs extends Croyant{
 			}
 			Joueur joueur2 =  it2.next();
 			while(Partie.getUniquePartie().isPartieEnCours()== true){
-				for(Iterator<Carte> croyantAControle= joueur2.getMain().iterator(); croyantAControle.hasNext();){
-					Carte c= croyantAControle.next();
-					if(c.getTypeCarte()==TypeCarte.croyant){
+				for(Iterator<Carte> guideAControle1= joueur2.getMain().iterator(); guideAControle1.hasNext();){
+					Carte c= guideAControle1.next();
+					if(c.getTypeCarte()==TypeCarte.guideSpirituel){
 						c.setEstSacrifier(false);
 					}
 				}
+				for(Iterator<GuideSpirituel> guideAControle2= joueur2.getGuideRattaches().iterator(); guideAControle2.hasNext();){
+					Carte d= guideAControle2.next();
+					d.setEstSacrifier(false);
+				}
 			}
-			break;
-		
 
 		default:
-			/*
-			 * Vous piochez deux cartes au
-				hasard dans la main d'une
-				autre Divinit�.
-
+			/**
+			 * Vous piochez deux cartes au hasard dans la main d'une autre Divinit�.
 			 */
 			Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();
 			this.getProprietaire().piocherCarte(2, joueurAAttaquer);
 			break;
+			
 		}
 		
 	}

@@ -1,4 +1,4 @@
-package Carte.cartesCroyant;
+package Carte.croyant;
 
 import Carte.Carte;
 import Carte.TypeCarte;

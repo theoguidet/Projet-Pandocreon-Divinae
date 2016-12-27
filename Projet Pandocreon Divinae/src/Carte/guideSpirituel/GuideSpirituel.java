@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Carte.Carte;
 import Carte.TypeCarte;
-import Carte.cartesCroyant.Croyant;
+import Carte.croyant.Croyant;
 import Joueur.Joueur;
 import partie.Partie;
 import partie.Plateau;

@@ -3,7 +3,7 @@ package partie;
 
 import java.util.ArrayList;
 
-import Carte.cartesCroyant.Croyant;
+import Carte.croyant.Croyant;
 
 
 /**

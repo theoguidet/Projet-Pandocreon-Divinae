@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Carte.Carte;
 import Carte.TypeCarte;
-import Carte.cartesCroyant.Croyant;
+import Carte.croyant.Croyant;
 import Carte.divinite.Divinite;
 import Carte.guideSpirituel.GuideSpirituel;
 import partie.Partie;

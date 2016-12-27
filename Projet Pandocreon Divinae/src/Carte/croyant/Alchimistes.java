@@ -1,4 +1,4 @@
-package Carte.cartesCroyant;
+package Carte.croyant;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,18 +12,18 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 /**
- * Alienes h�rite de Croyant
+ * Alchimistes h�rite de Croyant
  * repr�sente une carte du jeu
  * @author Admin
  *
  */
-public class Alienes extends Croyant{
+public class Alchimistes extends Croyant{
 	
 
 	/**
 	 * constructeur de la classe
 	 * @param d1
-	 * 		premier dogme
+	 * 		premier dogme 
 	 * @param d2
 	 * 		deuxieme dogme
 	 * @param d3
@@ -31,14 +31,14 @@ public class Alienes extends Croyant{
 	 * @param capacite
 	 * 		description de la capacit� de la carte
 	 */
-	public Alienes (int idAlienes,Dogme d1, Dogme d2, Dogme d3, String capacite){
+	public Alchimistes (int idAlchimistes,Dogme d1, Dogme d2, Dogme d3, String capacite){
 		super();
-		this.nom = "Ali�n�s";
+		this.nom = "Alchimistes";
 		this.capacite = capacite;
 		this.nbCroyants= 2;
-		this.propriete = new Propriete(d1, d2, d3, Origine.NEANT);
+		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
 		this.typeCarte = TypeCarte.croyant;
-		this.setIdCarte(idAlienes);
+		this.setIdCarte(idAlchimistes);
 	}
 	
 	/**
@@ -46,17 +46,18 @@ public class Alienes extends Croyant{
 	 */
 	public void sacrifice(){
 		switch (this.getIdCarte()) {
-		case 31:
+		case 18:
 			/*
 			 * Emp�che une Divinit�
-			poss�dant le Dogme Nature
-			ou Mystique de sacrifier une
-			de ses cartes de Croyants
-			durant ce tour de jeu.
+				poss�dant le Dogme Humain
+				ou Mystique de sacrifier une
+				de ses cartes de Croyants
+				durant ce tour de jeu.
+
 			 */
 			ArrayList<Joueur> j1=	Partie.getUniquePartie().getJoueurs();
 			Iterator<Joueur> it1 = j1.iterator(); 
-			while(it1.hasNext() && it1.next().getDivinite().getPropriete().getDogmes().contains("Nature")== false && it1.next().getDivinite().getPropriete().getDogmes().contains("Mystique")== false){	
+			while(it1.hasNext() && it1.next().getDivinite().getPropriete().getDogmes().contains("Humain")== false && it1.next().getDivinite().getPropriete().getDogmes().contains("Mystique")== false){	
 			
 			}
 			Joueur joueur1 =  it1.next();
@@ -70,17 +71,17 @@ public class Alienes extends Croyant{
 			}
 			
 			break;
-		case 32:
+		case 19:
 			/*
 			 * Emp�che une Divinit�
-			poss�dant le Dogme Chaos
-			ou Mystique de sacrifier une
-			de ses cartes de Guide Spirituel
-			durant ce tour de jeu.
+				poss�dant le Dogme Humain
+				ou Symboles de sacrifier un de
+				ses Guides Spirituels durant
+				ce tour de jeu
 			 */
 			ArrayList<Joueur> j2=	Partie.getUniquePartie().getJoueurs();
 			Iterator<Joueur> it2 = j2.iterator(); 
-			while(it2.hasNext() && it2.next().getDivinite().getPropriete().getDogmes().contains("Chaos")== false && it2.next().getDivinite().getPropriete().getDogmes().contains("Mystique")== false){	
+			while(it2.hasNext() && it2.next().getDivinite().getPropriete().getDogmes().contains("Humain")== false && it2.next().getDivinite().getPropriete().getDogmes().contains("Symboles")== false){	
 			
 			}
 			Joueur joueur2 =  it2.next();
@@ -96,7 +97,6 @@ public class Alienes extends Croyant{
 					d.setEstSacrifier(false);
 				}
 			}
-
 		default:
 			/**
 			 * Vous piochez deux cartes au hasard dans la main d'une autre Divinit�.
@@ -104,8 +104,8 @@ public class Alienes extends Croyant{
 			Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();
 			this.getProprietaire().piocherCarte(2, joueurAAttaquer);
 			break;
-			
-		}
-		
 	}
+	}
+	
+	
 }
