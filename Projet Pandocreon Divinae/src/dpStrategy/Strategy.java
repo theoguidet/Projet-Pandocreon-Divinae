@@ -3,8 +3,8 @@ package dpStrategy;
 import java.util.ArrayList;
 
 import propriete.Origine;
-import carte.Carte;
-import carte.guideSpirituel.GuideSpirituel;
+import Carte.Carte;
+import Carte.guideSpirituel.GuideSpirituel;
 
 /**
  * interface Strategy implémentée pour le design pattern Strategy

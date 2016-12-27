@@ -3,8 +3,8 @@ package partie;
 
 import java.util.ArrayList;
 
-import carte.Carte;
-import carte.croyants.Croyant;
+import cartesCroyant.Croyant;
+
 
 /**
  * singleton qui représente le plateau de jeu 
@@ -32,6 +32,9 @@ public class Plateau {
 			instance = new Plateau();
 		}
 		return instance;
+	}
+	public void setCroyantLibre(ArrayList<Croyant> c){
+		croyantLibre=c;
 	}
 	
 	public ArrayList<Croyant> getCroyantLibre() {

@@ -5,63 +5,63 @@ import java.util.Scanner;
 
 import propriete.Dogme;
 import propriete.Origine;
-import carte.Carte;
-import carte.apocalypse.Apocalypse;
-import carte.croyants.Alchimistes;
-import carte.croyants.Alienes;
-import carte.croyants.Demons;
-import carte.croyants.Diplomates;
-import carte.croyants.Ermite;
-import carte.croyants.Esprits;
-import carte.croyants.GuerriersSaints;
-import carte.croyants.Illusionnistes;
-import carte.croyants.Integristes;
-import carte.croyants.Lycanthropes;
-import carte.croyants.Moines;
-import carte.croyants.Nihillistes;
-import carte.croyants.Pillards;
-import carte.croyants.Revenant;
-import carte.croyants.Revolutionnaires;
-import carte.croyants.Travailleurs;
-import carte.croyants.Vampires;
-import carte.deusex.Bouleversement;
-import carte.deusex.ColereDivine;
-import carte.deusex.Concentration;
-import carte.deusex.Diversion;
-import carte.deusex.Fourberie;
-import carte.deusex.InfluenceJour;
-import carte.deusex.InfluenceNeant;
-import carte.deusex.InfluenceNuit;
-import carte.deusex.InfluenceNulle;
-import carte.deusex.Inquisition;
-import carte.deusex.Miroir;
-import carte.deusex.OrdreCeleste;
-import carte.deusex.Phoenix;
-import carte.deusex.Stase;
-import carte.deusex.Transe;
-import carte.deusex.TrouNoir;
-import carte.divinite.Brewalen;
-import carte.divinite.Divinite;
-import carte.divinite.Drinded;
-import carte.divinite.Gorpa;
-import carte.divinite.Gwenghelen;
-import carte.divinite.Killinstred;
-import carte.divinite.Llewella;
-import carte.divinite.PuiTara;
-import carte.divinite.Romtec;
-import carte.divinite.Shingva;
-import carte.divinite.Yarstur;
-import carte.guideSpirituel.Anarchiste;
-import carte.guideSpirituel.Ascete;
-import carte.guideSpirituel.Clerc;
-import carte.guideSpirituel.Devin;
-import carte.guideSpirituel.Exorciste;
-import carte.guideSpirituel.Martyr;
-import carte.guideSpirituel.Messie;
-import carte.guideSpirituel.Paladin;
-import carte.guideSpirituel.Shaman;
-import carte.guideSpirituel.Sorcier;
-import carte.guideSpirituel.Tyran;
+import Carte.Carte;
+import Carte.apocalypse.Apocalypse;
+import cartesCroyant.Alchimistes;
+import cartesCroyant.Alienes;
+import cartesCroyant.Demons;
+import cartesCroyant.Diplomates;
+import cartesCroyant.Ermite;
+import cartesCroyant.Esprits;
+import cartesCroyant.GuerriersSaints;
+import cartesCroyant.Illusionnistes;
+import cartesCroyant.Integristes;
+import cartesCroyant.Lycanthropes;
+import cartesCroyant.Moines;
+import cartesCroyant.Nihillistes;
+import cartesCroyant.Pillards;
+import cartesCroyant.Revenant;
+import cartesCroyant.Revolutionnaires;
+import cartesCroyant.Travailleurs;
+import cartesCroyant.Vampires;
+import Carte.deusex.Bouleversement;
+import Carte.deusex.ColereDivine;
+import Carte.deusex.Concentration;
+import Carte.deusex.Diversion;
+import Carte.deusex.Fourberie;
+import Carte.deusex.InfluenceJour;
+import Carte.deusex.InfluenceNeant;
+import Carte.deusex.InfluenceNuit;
+import Carte.deusex.InfluenceNulle;
+import Carte.deusex.Inquisition;
+import Carte.deusex.Miroir;
+import Carte.deusex.OrdreCeleste;
+import Carte.deusex.Phoenix;
+import Carte.deusex.Stase;
+import Carte.deusex.Transe;
+import Carte.deusex.TrouNoir;
+import Carte.divinite.Brewalen;
+import Carte.divinite.Divinite;
+import Carte.divinite.Drinded;
+import Carte.divinite.Gorpa;
+import Carte.divinite.Gwenghelen;
+import Carte.divinite.Killinstred;
+import Carte.divinite.Llewella;
+import Carte.divinite.PuiTara;
+import Carte.divinite.Romtec;
+import Carte.divinite.Shingva;
+import Carte.divinite.Yarstur;
+import Carte.guideSpirituel.Anarchiste;
+import Carte.guideSpirituel.Ascete;
+import Carte.guideSpirituel.Clerc;
+import Carte.guideSpirituel.Devin;
+import Carte.guideSpirituel.Exorciste;
+import Carte.guideSpirituel.Martyr;
+import Carte.guideSpirituel.Messie;
+import Carte.guideSpirituel.Paladin;
+import Carte.guideSpirituel.Shaman;
+import Carte.guideSpirituel.Sorcier;
+import Carte.guideSpirituel.Tyran;
 import Joueur.Joueur;
 import Joueur.JoueurVirtuel;
 
@@ -70,7 +70,7 @@ import Joueur.JoueurVirtuel;
  * @author Admin
  *
  */
-public class Partie {
+public class Partie implements Runnable{
 
 	private int nbJoueur;
 	private Joueur gagnant;
@@ -79,29 +79,34 @@ public class Partie {
 	private ArrayList<Divinite> divinites;
 	private ArrayList<Carte> defausse;
 	public static Scanner scanner = new Scanner(System.in);
+	private static Partie uniquePartie;
 	
+	private boolean partieEnCours=false;
+
+	public boolean isPartieEnCours() {
+		return partieEnCours;
+	}
+
+	public void setPartieEnCours(boolean partieEnCours) {
+		this.partieEnCours = partieEnCours;
+	}
+
+	
+
 	/**
 	 * constructeur de la classe
 	 * @param nbJoueur
 	 * 		nombre de joueur à créer pour la partie
 	 */
-	public Partie(int nbJoueur){
-		this.nbJoueur = nbJoueur;
+	public Partie(){
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = new ArrayList<Carte>();
 		this.divinites = new ArrayList<Divinite>();
 		this.defausse = new ArrayList<Carte>();
 		this.gagnant = null;
-		String nom = scanner.nextLine();
-		System.out.println("Entrez votre nom :");
-		nom = scanner.nextLine();
-		joueurs.add(new Joueur(nom));
-		for (int i = 0; i < nbJoueur-1; i++) {
-			System.out.println("Entrez le nom du joueur virtuel " + i);
-			nom = scanner.nextLine();
-			joueurs.add(new JoueurVirtuel(nom));
-		}
+
 	}
+
 
 	/**
 	 * distribue une divinité par joueur
@@ -133,64 +138,64 @@ public class Partie {
 	public ArrayList<Carte> creationJeuDeCarte(){
 		
 		//déclaration des guides spirituels
-		Martyr martyr1 = new Martyr(Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
-		Martyr martyr2 = new Martyr(Dogme.SYMBOLES, Dogme.HUMAIN, Origine.NUIT);
-		Martyr martyr3 = new Martyr(Dogme.NATURE, Dogme.CHAOS, Origine.NEANT);
-		Clerc clerc1 = new Clerc(Dogme.HUMAIN, Dogme.CHAOS, Origine.JOUR);
-		Clerc clerc2 = new Clerc(Dogme.NATURE, Dogme.SYMBOLES, Origine.NUIT);
-		Clerc clerc3 = new Clerc(Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
-		Clerc clerc4 = new Clerc(Dogme.NATURE, Dogme.CHAOS, Origine.JOUR);
-		Clerc clerc5 = new Clerc(Dogme.MYSTIQUE, Dogme.SYMBOLES, Origine.NUIT);
-		Clerc clerc6 = new Clerc(Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
-		Clerc clerc7 = new Clerc(Dogme.MYSTIQUE, Dogme.CHAOS, Origine.JOUR);
-		Clerc clerc8 = new Clerc(Dogme.HUMAIN, Dogme.NATURE, Origine.NUIT);
-		Devin devin = new Devin(Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
-		Sorcier sorcier = new Sorcier(Dogme.MYSTIQUE, Dogme.SYMBOLES, Origine.NUIT);
-		Anarchiste anarchiste = new Anarchiste();
-		Paladin paladin = new Paladin();
-		Ascete ascete = new Ascete();
-		Exorciste exorciste = new Exorciste();
-		Tyran tyran = new Tyran();
-		Messie messie = new Messie();
-		Shaman shaman = new Shaman();
+		Martyr martyr1 = new Martyr(37,Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
+		Martyr martyr2 = new Martyr(38,Dogme.SYMBOLES, Dogme.HUMAIN, Origine.NUIT);
+		Martyr martyr3 = new Martyr(39,Dogme.NATURE, Dogme.CHAOS, Origine.NEANT);
+		Clerc clerc1 = new Clerc(40,Dogme.HUMAIN, Dogme.CHAOS, Origine.JOUR);
+		Clerc clerc2 = new Clerc(41,Dogme.NATURE, Dogme.SYMBOLES, Origine.NUIT);
+		Clerc clerc3 = new Clerc(42,Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
+		Clerc clerc4 = new Clerc(43,Dogme.NATURE, Dogme.CHAOS, Origine.JOUR);
+		Clerc clerc5 = new Clerc(44,Dogme.MYSTIQUE, Dogme.SYMBOLES, Origine.NUIT);
+		Clerc clerc6 = new Clerc(45,Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
+		Clerc clerc7 = new Clerc(46,Dogme.MYSTIQUE, Dogme.CHAOS, Origine.JOUR);
+		Clerc clerc8 = new Clerc(47,Dogme.HUMAIN, Dogme.NATURE, Origine.NUIT);
+		Devin devin = new Devin(52,Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
+		Sorcier sorcier = new Sorcier(54,Dogme.MYSTIQUE, Dogme.SYMBOLES, Origine.NUIT);
+		Anarchiste anarchiste = new Anarchiste(49);
+		Paladin paladin = new Paladin(50);
+		Ascete ascete = new Ascete(51);
+		Exorciste exorciste = new Exorciste(53);
+		Tyran tyran = new Tyran(55);
+		Messie messie = new Messie(56);
+		Shaman shaman = new Shaman(48);
 		
 		//Declaration des Croyants
-		Moines moines1 = new Moines(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
-		Moines moines2 = new Moines(Dogme.HUMAIN, Dogme.CHAOS, Dogme.MYSTIQUE);
-		Moines moines3 = new Moines(Dogme.CHAOS, Dogme.SYMBOLES, Dogme.MYSTIQUE);
-		Moines moines4 = new Moines(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.MYSTIQUE);
-		Moines moines5 = new Moines(Dogme.CHAOS, Dogme.NATURE, Dogme.MYSTIQUE);
-		Travailleurs travailleurs1 = new Travailleurs(Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour");
-		Travailleurs travailleurs2 = new Travailleurs(Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels durant ce tour.");
-		Travailleurs travailleurs3 = new Travailleurs(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
-		Ermite ermite1 = new Ermite(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
-		Ermite ermite2 = new Ermite(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.SYMBOLES);
-		Integristes integristes = new Integristes();
-		GuerriersSaints guerriersSaints = new GuerriersSaints();
-		Diplomates diplomates = new Diplomates();
-		Demons demon1 = new Demons(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
-		Demons demon2 = new Demons(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
-		Demons demon3 = new Demons(Dogme.MYSTIQUE, Dogme.SYMBOLES, Dogme.CHAOS);
-		Demons demon4 = new Demons(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
-		Alchimistes alchimistes1 = new Alchimistes(Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alchimistes alchimistes2 = new Alchimistes(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alchimistes alchimistes3 = new Alchimistes(Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité."); 		
-		Vampires vampires1 = new Vampires(Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES);
-		Vampires vampires2 = new Vampires(Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS);
-		Lycanthropes lycanthropes = new Lycanthropes();
-		Pillards pillards = new Pillards();
-		Illusionnistes illusionnistes = new Illusionnistes();
-		Esprits esprits1 = new Esprits(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
-		Esprits esprits2 = new Esprits(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
-		Esprits esprits3 = new Esprits(Dogme.SYMBOLES, Dogme.CHAOS, Dogme.MYSTIQUE);
-		Esprits esprits4 = new Esprits(Dogme.SYMBOLES, Dogme.NATURE, Dogme.MYSTIQUE);
-		Esprits esprits5 = new Esprits(Dogme.NATURE, Dogme.CHAOS, Dogme.MYSTIQUE);
-		Alienes alienes1 = new Alienes(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alienes alienes2 = new Alienes(Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES, "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alienes alienes3 = new Alienes(Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
-		Revenant revenant = new Revenant();
-		Revolutionnaires revolutionnaires = new Revolutionnaires();
-		Nihillistes nihillistes = new Nihillistes();
+		Moines moines1 = new Moines(1,Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
+		Moines moines2 = new Moines(2,Dogme.HUMAIN, Dogme.CHAOS, Dogme.MYSTIQUE);
+		Moines moines3 = new Moines(3,Dogme.CHAOS, Dogme.SYMBOLES, Dogme.MYSTIQUE);
+		Moines moines4 = new Moines(4,Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.MYSTIQUE);
+		Moines moines5 = new Moines(5,Dogme.CHAOS, Dogme.NATURE, Dogme.MYSTIQUE);
+		Travailleurs travailleurs1 = new Travailleurs(6,Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour");
+		Travailleurs travailleurs2 = new Travailleurs(7,Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels durant ce tour.");
+		Travailleurs travailleurs3 = new Travailleurs(8,Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Ermite ermite1 = new Ermite(9,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
+		Ermite ermite2 = new Ermite(10,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.SYMBOLES);
+		Integristes integristes = new Integristes(11);
+		GuerriersSaints guerriersSaints = new GuerriersSaints(12);
+		Diplomates diplomates = new Diplomates(13);
+		Demons demon1 = new Demons(14,Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
+		Demons demon2 = new Demons(15,Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
+		Demons demon3 = new Demons(16,Dogme.MYSTIQUE, Dogme.SYMBOLES, Dogme.CHAOS);
+		Demons demon4 = new Demons(17,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
+		Alchimistes alchimistes1 = new Alchimistes(18,Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alchimistes alchimistes2 = new Alchimistes(19,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alchimistes alchimistes3 = new Alchimistes(20,Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité."); 		
+		Vampires vampires1 = new Vampires(21,Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES);
+		Vampires vampires2 = new Vampires(22,Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS);
+		Lycanthropes lycanthropes = new Lycanthropes(23);
+		Pillards pillards = new Pillards(24);
+		Illusionnistes illusionnistes = new Illusionnistes(25);
+		Esprits esprits1 = new Esprits(26,Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE);
+		Esprits esprits2 = new Esprits(27,Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
+		Esprits esprits3 = new Esprits(28,Dogme.SYMBOLES, Dogme.CHAOS, Dogme.MYSTIQUE);
+		Esprits esprits4 = new Esprits(29,Dogme.SYMBOLES, Dogme.NATURE, Dogme.MYSTIQUE);
+		Esprits esprits5 = new Esprits(30,Dogme.NATURE, Dogme.CHAOS, Dogme.MYSTIQUE);
+		Alienes alienes1 = new Alienes(31,Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alienes alienes2 = new Alienes(32,Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES, "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alienes alienes3 = new Alienes(33,Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Revenant revenant = new Revenant(34);
+		Revolutionnaires revolutionnaires = new Revolutionnaires(35);
+		Nihillistes nihillistes = new Nihillistes(36);
 		
 		
 		//Declaration des apocalypses
@@ -201,22 +206,22 @@ public class Partie {
 		Apocalypse apocalypse5 = new Apocalypse(Origine.NULL);
 		
 		//Declaration des DeusEx
-		Bouleversement bouleversement = new Bouleversement();
-		ColereDivine colereDivine1 = new ColereDivine(Origine.JOUR);
-		ColereDivine colereDivine2 = new ColereDivine(Origine.NUIT);
-		Concentration concentration = new Concentration();
-		Diversion diversion = new Diversion();
-		Fourberie fourberie = new Fourberie();
-		InfluenceJour influenceJour = new InfluenceJour();
-		InfluenceNuit influenceNuit = new InfluenceNuit();
-		InfluenceNeant influenceNeant = new InfluenceNeant();
-		InfluenceNulle influenceNulle1 = new InfluenceNulle();
-		InfluenceNulle influenceNulle2 = new InfluenceNulle();
-		Inquisition inquisition = new Inquisition();
-		Miroir miroir = new Miroir();
-		OrdreCeleste ordreCeleste = new OrdreCeleste();
-		Phoenix phoenix = new Phoenix();
-		Stase stase = new Stase();
+		Bouleversement bouleversement = new Bouleversement(57);
+		ColereDivine colereDivine1 = new ColereDivine(58,Origine.JOUR);
+		ColereDivine colereDivine2 = new ColereDivine(59,Origine.NUIT);
+		Concentration concentration = new Concentration(60);
+		Diversion diversion = new Diversion(61);
+		Fourberie fourberie = new Fourberie(62);
+		InfluenceJour influenceJour = new InfluenceJour(63);
+		InfluenceNuit influenceNuit = new InfluenceNuit(64);
+		InfluenceNeant influenceNeant = new InfluenceNeant(65);
+		InfluenceNulle influenceNulle1 = new InfluenceNulle(66);
+		InfluenceNulle influenceNulle2 = new InfluenceNulle(67);
+		Inquisition inquisition = new Inquisition(68);
+		Miroir miroir = new Miroir(69);
+		OrdreCeleste ordreCeleste = new OrdreCeleste(70);
+		Phoenix phoenix = new Phoenix(71);
+		Stase stase = new Stase(72);
 		Transe transe = new Transe();
 		TrouNoir trouNoir = new TrouNoir();
 		
@@ -320,6 +325,64 @@ public class Partie {
 		return cartes;
 	}
 		
+	public Joueur getGagnant() {
+		return gagnant;
+	}
+
+	public void setGagnant(Joueur gagnant) {
+		this.gagnant = gagnant;
+	}
+
+	public ArrayList<Joueur> getJoueurs() {
+		return joueurs;
+	}
+
+	public void setJoueurs(ArrayList<Joueur> joueurs) {
+		this.joueurs = joueurs;
+	}
+
+	public ArrayList<Divinite> getDivinites() {
+		return divinites;
+	}
+
+	public void setDivinites(ArrayList<Divinite> divinites) {
+		this.divinites = divinites;
+	}
+
+	public ArrayList<Carte> getDefausse() {
+		return defausse;
+	}
+
+	public void setDefausse(ArrayList<Carte> defausse) {
+		this.defausse = defausse;
+	}
+
+	public static Scanner getScanner() {
+		return scanner;
+	}
+
+	public static void setScanner(Scanner scanner) {
+		Partie.scanner = scanner;
+	}
+
+	public void setNbJoueur(int nbJoueur) {
+		this.nbJoueur = nbJoueur;
+	}
+
+	public void setCartes(ArrayList<Carte> cartes) {
+		this.cartes = cartes;
+	}
+
+	public static Partie getUniquePartie() {
+		if (uniquePartie == null) {
+			uniquePartie = new Partie();
+		}
+		return uniquePartie;
+	}
+
+	public static void setUniquePartie(Partie uniquePartie) {
+		Partie.uniquePartie = uniquePartie;
+	}
 	/**
 	 * établi le classement des joueurs
 	 * @return la liste classée des joueurs
@@ -333,8 +396,9 @@ public class Partie {
 			i=0;
 			while (j.calculerScore() > joueursTries.get(i).calculerScore()) {
 				i++;
+				joueursTries.add(i, j);
 			}
-			joueursTries.add(i, j);
+			
 		}
 		
 		System.out.println("Le classement des joueurs est actuellement :");
@@ -389,22 +453,62 @@ public class Partie {
 	public void ajouterADefausse(Carte c) {
 		this.defausse.add(c);
 	}
-
-	public static void main(String[] args){
+	
+	public void initialiserJoueurs(){
 		System.out.println("Combien de joueurs voulez-vous dans la partie ?");
 		//Scanner clavier = new Scanner(System.in);
 		int nbJoueur = scanner.nextInt();
-		Partie partie = new Partie(nbJoueur);
-		partie.creationJeuDeCarte();
-		partie.distribuerDivinites();
-		partie.distribuerCarte();
-		
-		while (partie.gagnant == null) {
-			for (Joueur j : partie.joueurs) {
-				j.tourDeJeu(partie);
-			}	
+		String nom = scanner.nextLine();
+		System.out.println("Entrez votre nom :");
+		nom = scanner.nextLine();
+		joueurs.add(new Joueur(nom));
+		/**
+		 * ajouter la position de chaque joueur
+		 */
+		joueurs.get(0).setPosJoueur(0);
+		for (int i = 0; i < nbJoueur-1; i++) {
+			System.out.println("Entrez le nom du joueur virtuel " + i);
+			nom = scanner.nextLine();
+			joueurs.add(new JoueurVirtuel(nom));
+			joueurs.get(i).setPosJoueur(i);
 		}
-		
+	
+	}
+
+	public static void main(String[] args){
+		uniquePartie = getUniquePartie();
+		Partie partie = uniquePartie;
+//		partie.initialiserJoueurs();
+//		partie.creationJeuDeCarte();
+//		partie.distribuerDivinites();
+//		partie.distribuerCarte();
+//		
+//		while (partie.gagnant == null) {
+//			for(Joueur j: partie.joueurs){
+//			j.tourDeJeu(partie);
+//			
+//			}	
+//		}
+		partie.run();
 		//clavier.close();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		initialiserJoueurs();
+		creationJeuDeCarte();
+		distribuerDivinites();
+		distribuerCarte();
+		
+		while (gagnant == null) {
+//			for(Joueur j: joueurs){
+//			
+//			}	
+			for (int i = 0; i < joueurs.size(); i++) {
+				Joueur joueurActuel = joueurs.get(i);
+				joueurActuel.run();
+			}
+		}
 	}
 }

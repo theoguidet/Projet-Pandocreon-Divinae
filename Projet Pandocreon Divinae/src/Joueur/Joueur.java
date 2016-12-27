@@ -5,28 +5,110 @@ import java.util.ArrayList;
 import partie.Partie;
 import partie.Plateau;
 import propriete.Origine;
-import carte.Carte;
-import carte.TypeCarte;
-import carte.croyants.Croyant;
-import carte.divinite.Divinite;
-import carte.guideSpirituel.GuideSpirituel;
+import Carte.Carte;
+import Carte.TypeCarte;
+import cartesCroyant.Croyant;
+import Carte.divinite.Divinite;
+import Carte.guideSpirituel.GuideSpirituel;
 
 /**
  * Représente un joueur réel 
  * @author Admin
  *
  */
-public class Joueur{
-	protected String nom;
-	protected int nbPrieres;
-	protected int pointActionJour;
-	protected int pointActionNuit;
-	protected int pointActionNeant;
-	protected ArrayList<Carte> main;
+public class Joueur implements Runnable{
+	private String nom;
+	private int nbPrieres;
+	private int pointActionJour;
+	private int pointActionNuit;
+	private int pointActionNeant;
+	private ArrayList<Carte> main;
+	private boolean enCoursDeJouer;
+	private int posJoueur;
 	protected ArrayList<Croyant> croyantRattaches;
 	protected ArrayList<GuideSpirituel> guideRattaches;
 	protected Divinite divinite;
 	protected boolean estVirtuel;
+	private boolean pouvoirRecevoirPointAction;
+	public boolean isPouvoirRecevoirPointAction() {
+		return pouvoirRecevoirPointAction;
+	}
+
+	public void setPouvoirRecevoirPointAction(boolean pouvoirRecevoirPointAction) {
+		this.pouvoirRecevoirPointAction = pouvoirRecevoirPointAction;
+	}
+
+	private boolean sacrifier = false;
+	private boolean continuer = true;
+	public int getPosJoueur() {
+		return posJoueur;
+	}
+
+	public void setPosJoueur(int posJoueur) {
+		this.posJoueur = posJoueur;
+	}
+
+	public boolean isEnCoursDeJouer() {
+		return enCoursDeJouer;
+	}
+
+	public void setEnCoursDeJouer(boolean enCoursDeJouer) {
+		this.enCoursDeJouer = enCoursDeJouer;
+	}
+
+	public int getNbPrieres() {
+		return nbPrieres;
+	}
+
+	public void setNbPrieres(int nbPrieres) {
+		this.nbPrieres = nbPrieres;
+	}
+
+	public ArrayList<Carte> getMain() {
+		return main;
+	}
+
+	public void setMain(ArrayList<Carte> main) {
+		this.main = main;
+	}
+
+	public boolean isEstVirtuel() {
+		return estVirtuel;
+	}
+
+	public void setEstVirtuel(boolean estVirtuel) {
+		this.estVirtuel = estVirtuel;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setCroyantRattaches(ArrayList<Croyant> croyantRattaches) {
+		this.croyantRattaches = croyantRattaches;
+	}
+
+	public void setGuideRattaches(ArrayList<GuideSpirituel> guideRattaches) {
+		this.guideRattaches = guideRattaches;
+	}
+
+	
+
+	public boolean isSacrifier() {
+		return sacrifier;
+	}
+
+	public void setSacrifier(boolean sacrifier) {
+		this.sacrifier = sacrifier;
+	}
+
+	public boolean isContinuer() {
+		return continuer;
+	}
+
+	public void setContinuer(boolean continuer) {
+		this.continuer = continuer;
+	}
 
 	/**
 	 * constructeur de la classe
@@ -43,6 +125,8 @@ public class Joueur{
 		this.croyantRattaches = new ArrayList<Croyant>();
 		this.guideRattaches = new ArrayList<GuideSpirituel>();
 		this.estVirtuel = false;
+		this.pouvoirRecevoirPointAction=true;
+		
 	}
 	
 	/**
@@ -97,8 +181,10 @@ public class Joueur{
 		
 		
 		for (Carte carte : carteADefausser) {
+			
 			p.ajouterADefausse(carte);
 			main.remove(carte);
+			
 		}
 	}
 	
@@ -122,9 +208,26 @@ public class Joueur{
 	 */
 	public void piocherCarte(ArrayList<Carte> c){
 		main.add(c.get(0));
+		/*
+		 * set Proprietaire pour la carte
+		 */
+		
 		c.remove(0);
 	}
 	
+	
+	public void setPointActionJour(int pointActionJour) {
+		this.pointActionJour = pointActionJour;
+	}
+
+	public void setPointActionNuit(int pointActionNuit) {
+		this.pointActionNuit = pointActionNuit;
+	}
+
+	public void setPointActionNeant(int pointActionNeant) {
+		this.pointActionNeant = pointActionNeant;
+	}
+
 	/**
 	 * complète la main du joueur
 	 * @param c
@@ -133,6 +236,9 @@ public class Joueur{
 	public void completerMain(ArrayList<Carte> c){
 		while(main.size()<7){
 			piocherCarte(c);
+		}
+		for(int k=0; k<main.size();k++){
+			main.get(k).setProprietaire(this);
 		}
 	}
 	
@@ -255,6 +361,10 @@ public class Joueur{
 					guideRattaches.add((GuideSpirituel)carte);
 					//non géré par le joueur virtuel
 					//((GuideSpirituel)carte).attacherCroyant(this);
+					/**
+					 * guideRattaches ne sont pas dans la main du joueur
+					 */
+					this.getMain().remove(c);
 					break;
 				case deusEx:
 					carte.utiliserCapacite();
@@ -271,6 +381,127 @@ public class Joueur{
 			}
 		}
 	}
+	public void sacrifierGuideSpirituelDansLaMain(){
+		int indice;
+		System.out.println("Tapez le numero de la carte Guide Spirituel à sacrifier");
+		indice=Partie.scanner.nextInt();
+		while(getMain().get(indice).getTypeCarte()!=TypeCarte.guideSpirituel){
+			System.out.println("Tapez le numero de la carte Guide Spirituel à sacrifier");
+			indice=Partie.scanner.nextInt();
+		}
+		getMain().get(indice).setEstSacrifier(true);
+		getMain().get(indice).utiliserCapacite();
+		Partie.getUniquePartie().ajouterADefausse(this.getMain().get(indice));
+		getMain().remove(indice);
+	}
+	/**
+	 * sacrifier GuideSpirituel Rattaches
+	 */
+	public void sacrifierGuideSpirituelRattaches(){
+		ArrayList<GuideSpirituel> carteRattaches= this.getGuideRattaches();
+		int indice;
+		System.out.println("Tapez le numero de la carte Guide Spirituel à sacrifier");
+		indice=Partie.scanner.nextInt();
+			this.getMain().get(indice).utiliserCapacite();
+			Partie.getUniquePartie().ajouterADefausse(carteRattaches.get(indice));
+			this.getMain().remove(indice);
+		}
+	/**
+	 * choisir carte victime
+	 */
+	public Carte choisirCarteVictime(TypeCarte type){
+		int indice;
+		System.out.println("Tapez le numero de la carte"+type.toString()+"victime");
+		indice= Partie.scanner.nextInt();
+		while(this.getMain().get(indice).getTypeCarte()!= type){
+			System.out.println("Tapez le numero de la carte"+type.toString()+"victime");
+			indice= Partie.scanner.nextInt();
+		}
+		return this.getMain().get(indice);
+		
+		
+	}
+	/**
+	 * choisir carte
+	 */
+	public int choisirCarteAutreJoueur(){
+		int indice;
+		System.out.println("Tapez le numero de la carte ");
+		return indice= Partie.scanner.nextInt();
+		
+	}
+	/**
+	 * choisir le joueur à attaquer
+	 */
+	public Joueur choisirLeJoueurAAttaquer(){
+		int indice;
+		
+			System.out.println("Tapez le numero du joueur à attaquer");
+			indice= Partie.scanner.nextInt();
+			return Partie.getUniquePartie().getJoueurs().get(indice);
+	}
+	/**
+	 * Choisir carte Guide Spirituel à revenir dans la main
+	 */
+	public GuideSpirituel choisirGuideRevenir(){
+		ArrayList<GuideSpirituel> guides= this.getGuideRattaches();
+		int indice;
+		System.out.println("Tapez le numero de la carte Guide Spirituel à revenir");
+		indice=Partie.scanner.nextInt();
+		while(indice>guides.size()){
+			System.out.println("Tapez le numero de la carte Guide Spirituel à revenir");
+			indice=Partie.scanner.nextInt();
+		}
+		return this.getGuideRattaches().get(indice);
+		
+	}
+	/**
+	 * choisir l'Origine de point d'Action à recevoir
+	 */
+	public int choisirOriginePointARecevoir(){
+		int indice;
+		System.out.println("Tapez l'Origine de point d'Action à recevoir: 1:Jour, 2:Nuit, 3:Neant");
+		return indice=Partie.scanner.nextInt();
+		
+	}
+	/**
+	 * sacrifierCroyant
+	 */
+	public void sacrifierCroyant(){
+		int indice;
+		System.out.println("Tapez le numero de la carte Croyant à sacrifier");
+		indice=Partie.scanner.nextInt();
+		while(getMain().get(indice).getTypeCarte()!=TypeCarte.croyant){
+			System.out.println("Tapez le numero de la carte Croyant à sacrifier");
+			indice=Partie.scanner.nextInt();
+		}
+		getMain().get(indice).setEstSacrifier(true);
+		getMain().get(indice).utiliserCapacite();
+		Partie.getUniquePartie().ajouterADefausse(this.getMain().get(indice));
+		getMain().remove(indice);
+		
+	}
+	/**
+	 * piocher Carte
+	 * @param nbCartes
+	 */
+	public void piocherCarte(int nbCartes, Joueur joueurAAttaquer){
+		
+		int indice=0;
+		int i;
+		while(indice<=nbCartes){
+			System.out.println("Tapez le numero de la carte à piocher");
+			i=Partie.scanner.nextInt();
+			Carte carteVictime=joueurAAttaquer.getMain().get(i);
+			this.getMain().add(carteVictime);
+			joueurAAttaquer.getMain().remove(i);
+			indice++;
+		}
+		
+		
+	}
+		
+
 
 	/**
 	 * ajoute un croyant rattaché à un guide spirituel
@@ -320,6 +551,11 @@ public class Joueur{
 	 * @return la liste des cartes pouvant être jouées
 	 */
 	public ArrayList<Carte> calculerPointAction(Origine resultatDe){
+		/**
+		 * Condition: le joueur peut recevoir point d'Action
+		 * car il y a une carte croyant qui peut empecher les joueurs de recevoir point d'action
+		 */
+		if(this.isPouvoirRecevoirPointAction()==true){
 		switch (resultatDe) {
 		case JOUR:
 			if (this.divinite.getPropriete().getOrigine() == Origine.JOUR) {
@@ -343,6 +579,7 @@ public class Joueur{
 
 		default:
 			break;
+		}
 		}
 		ArrayList<Carte> cartePossible = new ArrayList<Carte>();
 		if (pointActionJour > 0) {
@@ -382,7 +619,28 @@ public class Joueur{
 		}
 		return cartePossible;
 	}
-	
+	/**
+	 * choisir face de dé
+	 */
+	public Origine choisirFaceDe(){
+		int indice;
+		Origine resultatDe;
+		System.out.println("Tapez le numero correpondant de la face de dé: 1:Jour, 2: Nuit, 3: Neant");
+		indice=Partie.scanner.nextInt();
+		switch (indice) {
+		case 1:
+			resultatDe= Origine.JOUR;
+			break;
+		case 2:	
+			resultatDe=Origine.NUIT;
+			break;
+		default:
+			resultatDe=Origine.NEANT;
+			break;
+		}
+		return resultatDe;
+		
+	}
 	/**
 	 * décrémente les points d'actions du joueur
 	 * @param o
@@ -431,10 +689,9 @@ public class Joueur{
 	 * @param p
 	 * 		instance de la partie
 	 */
-	public void choisirCarteASacrifier(ArrayList<Croyant> croyants, ArrayList<GuideSpirituel> guides, Partie p){
+	public void choisirCarteASacrifier(Partie p){
 		String rep = "";
-		boolean sacrifier = false;
-		boolean continuer = true;
+		
 		System.out.println("Voulez-vous sacrifier une/des carte(s) ? o/n");
 
 		while(continuer == true){
@@ -450,13 +707,19 @@ public class Joueur{
 				continuer = true;
 			}
 		}
-		
+		int indice1,indice2;
+		System.out.println("Tapez le numero de la carte Croyant à sacrifier");
+		indice1= Partie.scanner.nextInt();
+		Carte croyants= this.getMain().get(indice1);
+		System.out.println("Tapez le numero de la carte Guide Spirituel à sacrifier");
+		indice2= Partie.scanner.nextInt();
+		Carte guides= this.getMain().get(indice2);
 		int i = 2;
 		ArrayList<Integer> indiceCarteASacrifier = new ArrayList<Integer>();
 		ArrayList<Carte> carteASacrifier = new ArrayList<Carte>();
 		ArrayList<Carte> carteCroyantGuide = new ArrayList<Carte>();
-		carteCroyantGuide.addAll(croyants);
-		carteCroyantGuide.addAll(guides);
+		carteCroyantGuide.add(croyants);
+		carteCroyantGuide.add(guides);
 		if (carteCroyantGuide.isEmpty()) {
 			sacrifier = false;
 			System.out.println("Il n'y a aucune carte a sacrifier.");
@@ -485,7 +748,10 @@ public class Joueur{
 			}
 		}
 		for (Carte carte : carteASacrifier) {
+			
 			carte.utiliserCapacite();
+			
+			
 			if (carte.getTypeCarte()==TypeCarte.guideSpirituel) {
 				guideRattaches.remove(carte);
 			}else if (carte.getTypeCarte()== TypeCarte.croyant) {
@@ -498,7 +764,7 @@ public class Joueur{
 				}
 			}
 			p.ajouterADefausse(carte);
-			
+		
 		}
 	}
 
@@ -518,7 +784,10 @@ public class Joueur{
 		jouerCarte(carteAJouer, partie);
 		System.out.println("jeu a la fin du tour :");
 		afficherMain();
-		choisirCarteASacrifier(getCroyantRattaches(), getGuideRattaches(), partie);
+		/**
+		 * faux car les cartes à sacrifier doivent etre dans la main
+		 */
+		choisirCarteASacrifier(partie);
 		afficherPointPriere();
 	}
 	
@@ -565,4 +834,16 @@ public class Joueur{
 		return guideRattaches;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		
+		return super.toString();
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		tourDeJeu(Partie.getUniquePartie());
+	}
 }

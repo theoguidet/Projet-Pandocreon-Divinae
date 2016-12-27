@@ -3,9 +3,9 @@ package dpStrategy;
 import java.util.ArrayList;
 
 import propriete.Origine;
-import carte.Carte;
-import carte.croyants.Croyant;
-import carte.guideSpirituel.GuideSpirituel;
+import Carte.Carte;
+import cartesCroyant.Croyant;
+import Carte.guideSpirituel.GuideSpirituel;
 
 /**
  * Strategie implemente l'interface Strategy 

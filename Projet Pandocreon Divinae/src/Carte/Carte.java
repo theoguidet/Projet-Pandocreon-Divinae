@@ -1,5 +1,6 @@
-package carte;
+package Carte;
 
+import Joueur.Joueur;
 import propriete.Propriete;
 /**
  * La classe abstraite Carte représente une carte au sens large du jeu.
@@ -18,7 +19,55 @@ public abstract class Carte {
 	protected String capacite;
 	protected boolean estDistribuee;
 	protected Propriete propriete;
+	private boolean estSacrifier=false;
+	private boolean dansLaMain;
 	
+	
+	public boolean isDansLaMain() {
+		return dansLaMain;
+	}
+
+	public void setDansLaMain(boolean dansLaMain) {
+		this.dansLaMain = dansLaMain;
+	}
+
+	public void setTypeCarte(TypeCarte typeCarte) {
+		this.typeCarte = typeCarte;
+	}
+
+	public boolean isEstSacrifier() {
+		return estSacrifier;
+	}
+
+	public void setEstSacrifier(boolean estSacrifier) {
+		this.estSacrifier = estSacrifier;
+	}
+
+	/*
+	 * proprietaire de la carte
+	 */
+	private Joueur proprietaire;
+	public Joueur getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(Joueur proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	/*
+	 * id Carte
+	 */
+	private int idCarte;
+	
+	public int getIdCarte() {
+		return idCarte;
+	}
+
+	public void setIdCarte(int idCarte) {
+		this.idCarte = idCarte;
+	}
+
 	/**
 	 * Constructeur de la classe
 	 */
