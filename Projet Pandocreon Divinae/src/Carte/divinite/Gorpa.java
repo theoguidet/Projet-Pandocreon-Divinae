@@ -1,14 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * Gorpa hérite de Divinite
- * représente une carte divinité du jeu
+ * Gorpa hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,11 +20,11 @@ public class Gorpa extends Divinite{
 	public static Gorpa instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Gorpa(){
 		this.nom = "Gorpa";
-		this.capacite = "Peut récupérer les points d'Action d'une autre Divinité en plus des siens. L'autre Divinité ne reçoit aucun point d'Action ce tour-ci.";
+		this.capacite = "Peut rï¿½cupï¿½rer les points d'Action d'une autre Divinitï¿½ en plus des siens. L'autre Divinitï¿½ ne reï¿½oit aucun point d'Action ce tour-ci.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		Propriete p = new Propriete(Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, Origine.CREPUSCULE);
@@ -33,7 +32,7 @@ public class Gorpa extends Divinite{
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Gorpa getInstance(){
@@ -42,6 +41,7 @@ public class Gorpa extends Divinite{
 		}
 		return instance;
 	}
+	@Override
 	public void utiliserCapacite(){
 		
 	}

@@ -10,8 +10,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * ColereDivine hérite de DeusEx
- * représente une carte du jeu
+ * ColereDivine hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -24,22 +24,23 @@ public class ColereDivine extends DeusEx{
 	 */
 	public ColereDivine(int idColereDivine,Origine o){
 		this.nom = "ColereDivine";
-		this.capacite = "Détruit une carte Guide Spirituel d'Origine Nuit ou Néant, dont la capacité spéciale n'a pas effet. Les Croyants attachés reviennent au centre de la table.";
+		this.capacite = "Dï¿½truit une carte Guide Spirituel d'Origine Nuit ou Nï¿½ant, dont la capacitï¿½ spï¿½ciale n'a pas effet. Les Croyants attachï¿½s reviennent au centre de la table.";
 		this.propriete = new Propriete(o);
 		this.typeCarte=TypeCarte.deusEx;
 		this.setIdCarte(idColereDivine);
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Détruit une carte Guide
+		 * Dï¿½truit une carte Guide
 		Spirituel d'Origine Nuit ou
-		Néant, dont la capacité
-		spéciale n'a pas effet. Les
-		Croyants attachés reviennent
+		Nï¿½ant, dont la capacitï¿½
+		spï¿½ciale n'a pas effet. Les
+		Croyants attachï¿½s reviennent
 		au centre de la table
 		 */
 		ArrayList<GuideSpirituel> guides=this.getProprietaire().getGuideRattaches();

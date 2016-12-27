@@ -11,8 +11,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Tyran hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Tyran hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -25,17 +25,18 @@ public class Tyran extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.CHAOS, Origine.NEANT);
 		this.nom = "Tyran";
-		this.capacite = "Défausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.";
+		this.capacite = "Dï¿½fausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.";
 		this.nbCroyants = 3;
 		this.setIdCarte(idTyran);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Défausse tous les Croyants
+		 * Dï¿½fausse tous les Croyants
 		ayant le Dogme Mystique
 		actuellement au centre de la
 		table.
@@ -44,7 +45,7 @@ public class Tyran extends GuideSpirituel{
 		ArrayList<Croyant> croyants=Plateau.getInstance().getCroyantLibre();
 		Iterator<Croyant> croyantADefausser= croyants.iterator();
 		while(croyantADefausser.hasNext()){
-			Croyant croyantAChoisir= (Croyant) croyantADefausser.next();
+			Croyant croyantAChoisir= croyantADefausser.next();
 			if(croyantAChoisir.getPropriete().getDogmes().contains("Mystique")){
 				Partie.getUniquePartie().ajouterADefausse(croyantAChoisir);
 			}

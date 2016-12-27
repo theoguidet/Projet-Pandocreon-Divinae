@@ -1,14 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * PuiTara hérite de Divinite
- * représente une carte divinité du jeu
+ * PuiTara hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,11 +20,11 @@ public class PuiTara extends Divinite{
 	public static PuiTara instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private PuiTara(){
 		this.nom = "Pui-Tara";
-		this.capacite = "Peut détruire toutes les cartes de Croyants au centre de la table d'Origine Jour.";
+		this.capacite = "Peut dï¿½truire toutes les cartes de Croyants au centre de la table d'Origine Jour.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		Propriete p = new Propriete(Dogme.NATURE,Dogme.SYMBOLES, Dogme.MYSTIQUE,Origine.NUIT);
@@ -33,7 +32,7 @@ public class PuiTara extends Divinite{
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static PuiTara getInstance(){

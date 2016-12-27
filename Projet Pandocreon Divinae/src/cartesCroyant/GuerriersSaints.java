@@ -10,8 +10,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * GuerriersSaints hérite de Croyant
- * représente une carte du jeu
+ * GuerriersSaints hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -24,7 +24,7 @@ public class GuerriersSaints extends Croyant{
 	public GuerriersSaints (int idGuerriersSaints){
 		super();
 		this.nom = "Guerriers Saints";
-		this.capacite = "Un Guide Spirituel revient dans la main de sa Divinité. Ses Croyants reviennent au centre de la table.";
+		this.capacite = "Un Guide Spirituel revient dans la main de sa Divinitï¿½. Ses Croyants reviennent au centre de la table.";
 		this.nbCroyants= 4;
 		this.propriete = new Propriete(Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.SYMBOLES, Origine.JOUR);
 		this.typeCarte = TypeCarte.croyant;
@@ -32,16 +32,16 @@ public class GuerriersSaints extends Croyant{
 	}
 	
 	/**
-	 * capacité effectuée lors du sacrifice de la carte
+	 * capacitï¿½ effectuï¿½e lors du sacrifice de la carte
 	 */
 	public void sacrifice(){
 		/*
 		 * Un Guide Spirituel revient
-			dans la main de sa Divinité.
+			dans la main de sa Divinitï¿½.
 			Ses Croyants reviennent au
 			centre de la table.
 		 */
-		GuideSpirituel t= (GuideSpirituel) this.getProprietaire().choisirGuideRevenir();
+		GuideSpirituel t= this.getProprietaire().choisirGuideRevenir();
 		this.getProprietaire().getMain().add(t);
 		ArrayList<Croyant> c= new ArrayList<Croyant>();
 		c.addAll(t.getCroyantRattaches());

@@ -6,8 +6,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Diversion hérite de DeusEx
- * représente une carte du jeu
+ * Diversion hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -18,20 +18,21 @@ public class Diversion extends DeusEx{
 	 */
 	public Diversion(int idDiversion){
 		this.nom = "Diversion";
-		this.capacite = "Prenez 3 cartes dans la main d'un autre joueur et incluez-les à votre main.";
+		this.capacite = "Prenez 3 cartes dans la main d'un autre joueur et incluez-les ï¿½ votre main.";
 		this.propriete = new Propriete(Origine.NUIT);
 		this.setIdCarte(idDiversion);
 		this.typeCarte=TypeCarte.deusEx;
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Prenez 3 cartes dans la main
 		d'un autre joueur et
-		incluez-les à votre main.
+		incluez-les ï¿½ votre main.
 		 */
 		
 		Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();

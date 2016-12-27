@@ -2,12 +2,11 @@ package dpStrategy;
 
 import java.util.ArrayList;
 
-import propriete.Origine;
 import Carte.Carte;
 import Carte.guideSpirituel.GuideSpirituel;
 
 /**
- * interface Strategy implémentée pour le design pattern Strategy
+ * interface Strategy implï¿½mentï¿½e pour le design pattern Strategy
  * @author Admin
  *
  */

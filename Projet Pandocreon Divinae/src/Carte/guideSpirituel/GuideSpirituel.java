@@ -1,16 +1,17 @@
 package Carte.guideSpirituel;
 
 import java.util.ArrayList;
-import cartesCroyant.Croyant;
-import Joueur.Joueur;
-import partie.Partie;
-import partie.Plateau;
+
 import Carte.Carte;
 import Carte.TypeCarte;
+import Joueur.Joueur;
+import cartesCroyant.Croyant;
+import partie.Partie;
+import partie.Plateau;
 
 /**
- * GuideSpirituel hérite de Carte
- * représente un type de carte
+ * GuideSpirituel hï¿½rite de Carte
+ * reprï¿½sente un type de carte
  * @author Admin
  *
  */
@@ -34,16 +35,16 @@ public class GuideSpirituel extends Carte{
 	}
 	
 	/**
-	 * associe des croyants à ce guide spirituel
+	 * associe des croyants ï¿½ ce guide spirituel
 	 * @param j
 	 * 		joueur auxquel appartient ce guidsprituel
 	 */
 	public void attacherCroyant(Joueur j){
-		System.out.println("Veuillez choisir la/les cartes à attacher au Guide Spirituel :");
+		System.out.println("Veuillez choisir la/les cartes ï¿½ attacher au Guide Spirituel :");
 		for (Carte c : Plateau.getInstance().getCroyantLibre()) {
 			//ne peut pas rattacher une carte croyant que le joueur viens de creer
 			int i = 0;
-			System.out.println("[" + i + "] " + c.getNom() + "\n Capacité : " + c.getCapacite());
+			System.out.println("[" + i + "] " + c.getNom() + "\n Capacitï¿½ : " + c.getCapacite());
 			i++;
 			
 		}
@@ -61,7 +62,7 @@ public class GuideSpirituel extends Carte{
 					Plateau.getInstance().getCroyantLibre().remove(choix);
 
 				}else{
-					System.out.println("Ce croyant regroupe trop de points de prières pour ce guide spirituel.");
+					System.out.println("Ce croyant regroupe trop de points de priï¿½res pour ce guide spirituel.");
 				}
 			}else{
 				System.out.println("Cette carte n'a pas de dogme en commun avec le guide spirituel.");

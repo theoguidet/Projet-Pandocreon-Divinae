@@ -3,8 +3,8 @@ package cartesCroyant;
 import Carte.Carte;
 import propriete.Propriete;
 /**
- * Croyant hérite de Carte
- * représente un type de carte du jeu
+ * Croyant hï¿½rite de Carte
+ * reprï¿½sente un type de carte du jeu
  * @author Admin
  *
  */
@@ -19,9 +19,10 @@ public class Croyant extends Carte{
 	}
 
 	/**
-	 * getter des propriétés de la carte
-	 * @return les propriétés de la carte
+	 * getter des propriï¿½tï¿½s de la carte
+	 * @return les propriï¿½tï¿½s de la carte
 	 */
+	@Override
 	public Propriete getPropriete() {
 		return propriete;
 	}

@@ -11,8 +11,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * InfluenceJour hérite de DeusEx
- * représente une carte du jeu
+ * InfluenceJour hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -23,26 +23,27 @@ public class InfluenceJour extends DeusEx{
 	 */
 	public InfluenceJour(int idInfluenceJour){
 		this.nom = "Influence Jour";
-		this.capacite = "Annule la capacité spéciale d'une carte d'Action d'Origine Nuit ou Néant.";
+		this.capacite = "Annule la capacitï¿½ spï¿½ciale d'une carte d'Action d'Origine Nuit ou Nï¿½ant.";
 		this.propriete = new Propriete(Origine.NULL);
 		this.setIdCarte(idInfluenceJour);
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Annule la capacité spéciale d'une carte d'Action d'Origine Nuit ou Néant.
+		 * Annule la capacitï¿½ spï¿½ciale d'une carte d'Action d'Origine Nuit ou Nï¿½ant.
 		 */
 		ArrayList<Joueur> joueurs= Partie.getUniquePartie().getJoueurs();
 		Iterator<Joueur> joueur= joueurs.iterator();
 		while(joueur.hasNext()){
-			Joueur joueurAChoisir= (Joueur) joueur.next();
+			Joueur joueurAChoisir= joueur.next();
 			ArrayList<Carte> carteDansLaMain= joueurAChoisir.getMain();
 			Iterator<Carte> it= carteDansLaMain.iterator();
 			while(it.hasNext()){
-				Carte cartes= (Carte) it.next();
+				Carte cartes= it.next();
 				if(cartes.getPropriete().getOrigine().equals("Nuit")||cartes.getPropriete().getOrigine().equals("Neant")){
 					cartes.setEstSacrifier(false);
 				}
@@ -50,7 +51,7 @@ public class InfluenceJour extends DeusEx{
 			ArrayList<GuideSpirituel> guideRattaches= joueurAChoisir.getGuideRattaches();
 			Iterator<GuideSpirituel> guide= guideRattaches.iterator();
 			while(guide.hasNext()){
-				GuideSpirituel guides= (GuideSpirituel) guide.next();
+				GuideSpirituel guides= guide.next();
 				if(guides.getPropriete().getOrigine().equals("Nuit")||guides.getPropriete().getOrigine().equals("Neant")){
 					guides.setEstSacrifier(false);
 				}

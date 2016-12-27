@@ -5,8 +5,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Miroir hérite de DeusEx
- * représente une carte du jeu
+ * Miroir hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -17,18 +17,19 @@ public class Miroir extends DeusEx{
 	 */
 	public Miroir(int idMiroir){
 		this.nom = "Miroir";
-		this.capacite = "Retourne les effets d'une carte d'Action sur la Divinité qui l'a posée.";
+		this.capacite = "Retourne les effets d'une carte d'Action sur la Divinitï¿½ qui l'a posï¿½e.";
 		this.propriete = new Propriete(Origine.NULL);
 		this.setIdCarte(idMiroir);
 		this.typeCarte=TypeCarte.deusEx;
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Retourne les effets d'une carte d'Action sur la Divinité qui l'a posée.
+		 * Retourne les effets d'une carte d'Action sur la Divinitï¿½ qui l'a posï¿½e.
 		 */
 		
 		

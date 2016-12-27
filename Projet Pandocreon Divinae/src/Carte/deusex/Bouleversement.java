@@ -5,8 +5,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Bouleversement hérite de DeusEx
- * représente une carte du jeu
+ * Bouleversement hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -17,18 +17,19 @@ public class Bouleversement extends DeusEx{
 	 */
 	public Bouleversement(int idBouleversement){
 		this.nom = "Bouleversement";
-		this.capacite = "Relancez le dé de Cosmogonie. Le tour de jeu se terminera normalement, mais sous la nouvelle influence.";
+		this.capacite = "Relancez le dï¿½ de Cosmogonie. Le tour de jeu se terminera normalement, mais sous la nouvelle influence.";
 		this.propriete = new Propriete(Origine.NULL);
 		this.typeCarte=TypeCarte.deusEx;
 		this.setIdCarte(idBouleversement);
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Relancez le dé de Cosmogonie.
+		 * Relancez le dï¿½ de Cosmogonie.
 			Le tour de jeu se terminera
 			normalement, mais sous la
 			nouvelle influence

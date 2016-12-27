@@ -2,7 +2,6 @@ package dpStrategy;
 
 import java.util.ArrayList;
 
-import propriete.Origine;
 import Carte.Carte;
 import Carte.guideSpirituel.GuideSpirituel;
 
@@ -23,7 +22,7 @@ public class StrategyContext {
 	}
 	
 	/**
-	 * récupère la strategie
+	 * rï¿½cupï¿½re la strategie
 	 * @return
 	 */
 	public Strategy getStragtegy(){
@@ -31,16 +30,16 @@ public class StrategyContext {
 	}
 	
 	/**
-	 * appelle la méthode choixCarteAJouer
+	 * appelle la mï¿½thode choixCarteAJouer
 	 * @param main
-	 * 		cartes détenues par le joueur
+	 * 		cartes dï¿½tenues par le joueur
 	 * @param PAJour
 	 * 		points d'actions d'origine Jour du joueur 
 	 * @param PANuit
 	 * 		points d'actions d'origine Nuit du joueur 
 	 * @param PANeant
-	 * 		points d'actions d'origine Néant du joueur 
-	 * @return liste des cartes à jouer
+	 * 		points d'actions d'origine Nï¿½ant du joueur 
+	 * @return liste des cartes ï¿½ jouer
 	 * 
 	 */
 	public ArrayList<Carte> choixCarte(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
@@ -49,10 +48,10 @@ public class StrategyContext {
 	}
 	
 	/**
-	 * appelle la méthode choixCarteASacrifier
+	 * appelle la mï¿½thode choixCarteASacrifier
 	 * @param guide
-	 * 		guides spirituels détenus par le joueur
-	 * @return liste des cartes à sacrifier
+	 * 		guides spirituels dï¿½tenus par le joueur
+	 * @return liste des cartes ï¿½ sacrifier
 	 */
 	public ArrayList<Carte> choixCarteSacrifice(ArrayList<GuideSpirituel> guide){
 		ArrayList<Carte> c = strategy.choixCarteASacrifier(guide);
@@ -60,16 +59,16 @@ public class StrategyContext {
 	}
 	
 	/**
-	 * appelle la méthode choixCarteADefausser
+	 * appelle la mï¿½thode choixCarteADefausser
 	 * @param main
-	 * 		cartes détenues par le joueur
+	 * 		cartes dï¿½tenues par le joueur
 	 * @param PAJour
 	 * 		points d'actions d'origine Jour du joueur 
 	 * @param PANuit
 	 * 		points d'actions d'origine Nuit du joueur 
 	 * @param PANeant
-	 * 		points d'actions d'origine Néant du joueur 
-	 * @return liste des cartes à défausser
+	 * 		points d'actions d'origine Nï¿½ant du joueur 
+	 * @return liste des cartes ï¿½ dï¿½fausser
 	 */
 	public ArrayList<Carte> choixCarteDefausse(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
 		ArrayList<Carte> c = strategy.choixCarteADefausser(main, PAJour, PANuit, PANeant);

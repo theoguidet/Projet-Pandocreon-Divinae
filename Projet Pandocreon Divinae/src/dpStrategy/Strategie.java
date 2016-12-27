@@ -2,29 +2,28 @@ package dpStrategy;
 
 import java.util.ArrayList;
 
-import propriete.Origine;
 import Carte.Carte;
-import cartesCroyant.Croyant;
 import Carte.guideSpirituel.GuideSpirituel;
+import propriete.Origine;
 
 /**
  * Strategie implemente l'interface Strategy 
- * représente une stratégie pour les joueurs virtuels
+ * reprï¿½sente une stratï¿½gie pour les joueurs virtuels
  * @author Admin
  *
  */
 public class Strategie implements Strategy{
 
 	/**
-	 * méthode qui choisi quelles cartes jouer 
+	 * mï¿½thode qui choisi quelles cartes jouer 
 	 * @param main
-	 * 		cartes détenues par le joueur
+	 * 		cartes dï¿½tenues par le joueur
 	 * @param PAJour
 	 * 		points d'actions d'origine Jour du joueur 
 	 * @param PANuit
 	 * 		points d'actions d'origine Nuit du joueur 
 	 * @param PANeant
-	 * 		points d'actions d'origine Néant du joueur 
+	 * 		points d'actions d'origine Nï¿½ant du joueur 
 	 */
 	@Override
 	public ArrayList<Carte> choixCarteAJouer(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant) {
@@ -50,16 +49,17 @@ public class Strategie implements Strategy{
 	}
 
 	/**
-	 * méthode qui choisi quelles cartes défausser
+	 * mï¿½thode qui choisi quelles cartes dï¿½fausser
 	 * @param main
-	 * 		cartes détenues par le joueur
+	 * 		cartes dï¿½tenues par le joueur
 	 * @param PAJour
 	 * 		points d'actions d'origine Jour du joueur 
 	 * @param PANuit
 	 * 		points d'actions d'origine Nuit du joueur 
 	 * @param PANeant
-	 * 		points d'actions d'origine Néant du joueur 
+	 * 		points d'actions d'origine Nï¿½ant du joueur 
 	 */
+	@Override
 	public ArrayList<Carte> choixCarteADefausser(ArrayList<Carte> main, int PAJour, int PANuit, int PANeant){
 		ArrayList<Carte> carteADefausser = new ArrayList<Carte>();
 		for (Carte carte : main) {
@@ -77,11 +77,12 @@ public class Strategie implements Strategy{
 	}
 
 	/**
-	 * méthode qui choisi quelles cartes sacrifier
+	 * mï¿½thode qui choisi quelles cartes sacrifier
 	 * ne sacrifie que des guides spirituels
 	 * @param guide
-	 * 		guides spirituels posés sur la table par le joueur
+	 * 		guides spirituels posï¿½s sur la table par le joueur
 	 */
+	@Override
 	public ArrayList<Carte> choixCarteASacrifier(ArrayList<GuideSpirituel> guide){
 		ArrayList<Carte> carteASacrifier = new ArrayList<Carte>();
 		for (GuideSpirituel g : guide) {

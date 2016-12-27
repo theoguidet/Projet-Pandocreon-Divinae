@@ -1,7 +1,7 @@
 package propriete;
 
 /**
- * énumération des origines
+ * ï¿½numï¿½ration des origines
  * @author Admin
  *
  */
@@ -16,7 +16,7 @@ public enum Origine {
 	private String name = "";
 	
 	/**
-	 * constructeur privé de l'énumération
+	 * constructeur privï¿½ de l'ï¿½numï¿½ration
 	 * @param name
 	 * 		nom
 	 */
@@ -28,6 +28,7 @@ public enum Origine {
 	 * affiche le nom
 	 * @return nom
 	 */
+	@Override
 	public String toString(){
 		return name;
 	}

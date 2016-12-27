@@ -5,8 +5,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Clerc hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Clerc hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -25,20 +25,21 @@ public class Clerc extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(d1, d2, o);
 		this.nom = "Ascete";
-		this.capacite = "Fait gagner un nombre de points d'Action égal au nombre de cartes de Croyants rattachées. L'Origine des points d'Action est au choix du joueur.";
+		this.capacite = "Fait gagner un nombre de points d'Action ï¿½gal au nombre de cartes de Croyants rattachï¿½es. L'Origine des points d'Action est au choix du joueur.";
 		this.nbCroyants= 2;
 		this.setIdCarte(idClerc);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Fait gagner un nombre de
-		points d'Action égal au
+		points d'Action ï¿½gal au
 		nombre de cartes de Croyants
-		rattachées. L'Origine des
+		rattachï¿½es. L'Origine des
 		points d'Action est au choix
 		du joueur.
 

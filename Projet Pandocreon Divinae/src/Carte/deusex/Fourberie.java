@@ -8,8 +8,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Fourberie hérite de DeusEx
- * représente une carte du jeu
+ * Fourberie hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -20,21 +20,22 @@ public class Fourberie extends DeusEx{
 	 */
 	public Fourberie(int idFourberie){
 		this.nom = "Fourberie";
-		this.capacite = "Sacrifiez 2 cartes Croyants d'une autre Divinité. Les capacités spéciales ne sont pas jouées.";
+		this.capacite = "Sacrifiez 2 cartes Croyants d'une autre Divinitï¿½. Les capacitï¿½s spï¿½ciales ne sont pas jouï¿½es.";
 		this.propriete = new Propriete(Origine.NUIT);
 		this.typeCarte= TypeCarte.deusEx;
 		this.setIdCarte(idFourberie);
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Sacrifiez 2 cartes Croyants
-		d'une autre Divinité. Les
-		capacités spéciales ne sont pas
-		jouées.
+		d'une autre Divinitï¿½. Les
+		capacitï¿½s spï¿½ciales ne sont pas
+		jouï¿½es.
 
 		 */
 		int indice;

@@ -11,8 +11,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
-	 * Paladin hérite de GuideSpirituel
-	 * représente une carte du jeu 
+	 * Paladin hï¿½rite de GuideSpirituel
+	 * reprï¿½sente une carte du jeu 
 	 * @author Admin
 	 *
 	 */
@@ -25,27 +25,28 @@ public class Paladin extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
 		this.nom = "Paladin";
-		this.capacite = "Tous les Croyants, d'Origine Nuit ou Néant et ayant le Dogme Nature, actuellement sur la table sont défaussés.Les capacités spéciales ne sont pas jouées.";
+		this.capacite = "Tous les Croyants, d'Origine Nuit ou Nï¿½ant et ayant le Dogme Nature, actuellement sur la table sont dï¿½faussï¿½s.Les capacitï¿½s spï¿½ciales ne sont pas jouï¿½es.";
 		this.nbCroyants = 3;
 		this.setIdCarte(idPaladin);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Tous les Croyants, d'Origine
-		Nuit ou Néant et ayant le
+		Nuit ou Nï¿½ant et ayant le
 		Dogme Nature, actuellement
-		sur la table sont défaussés.
-		Les capacités spéciales ne sont
-		pas jouées.
+		sur la table sont dï¿½faussï¿½s.
+		Les capacitï¿½s spï¿½ciales ne sont
+		pas jouï¿½es.
 
 		 */
 		ArrayList<Croyant> croyantLibre= Plateau.getInstance().getCroyantLibre();
 		for(Iterator<Croyant> it= croyantLibre.iterator(); it.hasNext();){
-			Croyant croyantADefausser= (Croyant) it.next();
+			Croyant croyantADefausser= it.next();
 			if((croyantADefausser.getPropriete().getOrigine().equals("Nuit")||croyantADefausser.getPropriete().equals("Neant"))&& croyantADefausser.getPropriete().getDogmes().contains("Nature")){
 				Partie.getUniquePartie().ajouterADefausse(croyantADefausser);
 			}

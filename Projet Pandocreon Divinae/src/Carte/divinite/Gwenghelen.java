@@ -1,14 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * Gwenghelen hérite de Divinite
- * représente une carte divinité du jeu
+ * Gwenghelen hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,11 +20,11 @@ public class Gwenghelen extends Divinite{
 	public static Gwenghelen instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Gwenghelen(){
 		this.nom = "Gwenghelen";
-		this.capacite = "Récupère autant de points d'Action supplémentaires d'Origine Néant que le nombre de Guides Spirituels que la Divinité possède.";
+		this.capacite = "Rï¿½cupï¿½re autant de points d'Action supplï¿½mentaires d'Origine Nï¿½ant que le nombre de Guides Spirituels que la Divinitï¿½ possï¿½de.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		Propriete p = new Propriete(Dogme.HUMAIN, Dogme.SYMBOLES,Dogme.MYSTIQUE,Origine.AUBE);
@@ -33,7 +32,7 @@ public class Gwenghelen extends Divinite{
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Gwenghelen getInstance(){

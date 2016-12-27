@@ -10,8 +10,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * TrouNoir hérite de DeusEx
- * représente une carte du jeu
+ * TrouNoir hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -28,13 +28,14 @@ public class TrouNoir extends DeusEx{
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		ArrayList<Joueur> joueurs= Partie.getUniquePartie().getJoueurs();
 		Iterator<Joueur> listJoueurs= joueurs.iterator();
 		while(listJoueurs.hasNext()){
-			Joueur joueurAChoisir= (Joueur) listJoueurs.next();
+			Joueur joueurAChoisir= listJoueurs.next();
 			joueurAChoisir.setPouvoirRecevoirPointAction(false);
 		}
 

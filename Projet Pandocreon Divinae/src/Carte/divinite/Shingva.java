@@ -1,14 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * Shingva hérite de Divinite
- * représente une carte divinité du jeu
+ * Shingva hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,7 +20,7 @@ public class Shingva extends Divinite{
 	public static Shingva instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Shingva(){
 		this.nom = "Shingva";
@@ -33,7 +32,7 @@ public class Shingva extends Divinite{
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Shingva getInstance(){

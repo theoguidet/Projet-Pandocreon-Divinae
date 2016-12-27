@@ -1,17 +1,18 @@
 package Carte.guideSpirituel;
 
 import java.util.ArrayList;
+
+import Carte.Carte;
+import Carte.TypeCarte;
+import Joueur.Joueur;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
-import Joueur.Joueur;
 
 /**
- * Ascete hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Ascete hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -24,21 +25,22 @@ public class Ascete extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.SYMBOLES, Origine.NUIT);
 		this.nom = "Ascete";
-		this.capacite = "Sacrifie 2 cartes Croyants d'une Divinité ayant le Dogme Humain ou Symboles.Les capacités spéciales sont jouées normalement";
+		this.capacite = "Sacrifie 2 cartes Croyants d'une Divinitï¿½ ayant le Dogme Humain ou Symboles.Les capacitï¿½s spï¿½ciales sont jouï¿½es normalement";
 		this.nbCroyants= 1;
 		this.setIdCarte(idAscete);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Sacrifie 2 cartes Croyants
-			d'une Divinité ayant le
+			d'une Divinitï¿½ ayant le
 			Dogme Humain ou Symboles.
-			Les capacités spéciales sont
-			jouées normalement.
+			Les capacitï¿½s spï¿½ciales sont
+			jouï¿½es normalement.
 		 */
 		ArrayList<Joueur>j=Partie.getUniquePartie().getJoueurs();
 		int i=0;
@@ -62,14 +64,14 @@ public class Ascete extends GuideSpirituel{
 				}
 			}else{
 				int u;
-				System.out.println("Tapez le numero de la premiere carte Croyant à sacrifier");
+				System.out.println("Tapez le numero de la premiere carte Croyant ï¿½ sacrifier");
 				u=Partie.scanner.nextInt();
 				ArrayList<Carte> c=this.getProprietaire().getMain();
 				
 				int p=0;
 				while(p<2){
 				while(c.get(u).getTypeCarte()!=TypeCarte.croyant){
-					System.out.println("Tapez le numero de la "+p+1+"er carte Croyant à sacrifier");
+					System.out.println("Tapez le numero de la "+p+1+"er carte Croyant ï¿½ sacrifier");
 					u=Partie.scanner.nextInt();
 				}
 				c.get(u).utiliserCapacite();

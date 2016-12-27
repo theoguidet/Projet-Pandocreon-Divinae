@@ -1,13 +1,13 @@
 package Carte.guideSpirituel;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.TypeCarte;
 
 /**
- * Anarchiste hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Anarchiste hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -19,7 +19,7 @@ public class Anarchiste extends GuideSpirituel{
 	public Anarchiste(int idAnarchiste){
 		super();
 		this.nom = "Anarchiste";
-		this.capacite = "Sacrifie un Guide Spirituel, si lui ou a Divinité ne croit pas au Dogme Chaos. Les capacités spéciales sont jouées normalement.";
+		this.capacite = "Sacrifie un Guide Spirituel, si lui ou a Divinitï¿½ ne croit pas au Dogme Chaos. Les capacitï¿½s spï¿½ciales sont jouï¿½es normalement.";
 		this.nbCroyants= 3;
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.CHAOS, Origine.NEANT);
 		this.typeCarte = TypeCarte.guideSpirituel;
@@ -27,14 +27,15 @@ public class Anarchiste extends GuideSpirituel{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Sacrifie un Guide Spirituel, si
-		lui ou sa Divinité ne croit pas
+		lui ou sa Divinitï¿½ ne croit pas
 		au Dogme Chaos. Les
-		capacités spéciales sont jouées
+		capacitï¿½s spï¿½ciales sont jouï¿½es
 		normalement
 		 */
 		

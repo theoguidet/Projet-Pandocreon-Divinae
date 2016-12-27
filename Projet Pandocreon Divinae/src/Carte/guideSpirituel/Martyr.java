@@ -3,15 +3,15 @@ package Carte.guideSpirituel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Joueur.Joueur;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Joueur.Joueur;
 
 /**
- * Martyr hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Martyr hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -32,17 +32,18 @@ public class Martyr extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(d1, d2, o);
 		this.nom = "Martyr";
-		this.capacite = "Equivalent à la pose d'une carte Apocalypse.";
+		this.capacite = "Equivalent ï¿½ la pose d'une carte Apocalypse.";
 		this.nbCroyants= 2;
 		this.setIdCarte(idMartyr);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Equivalent à la pose d'une
+		 * Equivalent ï¿½ la pose d'une
 			carte Apocalypse.
 		 */
 	int nb=	Partie.getUniquePartie().getNbJoueur();
@@ -52,7 +53,7 @@ public class Martyr extends GuideSpirituel{
 	int k=0;
 	if(nb>=4){
 		for(Iterator<Joueur> it=j.iterator();it.hasNext();){
-			Joueur itj= (Joueur) it.next();
+			Joueur itj= it.next();
 			if(min>itj.getNbPrieres()){
 				min=itj.getNbPrieres();
 				k=itj.getPosJoueur();

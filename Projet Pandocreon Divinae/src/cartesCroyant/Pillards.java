@@ -2,6 +2,7 @@ package cartesCroyant;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import Carte.TypeCarte;
 import Joueur.Joueur;
 import partie.Partie;
@@ -10,8 +11,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Pillards hérite de Croyant
- * représente une carte du jeu
+ * Pillards hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -24,7 +25,7 @@ public class Pillards extends Croyant{
 	public Pillards (int idPillards){
 		super();
 		this.nom = "Pillards";
-		this.capacite = "Récupérez les points d'Action d'une Divinité n'ayant pas encore joué durant ce tour. Les points d'Action gardent leur Origine. La Divinité perd ses points.";
+		this.capacite = "Rï¿½cupï¿½rez les points d'Action d'une Divinitï¿½ n'ayant pas encore jouï¿½ durant ce tour. Les points d'Action gardent leur Origine. La Divinitï¿½ perd ses points.";
 		this.nbCroyants= 4;
 		this.propriete = new Propriete(Dogme.MYSTIQUE, Dogme.NATURE, Dogme.SYMBOLES, Origine.NUIT);
 		this.typeCarte = TypeCarte.croyant;
@@ -32,14 +33,14 @@ public class Pillards extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
-		/*Récupérez les points d'Action
-		d'une Divinité n'ayant pas
-		encore joué durant ce tour.
+		/*Rï¿½cupï¿½rez les points d'Action
+		d'une Divinitï¿½ n'ayant pas
+		encore jouï¿½ durant ce tour.
 		Les points d'Action gardent
-		leur Origine. La Divinité
+		leur Origine. La Divinitï¿½
 		perd ses points.
 		 * 
 		 */

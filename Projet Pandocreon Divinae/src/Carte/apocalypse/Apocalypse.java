@@ -1,12 +1,12 @@
 package Carte.apocalypse;
 
+import Carte.Carte;
+import Carte.TypeCarte;
 import partie.Partie;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 /**
- * Apocalypse hérite de la classe abstraite Carte 
+ * Apocalypse hï¿½rite de la classe abstraite Carte 
  * @author Admin
  *
  */
@@ -20,13 +20,13 @@ public class Apocalypse extends Carte{
 	public Apocalypse(Origine o){
 		super();
 		this.nom = "Apocalypse";
-		this.capacite = "Vous faites perdre le joueur ayant le moins de prières (4 joueurs ou plus) ou vous faites gagner le joueur ayant le plus de prières (2 ou 3 joueurs).";
+		this.capacite = "Vous faites perdre le joueur ayant le moins de priï¿½res (4 joueurs ou plus) ou vous faites gagner le joueur ayant le plus de priï¿½res (2 ou 3 joueurs).";
 		this.typeCarte = TypeCarte.apocalyspe;
 		this.propriete = new Propriete(o);
 	}
 
 	/**
-	 * capacité associée a l'Apocalypse
+	 * capacitï¿½ associï¿½e a l'Apocalypse
 	 * @param p
 	 * 		partie en cours
 	 */

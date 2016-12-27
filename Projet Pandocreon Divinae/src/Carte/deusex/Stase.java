@@ -5,8 +5,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Stase hérite de DeusEx
- * représente une carte du jeu
+ * Stase hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -17,15 +17,16 @@ public class Stase extends DeusEx{
 	 */
 	public Stase(int idStase){
 		this.nom = "Stase";
-		this.capacite = "Protège un Guide Spirituel et ses Croyants jusqu'à ce que cette carte soit annulée ou jusqu'à la prochaine tentative d'Apocalypse.";
+		this.capacite = "Protï¿½ge un Guide Spirituel et ses Croyants jusqu'ï¿½ ce que cette carte soit annulï¿½e ou jusqu'ï¿½ la prochaine tentative d'Apocalypse.";
 		this.propriete = new Propriete(Origine.JOUR);
 		this.setIdCarte(idStase);
 		this.typeCarte=TypeCarte.deusEx;
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 
 	}

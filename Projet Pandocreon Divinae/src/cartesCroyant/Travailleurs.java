@@ -12,8 +12,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Travailleurs hérite de Croyant
- * représente une carte du jeu
+ * Travailleurs hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -40,14 +40,14 @@ public class Travailleurs extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
 		switch (this.getIdCarte()) {
 		case 6:
 			/*
-			 * Empêche une Divinité
-				possédant le Dogme Nature
+			 * Empï¿½che une Divinitï¿½
+				possï¿½dant le Dogme Nature
 				ou Mystique de sacrifier une
 				de ses cartes de Croyants
 				durant ce tour.
@@ -61,7 +61,7 @@ public class Travailleurs extends Croyant{
 			Joueur joueur1 =  it1.next();
 			while(Partie.getUniquePartie().isPartieEnCours()== true){
 				for(Iterator<Carte> croyantAControle= joueur1.getMain().iterator(); croyantAControle.hasNext();){
-					Carte c= (Carte) croyantAControle.next();
+					Carte c= croyantAControle.next();
 					if(c.getTypeCarte()==TypeCarte.croyant){
 						c.setEstSacrifier(false);
 					}
@@ -70,8 +70,8 @@ public class Travailleurs extends Croyant{
 			break;
 		case 7:
 			/*
-			 * Empêche une Divinité
-				possédant le Dogme Chaos ou
+			 * Empï¿½che une Divinitï¿½
+				possï¿½dant le Dogme Chaos ou
 				Mystique de sacrifier un de
 				ses Guides Spirituels durant
 				ce tour.
@@ -85,7 +85,7 @@ public class Travailleurs extends Croyant{
 			Joueur joueur2 =  it2.next();
 			while(Partie.getUniquePartie().isPartieEnCours()== true){
 				for(Iterator<Carte> croyantAControle= joueur2.getMain().iterator(); croyantAControle.hasNext();){
-					Carte c= (Carte) croyantAControle.next();
+					Carte c= croyantAControle.next();
 					if(c.getTypeCarte()==TypeCarte.croyant){
 						c.setEstSacrifier(false);
 					}
@@ -98,7 +98,7 @@ public class Travailleurs extends Croyant{
 			/*
 			 * Vous piochez deux cartes au
 				hasard dans la main d'une
-				autre Divinité.
+				autre Divinitï¿½.
 
 			 */
 			Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();

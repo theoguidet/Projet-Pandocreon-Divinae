@@ -1,14 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * Romtec hérite de Divinite
- * représente une carte divinité du jeu
+ * Romtec hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,11 +20,11 @@ public class Romtec extends Divinite{
 	public static Romtec instance;
 
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Romtec(){
 		this.nom = "Romtec";
-		this.capacite = "Peut empêcher un jour de créer un Guide Spirituel. La carte est défaussée.";
+		this.capacite = "Peut empï¿½cher un jour de crï¿½er un Guide Spirituel. La carte est dï¿½faussï¿½e.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		Propriete p = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.CHAOS, Origine.CREPUSCULE);
@@ -33,7 +32,7 @@ public class Romtec extends Divinite{
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Romtec getInstance(){

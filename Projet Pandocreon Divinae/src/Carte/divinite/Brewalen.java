@@ -1,14 +1,13 @@
 package Carte.divinite;
 
-import propriete.Dogme; 
+import Carte.TypeCarte;
+import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * Brewalen hérite de Divinite
- * représente une carte divinité du jeu
+ * Brewalen hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,18 +20,18 @@ public class Brewalen extends Divinite{
 	public static Brewalen instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Brewalen(){
 		this.nom = "Brewalen";
-		this.capacite = "Peut empêcher l'utilisation d'une carte Apocalypse. La carte est défaussée.";
+		this.capacite = "Peut empï¿½cher l'utilisation d'une carte Apocalypse. La carte est dï¿½faussï¿½e.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		this.propriete = new Propriete(Dogme.NATURE, Dogme.HUMAIN, Dogme.MYSTIQUE, Origine.JOUR);
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Brewalen getInstance(){
@@ -41,6 +40,7 @@ public class Brewalen extends Divinite{
 		}
 		return instance;
 	}
+	@Override
 	public void utiliserCapacite(){
 		
 	}

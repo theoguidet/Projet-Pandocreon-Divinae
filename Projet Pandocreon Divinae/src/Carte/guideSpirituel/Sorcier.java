@@ -1,14 +1,14 @@
 package Carte.guideSpirituel;
 
+import Carte.TypeCarte;
+import Joueur.Joueur;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.TypeCarte;
-import Joueur.Joueur;
 
 /**
- * Sorcier hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Sorcier hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -29,22 +29,23 @@ public class Sorcier extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(d1, d2, o);
 		this.nom = "Sorcier";
-		this.capacite = "Echangez l'un de vos Guides Spirituels avec un d'une autre Divinité. Vous choisissez les deux guides Spirituels en question. Les Croyants restent attachés aux mêmes cartes.";
+		this.capacite = "Echangez l'un de vos Guides Spirituels avec un d'une autre Divinitï¿½. Vous choisissez les deux guides Spirituels en question. Les Croyants restent attachï¿½s aux mï¿½mes cartes.";
 		this.nbCroyants = 3;
 		this.setIdCarte(idSorcier);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Echangez l'un de vos Guides
 		Spirituels avec un d'une autre
-		Divinité. Vous choisissez les
+		Divinitï¿½. Vous choisissez les
 		deux guides Spirituels en
 		question. Les Croyants
-		restent attachés aux mêmes
+		restent attachï¿½s aux mï¿½mes
 		cartes.
 		 */
 		Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();

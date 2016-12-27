@@ -2,15 +2,15 @@ package Carte.guideSpirituel;
 
 import java.util.ArrayList;
 
+import Joueur.Joueur;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Joueur.Joueur;
 
 /**
- * Devin hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Devin hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -31,19 +31,20 @@ public class Devin extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(d1, d2, o);
 		this.nom = "Devin";
-		this.capacite = "Oblige une Divinité ayant le Dogme Nature ou Mystique à sacrifier l'un de ses Guides Spirituels.";
+		this.capacite = "Oblige une Divinitï¿½ ayant le Dogme Nature ou Mystique ï¿½ sacrifier l'un de ses Guides Spirituels.";
 		this.nbCroyants = 1;
 		this.setIdCarte(idDevin);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Oblige une Divinité ayant le
+		 * Oblige une Divinitï¿½ ayant le
 		Dogme Nature ou Mystique
-		à sacrifier l'un de ses Guides
+		ï¿½ sacrifier l'un de ses Guides
 		Spirituels.
 		 */
 		ArrayList<Joueur>joueurAAttaquer=Partie.getUniquePartie().getJoueurs();

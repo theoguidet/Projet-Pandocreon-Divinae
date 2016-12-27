@@ -1,6 +1,6 @@
 package Carte;
 /**
- * Enumération qui contient les différents types de cartes
+ * Enumï¿½ration qui contient les diffï¿½rents types de cartes
  * @author Admin
  *
  */
@@ -14,7 +14,7 @@ public enum TypeCarte {
 	private String nom = "";
 
 	/**
-	 * constructeur privé 
+	 * constructeur privï¿½ 
 	 * @param nom
 	 */
 	TypeCarte(String nom){
@@ -22,9 +22,10 @@ public enum TypeCarte {
 	}
 	
 	/**
-	 * méthode qui retourne le nom
+	 * mï¿½thode qui retourne le nom
 	 * @return nom
 	 */
+	@Override
 	public String toString(){
 		return nom;
 	}

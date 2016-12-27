@@ -1,14 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
 
 /**
- * Yarstur hérite de Divinite
- * représente une carte divinité du jeu
+ * Yarstur hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -21,11 +20,11 @@ public class Yarstur extends Divinite{
 	public static Yarstur instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Yarstur(){
 		this.nom = "Yarstur";
-		this.capacite = "Peut détruire toutes les cartes de Croyants au centre de la table d'Origine Néant.";
+		this.capacite = "Peut dï¿½truire toutes les cartes de Croyants au centre de la table d'Origine Nï¿½ant.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		Propriete p = new Propriete(Dogme.CHAOS, Dogme.SYMBOLES, Dogme.MYSTIQUE, Origine.JOUR);
@@ -33,7 +32,7 @@ public class Yarstur extends Divinite{
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Yarstur getInstance(){

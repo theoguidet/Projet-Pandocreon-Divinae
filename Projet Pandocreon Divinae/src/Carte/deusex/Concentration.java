@@ -7,8 +7,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Concentration hérite de DeusEx
- * représente une carte du jeu
+ * Concentration hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -19,23 +19,24 @@ public class Concentration extends DeusEx{
 	 */
 	public Concentration(int idConcentration){
 		this.nom = "Concentration";
-		this.capacite = "Vous récupérez un des Guides Spirituels posés devant une autre Divinité et le placez devant vous avec les Croyants qui y sont attachés.";
+		this.capacite = "Vous rï¿½cupï¿½rez un des Guides Spirituels posï¿½s devant une autre Divinitï¿½ et le placez devant vous avec les Croyants qui y sont attachï¿½s.";
 		this.propriete = new Propriete(Origine.NEANT);
 		this.typeCarte=TypeCarte.deusEx;
 		this.setIdCarte(idConcentration);
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Vous récupérez un des
-		Guides Spirituels posés
-		devant une autre Divinité et
+		 * Vous rï¿½cupï¿½rez un des
+		Guides Spirituels posï¿½s
+		devant une autre Divinitï¿½ et
 		le placez devant vous avec
 		les Croyants qui y sont
-		attachés.
+		attachï¿½s.
 		 */
 		Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();
 	

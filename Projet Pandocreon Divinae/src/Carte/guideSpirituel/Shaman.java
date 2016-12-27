@@ -3,17 +3,17 @@ package Carte.guideSpirituel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Carte.Carte;
+import Carte.TypeCarte;
+import Joueur.Joueur;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Carte.TypeCarte;
-import Joueur.Joueur;
 
 /**
- * Shaman hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Shaman hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -26,21 +26,22 @@ public class Shaman extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(Dogme.NATURE,Dogme.SYMBOLES,Origine.NUIT);
 		this.nom = "Shaman";
-		this.capacite = "Sacrifie tous les Croyants d'Origine Néant d'une Divinité ayant le Dogme Humain. Les capacités spéciales sont jouées normalement.";
+		this.capacite = "Sacrifie tous les Croyants d'Origine Nï¿½ant d'une Divinitï¿½ ayant le Dogme Humain. Les capacitï¿½s spï¿½ciales sont jouï¿½es normalement.";
 		this.nbCroyants = 3;
 		this.setIdCarte(idShaman);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
 		 * Sacrifie tous les Croyants
-		d'Origine Néant d'une
-		Divinité ayant le Dogme
-		Humain. Les capacités
-		spécials sont jouées
+		d'Origine Nï¿½ant d'une
+		Divinitï¿½ ayant le Dogme
+		Humain. Les capacitï¿½s
+		spï¿½cials sont jouï¿½es
 		normalement.
 		 */
 		ArrayList<Joueur> joueurs=	Partie.getUniquePartie().getJoueurs();
@@ -51,7 +52,7 @@ public class Shaman extends GuideSpirituel{
 			
 		}
 		if(joueurAAttaquer.hasNext()==false){
-			System.out.println("Il n'y a aucune divinité ayant dogme humain");
+			System.out.println("Il n'y a aucune divinitï¿½ ayant dogme humain");
 		}else if(joueurAAttaquer.next().getDivinite().getPropriete().getDogmes().contains("Humain")==true){
 			carteASacrifier=joueurAAttaquer.next().getMain();
 			for(indice=0;indice<carteASacrifier.size();indice++){

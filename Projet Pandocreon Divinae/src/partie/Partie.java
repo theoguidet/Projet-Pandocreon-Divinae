@@ -3,27 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import propriete.Dogme;
-import propriete.Origine;
 import Carte.Carte;
 import Carte.apocalypse.Apocalypse;
-import cartesCroyant.Alchimistes;
-import cartesCroyant.Alienes;
-import cartesCroyant.Demons;
-import cartesCroyant.Diplomates;
-import cartesCroyant.Ermite;
-import cartesCroyant.Esprits;
-import cartesCroyant.GuerriersSaints;
-import cartesCroyant.Illusionnistes;
-import cartesCroyant.Integristes;
-import cartesCroyant.Lycanthropes;
-import cartesCroyant.Moines;
-import cartesCroyant.Nihillistes;
-import cartesCroyant.Pillards;
-import cartesCroyant.Revenant;
-import cartesCroyant.Revolutionnaires;
-import cartesCroyant.Travailleurs;
-import cartesCroyant.Vampires;
 import Carte.deusex.Bouleversement;
 import Carte.deusex.ColereDivine;
 import Carte.deusex.Concentration;
@@ -64,9 +45,28 @@ import Carte.guideSpirituel.Sorcier;
 import Carte.guideSpirituel.Tyran;
 import Joueur.Joueur;
 import Joueur.JoueurVirtuel;
+import cartesCroyant.Alchimistes;
+import cartesCroyant.Alienes;
+import cartesCroyant.Demons;
+import cartesCroyant.Diplomates;
+import cartesCroyant.Ermite;
+import cartesCroyant.Esprits;
+import cartesCroyant.GuerriersSaints;
+import cartesCroyant.Illusionnistes;
+import cartesCroyant.Integristes;
+import cartesCroyant.Lycanthropes;
+import cartesCroyant.Moines;
+import cartesCroyant.Nihillistes;
+import cartesCroyant.Pillards;
+import cartesCroyant.Revenant;
+import cartesCroyant.Revolutionnaires;
+import cartesCroyant.Travailleurs;
+import cartesCroyant.Vampires;
+import propriete.Dogme;
+import propriete.Origine;
 
 /**
- * classe "mère" de l'application
+ * classe "mï¿½re" de l'application
  * @author Admin
  *
  */
@@ -96,7 +96,7 @@ public class Partie implements Runnable{
 	/**
 	 * constructeur de la classe
 	 * @param nbJoueur
-	 * 		nombre de joueur à créer pour la partie
+	 * 		nombre de joueur ï¿½ crï¿½er pour la partie
 	 */
 	public Partie(){
 		this.joueurs = new ArrayList<Joueur>();
@@ -109,7 +109,7 @@ public class Partie implements Runnable{
 
 
 	/**
-	 * distribue une divinité par joueur
+	 * distribue une divinitï¿½ par joueur
 	 */
 	public void distribuerDivinites(){
 		Collections.shuffle(divinites);
@@ -132,12 +132,12 @@ public class Partie implements Runnable{
 	}
 
 	/**
-	 * instanciation des cartes et création de la pioche pour les cartes d'actions et pour les divinités
+	 * instanciation des cartes et crï¿½ation de la pioche pour les cartes d'actions et pour les divinitï¿½s
 	 * @return
 	 */
 	public ArrayList<Carte> creationJeuDeCarte(){
 		
-		//déclaration des guides spirituels
+		//dï¿½claration des guides spirituels
 		Martyr martyr1 = new Martyr(37,Dogme.NATURE, Dogme.HUMAIN, Origine.JOUR);
 		Martyr martyr2 = new Martyr(38,Dogme.SYMBOLES, Dogme.HUMAIN, Origine.NUIT);
 		Martyr martyr3 = new Martyr(39,Dogme.NATURE, Dogme.CHAOS, Origine.NEANT);
@@ -165,9 +165,9 @@ public class Partie implements Runnable{
 		Moines moines3 = new Moines(3,Dogme.CHAOS, Dogme.SYMBOLES, Dogme.MYSTIQUE);
 		Moines moines4 = new Moines(4,Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.MYSTIQUE);
 		Moines moines5 = new Moines(5,Dogme.CHAOS, Dogme.NATURE, Dogme.MYSTIQUE);
-		Travailleurs travailleurs1 = new Travailleurs(6,Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour");
-		Travailleurs travailleurs2 = new Travailleurs(7,Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels durant ce tour.");
-		Travailleurs travailleurs3 = new Travailleurs(8,Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Travailleurs travailleurs1 = new Travailleurs(6,Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour");
+		Travailleurs travailleurs2 = new Travailleurs(7,Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, "Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels durant ce tour.");
+		Travailleurs travailleurs3 = new Travailleurs(8,Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinitï¿½.");
 		Ermite ermite1 = new Ermite(9,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
 		Ermite ermite2 = new Ermite(10,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.SYMBOLES);
 		Integristes integristes = new Integristes(11);
@@ -177,9 +177,9 @@ public class Partie implements Runnable{
 		Demons demon2 = new Demons(15,Dogme.MYSTIQUE, Dogme.HUMAIN, Dogme.CHAOS);
 		Demons demon3 = new Demons(16,Dogme.MYSTIQUE, Dogme.SYMBOLES, Dogme.CHAOS);
 		Demons demon4 = new Demons(17,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS);
-		Alchimistes alchimistes1 = new Alchimistes(18,Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alchimistes alchimistes2 = new Alchimistes(19,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alchimistes alchimistes3 = new Alchimistes(20,Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité."); 		
+		Alchimistes alchimistes1 = new Alchimistes(18,Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alchimistes alchimistes2 = new Alchimistes(19,Dogme.MYSTIQUE, Dogme.NATURE, Dogme.CHAOS, "Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Humain ou Symboles de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alchimistes alchimistes3 = new Alchimistes(20,Dogme.SYMBOLES, Dogme.NATURE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinitï¿½."); 		
 		Vampires vampires1 = new Vampires(21,Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES);
 		Vampires vampires2 = new Vampires(22,Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS);
 		Lycanthropes lycanthropes = new Lycanthropes(23);
@@ -190,9 +190,9 @@ public class Partie implements Runnable{
 		Esprits esprits3 = new Esprits(28,Dogme.SYMBOLES, Dogme.CHAOS, Dogme.MYSTIQUE);
 		Esprits esprits4 = new Esprits(29,Dogme.SYMBOLES, Dogme.NATURE, Dogme.MYSTIQUE);
 		Esprits esprits5 = new Esprits(30,Dogme.NATURE, Dogme.CHAOS, Dogme.MYSTIQUE);
-		Alienes alienes1 = new Alienes(31,Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
-		Alienes alienes2 = new Alienes(32,Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES, "Empêche une Divinité possédant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
-		Alienes alienes3 = new Alienes(33,Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinité.");
+		Alienes alienes1 = new Alienes(31,Dogme.HUMAIN, Dogme.SYMBOLES, Dogme.CHAOS, "Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.");
+		Alienes alienes2 = new Alienes(32,Dogme.HUMAIN, Dogme.NATURE, Dogme.SYMBOLES, "Empï¿½che une Divinitï¿½ possï¿½dant le Dogme Mystique ou Chaos de sacrifier un de ses Guides Spirituels durant ce tour de jeu.");
+		Alienes alienes3 = new Alienes(33,Dogme.HUMAIN, Dogme.MYSTIQUE, Dogme.CHAOS, "Vous piochez deux cartes au hasard dans la main d'une autre Divinitï¿½.");
 		Revenant revenant = new Revenant(34);
 		Revolutionnaires revolutionnaires = new Revolutionnaires(35);
 		Nihillistes nihillistes = new Nihillistes(36);
@@ -310,7 +310,7 @@ public class Partie implements Runnable{
 		cartes.add(shaman);
 		
 		
-		//creation de la collection des divinités
+		//creation de la collection des divinitï¿½s
 		divinites.add(Brewalen.getInstance());
 		divinites.add(Drinded.getInstance());
 		divinites.add(Gorpa.getInstance());
@@ -384,8 +384,8 @@ public class Partie implements Runnable{
 		Partie.uniquePartie = uniquePartie;
 	}
 	/**
-	 * établi le classement des joueurs
-	 * @return la liste classée des joueurs
+	 * ï¿½tabli le classement des joueurs
+	 * @return la liste classï¿½e des joueurs
 	 */
 	public ArrayList<Joueur> classementJoueurs(){
 		ArrayList<Joueur> joueursTries = new ArrayList<Joueur>();
@@ -416,7 +416,7 @@ public class Partie implements Runnable{
 	 */
 	public void supprimerJoueur(){
 		ArrayList<Joueur> classement = classementJoueurs();
-		System.out.println("Le joueur " + classement.get(0).getNom() + " est éliminé.");
+		System.out.println("Le joueur " + classement.get(0).getNom() + " est ï¿½liminï¿½.");
 		joueurs.remove(classement.get(0));
 		nbJoueur--;
 	}
@@ -446,9 +446,9 @@ public class Partie implements Runnable{
 	}
 
 	/**
-	 * ajoute une carte à la défausse
+	 * ajoute une carte ï¿½ la dï¿½fausse
 	 * @param c
-	 * 		carte à défausser
+	 * 		carte ï¿½ dï¿½fausser
 	 */
 	public void ajouterADefausse(Carte c) {
 		this.defausse.add(c);

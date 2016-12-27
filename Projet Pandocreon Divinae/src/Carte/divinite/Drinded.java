@@ -1,13 +1,13 @@
 package Carte.divinite;
 
+import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.TypeCarte;
 
 /**
- * Drinded hérite de Divinite
- * représente une carte divinité du jeu
+ * Drinded hï¿½rite de Divinite
+ * reprï¿½sente une carte divinitï¿½ du jeu
  * Cette classe est un singleton
  * @author Admin
  *
@@ -20,18 +20,18 @@ public class Drinded extends Divinite{
 	public static Drinded instance;
 	
 	/**
-	 * constructeur privé de la classe 
+	 * constructeur privï¿½ de la classe 
 	 */
 	private Drinded(){
 		this.nom = "Drinded";
-		this.capacite = "Peut empêcher le sacrifice d'un des Guides Spirituels de n'importe quel joueur.";
+		this.capacite = "Peut empï¿½cher le sacrifice d'un des Guides Spirituels de n'importe quel joueur.";
 		this.estDistribuee = false;
 		this.typeCarte = TypeCarte.divinite;
 		this.propriete = new Propriete(Dogme.NATURE, Dogme.HUMAIN,Dogme.SYMBOLES, Origine.JOUR); 
 	}
 	
 	/**
-	 * méthode statique d'instanciation de la classe
+	 * mï¿½thode statique d'instanciation de la classe
 	 * @return l'instance de la classe
 	 */
 	public static Drinded getInstance(){

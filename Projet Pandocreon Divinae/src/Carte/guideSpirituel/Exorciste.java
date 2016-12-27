@@ -3,17 +3,16 @@ package Carte.guideSpirituel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Joueur.Joueur;
 import cartesCroyant.Croyant;
 import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
-import Carte.Carte;
-import Joueur.Joueur;
 
 /**
- * Exorciste hérite de GuideSpirituel
- * représente une carte du jeu 
+ * Exorciste hï¿½rite de GuideSpirituel
+ * reprï¿½sente une carte du jeu 
  * @author Admin
  *
  */
@@ -26,23 +25,24 @@ public class Exorciste extends GuideSpirituel{
 		super();
 		this.propriete = new Propriete(Dogme.MYSTIQUE, Dogme.NATURE, Origine.NEANT);
 		this.nom = "Exorciste";
-		this.capacite = "Une Divinité d'Origine Nuit ou ayant les Dogmes Mystique et Chaos reprend dans sa main l'un de ses Guides Spirituels. Les Croyants qui y étaient attachés sont défaussés.";
+		this.capacite = "Une Divinitï¿½ d'Origine Nuit ou ayant les Dogmes Mystique et Chaos reprend dans sa main l'un de ses Guides Spirituels. Les Croyants qui y ï¿½taient attachï¿½s sont dï¿½faussï¿½s.";
 		this.nbCroyants = 1;
 		this.setIdCarte(idExorciste);
 	}
 
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 		/**
-		 * Une Divinité d'Origine Nuit
+		 * Une Divinitï¿½ d'Origine Nuit
 		ou ayant les Dogmes
 		Mystique et Chaos reprend
 		dans sa main l'un de ses
 		Guides Spirituels. Les
-		Croyants qui y étaient
-		attachés sont défaussés.
+		Croyants qui y ï¿½taient
+		attachï¿½s sont dï¿½faussï¿½s.
 		 */
 		ArrayList<Joueur>joueurs=Partie.getUniquePartie().getJoueurs();
 		int i=0;
@@ -51,7 +51,7 @@ public class Exorciste extends GuideSpirituel{
 			ArrayList<Croyant> croyantDefausser= joueurABeneficier.choisirGuideRevenir().getCroyantRattaches();
 			Iterator<Croyant> it= croyantDefausser.iterator();
 			while(it.hasNext()){
-				Partie.getUniquePartie().ajouterADefausse((Carte) it.next());
+				Partie.getUniquePartie().ajouterADefausse(it.next());
 				
 			}
 			joueurABeneficier.getCroyantRattaches().removeAll(croyantDefausser);

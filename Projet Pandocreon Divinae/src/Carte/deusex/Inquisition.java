@@ -9,8 +9,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Inquisition hérite de DeusEx
- * représente une carte du jeu
+ * Inquisition hï¿½rite de DeusEx
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -21,18 +21,19 @@ public class Inquisition extends DeusEx{
 	 */
 	public Inquisition(int idInquisition){
 		this.nom = "Inquisition";
-		this.capacite = "Choisissez un des Guides Spirituels d'un autre joueur, et l'un des votres. Lancez le dé de Cosmogonie. Sur Jour, le Guide adverse est sacrifié, sur Nuit le votre est sacrifié, sur Néant rien ne se passe.";
+		this.capacite = "Choisissez un des Guides Spirituels d'un autre joueur, et l'un des votres. Lancez le dï¿½ de Cosmogonie. Sur Jour, le Guide adverse est sacrifiï¿½, sur Nuit le votre est sacrifiï¿½, sur Nï¿½ant rien ne se passe.";
 		this.propriete = new Propriete(Origine.NULL);
 		this.setIdCarte(idInquisition);
 		this.typeCarte=TypeCarte.deusEx;
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
+	@Override
 	public void utiliserCapacite(){
 	/**
-	 * 	Choisissez un des Guides Spirituels d'un autre joueur, et l'un des votres. Lancez le dé de Cosmogonie. Sur Jour, le Guide adverse est sacrifié, sur Nuit le votre est sacrifié, sur Néant rien ne se passe.
+	 * 	Choisissez un des Guides Spirituels d'un autre joueur, et l'un des votres. Lancez le dï¿½ de Cosmogonie. Sur Jour, le Guide adverse est sacrifiï¿½, sur Nuit le votre est sacrifiï¿½, sur Nï¿½ant rien ne se passe.
 	 */
 		int indice;
 		Joueur joueurAAttaquer=this.getProprietaire().choisirLeJoueurAAttaquer();

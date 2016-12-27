@@ -1,7 +1,7 @@
 package propriete;
 
 /**
- * énumération de dogme
+ * ï¿½numï¿½ration de dogme
  * @author Admin
  *
  */
@@ -17,7 +17,7 @@ public enum Dogme {
 	private String name = "";
 	
 	/**
-	 * constructeur privé de l'énumération
+	 * constructeur privï¿½ de l'ï¿½numï¿½ration
 	 * @param name
 	 */
 	Dogme (String name){
@@ -28,6 +28,7 @@ public enum Dogme {
 	 * affiche le nom
 	 * @return nom
 	 */
+	@Override
 	public String toString(){
 		return name;
 	}

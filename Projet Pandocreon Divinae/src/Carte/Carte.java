@@ -3,12 +3,12 @@ package Carte;
 import Joueur.Joueur;
 import propriete.Propriete;
 /**
- * La classe abstraite Carte représente une carte au sens large du jeu.
- * Elle est caractérisée par :
+ * La classe abstraite Carte reprï¿½sente une carte au sens large du jeu.
+ * Elle est caractï¿½risï¿½e par :
  * - un nom
  * - un type
- * - une capacité
- * - des propriétés
+ * - une capacitï¿½
+ * - des propriï¿½tï¿½s
  * @author Admin
  *
  */
@@ -76,22 +76,23 @@ public abstract class Carte {
 	}
 	
 	/**
-	 * méthode qui sera surchargée dans les classes filles
+	 * mï¿½thode qui sera surchargï¿½e dans les classes filles
 	 */
 	public void utiliserCapacite(){}
 	
 	/**
-	 * méthode qui permet un affichage formaté d'une carte
-	 * @return l'affichage formaté avec le type, le nom, et la capacité.
+	 * mï¿½thode qui permet un affichage formatï¿½ d'une carte
+	 * @return l'affichage formatï¿½ avec le type, le nom, et la capacitï¿½.
 	 */
+	@Override
 	public String toString(){
-		String def = "Type : " + typeCarte + "\n    Nom : " + nom + "\n    Capacité : " + capacite;
+		String def = "Type : " + typeCarte + "\n    Nom : " + nom + "\n    Capacitï¿½ : " + capacite;
 		return def;
 	}
 	
 	/**
-	 * getter des propriétés de la carte
-	 * @return Les propriétés de la classe.
+	 * getter des propriï¿½tï¿½s de la carte
+	 * @return Les propriï¿½tï¿½s de la classe.
 	 */
 	public Propriete getPropriete() {
 		return propriete;
@@ -114,8 +115,8 @@ public abstract class Carte {
 	}
 
 	/**
-	 * getter de la description de la capacité de la carte
-	 * @return la description de la capacité de la carte
+	 * getter de la description de la capacitï¿½ de la carte
+	 * @return la description de la capacitï¿½ de la carte
 	 */
 	public String getCapacite() {
 		return capacite;
