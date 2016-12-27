@@ -1,7 +1,0 @@
-package carte.deusex;
-
-import carte.Carte;
-
-public class DeusEx extends Carte{
-
-}

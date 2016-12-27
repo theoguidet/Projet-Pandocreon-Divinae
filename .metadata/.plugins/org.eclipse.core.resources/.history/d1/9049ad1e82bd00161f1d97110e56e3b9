@@ -1,6 +1,0 @@
-
-public class Strategie implements Strategy{
-	public void choixCarteAJouer(){
-		//corps de methode
-	}
-}

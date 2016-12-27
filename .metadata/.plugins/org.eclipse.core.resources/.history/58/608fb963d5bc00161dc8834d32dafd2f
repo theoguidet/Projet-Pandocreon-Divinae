@@ -1,9 +1,0 @@
-package carte.croyants;
-
-public class Croyant {
-	
-	
-	public Croyant(){
-		
-	}
-}

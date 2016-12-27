@@ -1,5 +1,0 @@
-package carte.deusex;
-
-public class TrouNoir extends DeusEx{
-
-}

@@ -1,8 +1,0 @@
-package carte.divinite;
-
-public class Divinite {
-
-	public Divinite(){
-		
-	}
-}

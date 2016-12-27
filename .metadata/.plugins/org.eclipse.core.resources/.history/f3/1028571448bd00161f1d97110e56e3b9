@@ -1,5 +1,0 @@
-package carte.deusex;
-
-public class Bouleversement extends DeusEx{
-
-}
