@@ -134,16 +134,22 @@ public class JoueurVirtuel extends Joueur{
 	 * choisir carte victime
 	 */
 	public Carte choisirCarteVictime(TypeCarte type){
-		int indice=0;
-		try{
-		while(this.getMain().get(indice).getTypeCarte()!= type&&indice<this.getMain().size()){
 		
-			indice++;
-		}
-		}catch(NoSuchElementException e){
-			e.printStackTrace();
+		try{
+		int indice;	
+		for(indice=0;indice<this.getMain().size(); indice++){
+			if(this.getMain().get(indice).getTypeCarte()== type){
+				break;
+			}
+			
 		}
 		return this.getMain().get(indice);
+		}catch(NoSuchElementException e){
+			e.printStackTrace();
+			return null;
+		}
+	
+		
 		
 		
 	}

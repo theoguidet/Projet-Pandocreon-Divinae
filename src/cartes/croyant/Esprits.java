@@ -40,8 +40,10 @@ public class Esprits extends Croyant{
 		 * Donne un point d'Action
 			d'Origine N�ant
 		 */
+		if(this.getProprietaire().isPouvoirRecevoirPointAction()==true){
 		int point = this.getProprietaire().getPointActionNeant()+1;
 		this.getProprietaire().setPointActionNeant(point);
-		
+		System.out.println("Point action Neant:"+ this.getProprietaire().getPointActionNeant());
+		}
 	}
 }

@@ -117,6 +117,7 @@ public class Partie implements Runnable{
 		for (Joueur j : joueurs) {
 			j.setDivinite(divinites.get(i));
 			//divinites.remove(0);
+			divinites.get(i).setProprietaire(j);
 			i++;
 		}
 	}
