@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import propriete.Dogme;
@@ -6,8 +6,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Moines hérite de Croyant
- * représente une carte du jeu
+ * Moines hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -34,7 +34,7 @@ public class Moines extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
 		

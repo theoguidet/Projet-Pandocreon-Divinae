@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.Carte;
 import propriete.Propriete;

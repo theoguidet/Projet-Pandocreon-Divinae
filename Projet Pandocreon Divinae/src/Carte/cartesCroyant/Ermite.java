@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.Carte;
 import Carte.TypeCarte;
@@ -9,8 +9,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Ermite hérite de Croyant
- * représente une carte du jeu
+ * Ermite hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -29,7 +29,7 @@ public class Ermite extends Croyant{
 	public Ermite (int idErmite,Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Ermite";
-		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur, qui choisit la carte. La capacité spéciale du sacrifice est jouée.";
+		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur, qui choisit la carte. La capacitï¿½ spï¿½ciale du sacrifice est jouï¿½e.";
 		this.nbCroyants= 1;
 		this.propriete = new Propriete(d1, d2, d3, Origine.JOUR);
 		this.typeCarte = TypeCarte.croyant;
@@ -37,15 +37,15 @@ public class Ermite extends Croyant{
 	}
 	
 	/**
-	 * capacité effectuée lors du sacrifice de la carte
+	 * capacitï¿½ effectuï¿½e lors du sacrifice de la carte
 	 */
 	public void sacrifice(){
 		/*
 		 * Impose le sacrifice d'un
 			Croyant d'un autre joueur,
 			qui choisit la carte. La
-			capacité spéciale du sacrifice
-			est jouée.
+			capacitï¿½ spï¿½ciale du sacrifice
+			est jouï¿½e.
 		 */
 	
 		Joueur joueurAImposer= this.getProprietaire().choisirLeJoueurAAttaquer();

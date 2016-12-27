@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.Carte;
 import Carte.TypeCarte;
@@ -9,8 +9,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Vampires hérite de Croyant
- * représente une carte du jeu
+ * Vampires hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -28,7 +28,7 @@ public class Vampires extends Croyant{
 	public Vampires (int idVampires,Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Vampires";
-		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifié. La capacité spéciale du sacrifice est jouée.";
+		this.capacite = "Impose le sacrifice d'un Croyant d'un autre joueur. Celui-ci choisit le sacrifiï¿½. La capacitï¿½ spï¿½ciale du sacrifice est jouï¿½e.";
 		this.nbCroyants= 1;
 		this.propriete = new Propriete(d1, d2, d3, Origine.NUIT);
 		this.typeCarte = TypeCarte.croyant;
@@ -36,11 +36,11 @@ public class Vampires extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
-		/*Imposer un autre joueur à sacrifier une carte croyant
-		 * 	Celui-ci choisi le sacrifié
+		/*Imposer un autre joueur ï¿½ sacrifier une carte croyant
+		 * 	Celui-ci choisi le sacrifiï¿½
 		 */
 		Joueur joueurAImposer= this.getProprietaire().choisirLeJoueurAAttaquer();
 		this.getProprietaire().setEnCoursDeJouer(false);

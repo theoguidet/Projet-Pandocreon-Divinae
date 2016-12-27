@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import Carte.guideSpirituel.GuideSpirituel;
@@ -10,8 +10,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Lycanthropes hérite de Croyant
- * représente une carte du jeu
+ * Lycanthropes hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -24,7 +24,7 @@ public class Lycanthropes extends Croyant{
 	public Lycanthropes (int idLycanthropes){
 		super();
 		this.nom = "Lycanthropes";
-		this.capacite = "Retirez tous les Croyants attachés à l'un des Guides Spirituels d'une autre Divinité. Les Croyants reviennent au milieu de la table, le Guide Spirituel est défaussé";
+		this.capacite = "Retirez tous les Croyants attachï¿½s ï¿½ l'un des Guides Spirituels d'une autre Divinitï¿½. Les Croyants reviennent au milieu de la table, le Guide Spirituel est dï¿½faussï¿½";
 		this.nbCroyants= 4;
 		this.propriete = new Propriete(Dogme.HUMAIN,Dogme.NATURE,Dogme.CHAOS, Origine.NUIT);
 		this.typeCarte = TypeCarte.croyant;
@@ -32,13 +32,13 @@ public class Lycanthropes extends Croyant{
 	}
 	
 	/**
-	 * capacité de la classe
+	 * capacitï¿½ de la classe
 	 */
 	public void sacrifice(){
 		/*Retirez tous les Croyants
-		attachés à l'un des Guides
+		attachï¿½s ï¿½ l'un des Guides
 		Spirituels d'une autre
-		Divinité. Les Croyants
+		Divinitï¿½. Les Croyants
 		reviennent au milieu de la
 		table, le Guide Spirituel est defausse
 

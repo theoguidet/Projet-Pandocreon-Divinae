@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import Joueur.Joueur;
@@ -6,8 +6,8 @@ import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 /**
- * Illusionnistes hérite de Croyant
- * représente une carte du jeu
+ * Illusionnistes hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -20,7 +20,7 @@ public class Illusionnistes extends Croyant{
 	public Illusionnistes (int idIllusionnistes){
 		super();
 		this.nom = "Illusionnistes";
-		this.capacite = "Vous bénéficiez de la capacité spéciale de sacrifice d'une carte de Croyants appartenant à une autre Divinité. La carte en question reste en jeu.";
+		this.capacite = "Vous bï¿½nï¿½ficiez de la capacitï¿½ spï¿½ciale de sacrifice d'une carte de Croyants appartenant ï¿½ une autre Divinitï¿½. La carte en question reste en jeu.";
 		this.nbCroyants= 4;
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.CHAOS, Dogme.SYMBOLES, Origine.NUIT);
 		this.typeCarte = TypeCarte.croyant;
@@ -28,15 +28,15 @@ public class Illusionnistes extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
 		/*
-		 * Vous bénéficiez de la capacité
-		spéciale de sacrifice d'une
+		 * Vous bï¿½nï¿½ficiez de la capacitï¿½
+		spï¿½ciale de sacrifice d'une
 		carte de Croyants
-		appartenant à une autre
-		Divinité. La carte en question
+		appartenant ï¿½ une autre
+		Divinitï¿½. La carte en question
 		reste en jeu.
 		 */
 		
@@ -51,7 +51,7 @@ public class Illusionnistes extends Croyant{
 			t++;
 		}
 		if(joueurAAttaquer.getMain().get(t).getTypeCarte()!=TypeCarte.croyant){
-			System.out.println("Le joueur à attaquer n'a pas carte croyant!");
+			System.out.println("Le joueur ï¿½ attaquer n'a pas carte croyant!");
 		}else{
 			joueurAAttaquer.getMain().get(t).setProprietaire(this.getProprietaire());
 			joueurAAttaquer.getMain().get(t).utiliserCapacite();

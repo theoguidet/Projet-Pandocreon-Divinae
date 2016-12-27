@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import Joueur.Joueur;
@@ -7,8 +7,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Integristes hérite de Croyant
- * représente une carte du jeu
+ * Integristes hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -21,7 +21,7 @@ public class Integristes extends Croyant{
 	public Integristes (int idIntegristes){
 		super();
 		this.nom = "Integristes";
-		this.capacite = "Impose le sacrifice d'un Guide Spirituel d'un autre joueur, qui choisit la carte. La capacité spéciale du sacrifice est jouée.";
+		this.capacite = "Impose le sacrifice d'un Guide Spirituel d'un autre joueur, qui choisit la carte. La capacitï¿½ spï¿½ciale du sacrifice est jouï¿½e.";
 		this.nbCroyants= 1;
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.NATURE, Dogme.CHAOS, Origine.JOUR);
 		this.typeCarte = TypeCarte.croyant;
@@ -29,15 +29,15 @@ public class Integristes extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
 		/*
 		 * Impose le sacrifice d'un Guide
 			Spirituel d'un autre joueur,
 			qui choisit la carte. La
-			capacité spéciale du sacrifice
-			est jouée.
+			capacitï¿½ spï¿½ciale du sacrifice
+			est jouï¿½e.
 
 		 */
 		Joueur joueurAImposer= this.getProprietaire().choisirLeJoueurAAttaquer();

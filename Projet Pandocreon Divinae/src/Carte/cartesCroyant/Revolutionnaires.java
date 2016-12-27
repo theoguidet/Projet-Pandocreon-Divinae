@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.Carte;
 import Carte.TypeCarte;
@@ -9,8 +9,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Moines hérite de Croyant
- * représente une carte du jeu
+ * Moines hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -22,8 +22,8 @@ public class Revolutionnaires extends Croyant{
 	 */
 	public Revolutionnaires (int idRevolutionnaires){
 		super();
-		this.nom = "Révolutionnaires";
-		this.capacite = "Imposez le sacrifice d'une carte de Croyants à autant de Divinités que vous le voulez. Chaque Divinité choisit la carte à sacrifier. Les capacités spéciales sont jouées";
+		this.nom = "Rï¿½volutionnaires";
+		this.capacite = "Imposez le sacrifice d'une carte de Croyants ï¿½ autant de Divinitï¿½s que vous le voulez. Chaque Divinitï¿½ choisit la carte ï¿½ sacrifier. Les capacitï¿½s spï¿½ciales sont jouï¿½es";
 		this.nbCroyants= 2;
 		this.propriete = new Propriete(Dogme.SYMBOLES, Dogme.HUMAIN, Dogme.CHAOS, Origine.NEANT);
 		this.typeCarte = TypeCarte.croyant;
@@ -31,16 +31,16 @@ public class Revolutionnaires extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
 		/*
 		 * Imposez le sacrifice d'une
-		carte de Croyants à autant de
-		Divinités que vous le voulez.
-		Chaque Divinité choisit la
-		carte à sacrifier. Les capacités
-		spéciales sont jouées.
+		carte de Croyants ï¿½ autant de
+		Divinitï¿½s que vous le voulez.
+		Chaque Divinitï¿½ choisit la
+		carte ï¿½ sacrifier. Les capacitï¿½s
+		spï¿½ciales sont jouï¿½es.
 		 */
 		
 		Joueur joueurAImposer= this.getProprietaire().choisirLeJoueurAAttaquer();

@@ -1,12 +1,12 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 /**
- * Esprits hérite de Croyant
- * représente une carte du jeu
+ * Esprits hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -25,7 +25,7 @@ public class Esprits extends Croyant{
 	public Esprits (int idEsprits,Dogme d1, Dogme d2, Dogme d3){
 		super();
 		this.nom = "Esprits";
-		this.capacite = "Donne un point d'Action d'Origine Néant.";
+		this.capacite = "Donne un point d'Action d'Origine Nï¿½ant.";
 		this.nbCroyants= 2;
 		this.propriete = new Propriete(d1, d2, d3, Origine.NEANT);
 		this.typeCarte = TypeCarte.croyant;
@@ -33,12 +33,12 @@ public class Esprits extends Croyant{
 	}
 	
 	/**
-	 * capacité effectuée lors du sacrifice de la carte
+	 * capacitï¿½ effectuï¿½e lors du sacrifice de la carte
 	 */
 	public void sacrifice(){
 		/*
 		 * Donne un point d'Action
-			d'Origine Néant
+			d'Origine Nï¿½ant
 		 */
 		this.getProprietaire().setPointActionNeant(this.getProprietaire().getPointActionNeant()+1);
 		

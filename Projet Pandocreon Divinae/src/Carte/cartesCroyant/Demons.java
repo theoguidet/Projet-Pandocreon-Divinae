@@ -1,12 +1,12 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import propriete.Dogme;
 import propriete.Origine;
 import propriete.Propriete;
 /**
- * Demons hérite de Croyant
- * représente une carte du jeu
+ * Demons hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -33,7 +33,7 @@ public class Demons extends Croyant{
 	}
 	
 	/**
-	 * capacité effectuée lors du sacrifice de la carte
+	 * capacitï¿½ effectuï¿½e lors du sacrifice de la carte
 	 */
 	public void sacrifice(){
 		/**Donne un point d'Action d'Origine Nuit pour le proprietaire

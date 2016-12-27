@@ -1,4 +1,4 @@
-package cartesCroyant;
+package Carte.cartesCroyant;
 
 import Carte.TypeCarte;
 import propriete.Dogme;
@@ -6,8 +6,8 @@ import propriete.Origine;
 import propriete.Propriete;
 
 /**
- * Revenants hérite de Croyant
- * représente une carte du jeu
+ * Revenants hï¿½rite de Croyant
+ * reprï¿½sente une carte du jeu
  * @author Admin
  *
  */
@@ -20,7 +20,7 @@ public class Revenant extends Croyant{
 	public Revenant (int idRevenant){
 		super();
 		this.nom = "Revenant";
-		this.capacite = "Lancez le dé de Cosmogonie. Le tour se fini normalement, mais sous cette nouvelle influence.";
+		this.capacite = "Lancez le dï¿½ de Cosmogonie. Le tour se fini normalement, mais sous cette nouvelle influence.";
 		this.nbCroyants= 1;
 		this.propriete = new Propriete(Dogme.HUMAIN, Dogme.NATURE, Dogme.MYSTIQUE, Origine.NEANT);
 		this.typeCarte = TypeCarte.croyant;
@@ -28,11 +28,11 @@ public class Revenant extends Croyant{
 	}
 	
 	/**
-	 * capacité de la carte
+	 * capacitï¿½ de la carte
 	 */
 	public void sacrifice(){
 		/*
-		 * Relancez le dé de Cosmogonie.
+		 * Relancez le dï¿½ de Cosmogonie.
 		Le tour se finit normalement
 		sous la nouvelle influence.
 		 */
