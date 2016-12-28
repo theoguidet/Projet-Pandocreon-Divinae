@@ -16,7 +16,7 @@ import propriete.Origine;
  * @author Admin
  *
  */
-public class Joueur implements Runnable{
+public class Joueur{
 	private String nom;
 	private int nbPrieres;
 	private int pointActionJour;
@@ -410,6 +410,7 @@ public class Joueur implements Runnable{
 	 * choisir carte victime
 	 */
 	public Carte choisirCarteVictime(TypeCarte type){
+		
 		int indice;
 		System.out.println("Tapez le numero de la carte"+type.toString()+"victime");
 		indice= Partie.scanner.nextInt();
@@ -839,9 +840,5 @@ public class Joueur implements Runnable{
 		return super.toString();
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		tourDeJeu(Partie.getUniquePartie());
-	}
+	
 }

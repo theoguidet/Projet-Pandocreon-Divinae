@@ -1,5 +1,7 @@
 package cartes;
 
+import java.util.Observable;
+
 import joueurs.Joueur;
 import propriete.Propriete;
 /**
@@ -13,23 +15,15 @@ import propriete.Propriete;
  *
  */
 
-public abstract class Carte {
+public abstract class Carte extends Observable {
 	protected String nom;
 	protected TypeCarte typeCarte;
 	protected String capacite;
 	protected boolean estDistribuee;
 	protected Propriete propriete;
 	private boolean estSacrifier=false;
-	private boolean dansLaMain;
-	
-	
-	public boolean isDansLaMain() {
-		return dansLaMain;
-	}
 
-	public void setDansLaMain(boolean dansLaMain) {
-		this.dansLaMain = dansLaMain;
-	}
+	
 
 	public void setTypeCarte(TypeCarte typeCarte) {
 		this.typeCarte = typeCarte;

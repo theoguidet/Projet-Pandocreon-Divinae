@@ -1,6 +1,4 @@
-/cartes/
-/dpStrategy/
-/joueurs/
-/partie/
-/propriete/
 /vue/
+/controleur/
+/partie/
+/joueurs/

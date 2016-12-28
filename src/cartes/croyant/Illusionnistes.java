@@ -1,5 +1,6 @@
 package cartes.croyant;
 
+import cartes.Carte;
 import cartes.TypeCarte;
 import joueurs.Joueur;
 import propriete.Dogme;
@@ -40,23 +41,20 @@ public class Illusionnistes extends Croyant{
 		reste en jeu.
 		 */
 		
-		int t=0;
-		
-		
 		Joueur joueurAAttaquer = this.getProprietaire().choisirLeJoueurAAttaquer();
 		this.getProprietaire().setEnCoursDeJouer(false);
 		joueurAAttaquer.setEnCoursDeJouer(true);
-		joueurAAttaquer.getMain();
-		while(t<joueurAAttaquer.getMain().size()&&joueurAAttaquer.getMain().get(t).getTypeCarte()!=TypeCarte.croyant){
-			t++;
-		}
-		if(joueurAAttaquer.getMain().get(t).getTypeCarte()!=TypeCarte.croyant){
+		Carte carte=joueurAAttaquer.choisirCarteVictime(TypeCarte.croyant);
+		if(carte== null){
 			System.out.println("Le joueur � attaquer n'a pas carte croyant!");
 		}else{
-			joueurAAttaquer.getMain().get(t).setProprietaire(this.getProprietaire());
-			joueurAAttaquer.getMain().get(t).utiliserCapacite();
-			joueurAAttaquer.getMain().add(joueurAAttaquer.getMain().get(t));
-		}
+			carte.setProprietaire(this.getProprietaire());
+			this.getProprietaire().getMain().add(carte);
+			joueurAAttaquer.getMain().remove(carte);
+			carte.utiliserCapacite();
+			joueurAAttaquer.getMain().add(carte);
+			this.getProprietaire().getMain().remove(carte);
+			}
 		
 	}
 }

@@ -1,6 +1,8 @@
 package partie;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
 import cartes.Carte;
@@ -70,7 +72,7 @@ import propriete.Origine;
  * @author Admin
  *
  */
-public class Partie implements Runnable{
+public class Partie extends Observable{
 
 	private int nbJoueur;
 	private Joueur gagnant;
@@ -454,29 +456,29 @@ public class Partie implements Runnable{
 	public void ajouterADefausse(Carte c) {
 		this.defausse.add(c);
 	}
-	
-	public void initialiserJoueurs(){
-		System.out.println("Combien de joueurs voulez-vous dans la partie ?");
-		//Scanner clavier = new Scanner(System.in);
-		int nbJoueur = scanner.nextInt();
-		String nom = scanner.nextLine();
-		System.out.println("Entrez votre nom :");
-		nom = scanner.nextLine();
-		joueurs.add(new Joueur(nom));
+	/**
+	 * initialiser les informations  des joueurs
+	 * @param nbJoueurs
+	 * @param nomJoueur
+	 * @param listNomJoueurVirtuel 
+	 */
+	public void initialiserJoueurs(int nbJoueurs, String nomJoueur, String[] listNomJoueurVirtuel){
+		this.nbJoueur=nbJoueurs;
+		joueurs.add(new Joueur(nomJoueur));
 		/**
 		 * ajouter la position de chaque joueur
 		 */
-		for (int i = 1; i < nbJoueur; i++) {
-			System.out.println("Entrez le nom du joueur virtuel " + i);
-			nom = scanner.nextLine();
-			joueurs.add(new JoueurVirtuel(nom));
+		for (int i = 1; i <= nbJoueur-1; i++) {
+			
+			joueurs.add(new JoueurVirtuel(listNomJoueurVirtuel[i]));
 		}
 	
 	}
-
-	public static void main(String[] args){
-		uniquePartie = getUniquePartie();
-		Partie partie = uniquePartie;
+	
+//
+//	public static void main(String[] args){
+//		uniquePartie = getUniquePartie();
+//		Partie partie = uniquePartie;
 //		partie.initialiserJoueurs();
 //		partie.creationJeuDeCarte();
 //		partie.distribuerDivinites();
@@ -488,26 +490,29 @@ public class Partie implements Runnable{
 //			
 //			}	
 //		}
-		partie.run();
+//		partie.run();
 		//clavier.close();
-	}
+//	}
 
-	@Override
-	public void run() {
+//	@Override
+//	public void run() {
+//		// TODO Auto-generated method stub
+////		initialiserJoueurs(nbJoueur, nomJoueur);
+//		
+//		
+//		while (gagnant == null) {
+////			for(Joueur j: joueurs){
+////			
+////			}	
+//			for (int i = 0; i < joueurs.size(); i++) {
+//				Joueur joueurActuel = joueurs.get(i);
+//				joueurActuel.run();
+//			}
+//		}
+//	}
+
+	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		initialiserJoueurs();
-		creationJeuDeCarte();
-		distribuerDivinites();
-		distribuerCarte();
 		
-		while (gagnant == null) {
-//			for(Joueur j: joueurs){
-//			
-//			}	
-			for (int i = 0; i < joueurs.size(); i++) {
-				Joueur joueurActuel = joueurs.get(i);
-				joueurActuel.run();
-			}
-		}
 	}
 }
