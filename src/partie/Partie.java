@@ -470,7 +470,7 @@ public class Partie extends Observable{
 		 */
 		for (int i = 1; i <= nbJoueur-1; i++) {
 			
-			joueurs.add(new JoueurVirtuel(listNomJoueurVirtuel[i]));
+			joueurs.add(new JoueurVirtuel(listNomJoueurVirtuel[i-1]));
 		}
 	
 	}

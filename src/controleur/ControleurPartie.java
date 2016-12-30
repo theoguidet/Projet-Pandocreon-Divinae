@@ -4,14 +4,16 @@ import javax.swing.JOptionPane;
 
 import partie.Partie;
 import vue.FenetrePartie;
-import vue.FenetrePrincipale;
 
 
 public class ControleurPartie {
 	private FenetrePartie fenetrePartie;
-	public void commencer(){
-		Partie nouvellePartie= 	Partie.getUniquePartie();
 	
+	public void commencer(){
+		
+		Partie nouvellePartie= 	Partie.getUniquePartie();
+		fenetrePartie = new FenetrePartie();
+		fenetrePartie.setPartieEnCours(nouvellePartie);
 		fenetrePartie.setTitle("PARTIE");
 		fenetrePartie.setVisible(true);
 		nouvellePartie.addObserver(fenetrePartie);

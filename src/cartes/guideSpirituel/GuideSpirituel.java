@@ -34,6 +34,22 @@ public class GuideSpirituel extends Carte{
 		croyantRattaches = new ArrayList<Croyant>();
 	}
 	
+	public int getNbCroyants() {
+		return nbCroyants;
+	}
+
+	public void setNbCroyants(int nbCroyants) {
+		this.nbCroyants = nbCroyants;
+	}
+
+	public void setNbCarteCroyantRattaches(int nbCarteCroyantRattaches) {
+		this.nbCarteCroyantRattaches = nbCarteCroyantRattaches;
+	}
+
+	public void setCroyantRattaches(ArrayList<Croyant> croyantRattaches) {
+		this.croyantRattaches = croyantRattaches;
+	}
+
 	/**
 	 * associe des croyants � ce guide spirituel
 	 * @param j

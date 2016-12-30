@@ -26,6 +26,10 @@ public class Croyant extends Carte{
 		return propriete;
 	}
 
+	public void setNbCroyants(int nbCroyants) {
+		this.nbCroyants = nbCroyants;
+	}
+
 	/**
 	 * getter du nombre de croyants de la carte
 	 * @return le nombre de croyants de la carte
