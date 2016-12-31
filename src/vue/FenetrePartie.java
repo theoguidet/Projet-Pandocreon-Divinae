@@ -1,6 +1,7 @@
 package vue;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -12,6 +13,7 @@ import javax.swing.JTextPane;
 import cartes.Carte;
 import cartes.TypeCarte;
 import controleur.ControleurPartie;
+import joueurs.EvenementJoueur;
 import joueurs.Joueur;
 import joueurs.JoueurVirtuel;
 import partie.Partie;
@@ -35,6 +37,14 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 	 */
 	private JPanel plateau;
 	/**
+	 * siege du joueur physique
+	 */
+	private JPanel siegeDuJoueurPhysique;
+	/**
+	 * siege du joueur virtuel
+	 */
+	private JPanel siegeDuJoueurVirtuel;
+	/**
 	 * afficher les messages dans la partie
 	 */
 	private JTextPane messageAAfficher;
@@ -45,6 +55,22 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 
 	public void setPartieEnCours(Partie partieEnCours) {
 		this.partieEnCours = partieEnCours;
+	}
+
+	public JPanel getPlateau() {
+		return plateau;
+	}
+
+	public void setPlateau(JPanel plateau) {
+		this.plateau = plateau;
+	}
+
+	public JPanel getChamp() {
+		return champ;
+	}
+
+	public Partie getPartieEnCours() {
+		return partieEnCours;
 	}
 
 	@Override
@@ -111,8 +137,8 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 		int indice = 1;
 		String[] nomJoueursVirtuel = new String[nbJoueurs - 1];
 		while (indice <= nbJoueurs - 1) {
-			nomJoueursVirtuel[indice-1] = JOptionPane.showInputDialog(this, "Entrez le nom du joueur virtuel" + indice,
-					"Nom du joueur virtuel", JOptionPane.QUESTION_MESSAGE);
+			nomJoueursVirtuel[indice - 1] = JOptionPane.showInputDialog(this,
+					"Entrez le nom du joueur virtuel" + indice, "Nom du joueur virtuel", JOptionPane.QUESTION_MESSAGE);
 			indice++;
 		}
 		return nomJoueursVirtuel;
@@ -157,7 +183,7 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 				}
 				afficher(msg1);
 			} else {
-				msg1= "Cette carte ne peut pas etre sacrifie";
+				msg1 = "Cette carte ne peut pas etre sacrifie";
 				mauvaisChoix = false;
 			}
 		} while (mauvaisChoix);
@@ -169,47 +195,90 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 	public void afficher(String arg) {
 		messageAAfficher.setText(arg);
 	}
-	public void demanderADefausserCarte(){
+
+	public void demanderADefausserCarte(EvenementJoueur evenement) {
 		int choix;
 		int indice1;
 		String indice2;
-		boolean mauvaisChoix=true;
-		do{
-			choix=JOptionPane.showConfirmDialog(this, "Defausser de tout ou partie de main?", "Defausser cartes", JOptionPane.YES_NO_OPTION);
-			if(choix==JOptionPane.CLOSED_OPTION){
-				if(sortir()){
-					mauvaisChoix=false;
+		boolean mauvaisChoix = true;
+		do {
+			choix = JOptionPane.showConfirmDialog(this, "Defausser de tout ou partie de main?", "Defausser cartes",
+					JOptionPane.YES_NO_OPTION);
+			if (choix == JOptionPane.CLOSED_OPTION) {
+				if (sortir()) {
+					mauvaisChoix = false;
 				}
-			}else{
-				if(choix==JOptionPane.YES_OPTION){
-					try{
-					indice2=JOptionPane.showInputDialog(this,"Entrez le numero de la carte a defausse", "Defausser carte", JOptionPane.QUESTION_MESSAGE);
-					indice1=Integer.parseInt(indice2);
-					}catch(NumberFormatException e){
-						JOptionPane.showMessageDialog(this, "Le numero doit etre un entier","Input Invalide", JOptionPane.WARNING_MESSAGE);
+			} else {
+				if (choix == JOptionPane.YES_OPTION) {
+					try {
+						indice2 = JOptionPane.showInputDialog(this, "Entrez le numero de la carte a defausse",
+								"Defausser carte", JOptionPane.QUESTION_MESSAGE);
+						indice1 = Integer.parseInt(indice2);
+					} catch (NumberFormatException e) {
+						JOptionPane.showMessageDialog(this, "Le numero doit etre un entier", "Input Invalide",
+								JOptionPane.WARNING_MESSAGE);
 					}
-					
+
 				}
 			}
-		}while(mauvaisChoix);
-		
+		} while (mauvaisChoix);
+
 	}
+
 	/**
 	 * Sort de cette fenetre.
 	 * 
-	 * @return <code>true</code> si l'utilisateur veut quitter et <code>false</code>
-	 *         sinon
+	 * @return <code>true</code> si l'utilisateur veut quitter et
+	 *         <code>false</code> sinon
 	 */
 	private synchronized boolean sortir() {
-		int option = JOptionPane.showConfirmDialog(null,
-				"Voulez-vous quitter?", "Sortie", JOptionPane.OK_CANCEL_OPTION);
+		int option = JOptionPane.showConfirmDialog(null, "Voulez-vous quitter?", "Sortie",
+				JOptionPane.OK_CANCEL_OPTION);
 		if (option == JOptionPane.OK_OPTION) {
 			doDefaultCloseAction();
 			return true;
 		}
 		return false;
 	}
-	
-	
+
+	/**
+	 * preparer du jeu
+	 */
+	public void preparer() {
+		partieEnCours = Partie.getUniquePartie();
+		ArrayList<Joueur> listJoueurs = Partie.getUniquePartie().getJoueurs();
+		for (int indice = 0; indice < listJoueurs.size(); indice++) {
+			Joueur joueur = listJoueurs.get(indice);
+			VueJoueur vueJoueur;
+			if (joueur instanceof JoueurVirtuel) {
+				vueJoueur = new VueJoueurVirtuel((JoueurVirtuel) joueur);
+			} else {
+				vueJoueur = new VueJoueurPhysique(joueur);
+			}
+			joueur.addObserver(this);
+			ArrayList<Carte> listCarte = joueur.getMain();
+			Iterator<Carte> it = listCarte.iterator();
+			while (it.hasNext()) {
+				Carte carte = it.next();
+				VueCarte vueCarte;
+				vueCarte = new VueCarte(carte);
+				carte.addObserver(this);
+				vueJoueur.mainDuJoueur.add(vueCarte);
+			}
+			if(joueur instanceof JoueurVirtuel){
+				siegeDuJoueurPhysique.add(vueJoueur);
+			}else{
+				siegeDuJoueurVirtuel.add(vueJoueur);
+			}
+		}
+
+	}
+
+	/**
+	 * construire le Plateau
+	 */
+	public void construirePlateau() {
+
+	}
 
 }

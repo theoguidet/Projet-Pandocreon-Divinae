@@ -68,7 +68,7 @@ public class TestFrame extends JFrame {
 		carte.setTypeCarte(TypeCarte.guideSpirituel);
 		carte.setCapacite("abc");
 		carte.setNom("xyz");
-		carte.setNbCarteCroyantRattaches(5);
+		carte.setNbCroyants(5);
 		VueCarte vueCarte = new VueCarte(carte);
 		vueCarte.setBorder(BorderFactory.createLineBorder(Color.RED));
 		add(vueCarte);
