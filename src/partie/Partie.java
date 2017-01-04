@@ -423,7 +423,16 @@ public class Partie extends Observable{
 		joueurs.remove(classement.get(0));
 		nbJoueur--;
 	}
-	
+	/**
+	 * 
+	 */
+	public void debuterJeu(){
+		creationJeuDeCarte();
+		distribuerDivinites();
+		distribuerCarte();
+		setChanged();
+		notifyObservers(new EvenementPartie(EvenementPartieType.PREPARER, this));
+	}
 	/**
 	 * determine le gagnant et termine la partie
 	 */

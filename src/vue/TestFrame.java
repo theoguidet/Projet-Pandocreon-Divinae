@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import cartes.Carte;
 import cartes.TypeCarte;
+import cartes.apocalypse.Apocalypse;
 import cartes.croyant.Croyant;
 import cartes.guideSpirituel.GuideSpirituel;
 import joueurs.JoueurVirtuel;
@@ -57,23 +58,21 @@ public class TestFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		GuideSpirituel carte = new GuideSpirituel();
-		JoueurVirtuel joueur= new JoueurVirtuel("merdre");
+
+		Apocalypse carte = new Apocalypse(Origine.NULL);
+		JoueurVirtuel joueur = new JoueurVirtuel("merdre");
 		carte.setProprietaire(joueur);
-		
-		carte
-		.setPropriete(new Propriete(Dogme.HUMAIN, Dogme.CHAOS, Origine.NUIT));
-		
-		carte.setTypeCarte(TypeCarte.guideSpirituel);
-		carte.setCapacite("abc");
-		carte.setNom("xyz");
-		carte.setNbCroyants(5);
+
+//		carte.setPropriete(new Propriete(Dogme.HUMAIN, Dogme.CHAOS, Origine.NUIT));
+
+//		carte.setTypeCarte(TypeCarte.guideSpirituel);
+//		carte.setCapacite("abc");
+//		carte.setNom("xyz");
+//		carte.setNbCroyants(5);
 		VueCarte vueCarte = new VueCarte(carte);
 		vueCarte.setBorder(BorderFactory.createLineBorder(Color.RED));
 		add(vueCarte);
-		
-		
+
 	}
 
 }

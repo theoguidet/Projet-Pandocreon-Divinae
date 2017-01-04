@@ -14,9 +14,11 @@ import cartes.EvenementCarte;
 import cartes.TypeCarte;
 import cartes.croyant.Croyant;
 import cartes.guideSpirituel.GuideSpirituel;
+import controleur.ControleurCarte;
 import joueurs.JoueurVirtuel;
 import cartes.EvenementCarteType;
 import propriete.Dogme;
+import propriete.Origine;
 
 import javax.swing.JTextPane;
 
@@ -62,8 +64,8 @@ public class VueCarte extends JPanel implements Observer {
 		return valideAChoisir;
 	}
 
-	public void setValideAChoisir(boolean valideAChoisir) {
-		this.valideAChoisir = valideAChoisir;
+	public void setValideAChoisir(boolean valide) {
+		this.valideAChoisir = valide;
 	}
 
 	/**
@@ -73,11 +75,7 @@ public class VueCarte extends JPanel implements Observer {
 	 */
 	public VueCarte(Carte carte1) {
 		super();
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-			}
-		});
+		addMouseListener(new ControleurCarte(this));
 		setPreferredSize(new Dimension(120, 180));
 		this.carteObjet = carte1;
 		couvert = carte1.getProprietaire() instanceof JoueurVirtuel;
@@ -95,7 +93,6 @@ public class VueCarte extends JPanel implements Observer {
 		gridBagLayout.columnWeights = colsRatio;
 		gridBagLayout.rowWeights = rowsRatio;
 		setLayout(gridBagLayout);
-		
 
 		JPanel panelDogmes = new JPanel();
 		GridBagConstraints gbc_panelDogmes = new GridBagConstraints();
@@ -109,7 +106,6 @@ public class VueCarte extends JPanel implements Observer {
 		int sizePanelDogmes = (int) Math
 				.round(colsRatio[0] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
 		panelDogmes.setSize(sizePanelDogmes, sizePanelDogmes);
-		
 
 		JLabel lblNomDeCarte = new JLabel(nomDeCarte);
 		GridBagConstraints gbc_lblNomDeCarte = new GridBagConstraints();
@@ -118,7 +114,7 @@ public class VueCarte extends JPanel implements Observer {
 		gbc_lblNomDeCarte.gridy = 0;
 		add(lblNomDeCarte, gbc_lblNomDeCarte);
 		JLabel lblOrigine = new JLabel();
-		
+
 		GridBagConstraints gbc_lblOrigine = new GridBagConstraints();
 		gbc_lblOrigine.insets = new Insets(0, 0, 5, 0);
 		gbc_lblOrigine.gridx = 2;
@@ -131,7 +127,6 @@ public class VueCarte extends JPanel implements Observer {
 		int heightLblOrigine = (int) Math
 				.round(rowsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getHeight());
 		lblOrigine.setSize(widthLblOrigine, heightLblOrigine);
-		
 
 		JLabel lblTypeCarte = new JLabel(carte1.getTypeCarte().toString());
 		GridBagConstraints gbc_lblTypeCarte = new GridBagConstraints();
@@ -149,7 +144,7 @@ public class VueCarte extends JPanel implements Observer {
 		lblCapacite.setToolTipText(carte1.getCapacite());
 		add(lblCapacite, gbc_lblCapacite);
 
-		JLabel lblNbCroyants =  new JLabel();
+		JLabel lblNbCroyants = new JLabel();
 		int widthLblNbCroyants = (int) Math
 				.round(colsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
 		int heightLblNbCroyants = (int) Math
@@ -160,24 +155,24 @@ public class VueCarte extends JPanel implements Observer {
 		gbc_lblNbCroyants.gridy = 2;
 		gbc_lblNbCroyants.anchor = GridBagConstraints.LAST_LINE_END;
 		add(lblNbCroyants, gbc_lblNbCroyants);
-	
-		if(couvert){
+
+		if (!couvert) {
 			try {
-				BufferedImage imageVer = ImageIO.read(
-						this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "verso.jpg"));
+				BufferedImage imageVer = ImageIO
+						.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "verso.jpg"));
 				Dimension imageSize = new Dimension(imageVer.getWidth(), imageVer.getHeight());
-				Dimension boundary = new Dimension(imageVer.getWidth(),imageVer.getHeight());
+				Dimension boundary = new Dimension(imageVer.getWidth(), imageVer.getHeight());
 				Dimension dimensionPropre = calculerLeRapport(imageSize, boundary);
 				ImageIcon icon = new ImageIcon(imageVer.getScaledInstance((int) dimensionPropre.getWidth(),
 						(int) dimensionPropre.getHeight(), imageVer.SCALE_SMOOTH));
-				JLabel label= new JLabel();
+				JLabel label = new JLabel();
 				label.setIcon(icon);
 				this.add(label);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else{
+		} else {
 			dessinerLeFond(carte1);
 			dessinerOrigine(lblOrigine, carte1.getPropriete().getOrigine().toString());
 			dessinerDogmes(panelDogmes, carte1);
@@ -282,18 +277,20 @@ public class VueCarte extends JPanel implements Observer {
 	 */
 	private void dessinerOrigine(JLabel lblOrigine, String origine) {
 		// TODO Auto-generated method stub
-		try {
-			BufferedImage imageOrigine = ImageIO.read(
-					this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + origine.toLowerCase() + ".jpg"));
-			Dimension imageSize = new Dimension(imageOrigine.getWidth(), imageOrigine.getHeight());
-			Dimension boundary = new Dimension(lblOrigine.getWidth(), lblOrigine.getHeight());
-			Dimension dimensionPropre = calculerLeRapport(imageSize, boundary);
-			ImageIcon icon = new ImageIcon(imageOrigine.getScaledInstance((int) dimensionPropre.getWidth(),
-					(int) dimensionPropre.getHeight(), imageOrigine.SCALE_SMOOTH));
-			lblOrigine.setIcon(icon);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (origine != Origine.NULL.toString()) {
+			try {
+				BufferedImage imageOrigine = ImageIO.read(this.getClass().getClassLoader()
+						.getResourceAsStream("res/jpeg/" + origine.toLowerCase() + ".jpg"));
+				Dimension imageSize = new Dimension(imageOrigine.getWidth(), imageOrigine.getHeight());
+				Dimension boundary = new Dimension(lblOrigine.getWidth(), lblOrigine.getHeight());
+				Dimension dimensionPropre = calculerLeRapport(imageSize, boundary);
+				ImageIcon icon = new ImageIcon(imageOrigine.getScaledInstance((int) dimensionPropre.getWidth(),
+						(int) dimensionPropre.getHeight(), imageOrigine.SCALE_SMOOTH));
+				lblOrigine.setIcon(icon);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -323,12 +320,28 @@ public class VueCarte extends JPanel implements Observer {
 
 	}
 
+	/**
+	 * 
+	 */
+	public void participerDansJeu() {
+		Carte carte = this.getCarteObjet();
+		carte.getProprietaire();
+	}
+
+	public Carte getCarteObjet() {
+		return carteObjet;
+	}
+
+	public void setCarteObjet(Carte carteObjet) {
+		this.carteObjet = carteObjet;
+	}
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		if(arg1!=null){
-			if(arg1 instanceof EvenementCarte){
-				EvenementCarte evenement= (EvenementCarte) arg1;
+		if (arg1 != null) {
+			if (arg1 instanceof EvenementCarte) {
+				EvenementCarte evenement = (EvenementCarte) arg1;
 				if (evenement.getEvenement() == EvenementCarteType.EST_CHOISIE) {
 					valideAChoisir = false;
 					getParent().remove(this);

@@ -25,4 +25,8 @@ public enum EvenementJoueurType {
 	 * victime
 	 */
 	VICTIME,
+	/**
+	 * finir
+	 */
+	FINIR_DEFAUSSER,
 }

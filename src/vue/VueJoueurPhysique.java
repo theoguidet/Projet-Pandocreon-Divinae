@@ -64,4 +64,11 @@ public class VueJoueurPhysique extends VueJoueur {
 		add(lblPointAction, gbc_lblPointAction);
 
 	}
+
+	public void rendreToutesLesCartesValideADefausser() {
+		// TODO Auto-generated method stub
+		for(int indice=0; indice< mainDuJoueur.getComponentCount();indice++){
+			((VueCarte)mainDuJoueur.getComponent(indice)).setValideAChoisir(true); 
+		}
+	}
 }

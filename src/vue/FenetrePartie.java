@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BorderFactory;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,10 +17,34 @@ import controleur.ControleurPartie;
 import joueurs.EvenementJoueur;
 import joueurs.Joueur;
 import joueurs.JoueurVirtuel;
+import partie.EvenementPartie;
 import partie.Partie;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.BorderLayout;
+import java.awt.Insets;
 
 public class FenetrePartie extends JInternalFrame implements Observer {
-
+	public FenetrePartie(FenetrePrincipale fenetrePrincipale) {
+		super();
+		setResizable(false);
+		fenetreMere= fenetrePrincipale;
+		fenetrePartie=this;
+	}
+	public ControleurPartie getControleurPartie() {
+		return controleurPartie;
+	}
+	/**
+	 * 
+	 */
+	private static FenetrePrincipale fenetreMere;
+	/**
+	 * 
+	 */
+	private static FenetrePartie fenetrePartie;
 	/**
 	 * 
 	 */
@@ -52,6 +77,11 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 	 * 
 	 */
 	private Partie partieEnCours;
+	/**
+	 * 
+	 * joueur en cours
+	 */
+	private Joueur joueurEnCours;
 
 	public void setPartieEnCours(Partie partieEnCours) {
 		this.partieEnCours = partieEnCours;
@@ -73,11 +103,6 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 		return partieEnCours;
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public void setControleurPartie(ControleurPartie controleurPartie) {
 		this.controleurPartie = controleurPartie;
@@ -196,33 +221,31 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 		messageAAfficher.setText(arg);
 	}
 
-	public void demanderADefausserCarte(EvenementJoueur evenement) {
+	public int demanderChoixADefausserCarte() {
 		int choix;
-		int indice1;
-		String indice2;
 		boolean mauvaisChoix = true;
 		do {
+			
 			choix = JOptionPane.showConfirmDialog(this, "Defausser de tout ou partie de main?", "Defausser cartes",
 					JOptionPane.YES_NO_OPTION);
 			if (choix == JOptionPane.CLOSED_OPTION) {
 				if (sortir()) {
 					mauvaisChoix = false;
+					choix=2;
 				}
 			} else {
 				if (choix == JOptionPane.YES_OPTION) {
-					try {
-						indice2 = JOptionPane.showInputDialog(this, "Entrez le numero de la carte a defausse",
-								"Defausser carte", JOptionPane.QUESTION_MESSAGE);
-						indice1 = Integer.parseInt(indice2);
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(this, "Le numero doit etre un entier", "Input Invalide",
-								JOptionPane.WARNING_MESSAGE);
-					}
-
+				
+						JOptionPane.showMessageDialog(this, "Defaussez cartes, s'il vous plait",
+								"Defausser carte", JOptionPane.PLAIN_MESSAGE);
+						choix=1;
+				}else if(choix== JOptionPane.NO_OPTION){
+					choix=2;
 				}
+			
 			}
 		} while (mauvaisChoix);
-
+		return choix;
 	}
 
 	/**
@@ -265,9 +288,9 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 				carte.addObserver(this);
 				vueJoueur.mainDuJoueur.add(vueCarte);
 			}
-			if(joueur instanceof JoueurVirtuel){
+			if (joueur instanceof JoueurVirtuel) {
 				siegeDuJoueurPhysique.add(vueJoueur);
-			}else{
+			} else {
 				siegeDuJoueurVirtuel.add(vueJoueur);
 			}
 		}
@@ -278,7 +301,108 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 	 * construire le Plateau
 	 */
 	public void construirePlateau() {
+		plateau = new JPanel();
+		
+		getContentPane().add(plateau, BorderLayout.CENTER);
+		GridBagLayout gbl_plateau = new GridBagLayout();
+		gbl_plateau.columnWeights = new double[] { 0.5,1.0,0.5,0.3 };
+		gbl_plateau.rowWeights = new double[] { 0.5,1.0,0.5,0.3 };
+		plateau.setLayout(gbl_plateau);
+		
+		champ = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 5, 5);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 1;
+		plateau.add(champ, gbc_panel);
+		champ.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
+		siegeDuJoueurPhysique = new JPanel();
+		siegeDuJoueurPhysique.setLayout(new BorderLayout());
+		siegeDuJoueurPhysique.setBorder(BorderFactory.createRaisedBevelBorder());
+		GridBagConstraints gbc_siegeDuJoueurPhysique = new GridBagConstraints();
+		gbc_siegeDuJoueurPhysique.gridx = 0;
+		gbc_siegeDuJoueurPhysique.gridy = 2;
+		gbc_siegeDuJoueurPhysique.gridwidth = 3;
+		plateau.add(siegeDuJoueurPhysique, gbc_siegeDuJoueurPhysique);
+		
+		siegeDuJoueurVirtuel = new JPanel();
+		siegeDuJoueurVirtuel.setLayout(new BorderLayout());
+		siegeDuJoueurVirtuel.setBorder(BorderFactory.createRaisedBevelBorder());
+		GridBagConstraints gbc_siegeDuJoueurVirtuel = new GridBagConstraints();
+		gbc_siegeDuJoueurVirtuel.gridx = 0;
+		gbc_siegeDuJoueurVirtuel.gridy = 0;
+		gbc_siegeDuJoueurVirtuel.gridwidth = 3;
+		plateau.add(siegeDuJoueurVirtuel, gbc_siegeDuJoueurVirtuel);
+		
+		
+	}
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		if(arg!=null){
+			if(arg instanceof EvenementJoueur){
+				EvenementJoueur evenement= (EvenementJoueur) arg;
+				switch (evenement.getEvenement()) {
+				case DEFAUSSE_CARTES:
+					if(demanderChoixADefausserCarte()==1){
+						((VueJoueurPhysique) siegeDuJoueurPhysique.getComponent(0)).rendreToutesLesCartesValideADefausser();
+						evenement.getObjet().choisirCarteADefausser(partieEnCours);
+					}
+
+				break;
+				case FINIR_DEFAUSSER:
+					int choix=demanderSiContinuerOuNon();
+					if(choix==1){
+						((VueJoueurPhysique) siegeDuJoueurPhysique.getComponent(0)).rendreToutesLesCartesValideADefausser();
+						evenement.getObjet().choisirCarteADefausser(partieEnCours);
+					}
+				break;	
+				case JOUE_CARTES:
+					
+				default:
+					break;
+				}
+			}else if(arg instanceof EvenementPartie){
+				EvenementPartie eve =(EvenementPartie) arg;
+				switch (eve.getEvenement()) {
+				case PREPARER:
+					preparer();
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+	}
+
+	private int demanderSiContinuerOuNon() {
+		// TODO Auto-generated method stub
+		int choix;
+		boolean mauvaisChoix = true;
+		do {
+			
+			choix = JOptionPane.showConfirmDialog(this, "Voulez-vous continuer?", "Defausser cartes",
+					JOptionPane.YES_NO_OPTION);
+			if (choix == JOptionPane.CLOSED_OPTION) {
+				if (sortir()) {
+					mauvaisChoix = false;
+				}
+			} else {
+				if (choix == JOptionPane.YES_OPTION) {
+				
+						JOptionPane.showMessageDialog(this, "Defaussez cartes, s'il vous plait",
+								"Defausser carte", JOptionPane.PLAIN_MESSAGE);
+						choix=1;
+				}else{
+					choix=2;
+				}
+			
+			}
+		} while (mauvaisChoix);
+		return choix;
 	}
 
 }

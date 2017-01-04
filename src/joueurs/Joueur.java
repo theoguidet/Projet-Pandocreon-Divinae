@@ -172,57 +172,9 @@ public class Joueur extends Observable {
 	 *            instance de la partie
 	 */
 	public void choisirCarteADefausser(Partie p) {
-		String rep = "";
-		boolean defausser = false;
-		boolean continuer = true;
-		System.out.println("Voulez-vous d�fausser une/des carte(s) ? o/n");
-		while (continuer == true) {
-			rep = Partie.scanner.nextLine();
 
-			if (rep.equals("o")) {
-				defausser = true;
-				continuer = false;
-			} else if (rep.equals("n")) {
-				defausser = false;
-				continuer = false;
-			} else {
-				continuer = true;
-			}
-		}
-
-		int i = 2;
-		ArrayList<Integer> indiceCarteADefausser = new ArrayList<Integer>();
-		ArrayList<Carte> carteADefausser = new ArrayList<Carte>();
-		while (defausser == true) {
-
-			System.out.println("Entrez le num�ro de la carte � d�fausser : ");
-			i = Partie.scanner.nextInt();
-			if ((i <= main.size() && i >= 0)) {
-				if (indiceCarteADefausser.contains(i)) {
-					System.out.println("Ce num�ro ne correspond pas.");
-				} else {
-					indiceCarteADefausser.add(i);
-					carteADefausser.add(main.get(i));
-				}
-			} else {
-				System.out.println("Ce num�ro ne correspond pas.");
-			}
-
-			System.out.println("Continuer ? o/n");
-			rep = Partie.scanner.next();
-			if (rep.equals("n")) {
-				defausser = false;
-			}
-		}
-
-		for (Carte carte : carteADefausser) {
-
-			p.ajouterADefausse(carte);
-			main.remove(carte);
-
-		}
 		setChanged();
-		notifyObservers(new EvenementJoueur(EvenementJoueurType.DEFAUSSE_CARTES, this));
+		notifyObservers(new EvenementJoueur(EvenementJoueurType.FINIR_DEFAUSSER, this));
 	}
 
 	/**
