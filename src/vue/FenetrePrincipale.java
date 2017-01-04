@@ -48,14 +48,14 @@ public class FenetrePrincipale {
 	private JPanel overview = new JPanel();
 
 	public FenetrePrincipale() {
-
+		frame.getContentPane().setBackground(new Color(244, 164, 96));
 		frame.setDefaultLookAndFeelDecorated(true);
 		frame.setTitle("PANDOCREON DIVINAE");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setMinimumSize(new Dimension(640, 700));
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		overview = new JPanel();
-		overview.setForeground(Color.LIGHT_GRAY);
+		// overview.setForeground(Color.LIGHT_GRAY);
 		// frame.setContentPane(overview);
 		// overview.setVisible(true);
 		GridBagLayout gbl_panneauBoutons = new GridBagLayout();
@@ -81,6 +81,8 @@ public class FenetrePrincipale {
 		lblPandocreonDivinae.setFont(new Font("Book Antiqua", Font.BOLD | Font.ITALIC, 36));
 		lblPandocreonDivinae.setHorizontalAlignment(JLabel.CENTER);
 		lblPandocreonDivinae.setVerticalAlignment(JLabel.CENTER);
+		lblPandocreonDivinae.setBackground(new Color(244, 164, 96));
+		lblPandocreonDivinae.setOpaque(true);
 		paneImage.add(lblPandocreonDivinae, BorderLayout.EAST);
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -126,11 +128,13 @@ public class FenetrePrincipale {
 
 		JLabel lblNewLabel = new JLabel();
 		try {
-			BufferedImage myPicture = ImageIO.read(getClass().getClassLoader()
-					.getResourceAsStream("res/jpeg/" + "my_Picture.jpg"));
-			ImageIcon icon = new ImageIcon(myPicture.getScaledInstance(myPicture.getWidth(), myPicture.getHeight(),
-					myPicture.SCALE_SMOOTH));
+			BufferedImage myPicture = ImageIO
+					.read(getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "picture.jpg"));
+			ImageIcon icon = new ImageIcon(
+					myPicture.getScaledInstance(myPicture.getWidth(), myPicture.getHeight(), myPicture.SCALE_SMOOTH));
 			lblNewLabel.setIcon(icon);
+			lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
+			lblNewLabel.setVerticalAlignment(JLabel.CENTER);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -144,6 +148,7 @@ public class FenetrePrincipale {
 				// TODO Auto-generated method stub
 				overview.setVisible(true);
 				lblPandocreonDivinae.setVisible(true);
+				lblNewLabel.setVisible(true);
 			}
 
 			@Override
@@ -151,6 +156,7 @@ public class FenetrePrincipale {
 				// TODO Auto-generated method stub
 				overview.setVisible(false);
 				lblPandocreonDivinae.setVisible(false);
+				lblNewLabel.setVisible(false);
 			}
 		});
 	}
