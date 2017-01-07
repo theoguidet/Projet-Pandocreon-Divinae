@@ -28,5 +28,17 @@ public enum EvenementJoueurType {
 	/**
 	 * finir
 	 */
-	FINIR_DEFAUSSER,
+	FINIR_DEFAUSSER, 
+	/**
+	 * lancer de
+	 */
+	LANCERDE, 
+	/**
+	 * 
+	 */
+	NON_JOUER, 
+	/**
+	 * 
+	 */
+	CARTE_POSSIBLE,
 }

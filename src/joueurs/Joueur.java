@@ -3,6 +3,8 @@ package joueurs;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import com.sun.xml.internal.ws.util.NoCloseOutputStream;
+
 import cartes.Carte;
 import cartes.TypeCarte;
 import cartes.croyant.Croyant;
@@ -174,7 +176,7 @@ public class Joueur extends Observable {
 	public void choisirCarteADefausser(Partie p) {
 
 		setChanged();
-		notifyObservers(new EvenementJoueur(EvenementJoueurType.FINIR_DEFAUSSER, this));
+		notifyObservers(new EvenementJoueur(EvenementJoueurType.DEFAUSSE_CARTES, this));
 	}
 
 	/**
@@ -253,10 +255,14 @@ public class Joueur extends Observable {
 	public void afficherCartePossible(ArrayList<Carte> c) {
 		int i = 0;
 		if (c.isEmpty()) {
-			System.out.println("Vous ne pouvez jouer aucune cartes !");
+//			System.out.println("Vous ne pouvez jouer aucune cartes !");
+			setChanged();
+			notifyObservers(new EvenementJoueur(EvenementJoueurType.NON_JOUER, this));
 		} else {
 			for (Carte carte : c) {
-				System.out.println("[" + i + "] " + carte.toString());
+//				System.out.println("[" + i + "] " + carte.toString());
+				setChanged();
+				notifyObservers(new EvenementJoueur(EvenementJoueurType.CARTE_POSSIBLE, this, new Object[]{carte}));
 				i++;
 			}
 		}
@@ -527,7 +533,11 @@ public class Joueur extends Observable {
 			origine.add(Origine.NUIT);
 			origine.add(Origine.NEANT);
 		}
-		System.out.println("Le r�sultat du d� est : " + origine.get(tirageDe));
+		// System.out.println("Le r�sultat du d� est : " +
+		// origine.get(tirageDe));
+		setChanged();
+		notifyObservers(
+				new EvenementJoueur(EvenementJoueurType.LANCERDE, this, new Object[] { origine.get(tirageDe) }));
 		return calculerPointAction(origine.get(tirageDe));
 	}
 
@@ -614,13 +624,16 @@ public class Joueur extends Observable {
 			}
 		}
 
-		System.out.println("Vous avez : ");
-		System.out.println(pointActionJour + "point(s) d'action jour");
-		System.out.println(pointActionNuit + "point(s) d'action nuit");
-		System.out.println(pointActionNeant + "point(s) d'action neant");
-		System.out.println("Vous ne pouvez jouer que ces cartes : ");
+		// System.out.println("Vous avez : ");
+		// System.out.println(pointActionJour + "point(s) d'action jour");
+		// System.out.println(pointActionNuit + "point(s) d'action nuit");
+		// System.out.println(pointActionNeant + "point(s) d'action neant");
+		// System.out.println("Vous ne pouvez jouer que ces cartes : ");
 		if (estVirtuel) {
 		} else {
+			setChanged();
+			notifyObservers(new EvenementJoueur(EvenementJoueurType.CALCULER_POINT_ACTION, this,
+					new Object[] { pointActionJour, pointActionNuit, pointActionNeant }));
 			afficherCartePossible(cartePossible);
 		}
 		return cartePossible;
@@ -785,21 +798,21 @@ public class Joueur extends Observable {
 	 *            instance de la partie
 	 */
 	public void tourDeJeu(Partie partie) {
-		getDivinite().afficherDivinite();
-		afficherMain();
+		// getDivinite().afficherDivinite();
+		// afficherMain();
 		choisirCarteADefausser(partie);
-		completerMain(partie.getCartes());
-		afficherMain();
-		ArrayList<Carte> cartePossible = lancerDe();
-		ArrayList<Carte> carteAJouer = choisirCarteAJouer(cartePossible);
-		jouerCarte(carteAJouer, partie);
-		System.out.println("jeu a la fin du tour :");
-		afficherMain();
-		/**
-		 * faux car les cartes � sacrifier doivent etre dans la main
-		 */
-		choisirCarteASacrifier(partie);
-		afficherPointPriere();
+		// completerMain(partie.getCartes());
+		// afficherMain();
+		// ArrayList<Carte> cartePossible = lancerDe();
+		// ArrayList<Carte> carteAJouer = choisirCarteAJouer(cartePossible);
+		// jouerCarte(carteAJouer, partie);
+		// System.out.println("jeu a la fin du tour :");
+		// afficherMain();
+		// /**
+		// * faux car les cartes � sacrifier doivent etre dans la main
+		// */
+		// choisirCarteASacrifier(partie);
+		// afficherPointPriere();
 	}
 
 	/**

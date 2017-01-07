@@ -11,42 +11,27 @@ import javax.swing.JPanel;
 
 import cartes.Carte;
 import cartes.EvenementCarte;
-import cartes.TypeCarte;
+import cartes.EvenementCarteType;
 import cartes.croyant.Croyant;
 import cartes.guideSpirituel.GuideSpirituel;
 import controleur.ControleurCarte;
 import joueurs.JoueurVirtuel;
-import cartes.EvenementCarteType;
 import propriete.Dogme;
 import propriete.Origine;
-
-import javax.swing.JTextPane;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
 import javax.swing.BoxLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class VueCarte extends JPanel implements Observer {
 
@@ -76,7 +61,6 @@ public class VueCarte extends JPanel implements Observer {
 	public VueCarte(Carte carte1) {
 		super();
 		addMouseListener(new ControleurCarte(this));
-		setPreferredSize(new Dimension(120, 180));
 		this.carteObjet = carte1;
 		couvert = carte1.getProprietaire() instanceof JoueurVirtuel;
 		String nomDeCarte = carte1.getNom();
@@ -156,7 +140,7 @@ public class VueCarte extends JPanel implements Observer {
 		gbc_lblNbCroyants.anchor = GridBagConstraints.LAST_LINE_END;
 		add(lblNbCroyants, gbc_lblNbCroyants);
 
-		if (!couvert) {
+		if (couvert) {
 			try {
 				BufferedImage imageVer = ImageIO
 						.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "verso.jpg"));
@@ -168,6 +152,8 @@ public class VueCarte extends JPanel implements Observer {
 				JLabel label = new JLabel();
 				label.setIcon(icon);
 				this.add(label);
+				setPreferredSize(new Dimension(24, 30));
+				repaint();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -177,6 +163,8 @@ public class VueCarte extends JPanel implements Observer {
 			dessinerOrigine(lblOrigine, carte1.getPropriete().getOrigine().toString());
 			dessinerDogmes(panelDogmes, carte1);
 			dessinerNbCroyant(lblNbCroyants, carte1);
+			setPreferredSize(new Dimension(150, 180));
+			repaint();
 		}
 
 	}
@@ -192,8 +180,11 @@ public class VueCarte extends JPanel implements Observer {
 					JLabel labelDogmes = new JLabel();
 					imageDogme = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/"
 							+ carte3.getPropriete().getDogmes().get(indice).toString().toLowerCase() + ".jpg"));
-					ImageIcon icon = new ImageIcon(imageDogme.getScaledInstance(panelDogmes.getWidth(),
-							panelDogmes.getWidth(), imageDogme.SCALE_SMOOTH));
+					Dimension imageSize = new Dimension(imageDogme.getWidth(), imageDogme.getHeight());
+					Dimension boundary = new Dimension(panelDogmes.getWidth(), panelDogmes.getHeight());
+					Dimension dimensionPropre = calculerLeRapport(imageSize, boundary);
+					ImageIcon icon = new ImageIcon(imageDogme.getScaledInstance((int) dimensionPropre.getWidth(),
+							(int) dimensionPropre.getHeight(), imageDogme.SCALE_SMOOTH));
 					labelDogmes.setIcon(icon);
 					panelDogmes.add(labelDogmes);
 
@@ -340,14 +331,32 @@ public class VueCarte extends JPanel implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		if (arg1 != null) {
-			if (arg1 instanceof EvenementCarte) {
-				EvenementCarte evenement = (EvenementCarte) arg1;
-				if (evenement.getEvenement() == EvenementCarteType.EST_CHOISIE) {
-					valideAChoisir = false;
-					getParent().remove(this);
-				}
+			EvenementCarte evenement= (EvenementCarte) arg1;
+			if(evenement.getEvenement()== EvenementCarteType.EST_CHOISIE){
+			valideAChoisir = false;
+			getParent().remove(this);
+			
 			}
 		}
 
+	}
+
+	public void affichageRelle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @return the imageVerso
+	 */
+	public Image getImageVerso() {
+		return imageVerso;
+	}
+
+	/**
+	 * @param imageVerso the imageVerso to set
+	 */
+	public void setImageVerso(Image imageVerso) {
+		this.imageVerso = imageVerso;
 	}
 }

@@ -2,9 +2,12 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
+import joueurs.Joueur;
 import partie.Partie;
 import vue.FenetrePartie;
 import vue.FenetrePrincipale;
@@ -31,6 +34,12 @@ public class ControleurPartie implements ActionListener {
 		demanderInformationDuJoueur();
 		fenetrePartie.construirePlateau();
 		nouvellePartie.debuterJeu();
+//		ArrayList<Joueur> listJ=nouvellePartie.getJoueurs();
+//		Iterator<Joueur> it= listJ.iterator();
+//		while(it.hasNext()){
+//			Joueur j= it.next();
+//			System.out.println(j.getNom());
+//		}
 	}
 
 	public void demanderInformationDuJoueur() {

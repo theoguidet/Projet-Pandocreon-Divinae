@@ -75,6 +75,15 @@ import propriete.Origine;
 public class Partie extends Observable{
 
 	private int nbJoueur;
+	private int tour=1;
+	public int getTour() {
+		return tour;
+	}
+
+	public void setTour(int tour) {
+		this.tour = tour;
+	}
+
 	private Joueur gagnant;
 	private ArrayList<Joueur> joueurs;
 	private ArrayList<Carte> cartes;
@@ -82,7 +91,7 @@ public class Partie extends Observable{
 	private ArrayList<Carte> defausse;
 	public static Scanner scanner = new Scanner(System.in);
 	private static Partie uniquePartie;
-	
+	private Joueur joueurEnCours=null;
 	private boolean partieEnCours=false;
 
 	public boolean isPartieEnCours() {
@@ -432,7 +441,36 @@ public class Partie extends Observable{
 		distribuerCarte();
 		setChanged();
 		notifyObservers(new EvenementPartie(EvenementPartieType.PREPARER, this));
+		choisirJoueurACommencer();
 	}
+	private void choisirJoueurACommencer() {
+		// TODO Auto-generated method stub
+		if(joueurEnCours==null){
+			joueurEnCours=joueurs.get(0);	//premier tour du jeu
+		}else{
+			if(joueurEnCours.getPosJoueur()< joueurs.size()-1){
+				joueurEnCours= joueurs.get(joueurEnCours.getPosJoueur()+1);
+			}else{
+				joueurEnCours=null; //fin du tour
+			}
+		}
+		if(joueurEnCours==null){
+			passerTour();
+		}else{
+			joueurEnCours.lancerDe();
+//			joueurEnCours.tourDeJeu(getUniquePartie());
+		}
+	}
+
+	private void passerTour() {
+		// TODO Auto-generated method stub
+		if(tour==joueurs.size()){
+			determinerGagnant();
+		}else{
+			tour++;
+		}
+	}
+
 	/**
 	 * determine le gagnant et termine la partie
 	 */
@@ -474,12 +512,14 @@ public class Partie extends Observable{
 	public void initialiserJoueurs(int nbJoueurs, String nomJoueur, String[] listNomJoueurVirtuel){
 		this.nbJoueur=nbJoueurs;
 		joueurs.add(new Joueur(nomJoueur));
+		joueurs.get(0).setPosJoueur(0);
 		/**
 		 * ajouter la position de chaque joueur
 		 */
 		for (int i = 1; i <= nbJoueur-1; i++) {
 			
 			joueurs.add(new JoueurVirtuel(listNomJoueurVirtuel[i-1]));
+			joueurs.get(i).setPosJoueur(i);
 		}
 	
 	}
