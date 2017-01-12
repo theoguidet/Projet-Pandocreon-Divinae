@@ -14,7 +14,6 @@ import cartes.EvenementCarte;
 import cartes.EvenementCarteType;
 import cartes.croyant.Croyant;
 import cartes.guideSpirituel.GuideSpirituel;
-import controleur.ControleurCarte;
 import controleur.test;
 import joueurs.Joueur;
 import joueurs.JoueurVirtuel;
@@ -28,7 +27,6 @@ import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -38,7 +36,7 @@ import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
 import java.awt.event.MouseEvent;
 
-public class VueCarte extends JPanel implements Observer {
+public class VueCarte extends JPanel implements Observer{
 
 	/**
 	 * 
@@ -101,50 +99,65 @@ public class VueCarte extends JPanel implements Observer {
 		gridBagLayout.columnWeights = colsRatio;
 		gridBagLayout.rowWeights = rowsRatio;
 		setLayout(gridBagLayout);
+		GridBagConstraints gbc = new GridBagConstraints();
+
 
 		JPanel panelDogmes = new JPanel();
-		GridBagConstraints gbc_panelDogmes = new GridBagConstraints();
-		gbc_panelDogmes.insets = new Insets(0, 0, 5, 5);
-		gbc_panelDogmes.fill = GridBagConstraints.BOTH;
-		gbc_panelDogmes.gridx = 0;
-		gbc_panelDogmes.gridy = 0;
-		add(panelDogmes, gbc_panelDogmes);
+		gbc.insets = new Insets(0, 0, 5, 5);
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(panelDogmes, gbc);
 		panelDogmes.setOpaque(false);
 		panelDogmes.setLayout(new BoxLayout(panelDogmes, BoxLayout.Y_AXIS));
-		int sizePanelDogmes = (int) Math
-				.round(colsRatio[0] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
+		
+		int sizePanelDogmes = (int) Math.round(colsRatio[0] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
 		panelDogmes.setSize(sizePanelDogmes, sizePanelDogmes);
 
 		JLabel lblNomDeCarte = new JLabel(nomDeCarte);
-		GridBagConstraints gbc_lblNomDeCarte = new GridBagConstraints();
-		gbc_lblNomDeCarte.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNomDeCarte.gridx = 1;
-		gbc_lblNomDeCarte.gridy = 0;
-		add(lblNomDeCarte, gbc_lblNomDeCarte);
+		gbc.insets = new Insets(0, 0, 5, 5);
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		add(lblNomDeCarte, gbc);
+		
 		JLabel lblOrigine = new JLabel();
-
-		GridBagConstraints gbc_lblOrigine = new GridBagConstraints();
-		gbc_lblOrigine.insets = new Insets(0, 0, 5, 0);
-		gbc_lblOrigine.gridx = 2;
-		gbc_lblOrigine.anchor = GridBagConstraints.FIRST_LINE_END;
-		gbc_lblOrigine.gridy = 0;
-		add(lblOrigine, gbc_lblOrigine);
-		lblOrigine.setLayout(new FlowLayout());
-		int widthLblOrigine = (int) Math
-				.round(colsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
-		int heightLblOrigine = (int) Math
-				.round(rowsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getHeight());
+		gbc.insets = new Insets(0, 0, 5, 0);
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		gbc.anchor = GridBagConstraints.FIRST_LINE_END;
+		int widthLblOrigine = (int) Math.round(colsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
+		int heightLblOrigine = (int) Math.round(rowsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getHeight());
 		lblOrigine.setSize(widthLblOrigine, heightLblOrigine);
+		add(lblOrigine, gbc);
+
 
 		JLabel lblTypeCarte = new JLabel(carte1.getTypeCarte().toString());
-		GridBagConstraints gbc_lblTypeCarte = new GridBagConstraints();
-		gbc_lblTypeCarte.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTypeCarte.gridx = 0;
-		gbc_lblTypeCarte.gridy = 1;
+		gbc.insets = new Insets(0, 0, 5, 5);
+		gbc.gridx = 0;
+		gbc.gridy = 1;
 		lblTypeCarte.setUI(new VerticalLabelUI(false));
-		add(lblTypeCarte, gbc_lblTypeCarte);
+		add(lblTypeCarte, gbc);
 
+		
+		
+		// lblCapacite.addMouseListener(new MouseAdapter() {
+		// @Override
+		// public void mouseClicked(MouseEvent e) {
+		// if(vue.isValideAChoisir()){
+		// vue.getCarteObjet().setChoisie();
+		// }else if(vue.isValideAJouer()){
+		// vue.getCarteObjet().setJouer();
+		// vue.getCarteObjet().getProprietaire().jouerCarte(vue.getCarteObjet(),
+		// Partie.getUniquePartie());
+		// }
+		// }
+		// });
 		JLabel lblCapacite = new JLabel("CAPACITE");
+		gbc.insets = new Insets(0, 0, 5, 5);
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		lblCapacite.setToolTipText(carte1.getCapacite());
+		add(lblCapacite, gbc);
 		lblCapacite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -164,52 +177,27 @@ public class VueCarte extends JPanel implements Observer {
 				}
 			}
 		});
-		// lblCapacite.addMouseListener(new MouseAdapter() {
-		// @Override
-		// public void mouseClicked(MouseEvent e) {
-		// if(vue.isValideAChoisir()){
-		// vue.getCarteObjet().setChoisie();
-		// }else if(vue.isValideAJouer()){
-		// vue.getCarteObjet().setJouer();
-		// vue.getCarteObjet().getProprietaire().jouerCarte(vue.getCarteObjet(),
-		// Partie.getUniquePartie());
-		// }
-		// }
-		// });
-
-		GridBagConstraints gbc_lblCapacite = new GridBagConstraints();
-		gbc_lblCapacite.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCapacite.gridx = 1;
-		gbc_lblCapacite.gridy = 1;
-		lblCapacite.setToolTipText(carte1.getCapacite());
-		add(lblCapacite, gbc_lblCapacite);
 
 		JLabel lblNbCroyants = new JLabel();
-		int widthLblNbCroyants = (int) Math
-				.round(colsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
-		int heightLblNbCroyants = (int) Math
-				.round(rowsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getHeight());
+		int widthLblNbCroyants = (int) Math.round(colsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getWidth());
+		int heightLblNbCroyants = (int) Math.round(rowsRatio[2] / DoubleStream.of(colsRatio).sum() * this.getPreferredSize().getHeight());
 		lblNbCroyants.setSize(widthLblNbCroyants, heightLblNbCroyants);
-		GridBagConstraints gbc_lblNbCroyants = new GridBagConstraints();
-		gbc_lblNbCroyants.gridx = 2;
-		gbc_lblNbCroyants.gridy = 2;
-		gbc_lblNbCroyants.anchor = GridBagConstraints.LAST_LINE_END;
-		add(lblNbCroyants, gbc_lblNbCroyants);
+		gbc.gridx = 2;
+		gbc.gridy = 2;
+		gbc.anchor = GridBagConstraints.LAST_LINE_END;
+		add(lblNbCroyants, gbc);
 
 		if (couvert) {
 			try {
-				BufferedImage imageVer = ImageIO
-						.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "verso.jpg"));
+				BufferedImage imageVer = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "verso.jpg"));
 				Dimension imageSize = new Dimension(imageVer.getWidth(), imageVer.getHeight());
 				Dimension boundary = new Dimension(imageVer.getWidth(), imageVer.getHeight());
 				Dimension dimensionPropre = calculerLeRapport(imageSize, boundary);
-				ImageIcon icon = new ImageIcon(imageVer.getScaledInstance((int) dimensionPropre.getWidth(),
-						(int) dimensionPropre.getHeight(), imageVer.SCALE_SMOOTH));
+				ImageIcon icon = new ImageIcon(imageVer.getScaledInstance((int) dimensionPropre.getWidth(), (int) dimensionPropre.getHeight(), imageVer.SCALE_SMOOTH));
 				JLabel label = new JLabel();
 				label.setIcon(icon);
 				this.add(label);
 				setPreferredSize(new Dimension(24, 30));
-				repaint();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -220,33 +208,26 @@ public class VueCarte extends JPanel implements Observer {
 			dessinerDogmes(panelDogmes, carte1);
 			dessinerNbCroyant(lblNbCroyants, carte1);
 			setPreferredSize(new Dimension(150, 180));
-			repaint();
 		}
-
+		repaint();
 	}
 
 	private void dessinerDogmes(JPanel panelDogmes, Carte carte3) {
-		// TODO Auto-generated method stub
-		ArrayList<Dogme> nbDogme;
-		nbDogme = carte3.getPropriete().getDogmes();
+		ArrayList<Dogme> nbDogme = carte3.getPropriete().getDogmes();
 		if (nbDogme != null) {
 			try {
 				BufferedImage imageDogme = null;
-				for (int indice = 0; indice < nbDogme.size(); indice++) {
+				for (Dogme dogme : nbDogme) {
 					JLabel labelDogmes = new JLabel();
-					imageDogme = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/"
-							+ carte3.getPropriete().getDogmes().get(indice).toString().toLowerCase() + ".jpg"));
+					imageDogme = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("res/jpeg/" + dogme.toString().toLowerCase() + ".jpg"));
 					Dimension imageSize = new Dimension(imageDogme.getWidth(), imageDogme.getHeight());
 					Dimension boundary = new Dimension(panelDogmes.getWidth(), panelDogmes.getHeight());
 					Dimension dimensionPropre = calculerLeRapport(imageSize, boundary);
-					ImageIcon icon = new ImageIcon(imageDogme.getScaledInstance((int) dimensionPropre.getWidth(),
-							(int) dimensionPropre.getHeight(), imageDogme.SCALE_SMOOTH));
+					ImageIcon icon = new ImageIcon(imageDogme.getScaledInstance((int) dimensionPropre.getWidth(), (int) dimensionPropre.getHeight(), imageDogme.SCALE_SMOOTH));
 					labelDogmes.setIcon(icon);
 					panelDogmes.add(labelDogmes);
-
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -255,7 +236,7 @@ public class VueCarte extends JPanel implements Observer {
 	/**
 	 * fonction de calculer le rapport
 	 */
-	public static Dimension calculerLeRapport(Dimension imgSize, Dimension boundary) {
+	public Dimension calculerLeRapport(Dimension imgSize, Dimension boundary) {
 
 		int original_width = imgSize.width;
 		int original_height = imgSize.height;
@@ -424,4 +405,5 @@ public class VueCarte extends JPanel implements Observer {
 	public void setImageVerso(Image imageVerso) {
 		this.imageVerso = imageVerso;
 	}
+
 }

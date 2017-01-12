@@ -2,7 +2,6 @@ package partie;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Scanner;
 
 import cartes.Carte;

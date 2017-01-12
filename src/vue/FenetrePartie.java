@@ -6,15 +6,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
 import cartes.Carte;
-import cartes.TypeCarte;
 import cartes.divinite.Divinite;
-import controleur.ControleurPartie;
 import joueurs.EvenementJoueur;
 import joueurs.Joueur;
 import joueurs.JoueurVirtuel;
@@ -38,7 +35,6 @@ import java.awt.event.MouseEvent;
 
 public class FenetrePartie extends JFrame implements Observer {
 
-	private FenetrePartie fenetrePartie;
 	/**
 	 * champ de poser cartes
 	 */
@@ -72,8 +68,6 @@ public class FenetrePartie extends JFrame implements Observer {
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setVisible(true);
 		setResizable(false);
-		fenetrePartie = this;
-
 		plateau = new JPanel();
 		getContentPane().add(plateau, BorderLayout.CENTER);
 		GridBagLayout gbl_plateau = new GridBagLayout();

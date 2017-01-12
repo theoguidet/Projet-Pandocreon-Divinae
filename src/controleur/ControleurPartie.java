@@ -1,29 +1,12 @@
 package controleur;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import javax.swing.JOptionPane;
 
-import cartes.Carte;
-import cartes.EvenementCarte;
-import cartes.TypeCarte;
-import cartes.divinite.Divinite;
-import joueurs.EvenementJoueur;
-import joueurs.Joueur;
-import joueurs.JoueurVirtuel;
-import partie.EvenementPartie;
 import partie.Partie;
 import vue.FenetrePartie;
 import vue.FenetrePrincipale;
-import vue.VueCarte;
-import vue.VueJoueur;
-import vue.VueJoueurPhysique;
-import vue.VueJoueurVirtuel;
 
 public class ControleurPartie{
 	private FenetrePartie fenetrePartie;
@@ -154,10 +137,5 @@ public class ControleurPartie{
 	 */
 	public void afficher(String arg) {
 		fenetrePartie.getMessageAAfficher().setText(arg);
-	}
-	
-	
-	private synchronized void attendre() {
-		JOptionPane.showMessageDialog(null, "Tapez pour continuer");
 	}
 }

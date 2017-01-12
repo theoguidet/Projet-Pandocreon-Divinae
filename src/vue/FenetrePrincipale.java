@@ -11,8 +11,6 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.Font;
@@ -97,7 +95,6 @@ public class FenetrePrincipale extends JFrame {
 			lblImage.setHorizontalAlignment(JLabel.CENTER);
 			lblImage.setVerticalAlignment(JLabel.CENTER);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		this.getContentPane().add(lblImage, BorderLayout.CENTER);

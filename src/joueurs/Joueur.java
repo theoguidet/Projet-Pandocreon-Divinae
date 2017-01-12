@@ -3,8 +3,6 @@ package joueurs;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import com.sun.xml.internal.ws.util.NoCloseOutputStream;
-
 import cartes.Carte;
 import cartes.TypeCarte;
 import cartes.croyant.Croyant;
