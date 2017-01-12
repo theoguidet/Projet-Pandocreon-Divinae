@@ -36,4 +36,12 @@ public class VueJoueur extends JPanel {
 	 */
 	protected JPanel placeAJouerGuide;
 	
+	public JPanel getPlaceAJouerGuide() {
+		return placeAJouerGuide;
+	}
+
+	public JPanel getMainDuJoueur() {
+		return mainDuJoueur;
+	}
+	
 }

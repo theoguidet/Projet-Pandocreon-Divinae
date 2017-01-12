@@ -3,22 +3,14 @@ package vue;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import controleur.ControleurPartie;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ContainerEvent;
-import java.awt.event.ContainerListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -28,53 +20,36 @@ import java.awt.Font;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class FenetrePrincipale {
+public class FenetrePrincipale extends JFrame {
 
-	private static FenetrePrincipale fenetrePrincipale;
-	private JFrame frame = new JFrame();
+//	private static FenetrePrincipale fenetrePrincipale;
+	private JButton btnSortie;
+	private JButton btnAide;
+	private JButton btnPartie;
+//	public static FenetrePrincipale getFenetrePrincipale() {
+//		return fenetrePrincipale;
+//	}
 
-	public JFrame getFrame() {
-		return frame;
-	}
+//	public static void setFenetrePrincipale(FenetrePrincipale fenetrePrincipale) {
+//		FenetrePrincipale.fenetrePrincipale = fenetrePrincipale;
+//	}
 
-	public static FenetrePrincipale getFenetrePrincipale() {
-		return fenetrePrincipale;
-	}
+	private JPanel overview;
 
-	public static void setFenetrePrincipale(FenetrePrincipale fenetrePrincipale) {
-		FenetrePrincipale.fenetrePrincipale = fenetrePrincipale;
-	}
-
-	private JPanel overview = new JPanel();
-
-	public FenetrePrincipale() {
-		frame.getContentPane().setBackground(new Color(244, 164, 96));
-		frame.setDefaultLookAndFeelDecorated(true);
-		frame.setTitle("PANDOCREON DIVINAE");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setMinimumSize(new Dimension(640, 700));
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	public FenetrePrincipale(){
+		super();
+		this.getContentPane().setBackground(new Color(244, 164, 96));
+		this.setTitle("PANDOCREON DIVINAE");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setMinimumSize(new Dimension(640, 700));
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		overview = new JPanel();
-		// overview.setForeground(Color.LIGHT_GRAY);
-		// frame.setContentPane(overview);
-		// overview.setVisible(true);
-		GridBagLayout gbl_panneauBoutons = new GridBagLayout();
-		overview.setLayout(gbl_panneauBoutons);
 		overview.setOpaque(false);
-		// getLayeredPane().setOpaque(false);
-		// setJMenuBar(creerMenu());
-		// getJMenuBar().setOpaque(true);
-		// setRootPane(creerRootPane());
+
 		JPanel paneImage = new JPanel();
-		GridBagConstraints gbc_paneImage = new GridBagConstraints();
-		gbc_paneImage.gridheight = 3;
-		gbc_paneImage.insets = new Insets(0, 0, 5, 5);
-		gbc_paneImage.fill = GridBagConstraints.BOTH;
-		gbc_paneImage.gridx = 0;
-		gbc_paneImage.gridy = 0;
-		// rootPane.add(paneImage, gbc_paneImage);
-		frame.getContentPane().add(paneImage, BorderLayout.WEST);
 		paneImage.setLayout(new BorderLayout());
+		this.getContentPane().add(paneImage, BorderLayout.WEST);
+
 
 		JLabel lblPandocreonDivinae = new JLabel(
 				"<html><div style='text-align: center;'>PANDOCREON<br/>DIVINAE</div></html>");
@@ -86,94 +61,86 @@ public class FenetrePrincipale {
 		paneImage.add(lblPandocreonDivinae, BorderLayout.EAST);
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
+		GridBagConstraints gbc = new GridBagConstraints();
 		gridBagLayout.columnWeights = new double[] { 0.7, 0.3 };
 		gridBagLayout.rowWeights = new double[] { 0.1, 0.1, 0.1 };
 		overview.setLayout(gridBagLayout);
 
-		JButton btnPartie = new JButton("Partie");
-		GridBagConstraints gbc_btnPartie = new GridBagConstraints();
-		gbc_btnPartie.insets = new Insets(0, 0, 5, 0);
-		gbc_btnPartie.gridx = 1;
-		gbc_btnPartie.gridy = 0;
-		overview.add(btnPartie, gbc_btnPartie);
+		btnPartie = new JButton("Partie");
+		gbc.insets = new Insets(0, 0, 5, 0);
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		overview.add(btnPartie, gbc);
+		
 
-		btnPartie.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				(new ControleurPartie()).commencer();
+		btnAide = new JButton("Aide");
+		gbc.insets = new Insets(0, 0, 5, 0);
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		overview.add(btnAide, gbc);
 
-			}
-		});
+		btnSortie = new JButton("Sortie");
+		gbc.gridx = 1;
+		gbc.gridy = 2;
+		overview.add(btnSortie, gbc);
+		
 
-		JButton btnAide = new JButton("Aide");
-		GridBagConstraints gbc_btnAide = new GridBagConstraints();
-		gbc_btnAide.insets = new Insets(0, 0, 5, 0);
-		gbc_btnAide.gridx = 1;
-		gbc_btnAide.gridy = 1;
-		overview.add(btnAide, gbc_btnAide);
+		this.getContentPane().add(overview, BorderLayout.EAST);
 
-		JButton btnSortie = new JButton("Sortie");
-		btnSortie.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				sortir();
-			}
-		});
-		GridBagConstraints gbc_btnSortie = new GridBagConstraints();
-		gbc_btnSortie.gridx = 1;
-		gbc_btnSortie.gridy = 2;
-		overview.add(btnSortie, gbc_btnSortie);
-
-		frame.getContentPane().add(overview, BorderLayout.EAST);
-
-		JLabel lblNewLabel = new JLabel();
+		JLabel lblImage = new JLabel();
 		try {
 			BufferedImage myPicture = ImageIO
 					.read(getClass().getClassLoader().getResourceAsStream("res/jpeg/" + "picture.jpg"));
 			ImageIcon icon = new ImageIcon(
 					myPicture.getScaledInstance(myPicture.getWidth(), myPicture.getHeight(), myPicture.SCALE_SMOOTH));
-			lblNewLabel.setIcon(icon);
-			lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
-			lblNewLabel.setVerticalAlignment(JLabel.CENTER);
+			lblImage.setIcon(icon);
+			lblImage.setHorizontalAlignment(JLabel.CENTER);
+			lblImage.setVerticalAlignment(JLabel.CENTER);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		frame.getContentPane().add(lblNewLabel, BorderLayout.CENTER);
+		this.getContentPane().add(lblImage, BorderLayout.CENTER);
 
-		frame.getContentPane().addContainerListener(new ContainerListener() {
-
-			@Override
-			public void componentRemoved(ContainerEvent e) {
-				// TODO Auto-generated method stub
-				overview.setVisible(true);
-				lblPandocreonDivinae.setVisible(true);
-				lblNewLabel.setVisible(true);
-			}
-
-			@Override
-			public void componentAdded(ContainerEvent e) {
-				// TODO Auto-generated method stub
-				overview.setVisible(false);
-				lblPandocreonDivinae.setVisible(false);
-				lblNewLabel.setVisible(false);
-			}
-		});
+//		this.getContentPane().addContainerListener(new ContainerListener() {
+//
+//			@Override
+//			public void componentRemoved(ContainerEvent e) {
+//				// TODO Auto-generated method stub
+//				overview.setVisible(true);
+//				lblPandocreonDivinae.setVisible(true);
+//				lblImage.setVisible(true);
+//			}
+//
+//			@Override
+//			public void componentAdded(ContainerEvent e) {
+//				// TODO Auto-generated method stub
+//				overview.setVisible(false);
+//				lblPandocreonDivinae.setVisible(false);
+//				lblImage.setVisible(false);
+//			}
+//		});
+		this.setVisible(true);
 	}
 
-	public void sortir() {
-		// TODO Auto-generated method stub
-		frame.dispose();
+	
+	public JButton getBtnSortie() {
+		return btnSortie;
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2740463141326011395L;
+	public JButton getBtnAide() {
+		return btnAide;
+	}
+
+	public JButton getBtnPartie() {
+		return btnPartie;
+	}
 
 	public static void main(String[] args) {
-		FenetrePrincipale fenetre = new FenetrePrincipale();
-		fenetre.frame.setVisible(true);
-		fenetrePrincipale = fenetre;
+//		FenetrePrincipale fenetre = new FenetrePrincipale();
+//		fenetre.setVisible(true);
+//		fenetrePrincipale = fenetre;
+		
+		ControleurPartie controleurPartie = new ControleurPartie();
 	}
 }

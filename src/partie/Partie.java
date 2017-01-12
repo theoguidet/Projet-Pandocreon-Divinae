@@ -451,6 +451,7 @@ public class Partie extends Observable{
 		notifyObservers(new EvenementPartie(EvenementPartieType.PREPARER, this));
 		choisirJoueurACommencer();
 	}
+	
 	public void choisirJoueurACommencer() {
 		// TODO Auto-generated method stub
 		if(joueurEnCours==null){
