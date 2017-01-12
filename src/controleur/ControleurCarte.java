@@ -14,7 +14,8 @@ public class ControleurCarte extends MouseAdapter{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if(vue.isValideAChoisir()){
-			vue.participerDansJeu();
+			vue.getCarteObjet().setChoisie();
 		}
 	}
+	
 }

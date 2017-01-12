@@ -40,5 +40,13 @@ public enum EvenementJoueurType {
 	/**
 	 * 
 	 */
-	CARTE_POSSIBLE,
+	CARTE_POSSIBLE, 
+	/**
+	 * 
+	 */
+	PRESENTER_MAIN,
+	/**
+	 * 
+	 */
+	PASSER_ACTION, PIOCHER_CARTE,
 }

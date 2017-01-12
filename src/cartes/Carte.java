@@ -30,6 +30,20 @@ public abstract class Carte extends Observable {
 	protected String capacite;
 	protected boolean estDistribuee;
 	protected Propriete propriete;
+	private boolean choisie;
+	public boolean isChoisie() {
+		return choisie;
+	}
+
+	public void setChoisie() {
+		setChanged();
+		notifyObservers(new EvenementCarte(EvenementCarteType.EST_CHOISIE, this));
+	}
+	public void setJouer(){
+		setChanged();
+		notifyObservers(new EvenementCarte(EvenementCarteType.EST_JOUE, this));
+	}
+
 	private boolean estSacrifier = false;
 	protected Origine origine;
 	protected Dogme dogme;

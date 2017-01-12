@@ -27,5 +27,13 @@ public class VueJoueur extends JPanel {
 	 * score
 	 */
 	protected JLabel score;
-
+	/**
+	 * place a mettre les Croyant a rattacher
+	 */
+	protected JPanel placeAGarderCroyant;
+	/**
+	 * place a mettre les Guides Spirituels a jouer
+	 */
+	protected JPanel placeAJouerGuide;
+	
 }

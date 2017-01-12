@@ -173,6 +173,8 @@ public class JoueurVirtuel extends Joueur{
 			Carte carteVictime=joueurAAttaquer.getMain().get(i);
 			this.getMain().add(carteVictime);
 			joueurAAttaquer.getMain().remove(i);
+			setChanged();
+			notifyObservers(new EvenementJoueur(EvenementJoueurType.PIOCHER_CARTE, this, new Object[]{carteVictime, joueurAAttaquer}));
 			indice++;
 			i++;
 		}

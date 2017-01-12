@@ -15,13 +15,17 @@ import cartes.EvenementCarteType;
 import cartes.croyant.Croyant;
 import cartes.guideSpirituel.GuideSpirituel;
 import controleur.ControleurCarte;
+import controleur.test;
+import joueurs.Joueur;
 import joueurs.JoueurVirtuel;
+import partie.Partie;
 import propriete.Dogme;
 import propriete.Origine;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.FlowLayout;
@@ -32,6 +36,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.BoxLayout;
+import java.awt.event.MouseEvent;
 
 public class VueCarte extends JPanel implements Observer {
 
@@ -44,6 +49,24 @@ public class VueCarte extends JPanel implements Observer {
 
 	private Carte carteObjet;
 	private boolean valideAChoisir;
+	private boolean valideAJouer;
+	private boolean valideASacrifier;
+
+	public boolean isValideASacrifier() {
+		return valideASacrifier;
+	}
+
+	public void setValideASacrifier(boolean valideASacrifier) {
+		this.valideASacrifier = valideASacrifier;
+	}
+
+	public boolean isValideAJouer() {
+		return valideAJouer;
+	}
+
+	public void setValideAJouer(boolean valideAJouer) {
+		this.valideAJouer = valideAJouer;
+	}
 
 	public boolean isValideAChoisir() {
 		return valideAChoisir;
@@ -60,9 +83,10 @@ public class VueCarte extends JPanel implements Observer {
 	 */
 	public VueCarte(Carte carte1) {
 		super();
-		addMouseListener(new ControleurCarte(this));
 		this.carteObjet = carte1;
+		VueCarte vue = this;
 		couvert = carte1.getProprietaire() instanceof JoueurVirtuel;
+		addMouseListener(new test(this));
 		String nomDeCarte = carte1.getNom();
 		carte1.addObserver(this);
 
@@ -121,6 +145,38 @@ public class VueCarte extends JPanel implements Observer {
 		add(lblTypeCarte, gbc_lblTypeCarte);
 
 		JLabel lblCapacite = new JLabel("CAPACITE");
+		lblCapacite.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (vue.isValideAChoisir()) {
+					vue.getCarteObjet().setChoisie();
+					vue.getCarteObjet().getProprietaire().getMain().remove(vue.getCarteObjet());
+				} else if (vue.isValideAJouer()) {
+					ArrayList<Carte> carte = new ArrayList<Carte>();
+					Joueur proprietaire = vue.getCarteObjet().getProprietaire();
+					carte.add(carteObjet);
+					if (proprietaire.verifierPointAction(carteObjet)) {
+						vue.getCarteObjet().getProprietaire().jouerCarte(carte, Partie.getUniquePartie());
+						vue.getCarteObjet().getProprietaire().getMain().remove(vue.getCarteObjet());
+						proprietaire.enleverPointAction(carteObjet.getPropriete().getOrigine());
+						vue.getCarteObjet().setJouer();
+					}
+				}
+			}
+		});
+		// lblCapacite.addMouseListener(new MouseAdapter() {
+		// @Override
+		// public void mouseClicked(MouseEvent e) {
+		// if(vue.isValideAChoisir()){
+		// vue.getCarteObjet().setChoisie();
+		// }else if(vue.isValideAJouer()){
+		// vue.getCarteObjet().setJouer();
+		// vue.getCarteObjet().getProprietaire().jouerCarte(vue.getCarteObjet(),
+		// Partie.getUniquePartie());
+		// }
+		// }
+		// });
+
 		GridBagConstraints gbc_lblCapacite = new GridBagConstraints();
 		gbc_lblCapacite.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCapacite.gridx = 1;
@@ -331,11 +387,19 @@ public class VueCarte extends JPanel implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		if (arg1 != null) {
-			EvenementCarte evenement= (EvenementCarte) arg1;
-			if(evenement.getEvenement()== EvenementCarteType.EST_CHOISIE){
-			valideAChoisir = false;
-			getParent().remove(this);
-			
+			EvenementCarte evenement = (EvenementCarte) arg1;
+			if (evenement.getEvenement() == EvenementCarteType.EST_CHOISIE) {
+				valideAChoisir = false;
+				try {
+
+					getParent().remove(this);
+				} catch (NullPointerException e) {
+					e.printStackTrace();
+				}
+
+			} else if (evenement.getEvenement() == EvenementCarteType.EST_JOUE) {
+				valideAJouer = false;
+				getParent().remove(this);
 			}
 		}
 
@@ -343,7 +407,7 @@ public class VueCarte extends JPanel implements Observer {
 
 	public void affichageRelle() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -354,7 +418,8 @@ public class VueCarte extends JPanel implements Observer {
 	}
 
 	/**
-	 * @param imageVerso the imageVerso to set
+	 * @param imageVerso
+	 *            the imageVerso to set
 	 */
 	public void setImageVerso(Image imageVerso) {
 		this.imageVerso = imageVerso;

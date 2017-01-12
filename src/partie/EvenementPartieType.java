@@ -20,5 +20,6 @@ public enum EvenementPartieType {
 	/**
 	 * est finie
 	 */
-	EST_FINIE,
+	EST_FINIE, 
+	DEFAUSSE_CARTE_DEMANDE,
 }

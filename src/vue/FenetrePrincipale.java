@@ -161,37 +161,6 @@ public class FenetrePrincipale {
 		});
 	}
 
-	private JMenuBar creerMenu() {
-		// TODO Auto-generated method stub
-		JMenuBar menuBar = new JMenuBar();
-
-		// Set up the lone menu.
-		JMenu menu = new JMenu("Nouveau Jeu");
-		menuBar.add(menu);
-
-		// Set up the first menu item.
-		JMenuItem menuItem = new JMenuItem("Nouvelle Partie");
-		menuItem.setIcon(new ImageIcon("C:\\Users\\El kaiser&Blaze\\Desktop\\111.jpg"));
-		menuItem.addActionListener(new ControleurPartie());
-		menu.add(menuItem);
-
-		// Set up the second menu item.
-		menuItem_1 = new JMenuItem("Quit");
-		menuItem_1.setBackground(Color.WHITE);
-		menuItem_1.setIcon(new ImageIcon("C:\\Users\\El kaiser&Blaze\\Desktop\\exit.jpg"));
-		menuItem_1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				sortir();
-			}
-		});
-		menu.add(menuItem_1);
-
-		return menuBar;
-	}
-
 	public void sortir() {
 		// TODO Auto-generated method stub
 		frame.dispose();
@@ -201,7 +170,6 @@ public class FenetrePrincipale {
 	 * 
 	 */
 	private static final long serialVersionUID = 2740463141326011395L;
-	private JMenuItem menuItem_1;
 
 	public static void main(String[] args) {
 		FenetrePrincipale fenetre = new FenetrePrincipale();

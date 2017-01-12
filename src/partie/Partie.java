@@ -80,6 +80,14 @@ public class Partie extends Observable{
 		return tour;
 	}
 
+	public Joueur getJoueurEnCours() {
+		return joueurEnCours;
+	}
+
+	public void setJoueurEnCours(Joueur joueurEnCours) {
+		this.joueurEnCours = joueurEnCours;
+	}
+
 	public void setTour(int tour) {
 		this.tour = tour;
 	}
@@ -443,7 +451,7 @@ public class Partie extends Observable{
 		notifyObservers(new EvenementPartie(EvenementPartieType.PREPARER, this));
 		choisirJoueurACommencer();
 	}
-	private void choisirJoueurACommencer() {
+	public void choisirJoueurACommencer() {
 		// TODO Auto-generated method stub
 		if(joueurEnCours==null){
 			joueurEnCours=joueurs.get(0);	//premier tour du jeu
@@ -458,7 +466,8 @@ public class Partie extends Observable{
 			passerTour();
 		}else{
 			joueurEnCours.lancerDe();
-//			joueurEnCours.tourDeJeu(getUniquePartie());
+			joueurEnCours.setAction(1);
+			joueurEnCours.tourDeJeu(1,getUniquePartie());
 		}
 	}
 

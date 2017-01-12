@@ -10,6 +10,9 @@ import java.awt.Insets;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
+
+import cartes.Carte;
+
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -26,6 +29,8 @@ public class VueJoueurPhysique extends VueJoueur {
 	private Joueur joueurObjet;
 	private JTable table;
 
+
+
 	public VueJoueurPhysique(Joueur joueurPhysique) {
 		setMinimumSize(new Dimension(100, 100));
 		joueurObjet= joueurPhysique;
@@ -41,6 +46,16 @@ public class VueJoueurPhysique extends VueJoueur {
 		gbc_lblNomDuJoueur.gridy = 0;
 		add(lblNomDuJoueur, gbc_lblNomDuJoueur);
 		this.nomDuJoueur = lblNomDuJoueur;
+		
+		JPanel placeAGarderCroyant = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 5, 5);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 0;
+		gbc_panel.gridwidth=7;
+		this.placeAGarderCroyant=placeAGarderCroyant;
+		add(placeAGarderCroyant, gbc_panel);
 
 		JLabel lblScore = new JLabel("Score" + joueurPhysique.getNbPrieres());
 		GridBagConstraints gbc_lblScore = new GridBagConstraints();
@@ -48,6 +63,16 @@ public class VueJoueurPhysique extends VueJoueur {
 		gbc_lblScore.gridx = 0;
 		gbc_lblScore.gridy = 1;
 		add(lblScore, gbc_lblScore);
+		
+		JPanel placeAJouerGuide = new JPanel();
+		GridBagConstraints gbc_placeAJouerGuide = new GridBagConstraints();
+		gbc_placeAJouerGuide.insets = new Insets(0, 0, 5, 0);
+		gbc_placeAJouerGuide.fill = GridBagConstraints.BOTH;
+		gbc_placeAJouerGuide.gridx = 1;
+		gbc_placeAJouerGuide.gridy = 1;
+		gbc_placeAJouerGuide.gridwidth=7;
+		this.placeAJouerGuide=placeAJouerGuide;
+		add(placeAJouerGuide, gbc_placeAJouerGuide);
 		
 //		JPanel panel = new JPanel();
 //		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -61,7 +86,7 @@ public class VueJoueurPhysique extends VueJoueur {
 		JLabel lblPointAction = new JLabel("PAJour:" + joueurPhysique.getPointActionNuit() + "\n " + "PANuit:"
 				+ joueurPhysique.getPointActionNuit() + "\n" + "PANeant:" + joueurPhysique.getPointActionNeant());
 		GridBagConstraints gbc_lblPointAction = new GridBagConstraints();
-		gbc_lblPointAction.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPointAction.insets = new Insets(0, 0, 0, 5);
 		gbc_lblPointAction.gridx = 0;
 		gbc_lblPointAction.gridy = 2;
 		add(lblPointAction, gbc_lblPointAction);
@@ -85,5 +110,11 @@ public class VueJoueurPhysique extends VueJoueur {
 		for (int indice = 0; indice < mainDuJoueur.getComponentCount(); indice++) {
 			((VueCarte) mainDuJoueur.getComponent(indice)).setValideAChoisir(true);
 		}
+	}
+
+	public void rendreLesCartesPossibleValideAJouer(Object object) {
+		// TODO Auto-generated method stub
+		VueCarte vue= new VueCarte((Carte) object);
+		vue.setValideAJouer(true);
 	}
 }

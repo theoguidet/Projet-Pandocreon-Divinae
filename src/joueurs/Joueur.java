@@ -49,6 +49,19 @@ public class Joueur extends Observable {
 	 * joueur est en cours ou non
 	 */
 	private boolean enCoursDeJouer;
+	/**
+	 * list carte possible a jouer
+	 */
+	private ArrayList<Carte> cartePossibleAJouer;
+	
+	public ArrayList<Carte> getCartePossibleAJouer() {
+		return cartePossibleAJouer;
+	}
+
+	public void setCartePossibleAJouer(ArrayList<Carte> cartePossibleAJouer) {
+		this.cartePossibleAJouer = cartePossibleAJouer;
+	}
+
 	private int posJoueur;
 	/**
 	 * les cartes Croyants rattaches par les Guides Spirituels du joueur
@@ -67,7 +80,11 @@ public class Joueur extends Observable {
 	 * le joueur peut recevoir les points actions ou non
 	 */
 	private boolean pouvoirRecevoirPointAction;
-
+	/**
+	 * 
+	 * numero de l'action
+	 */
+	private int action;
 	public boolean isPouvoirRecevoirPointAction() {
 		return pouvoirRecevoirPointAction;
 	}
@@ -192,21 +209,6 @@ public class Joueur extends Observable {
 		return c;
 	}
 
-	/**
-	 * pioche une carte et l'ajoute dans la main du joueur
-	 * 
-	 * @param c
-	 *            pioche du jeu de carte
-	 */
-	public void piocherCarte(ArrayList<Carte> c) {
-		main.add(c.get(0));
-		/*
-		 * set Proprietaire pour la carte
-		 */
-
-		c.remove(0);
-	}
-
 	public void setPointActionJour(int pointActionJour) {
 		this.pointActionJour = pointActionJour;
 	}
@@ -227,7 +229,13 @@ public class Joueur extends Observable {
 	 */
 	public void completerMain(ArrayList<Carte> c) {
 		while (main.size() < 7) {
-			piocherCarte(c);
+			main.add(0,c.get(0));
+			if(!estVirtuel){
+			System.out.println(main.get(0).getNom());	
+			setChanged();
+			notifyObservers(new EvenementJoueur(EvenementJoueurType.PRESENTER_MAIN, this, new Object[]{main.get(0)}));
+			}
+			c.remove(0);
 		}
 		for (int k = 0; k < main.size(); k++) {
 			main.get(k).setProprietaire(this);
@@ -255,14 +263,14 @@ public class Joueur extends Observable {
 	public void afficherCartePossible(ArrayList<Carte> c) {
 		int i = 0;
 		if (c.isEmpty()) {
-//			System.out.println("Vous ne pouvez jouer aucune cartes !");
+			// System.out.println("Vous ne pouvez jouer aucune cartes !");
 			setChanged();
 			notifyObservers(new EvenementJoueur(EvenementJoueurType.NON_JOUER, this));
 		} else {
 			for (Carte carte : c) {
-//				System.out.println("[" + i + "] " + carte.toString());
+				// System.out.println("[" + i + "] " + carte.toString());
 				setChanged();
-				notifyObservers(new EvenementJoueur(EvenementJoueurType.CARTE_POSSIBLE, this, new Object[]{carte}));
+				notifyObservers(new EvenementJoueur(EvenementJoueurType.CARTE_POSSIBLE, this, new Object[] { carte }));
 				i++;
 			}
 		}
@@ -275,36 +283,38 @@ public class Joueur extends Observable {
 	 *            liste des cartes pouvant �tre jou�es
 	 * @return liste des cartes � jouer
 	 */
-	public ArrayList<Carte> choisirCarteAJouer(ArrayList<Carte> cartePossible) {
-		int i = 0;
-		boolean fin = false;
-		ArrayList<Carte> carteAJOuer = new ArrayList<Carte>();
-		ArrayList<Integer> indiceCarte = new ArrayList<Integer>();
+	public void choisirCarteAJouer(ArrayList<Carte> cartePossible) {
+//		int i = 0;
+//		boolean fin = false;
+//		ArrayList<Carte> carteAJOuer = new ArrayList<Carte>();
+//		ArrayList<Integer> indiceCarte = new ArrayList<Integer>();
 		// Scanner clavier = new Scanner(System.in);
-		while (fin == false) {
-			if (pointActionJour == 0 && pointActionNuit == 0 && pointActionNeant == 0 && cartePossible.isEmpty()) {
-				fin = true;
-			} else {
-				i = Partie.scanner.nextInt();
-				if (i > cartePossible.size() - 1 || i < 0) {
-					fin = true;
-				} else {
-					if (verifierPointAction(cartePossible.get(i))) {
-						if (indiceCarte.contains(i)) {
-							System.out.println("Ce numero a deja �t� choisi !");
-						} else {
-							indiceCarte.add(i);
-							carteAJOuer.add(cartePossible.get(i));
-							enleverPointAction(cartePossible.get(i).getPropriete().getOrigine());
-						}
-					} else {
-						System.out.println("Vous n'avez pas assez de points d'action !");
-					}
-				}
+	
+			while(pointActionJour >= 0 && pointActionNuit >= 0 && pointActionNeant >= 0 && cartePossible.isEmpty()) {
+//				fin = true;
+			
+//				i = Partie.scanner.nextInt();
+//				if (i > cartePossible.size() - 1 || i < 0) {
+//					fin = true;
+//				} else {
+//					if (verifierPointAction(cartePossible.get(i))) {
+//						if (indiceCarte.contains(i)) {
+//							System.out.println("Ce numero a deja �t� choisi !");
+//						} else {
+//							indiceCarte.add(i);
+//							carteAJOuer.add(cartePossible.get(i));
+//							enleverPointAction(cartePossible.get(i).getPropriete().getOrigine());
+//						}
+//					} else {
+//						System.out.println("Vous n'avez pas assez de points d'action !");
+//					}
+//				}
+				setChanged();
+				notifyObservers(new EvenementJoueur(EvenementJoueurType.JOUE_CARTES, this));
 			}
-		}
+		
 		// clavier.close();
-		return carteAJOuer;
+//		return carteAJOuer;
 	}
 
 	/**
@@ -353,6 +363,7 @@ public class Joueur extends Observable {
 		if (c != null) {
 			Plateau p = Plateau.getInstance();
 			for (Carte carte : c) {
+				carte.setChoisie();
 				switch (carte.getTypeCarte()) {
 				case croyant:
 					p.poserCroyantLibre((Croyant) carte);
@@ -369,15 +380,16 @@ public class Joueur extends Observable {
 				case deusEx:
 					carte.utiliserCapacite();
 					partie.ajouterADefausse(carte);
+					main.remove(carte);
 					break;
 				case apocalyspe:
 					carte.utiliserCapacite();
 					partie.ajouterADefausse(carte);
+					main.remove(carte);
 					break;
 				default:
 					break;
 				}
-				main.remove(carte);
 			}
 		}
 	}
@@ -495,16 +507,18 @@ public class Joueur extends Observable {
 	 */
 	public void piocherCarte(int nbCartes, Joueur joueurAAttaquer) {
 
-		int indice = 0;
-		int i;
-		while (indice <= nbCartes) {
-			System.out.println("Tapez le numero de la carte � piocher");
-			i = Partie.scanner.nextInt();
-			Carte carteVictime = joueurAAttaquer.getMain().get(i);
-			this.getMain().add(carteVictime);
-			joueurAAttaquer.getMain().remove(i);
-			indice++;
-		}
+//		int indice = 0;
+//		int i;
+//		while (indice <= nbCartes) {
+//			System.out.println("Tapez le numero de la carte � piocher");
+//			i = Partie.scanner.nextInt();
+//			Carte carteVictime = joueurAAttaquer.getMain().get(i);
+//			this.getMain().add(carteVictime);
+//			joueurAAttaquer.getMain().remove(i);
+//			indice++;
+//		}
+		setChanged();
+		notifyObservers(new EvenementJoueur(EvenementJoueurType.PIOCHER_CARTE, this, new Object[]{nbCartes,joueurAAttaquer}));
 
 	}
 
@@ -636,6 +650,7 @@ public class Joueur extends Observable {
 					new Object[] { pointActionJour, pointActionNuit, pointActionNeant }));
 			afficherCartePossible(cartePossible);
 		}
+		cartePossibleAJouer=cartePossible;
 		return cartePossible;
 	}
 
@@ -797,11 +812,11 @@ public class Joueur extends Observable {
 	 * @param partie
 	 *            instance de la partie
 	 */
-	public void tourDeJeu(Partie partie) {
+	public void tourDeJeu(int action,Partie partie) {
 		// getDivinite().afficherDivinite();
 		// afficherMain();
-		choisirCarteADefausser(partie);
-		// completerMain(partie.getCartes());
+//		choisirCarteADefausser(partie);
+//		completerMain(partie.getCartes());
 		// afficherMain();
 		// ArrayList<Carte> cartePossible = lancerDe();
 		// ArrayList<Carte> carteAJouer = choisirCarteAJouer(cartePossible);
@@ -813,6 +828,28 @@ public class Joueur extends Observable {
 		// */
 		// choisirCarteASacrifier(partie);
 		// afficherPointPriere();
+		this.action=action;
+		switch (action) {
+		case 1:
+			choisirCarteADefausser(partie);
+			break;
+		case 2:
+			completerMain(partie.getCartes());
+			break;
+		case 3: 
+			choisirCarteAJouer(cartePossibleAJouer);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public int getAction() {
+		return action;
+	}
+
+	public void setAction(int action) {
+		this.action = action;
 	}
 
 	/**
@@ -863,6 +900,13 @@ public class Joueur extends Observable {
 		// TODO Auto-generated method stub
 
 		return super.toString();
+	}
+
+	public void passerAction() {
+		// TODO Auto-generated method stub
+		this.action++;
+		setChanged();
+		notifyObservers(new EvenementJoueur(EvenementJoueurType.PASSER_ACTION, this, new Object[]{action}));
 	}
 
 }
