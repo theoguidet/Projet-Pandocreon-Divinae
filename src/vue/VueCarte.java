@@ -402,7 +402,7 @@ public class VueCarte extends JPanel implements Observer {
 				getParent().remove(this);
 			}
 		}
-
+		super.repaint();
 	}
 
 	public void affichageRelle() {

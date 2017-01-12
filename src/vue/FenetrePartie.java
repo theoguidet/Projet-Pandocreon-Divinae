@@ -484,6 +484,7 @@ public class FenetrePartie extends JInternalFrame implements Observer {
 				}
 			}
 		}
+		super.repaint();
 	}
 
 	private void choixCarteAPiocher(EvenementJoueur evenement) {
